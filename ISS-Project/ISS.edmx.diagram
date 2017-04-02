@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e743a679878b43c8ae12491b51df5235" Name="Diagram1" ZoomLevel="98" >
+        <EntityTypeShape EntityType="Users.User" Width="1.5" PointX="4.875" PointY="13.5" />
+        <EntityTypeShape EntityType="Users.Conference" Width="2" PointX="9" PointY="5.125" />
+        <EntityTypeShape EntityType="Users.Topic" Width="1.5" PointX="9.25" PointY="2.75" />
+        <EntityTypeShape EntityType="Users.Payment" Width="1.5" PointX="11.875" PointY="12.75" />
+        <EntityTypeShape EntityType="Users.ConferenceParticipant" Width="1.5" PointX="9.125" PointY="12.75" />
+        <AssociationConnector Association="Users.ConferenceParticipantsPayments" />
+        <EntityTypeShape EntityType="Users.Paper" Width="1.5" PointX="4.875" PointY="3.875" />
+        <EntityTypeShape EntityType="Users.OrganizingComiteeMember" Width="1.5" PointX="6.875" PointY="11.5" />
+        <EntityTypeShape EntityType="Users.Review" Width="1.5" PointX="7.25" PointY="5.875" />
+        <AssociationConnector Association="Users.ReviewsPapers" />
+        <EntityTypeShape EntityType="Users.AdditionalAuthor" Width="1.5" PointX="2.375" PointY="3.25" />
+        <EntityTypeShape EntityType="Users.Tag" Width="1.5" PointX="0.625" PointY="5.875" />
+        <EntityTypeShape EntityType="Users.PaperTag" Width="1.5" PointX="2.625" PointY="5.875" />
+        <AssociationConnector Association="Users.PaperTagPaper" />
+        <EntityTypeShape EntityType="Users.Section" Width="1.5" PointX="12.375" PointY="6" />
+        <EntityTypeShape EntityType="Users.Address" Width="1.5" PointX="19.125" PointY="6" />
+        <EntityTypeShape EntityType="Users.Room" Width="1.5" PointX="16.875" PointY="6" />
+        <EntityTypeShape EntityType="Users.RoomReservation" Width="1.5" PointX="14.625" PointY="6" />
+        <EntityTypeShape EntityType="Users.PaperReservation" Width="1.5" PointX="14.625" PointY="11.875" />
+        <AssociationConnector Association="Users.PaperReservationRoomReservation" />
+        <AssociationConnector Association="Users.PaperReservationPaper" />
+        <AssociationConnector Association="Users.TagPaperTag" />
+        <AssociationConnector Association="Users.PaperConference" />
+        <AssociationConnector Association="Users.PaperUser" ManuallyRouted="false" >
+        </AssociationConnector>
+        <AssociationConnector Association="Users.TopicConference" />
+        <AssociationConnector Association="Users.RoomAddress" />
+        <AssociationConnector Association="Users.SectionConference" />
+        <AssociationConnector Association="Users.ConferenceParticipantUser" />
+        <AssociationConnector Association="Users.ConferenceParticipantConference" />
+        <AssociationConnector Association="Users.RoomReservationRoom" />
+        <AssociationConnector Association="Users.RoomReservationSection" />
+        <AssociationConnector Association="Users.PaperAdditionalAuthor" />
+        <EntityTypeShape EntityType="Users.Bid" Width="1.5" PointX="6.25" PointY="8.625" />
+        <AssociationConnector Association="Users.PaperBid" />
+        <AssociationConnector Association="Users.OrganizingComiteeMemberUser" />
+        <AssociationConnector Association="Users.OrganizingComiteeMemberConference" />
+        <AssociationConnector Association="Users.BidOrganizingComiteeMember" />
+        <AssociationConnector Association="Users.ReviewOrganizingComiteeMember" />
+        <AssociationConnector Association="Users.OrganizingComiteeMemberSection" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
