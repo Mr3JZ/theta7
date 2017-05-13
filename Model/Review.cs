@@ -2,7 +2,7 @@
 
 namespace Model
 {
-    public class Review
+     public class Review
     {
         public Review(int id, Participant reviewer, Verdict verdict, string comments, Paper paper)
         {
