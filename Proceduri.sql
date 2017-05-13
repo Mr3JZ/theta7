@@ -130,8 +130,8 @@ BEGIN
 	Begin try
 		Declare @TopicId int=0, @paperId int=0;
 		Set @TopicId=(Select t.TopicId From Topics T Where t.TopicName=@topic and t.ConferenceId=@conferenceId)
-		Insert into Papers(Name,Resume,Domain,Subdomain,Filepath,ConferenceId,UserId,TopicId)
-				Values(@Name,@Resume,@Domain,@Subdomain,@filePath,@conferenceId,@userId,@TopicId);
+		Insert into Papers(Name,Resume,Domain,Subdomain,Filepath,IsEmailSent,ConferenceId,UserId,TopicId)
+				Values(@Name,@Resume,@Domain,@Subdomain,@filePath,0,@conferenceId,@userId,@TopicId);
 		Set @paperId=(Select max(p.PaperId) from Papers p)
 		Return @paperId
 	End Try
