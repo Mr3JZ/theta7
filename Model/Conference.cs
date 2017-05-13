@@ -9,9 +9,9 @@ namespace Model
     public class Conference
     {
 
-        //public List<Participant> Participants {get;set}
-        //public List<Session> Sessions{get;set;}
-        //public List<Paper> Papers{get;set;}
+        public List<Participant> Participants { get; set; }
+        public List<Session> Sessions{get;set;}
+        public List<Paper> Papers{get;set;}
         public string Name { get; set; }
         public string Edition { get; set; } 
         public List<string> Topics { get; set; }
@@ -28,8 +28,8 @@ namespace Model
         public DateTime EndDate { get; set; }
         public int Id { get; set; }
 
-        /*
-        public Conference(int id, string name, string edition, List<string> topics, DateTime deadlineAbstract, DateTime deadlineComplet, DateTime deadlineBidding, DateTime deadlineEvaluation, DateTime deadlineParticipation, string city, string country, string website, float admissionPrice, DateTime beginDate, DateTime endDate)
+        
+        public Conference(int id,string name, string edition, List<string> topics, DateTime deadlineAbstract, DateTime deadlineComplet, DateTime deadlineBidding, DateTime deadlineEvaluation, DateTime deadlineParticipation, string city, string country, string website, float admissionPrice, DateTime beginDate, DateTime endDate)
         {
             Name = name;
             Edition = edition;
@@ -46,13 +46,16 @@ namespace Model
             BeginDate = beginDate;
             EndDate = endDate;
             Id = id;
+            Papers = new List<Paper>();
+            Sessions = new List<Session>();
+            Participants = new List<Participant>();
         }
 
         public Conference()
         {
             Name = "";
             Edition = "";
-            Topics = new List<String>;
+            Topics = new List<String>();
             DeadlineAbstract = new DateTime(2000,1,1);
             DeadlineComplet = new DateTime(2000, 1, 1);
             DeadlineBidding = new DateTime(2000, 1, 1);
@@ -65,13 +68,16 @@ namespace Model
             BeginDate = new DateTime(2000, 1, 1);
             EndDate = new DateTime(2000, 1, 1);
             Id = 0;
+            Papers = new List<Paper>();
+            Sessions = new List<Session>();
+            Participants = new List<Participant>();
         }
 
-        /*
+        
         public List<Paper> GetPapersByUploader(User u)
         {
-            List<Paper> result;
-            foreach(Paper p: Papers)
+            List<Paper> result=new List<Paper>();
+            foreach(Paper p in Papers)
                 if(p.Uploader==u)
                     result.Add(p);
             return result;
@@ -90,9 +96,9 @@ namespace Model
         }
         
         public void RemoveRejectedPapers(){
-            Papers.RemoveAll( p=>p.Status== Status.Rejected);
+            Papers.RemoveAll( p=>p.Status== Status.REJECTED);
         }
         
-        */
+        
     }
 }
