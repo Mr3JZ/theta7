@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    class Author
+    public class Author
     {
         public Author(int idAuthor, string name, string affiliation)
         {

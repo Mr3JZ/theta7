@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    enum Verdict
+    public enum Verdict
     {
         STRONG_ACCEPT,
         ACCEPT,

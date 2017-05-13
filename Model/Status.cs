@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    enum Status
+    public enum Status
     {
         ACCEPTED,
         REJECTED,
