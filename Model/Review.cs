@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    class Review
+     public class Review
     {
         public Participant Reviewer { get; set; }
 

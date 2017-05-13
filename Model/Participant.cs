@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    class Participant
+    public class Participant
     {
         //user
         //conference
