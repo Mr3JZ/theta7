@@ -6,14 +6,14 @@ namespace Model
     {
         public Payment(int id,float paidSum, int nrOfTickets, DateTime paymentDate, bool successfulTransaction)
         {
-            this.IdPayment = id;
+            this.Id = id;
             this.PaidSum = paidSum;
             this.NrOfTickets = nrOfTickets;
             this.PaidSum = paidSum;
             this.SuccessfulTransaction = successfulTransaction;
         }
 
-        public int IdPayment { get;set; }
+        public int Id { get;set; }
 
         public float PaidSum { get; set; }
 
