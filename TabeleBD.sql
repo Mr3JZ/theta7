@@ -27,12 +27,6 @@ GO
 IF OBJECT_ID(N'[dbo].[Reviews]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Reviews];
 GO
-IF OBJECT_ID(N'[dbo].[PaperTags]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[PaperTags];
-GO
-IF OBJECT_ID(N'[dbo].[Tags]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Tags];
-GO
 IF OBJECT_ID(N'[dbo].[AdditionalAuthors]', 'U') IS NOT NULL
     DROP TABLE [dbo].[AdditionalAuthors];
 GO
