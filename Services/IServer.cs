@@ -12,8 +12,11 @@ namespace Services
         void Login(User u, IClient client);
         void Logout(User u, IClient client);
         List<Conference> GetConferences();
-        void AddParticipant(Conference c, Participant p);
-        void AddPaper(Conference c, Paper l);
+        void NewParticipant(Conference c, Participant p);
+        void NewPaper(Conference c, Paper p);
+        void UpdatePaper(Paper p);
+        void UpdateConference(Conference c);
+        void NewPayment(Payment p);
 
     }
 }
