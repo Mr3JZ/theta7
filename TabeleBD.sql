@@ -158,8 +158,8 @@ CREATE TABLE [dbo].[Reviews] (
     [PCMemberUserId] int  NOT NULL,
     [PCMemberConferenceId] int NOT NULL,
 	[PaperId] int FOREIGN KEY REFERENCES Papers(PaperId)  NOT NULL,
-    [Evaluation] nvarchar(40)  NOT NULL,
-    [Recommandations] nvarchar(200)  NOT NULL,
+    [Evaluation] nvarchar(40) NULL,
+    [Recommandations] nvarchar(200) NULL,
 	Foreign Key ([PCMemberUserId], [PCMemberConferenceId]) REFERENCES PcMembers(UserId, ConferenceId),
 	PRIMARY KEY([PCMemberUserId], [PCMemberConferenceId], [PaperId])
 );
