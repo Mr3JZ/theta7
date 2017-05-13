@@ -2,6 +2,7 @@
 
 namespace Model
 {
+    [Serializable]
     public class Payment
     {
         public Payment(int id,float paidSum, int nrOfTickets, DateTime paymentDate, bool successfulTransaction)
