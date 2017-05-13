@@ -65,7 +65,7 @@ namespace Model
             City = "";
             Country = "";
             Website = "";
-            AdmissionPrice = 0;
+            AdmissionPrice = 1;
             BeginDate = new DateTime(2000, 1, 1);
             EndDate = new DateTime(2000, 1, 1);
             Id = 0;
