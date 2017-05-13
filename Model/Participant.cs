@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Model
 {
+    [Serializable]
     public class Participant
     {
         public Participant(int id, User user, Conference conference, bool isChair, bool isCochair, bool canBePCMember, bool isNormalUser)

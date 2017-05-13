@@ -2,7 +2,8 @@
 
 namespace Model
 {
-     public class Review
+    [Serializable]
+    public class Review
     {
         public Review(int id, Participant reviewer, Verdict verdict, string comments, Paper paper)
         {

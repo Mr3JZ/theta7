@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 namespace Model
 {
+    [Serializable]
     public class Session
     {
         public int IdSession { get; set; }

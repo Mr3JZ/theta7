@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Model
 {
+    [Serializable]
     public class Author
     {
         public Author(int idAuthor, string name, string affiliation)
