@@ -55,6 +55,10 @@
     <Compile Include="Status.cs" />
     <Compile Include="User.cs" />
     <Compile Include="Verdict.cs" />
+    <Compile Include="Participant.cs" />
+    <Compile Include="Payment.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Review.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
