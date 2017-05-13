@@ -57,90 +57,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdditionalAuthor.cs">
-      <DependentUpon>Model-ISS.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Address.cs">
-      <DependentUpon>Model-ISS.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Bid.cs">
-      <DependentUpon>Model-ISS.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Conference.cs">
-      <DependentUpon>Model-ISS.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ConferenceParticipant.cs">
-      <DependentUpon>Model-ISS.tt</DependentUpon>
-    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="ISS.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ISS.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ISS.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ISS.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model-ISS.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model-ISS.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model-ISS.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model-ISS.tt</DependentUpon>
-    </Compile>
-    <Compile Include="OrganizingComiteeMember.cs">
-      <DependentUpon>Model-ISS.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Paper.cs">
-      <DependentUpon>Model-ISS.tt</DependentUpon>
-    </Compile>
-    <Compile Include="PaperReservation.cs">
-      <DependentUpon>Model-ISS.tt</DependentUpon>
-    </Compile>
-    <Compile Include="PaperTag.cs">
-      <DependentUpon>Model-ISS.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Payment.cs">
-      <DependentUpon>Model-ISS.tt</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ISS.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ISS.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Review.cs">
-      <DependentUpon>Model-ISS.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Room.cs">
-      <DependentUpon>Model-ISS.tt</DependentUpon>
-    </Compile>
-    <Compile Include="RoomReservation.cs">
-      <DependentUpon>Model-ISS.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Section.cs">
-      <DependentUpon>Model-ISS.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Tag.cs">
-      <DependentUpon>Model-ISS.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Topic.cs">
-      <DependentUpon>Model-ISS.tt</DependentUpon>
-    </Compile>
-    <Compile Include="User.cs">
-      <DependentUpon>Model-ISS.tt</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -160,39 +84,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EntityDeploy Include="ISS.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ISS.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="ISS.edmx.diagram">
-      <DependentUpon>ISS.edmx</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="ISS.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ISS.Context.cs</LastGenOutput>
-      <DependentUpon>ISS.edmx</DependentUpon>
-    </Content>
-    <Content Include="ISS.edmx.sql" />
-    <Content Include="ISS.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ISS.cs</LastGenOutput>
-      <DependentUpon>ISS.edmx</DependentUpon>
-    </Content>
-    <Content Include="Model-ISS.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Model-ISS.Context.cs</LastGenOutput>
-      <DependentUpon>ISS.edmx</DependentUpon>
-    </Content>
-    <Content Include="Model-ISS.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Model-ISS.cs</LastGenOutput>
-      <DependentUpon>ISS.edmx</DependentUpon>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
