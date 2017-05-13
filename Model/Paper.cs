@@ -23,7 +23,7 @@ namespace Model
         public string Title { get; set; }
         public int Id { get; set; }
 
-        public Paper(int id, User uploader, string Title, string abs, string domain, string subdomain, string resume)
+        public Paper(int id, User uploader, string title, string abs, string domain, string subdomain, string resume)
         {
             Uploader = uploader;
             Abstract = abs;
@@ -34,8 +34,9 @@ namespace Model
             Domain = domain;
             Subdomain = subdomain;
             Resume = resume;
-            Title = Title;
+            Title = title;
             Id = id;
+            Status = Status.PENDING;
         }
 
         public Paper()
@@ -51,20 +52,28 @@ namespace Model
             Resume = "";
             Title = "";
             Id = 0;
+            Status = Status.PENDING;
         }
 
         public void DetermineStatus()
         {
-            /*
-            tbd
 
             int rejects = 0;
             int accepts = 0;
             foreach(Review r in Reviews)
             {
-
+                if (r.Verdict == Verdict.WEAK_ACCEPT || r.Verdict == Verdict.STRONG_ACCEPT || r.Verdict == Verdict.ACCEPT)
+                    accepts++;
+                if (r.Verdict == Verdict.WEAK_REJECT || r.Verdict == Verdict.STRONG_REJECT || r.Verdict == Verdict.REJECT)
+                    rejects++;
             }
-            */
+            if (rejects == 0)
+                Status = Status.ACCEPTED;
+            else if (accepts == 0)
+                Status = Status.REJECTED;
+            else
+                Status = Status.CONFLICTING;
+            
         }
 
         public void AddBid(Participant p, string b)
