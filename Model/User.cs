@@ -8,8 +8,9 @@ namespace Model
 {
     class User
     {
-        public User(string username, string password, string name, string affiliation, string email, bool isSpecial, int id, string website)
+        public User(int idUser, string username, string password, string name, string affiliation, string email, bool isSpecial, int id, string website)
         {
+            idUser = idUser;
             Username = username;
             Password = password;
             Name = name;
@@ -19,6 +20,7 @@ namespace Model
             Id = id;
             Website = website;
         }
+        public int idUser { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
         public string Name { get; set; }
