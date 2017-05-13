@@ -8,7 +8,7 @@ namespace ISS_Project
 {
     static class Program
     {
-        /// <summary>
+        /// <summary>asdsadsadasd
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
