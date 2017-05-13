@@ -8,7 +8,7 @@ namespace Model
 {
     public class Author
     {
-        public Author(int IdAuthor, string name, string affiliation)
+        public Author(int idAuthor, string name, string affiliation)
         {
             IdAuthor = idAuthor;
             Name = name;
