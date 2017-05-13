@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 namespace Model
 {
     public class Session
@@ -13,10 +12,12 @@ namespace Model
         public Participant SessionChair { get; set; }
         public DateTime BegginDate { get; set; }
         public DateTime EndDate { get; set; }
+        
 
 
         public Session(int idSession, List<Reservation> papers, Participant sessionChair, DateTime begginDate, DateTime endDate)
         {
+       
             IdSession = idSession;
             Papers = papers;
             SessionChair = sessionChair;
