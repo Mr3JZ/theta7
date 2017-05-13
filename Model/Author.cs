@@ -8,13 +8,13 @@ namespace Model
 {
     public class Author
     {
-        public Author(int idAuthor, string name, string affiliation)
+        public Author(int IdAuthor, string name, string affiliation)
         {
-            idAuthor = idAuthor;
+            IdAuthor = IdAuthor;
             Name = name;
             Affiliation = affiliation;
         }
-        public int idAuthor { get; set; }
+        public int IdAuthor { get; set; }
         public string Name { get; set; }
         public string Affiliation { get; set; }
     }
