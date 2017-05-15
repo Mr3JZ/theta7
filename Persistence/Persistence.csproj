@@ -65,7 +65,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Repository\Repo.cs" />
+    <Compile Include="Repository\RepoConference.cs" />
+    <Compile Include="Repository\RepoPayment.cs" />
     <Compile Include="Repository\RepositoryException.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
