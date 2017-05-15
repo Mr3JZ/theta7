@@ -63,7 +63,7 @@ namespace Persistence.Repository
         {
             if (c.AdmissionPrice < 1)
             {
-                throw new RepositoryException("Conference admission price must be >=1!");
+                throw new NotImplementedException("Conference admission price must be >=1!");//RepositoryException
             }
             if ((DateTime.Compare(c.DeadlineAbstract, c.DeadlineComplet) < 0) && (DateTime.Compare(c.DeadlineComplet, c.DeadlineParticipation) < 0) && (DateTime.Compare(c.DeadlineParticipation, c.DeadlineBidding) < 0))
             {
@@ -72,7 +72,7 @@ namespace Persistence.Repository
                     foreach (Conference conf in getConferences()) {
                         if (conf.Id == c.Id)
                         {
-                            throw new RepositoryException("Conference already exist!");
+                            throw new NotImplementedException("Conference already exist!");//RepositoryException
                         }
                     }
 
@@ -80,12 +80,12 @@ namespace Persistence.Repository
                 }
                 else
                 {
-                    throw new RepositoryException("Dates must be in chronological order!");
+                    throw new NotImplementedException("Dates must be in chronological order!");//RepositoryException
                 }
             }
             else
             {
-                throw new RepositoryException("Dates must be in chronological order!");
+                throw new NotImplementedException("Dates must be in chronological order!");//RepositoryException
             }
         }
 

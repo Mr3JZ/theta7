@@ -9,9 +9,9 @@ namespace Model
     [Serializable]
     public class User
     {
-        public User(int IdUser, string username, string password, string name, string affiliation, string email, bool isSpecial, int id, string website)
+        public User(int idUser, string username, string password, string name, string affiliation, string email, bool isSpecial, int id, string website)
         {
-            IdUser = IdUser;
+            IdUser = idUser;
             Username = username;
             Password = password;
             Name = name;
