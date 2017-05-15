@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISS-Project", "ISS-Project\ISS-Project.csproj", "{126361DC-28AD-4756-86F4-46C26D261BAE}"
 EndProject
@@ -14,6 +14,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Persistence", "Persistence\Persistence.csproj", "{10E9488C-47E4-486A-A5F7-590A67A58FDC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Services\Services.csproj", "{2F8B3F95-A7B4-4D00-A389-06DAD87E4C77}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientWithUI", "ClientWithUI\ClientWithUI.csproj", "{753BC8CC-442A-420E-A792-B60DAAD5FA3C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{2F8B3F95-A7B4-4D00-A389-06DAD87E4C77}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2F8B3F95-A7B4-4D00-A389-06DAD87E4C77}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2F8B3F95-A7B4-4D00-A389-06DAD87E4C77}.Release|Any CPU.Build.0 = Release|Any CPU
+		{753BC8CC-442A-420E-A792-B60DAAD5FA3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{753BC8CC-442A-420E-A792-B60DAAD5FA3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{753BC8CC-442A-420E-A792-B60DAAD5FA3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{753BC8CC-442A-420E-A792-B60DAAD5FA3C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
