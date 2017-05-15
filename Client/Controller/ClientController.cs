@@ -1,14 +1,14 @@
-﻿using Model;
-using Services;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Services;
+using Model;
 
 namespace Client
 {
-    public class ClientController:MarshalByRefObject, IClient
+    class ClientController: MarshalByRefObject, IClient
     {
         private readonly IServer server;
         private User currentUser;
