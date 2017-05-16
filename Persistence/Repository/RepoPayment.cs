@@ -25,7 +25,7 @@ namespace Persistence.Repository
         {
             if (participant.IsNormalUser)
             {
-                Conference conference = participant.Conference;
+                Model.Conference conference = participant.Conference;
                 float priceTicketForConference = conference.AdmissionPrice;
                 int nrTickets = 0;
                 if (priceTicketForConference != 0)

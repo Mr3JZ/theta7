@@ -9,7 +9,7 @@ namespace Model
     [Serializable]
     public class User
     {
-        public User(int idUser, string username, string password, string name, string affiliation, string email, bool isSpecial, int id, string website)
+        public User(int idUser, string username, string password, string name, string affiliation, string email, bool isSpecial, string website)
         {
             IdUser = idUser;
             Username = username;
@@ -18,7 +18,6 @@ namespace Model
             Affiliation = affiliation;
             Email = email;
             this.isSpecial = isSpecial;
-            Id = id;
             Website = website;
         }
         public int IdUser { get; set; }
@@ -28,7 +27,6 @@ namespace Model
         public string Affiliation { get; set; }
         public string Email { get; set; }
         public bool isSpecial { get; set; }
-        public int Id { get; set; }
         public string Website { get; set; }
     }
 }

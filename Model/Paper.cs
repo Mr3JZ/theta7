@@ -42,7 +42,7 @@ namespace Model
 
         public Paper()
         {
-            Uploader = new User(0,"a","a","a", "a", "a", true,0, "a");
+            Uploader = new Model.User(0,"a","a","a", "a", "a", true, "a");
             Abstract = "";
             Bids = new Dictionary<Participant, string>();
             Reviewers = new List<Participant>();

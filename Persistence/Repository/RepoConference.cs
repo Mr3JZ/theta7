@@ -9,7 +9,7 @@ namespace Persistence.Repository
 {
     public class RepoConference
     {
-        List<Conference> conferences=new List<Conference>();
+        List<Model.Conference> conferences=new List<Model.Conference>();
         /*Function which adds a new conference.
         * In:Conference details
         * Out:new conference in the list
@@ -18,7 +18,7 @@ namespace Persistence.Repository
         * AdmissionPrice>0
         * Id-unique
         */
-        public void addConference(Conference c)
+        public void addConference(Model.Conference c)
         {
             if (c.AdmissionPrice < 1)
             {
@@ -28,7 +28,7 @@ namespace Persistence.Repository
             {
                 if ((DateTime.Compare(c.DeadlineBidding, c.DeadlineEvaluation) < 0) && (DateTime.Compare(c.DeadlineEvaluation, c.BeginDate) < 0) && (DateTime.Compare(c.BeginDate, c.EndDate) < 0))
                 {
-                    foreach (Conference conf in getConferences())
+                    foreach (Model.Conference conf in getConferences())
                     {
                         if (conf.Id == c.Id)
                         {
@@ -50,7 +50,7 @@ namespace Persistence.Repository
             }
         }
 
-        public List<Conference> getConferences()
+        public List<Model.Conference> getConferences()
         {
             return conferences;
         }

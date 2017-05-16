@@ -18,9 +18,9 @@ namespace Persistence.Repository.Tests
             try
             {
                 RepoPayment repo = new RepoPayment();
-                Conference c = new Conference();
-                User user = new User(1, "username", "pass", "Name", "Affiliation", "email@yahoo.com", false, 1, "www.website.com");
-                User user2 = new User(2, "username", "pass", "Name", "Affiliation", "email@yahoo.com", false, 2, "www.website.com");
+                Model.Conference c = new Model.Conference();
+                Model.User user = new Model.User(1, "username", "pass", "Name", "Affiliation", "email@yahoo.com", false, "www.website.com");
+                Model.User user2 = new Model.User(2, "username", "pass", "Name", "Affiliation", "email@yahoo.com", false, "www.website.com");
                 Participant p = new Participant(1, user, c, false, false, true, true);
                 Participant p2 = new Participant(2, user2, c, false, false, true, true);
                 repo.addPayment(p, 1);
