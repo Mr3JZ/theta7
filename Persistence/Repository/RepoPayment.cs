@@ -43,8 +43,7 @@ namespace Persistence.Repository
                 using (var context = new ISSEntities2(Util.ConnectionStringWithPassword.doIt()))
                 {
                     Payment payment1 = new Payment();
-                    payment1.PaymentId = 201;
-                    DateTime t = new DateTime(2000, 1, 1);
+                    payment1.PaymentId = payment.Id;                 
                     payment1.PaymentDate =payment.PaymentDate;
                     payment1.NrOfTickets = payment.NrOfTickets;
                     payment1.PaidSum = payment.PaidSum;
@@ -52,27 +51,23 @@ namespace Persistence.Repository
                     context.Payments.Add(payment1);
                     context.SaveChanges();
 
-
-                    /*Nu merge inca*/
-                    foreach (ConferenceParticipant conf in payment1.ConferenceParticipants)
+                    ConferenceParticipant confP = new ConferenceParticipant();//daca a facut plata devine un participant la conferinta.
+                    if (context.ConferenceParticipants.Find(payment.Buyer.User.IdUser, conference.Id, payment1.PaymentId) == null)
                     {
-                        if (context.ConferenceParticipants.Find(conf.PaymentId) == null)
-                        {
-                            Console.WriteLine("aici");
-                            ConferenceParticipant con = new ConferenceParticipant();
-                            con.UserId = participant.User.IdUser;//WTF??
-                            con.ConferenceId = conference.Id;
-                            con.PaymentId = payment1.PaymentId;
-                           
-                            context.ConferenceParticipants.Add(con);
-
-                        }
+                        confP.UserId = participant.User.IdUser;
+                        confP.ConferenceId = conference.Id;
+                        confP.PaymentId = payment1.PaymentId;
                     }
-                    context.SaveChanges();
-        
-                    
+                   
+                    context.ConferenceParticipants.Add(confP);
 
-                    
+                 
+                    context.SaveChanges();
+                   
+
+
+
+
                 }
 
 

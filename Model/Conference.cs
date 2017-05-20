@@ -77,7 +77,7 @@ namespace Model
             AdmissionPrice = 1;
             BeginDate = new DateTime(2000, 6, 1);
             EndDate = new DateTime(2000, 7, 1);
-            Id = 0;
+            Id = 1;
             Papers = new List<Paper>();
             Sessions = new List<Session>();
             Participants = new List<Participant>();

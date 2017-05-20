@@ -61,7 +61,7 @@ namespace Persistence.Repository
                         }
                         else throw new RepositoryException("Conference already exists!");
                     }
-                        //conferences.Add(c);
+                        
                     //TO DO->ADD PC MEMBERS.Astept functia
                 }
                 else
