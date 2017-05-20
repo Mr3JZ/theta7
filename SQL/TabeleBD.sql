@@ -91,7 +91,7 @@ CREATE TABLE [dbo].[Conferences] (
     [City] nvarchar(50)  NOT NULL,
     [Country] nvarchar(50)  NOT NULL,
     [Website] nvarchar(50)  NULL,
-    [Price] int  NOT NULL,
+    [Price] float  NOT NULL,
     [DeadlineAbstractPaper] datetime  NOT NULL,
     [DeadlineCompletePaper] datetime  NOT NULL,
 	[DeadlineBiddingPaper] datetime NOT NULL,
@@ -113,7 +113,7 @@ CREATE TABLE [dbo].[Payments] (
     [PaymentId] int IDENTITY(1,1) PRIMARY KEY NOT NULL,
     [PaymentDate] datetime  NOT NULL,
     [NrOfTickets] int  NOT NULL,
-	[PaidSum] int NOT NULL,
+	[PaidSum] float NOT NULL,
     [SuccessfulTransaction] bit  NOT NULL
 );
 GO
@@ -135,7 +135,7 @@ CREATE TABLE [dbo].[Papers] (
     [Domain] nvarchar(30)  NOT NULL,
     [Subdomain] nvarchar(30)  NOT NULL,
     [Filepath] nvarchar(240)  NOT NULL,
-    [EvaluationResult] nvarchar(50)  NULL,
+    [EvaluationResult] nvarchar(50) NULL,
     [IsEmailSent] bit  NOT NULL,
     [ConferenceId] int FOREIGN KEY REFERENCES Conferences(ConferenceId)  NOT NULL,
     [UserId] int FOREIGN KEY REFERENCES Users(UserId) NOT NULL,
@@ -158,7 +158,7 @@ CREATE TABLE [dbo].[Reviews] (
     [PCMemberUserId] int  NOT NULL,
     [PCMemberConferenceId] int NOT NULL,
 	[PaperId] int FOREIGN KEY REFERENCES Papers(PaperId)  NOT NULL,
-    [Evaluation] nvarchar(40) NULL,
+    [Evaluation] int NULL,
     [Recommandations] nvarchar(200) NULL,
 	Foreign Key ([PCMemberUserId], [PCMemberConferenceId]) REFERENCES PcMembers(UserId, ConferenceId),
 	PRIMARY KEY([PCMemberUserId], [PCMemberConferenceId], [PaperId])
