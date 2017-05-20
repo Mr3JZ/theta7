@@ -31,7 +31,7 @@ namespace Persistence
 
             repou.GetAll().ForEach(x => { Console.WriteLine(x.IdUser + ": " + x.Name); });
             Console.WriteLine("------------------");
-            
+
 
             /*
             using (var context = new ISSEntities2(Util.ConnectionStringWithPassword.doIt()))
