@@ -36,7 +36,32 @@ namespace Persistence.Repository
                         }
                     }
 
-                    conferences.Add(c);
+                    using (var context = new ISSEntities2(Util.ConnectionStringWithPassword.doIt()))
+                    {
+                        Conference conference = new Conference();
+                        conference.ConferenceId = c.Id;
+                        conference.Name = c.Name;
+                        conference.Edition = c.Edition;
+                        conference.DeadlineAbstractPaper = c.DeadlineAbstract;
+                        conference.DeadlineBiddingPaper = c.DeadlineBidding;
+                        conference.DeadlineCompletePaper = c.DeadlineComplet;
+                        conference.DeadlineEvaluation = c.DeadlineEvaluation;
+                        conference.DeadlineParticipation = c.DeadlineParticipation;
+                        conference.EndDate = c.EndDate;
+                        conference.BeginDate = c.BeginDate;
+                        conference.City = c.City;
+                        conference.Country = c.Country;
+                        conference.Website = c.Website;
+                        conference.Price = c.AdmissionPrice;
+
+                        if (Find(conference.ConferenceId) == false)
+                        {
+                            context.Conferences.Add(conference);
+                            context.SaveChanges();
+                        }
+                        else throw new RepositoryException("Conference already exists!");
+                    }
+                        //conferences.Add(c);
                     //TO DO->ADD PC MEMBERS.Astept functia
                 }
                 else
@@ -49,6 +74,22 @@ namespace Persistence.Repository
                 throw new RepositoryException("Dates must be in chronological order!");
             }
         }
+
+
+        public bool Find(int id)
+        {
+            using (var context = new ISSEntities2(Util.ConnectionStringWithPassword.doIt()))
+            {
+                var u = context.Conferences.Find(id);   
+                if (u != null)
+                {
+                    return true;
+                }
+                return false;
+               // return new Model.Conference(u.ConferenceId,u.Name,u.Edition,u.Topics,u.DeadlineAbstractPaper,u.DeadlineCompletePaper,u.DeadlineBiddingPaper,u.DeadlineEvaluation,u.DeadlineParticipation,u.City,u.Country,u.Website,u.Price,u.BeginDate,u.EndDate);
+            }
+        }
+
 
         public List<Model.Conference> getConferences()
         {

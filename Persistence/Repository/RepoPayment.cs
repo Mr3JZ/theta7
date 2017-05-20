@@ -26,7 +26,7 @@ namespace Persistence.Repository
             if (participant.IsNormalUser)
             {
                 Model.Conference conference = participant.Conference;
-                float priceTicketForConference = conference.AdmissionPrice;
+                int priceTicketForConference = conference.AdmissionPrice;
                 int nrTickets = 0;
                 if (priceTicketForConference != 0)
                 {
@@ -38,10 +38,46 @@ namespace Persistence.Repository
                 }
                 DateTime PaymentDate = DateTime.Now;
                 bool SuccessfulTransaction = true;
-                Model.Payment payment = new Model.Payment(1, paidSum, nrTickets, PaymentDate, SuccessfulTransaction, participant);
-                payments.Add(payment);
-            }
-        }
+                Model.Payment payment = new Model.Payment(10, paidSum, nrTickets, PaymentDate, SuccessfulTransaction, participant);
+                
+                using (var context = new ISSEntities2(Util.ConnectionStringWithPassword.doIt()))
+                {
+                    Payment payment1 = new Payment();
+                    payment1.PaymentId = 201;
+                    DateTime t = new DateTime(2000, 1, 1);
+                    payment1.PaymentDate =payment.PaymentDate;
+                    payment1.NrOfTickets = payment.NrOfTickets;
+                    payment1.PaidSum = payment.PaidSum;
+                    payment1.SuccessfulTransaction = payment.SuccessfulTransaction;
+                    context.Payments.Add(payment1);
+                    context.SaveChanges();
+
+
+                    /*Nu merge inca*/
+                    foreach (ConferenceParticipant conf in payment1.ConferenceParticipants)
+                    {
+                        if (context.ConferenceParticipants.Find(conf.PaymentId) == null)
+                        {
+                            Console.WriteLine("aici");
+                            ConferenceParticipant con = new ConferenceParticipant();
+                            con.UserId = participant.User.IdUser;//WTF??
+                            con.ConferenceId = conference.Id;
+                            con.PaymentId = payment1.PaymentId;
+                           
+                            context.ConferenceParticipants.Add(con);
+
+                        }
+                    }
+                    context.SaveChanges();
+        
+                    
+
+                    
+                }
+
+
+                }
+            }       
         /*Getter for the list of payments
          * To be used by conference managers to see incomes
          */

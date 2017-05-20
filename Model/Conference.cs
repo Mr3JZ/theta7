@@ -9,6 +9,15 @@ namespace Model
     [Serializable]
     public class Conference
     {
+        private int conferenceId;     
+        private DateTime deadlineAbstractPaper;
+        private DateTime deadlineCompletePaper;
+        private DateTime deadlineBiddingPaper;
+        private DateTime deadlineEvaluation;
+        private DateTime deadlineParticipation;
+        private int price;
+        private DateTime beginDate;
+        private DateTime endDate;
 
         public List<Participant> Participants { get; set; }
         public List<Session> Sessions{get;set;}
@@ -24,13 +33,13 @@ namespace Model
         public string City { get; set; }
         public string Country { get; set; }
         public string Website { get; set; }
-        public float AdmissionPrice { get; set; }
+        public int AdmissionPrice { get; set; }
         public DateTime BeginDate { get; set; }
         public DateTime EndDate { get; set; }
         public int Id { get; set; }
 
         
-        public Conference(int id,string name, string edition, List<string> topics, DateTime deadlineAbstract, DateTime deadlineComplet, DateTime deadlineBidding, DateTime deadlineEvaluation, DateTime deadlineParticipation, string city, string country, string website, float admissionPrice, DateTime beginDate, DateTime endDate)
+        public Conference(int id,string name, string edition, List<string> topics, DateTime deadlineAbstract, DateTime deadlineComplet, DateTime deadlineBidding, DateTime deadlineEvaluation, DateTime deadlineParticipation, string city, string country, string website, int admissionPrice, DateTime beginDate, DateTime endDate)
         {
             Name = name;
             Edition = edition;
@@ -54,27 +63,28 @@ namespace Model
 
         public Conference()
         {
-            Name = "";
-            Edition = "";
+            Name = "a";
+            Edition = "a";
             Topics = new List<String>();
             DeadlineAbstract = new DateTime(2000,1,1);
-            DeadlineComplet = new DateTime(2000, 1, 1);
-            DeadlineBidding = new DateTime(2000, 1, 1);
-            DeadlineEvaluation = new DateTime(2000, 1, 1);
-            DeadlineParticipation = new DateTime(2000, 1, 1);
-            City = "";
-            Country = "";
-            Website = "";
+            DeadlineComplet = new DateTime(2000, 2, 1);
+            DeadlineBidding = new DateTime(2000, 4, 1);
+            DeadlineEvaluation = new DateTime(2000, 5, 1);
+            DeadlineParticipation = new DateTime(2000,3, 1);
+            City = "a";
+            Country = "a";
+            Website = "a";
             AdmissionPrice = 1;
-            BeginDate = new DateTime(2000, 1, 1);
-            EndDate = new DateTime(2000, 1, 1);
+            BeginDate = new DateTime(2000, 6, 1);
+            EndDate = new DateTime(2000, 7, 1);
             Id = 0;
             Papers = new List<Paper>();
             Sessions = new List<Session>();
             Participants = new List<Participant>();
         }
 
-        
+       
+
         public List<Paper> GetPapersByUploader(User u)
         {
             List<Paper> result=new List<Paper>();
