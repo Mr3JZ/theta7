@@ -9,6 +9,78 @@ namespace Persistence.Repository
 {
     public class RepoPaperDB
     {
+        public List<Model.Paper> GetByConference(int confId)
+        {
+            List<Model.Paper> all = new List<Model.Paper>();
+
+            using (var context = new ISSEntities2(Util.ConnectionStringWithPassword.doIt()))
+            {
+                foreach(Paper paper in context.Papers)
+                {
+                    if (paper.ConferenceId == confId)
+                    {
+                        User u = context.Users.Find(paper.UserId);
+                        Model.User user = new Model.User(u.UserId, u.Username, u.Password, u.Name, u.Affilliation, u.Email, u.canBePCMember, u.WebPage);
+
+                        Topic t = context.Topics.Find(paper.TopicId);
+
+                        Model.Paper p = new Model.Paper(paper.PaperId, paper.ConferenceId, user, paper.Name, paper.Filepath, paper.Domain, paper.Subdomain, paper.Resume, t.TopicName);
+
+                        List<Author> authors = new List<Author>();
+                        foreach(AdditionalAuthor a in context.AdditionalAuthors)
+                        {
+                            if (a.PaperId == paper.PaperId)
+                            {
+                                Author au = new Author(a.AdditionalAuthorId, a.Name, a.Affiliation);
+                                authors.Add(au);
+                            }
+                        }
+
+                        p.AdditionalAuthors = authors;
+
+                        foreach(Bid b in context.Bids)
+                        {
+                            if (b.PaperId == paper.PaperId)
+                            {
+                                User us = context.Users.Find(b.PCMemberUserId);
+                                PCMember pcm = context.PCMembers.Find(b.PCMemberUserId, b.PCMemberConferenceId);
+                                Model.User bidder = new Model.User(us.UserId, us.Username, us.Password, us.Name, us.Affilliation, us.Email, us.canBePCMember, us.WebPage);
+                                Model.Participant participant = new Model.Participant(bidder, b.PCMemberConferenceId, pcm.isChair, pcm.isCoChair, true, false);
+
+                                p.AddBid(participant, b.BiddingEvaluation);
+                                
+                            }
+                        }
+
+                        foreach(Review r in context.Reviews)
+                        {
+                            if (r.PaperId == paper.PaperId)
+                            {
+                                User us = context.Users.Find(r.PCMemberUserId);
+                                PCMember pcm = context.PCMembers.Find(r.PCMemberUserId, r.PCMemberConferenceId);
+                                Model.User reviewer = new Model.User(us.UserId, us.Username, us.Password, us.Name, us.Affilliation, us.Email, us.canBePCMember, us.WebPage);
+                                Model.Participant participant = new Model.Participant(reviewer, r.PCMemberConferenceId, pcm.isChair, pcm.isCoChair, true, false);
+
+                                Verdict v;
+                                Enum.TryParse(r.Evaluation, out v);
+
+                                Model.Review review = new Model.Review(0, participant, v, r.Recommandations);
+
+                                p.AddReviewer(participant);
+                                p.AddReview(review);
+
+                            }
+                        }
+
+                        all.Add(p);
+                    }
+                }
+
+            }
+
+            return all;
+        }
+
         public void Add(Model.Paper p)
         {
             using (var context = new ISSEntities2(Util.ConnectionStringWithPassword.doIt()))
@@ -83,7 +155,7 @@ namespace Persistence.Repository
                     //get bid by lucrare, participant add daca nu exista
                     bool exists = false;
                     foreach (Bid b in context.Bids)
-                        if (b.PaperId == paperId && b.PCMemberUserId == bid.Key.Id)
+                        if (b.PaperId == paperId && b.PCMemberUserId == bid.Key.User.IdUser)
                         {
                             exists = true;
                             break;
@@ -92,7 +164,7 @@ namespace Persistence.Repository
                     {
                         Bid b = new Bid();
                         b.BiddingEvaluation = bid.Value;
-                        b.PCMemberUserId = bid.Key.Id;
+                        b.PCMemberUserId = bid.Key.User.IdUser;
                         b.PaperId = paperId;
                         b.PCMemberConferenceId = newP.ConferenceId;
 
@@ -102,11 +174,11 @@ namespace Persistence.Repository
 
                 foreach(Model.Review review in newP.Reviews)
                 {
-                    if (context.Reviews.Find(review.Id) == null)
+                    if (context.Reviews.Find(review.Reviewer.User.IdUser,newP.ConferenceId,newP.Id) == null)
                     {
                         Review rev = new Review();
-                        rev.PCMemberUserId = review.Reviewer.Id;
-                        rev.PCMemberConferenceId = review.Reviewer.Conference.Id;
+                        rev.PCMemberUserId = review.Reviewer.User.IdUser;
+                        rev.PCMemberConferenceId = review.Reviewer.ConferenceId;
                         rev.PaperId = paperId;
                         rev.Evaluation= Enum.GetName(review.Verdict.GetType(), review.Verdict);
                         rev.Recommandations = review.Comments;
