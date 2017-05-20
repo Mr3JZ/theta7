@@ -106,6 +106,7 @@
     </Compile>
     <Compile Include="Repository\RepoConference.cs" />
     <Compile Include="Repository\RepoPaperDB.cs" />
+    <Compile Include="Repository\RepoParticipantDB.cs" />
     <Compile Include="Repository\RepoPayment.cs" />
     <Compile Include="Repository\RepositoryException.cs" />
     <Compile Include="Repository\RepoUserDB.cs" />

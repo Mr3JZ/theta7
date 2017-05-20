@@ -5,13 +5,12 @@ namespace Model
     [Serializable]
     public class Review
     {
-        public Review(int id, Participant reviewer, Verdict verdict, string comments, Paper paper)
+        public Review(int id, Participant reviewer, Verdict verdict, string comments)
         {
             Id = id;
             Reviewer = reviewer;
             Verdict = verdict;
             Comments = comments;
-            Paper = paper;
         }
 
         public int Id { get; set; }
@@ -20,7 +19,5 @@ namespace Model
         public Verdict Verdict { get; set; }
 
         public string Comments { get; set; }
-
-        public Paper Paper { get; set; }
     }
 }

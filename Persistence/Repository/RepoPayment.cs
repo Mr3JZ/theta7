@@ -9,6 +9,7 @@ namespace Persistence.Repository
 {
     public class RepoPayment
     {
+        /*
         List<Model.Payment> payments=new List<Model.Payment>();
 
         public RepoPayment()
@@ -20,7 +21,7 @@ namespace Persistence.Repository
          * Out:New Payment with current date,nrTickets,success of transaction
          * Condition:Participant is normal user
          * Id doesn't matter?
-         */
+         
         public void addPayment(Participant participant, int paidSum)
         {
             if (participant.IsNormalUser)
@@ -80,13 +81,13 @@ namespace Persistence.Repository
             }       
         /*Getter for the list of payments
          * To be used by conference managers to see incomes
-         */
+        
         public List<Model.Payment> getPayments()
         {
             return payments;
         }
 
 
-
+        */
     }
 }

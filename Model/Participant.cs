@@ -9,22 +9,20 @@ namespace Model
     [Serializable]
     public class Participant
     {
-        public Participant(int id, User user, Conference conference, bool isChair, bool isCochair, bool canBePCMember, bool isNormalUser)
+        public Participant(User user, int conferenceId, bool isChair, bool isCochair, bool canBePCMember, bool isNormalUser)
         {
-            Id = id;
             User = user;
-            Conference = conference;
+            ConferenceId = conferenceId;
             IsChair = isChair;
             IsCochair = isCochair;
             CanBePCMember = canBePCMember;
             IsNormalUser = isNormalUser;
         }
 
-        public int Id { get; set; }
 
         public User User { get; set; }
         
-        public Conference Conference { get; set; }
+        public int ConferenceId { get; set; }
 
         public bool IsChair { get; set; }
 
