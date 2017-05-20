@@ -9,7 +9,7 @@ namespace Persistence.Repository
 {
     public class RepoPayment
     {
-        List<Payment> payments=new List<Payment>();
+        List<Model.Payment> payments=new List<Model.Payment>();
 
         public RepoPayment()
         {
@@ -38,14 +38,14 @@ namespace Persistence.Repository
                 }
                 DateTime PaymentDate = DateTime.Now;
                 bool SuccessfulTransaction = true;
-                Payment payment = new Payment(1, paidSum, nrTickets, PaymentDate, SuccessfulTransaction, participant);
+                Model.Payment payment = new Model.Payment(1, paidSum, nrTickets, PaymentDate, SuccessfulTransaction, participant);
                 payments.Add(payment);
             }
         }
         /*Getter for the list of payments
          * To be used by conference managers to see incomes
          */
-        public List<Payment> getPayments()
+        public List<Model.Payment> getPayments()
         {
             return payments;
         }

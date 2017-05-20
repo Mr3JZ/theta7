@@ -10,10 +10,8 @@ namespace Model
     public class Paper
     {
         public User Uploader { get; set; }
-        public string Abstract { get; set; }
-        public string FullPaper { get; set; }
-        public string Presentation { get; set; }
-        public Dictionary<Participant, string> Bids { get; set; }
+        public string Filepath { get; set; }
+        public Dictionary<Participant, int> Bids { get; set; }
         public List<Participant> Reviewers { get; set; }
         public List<Review> Reviews { get; set; }
         public Status Status { get; set; }
@@ -22,13 +20,16 @@ namespace Model
         public string Subdomain { get; set; }
         public string Resume { get; set; }
         public string Title { get; set; }
+        public string Topic { get; set; }
         public int Id { get; set; }
+        public int ConferenceId { get; set; }
 
-        public Paper(int id, User uploader, string title, string abs, string domain, string subdomain, string resume)
+        public Paper(int id, int confId,User uploader, string title, string abs, string domain, string subdomain, string resume,string topic)
         {
+            Topic = topic;
             Uploader = uploader;
-            Abstract = abs;
-            Bids = new Dictionary<Participant, string>();
+            Filepath = abs;
+            Bids = new Dictionary<Participant, int>();
             Reviewers = new List<Participant>();
             Reviews = new List<Review>();
             AdditionalAuthors = new List<Author>();
@@ -38,13 +39,13 @@ namespace Model
             Title = title;
             Id = id;
             Status = Status.PENDING;
+            ConferenceId = confId;
         }
 
         public Paper()
         {
             Uploader = new Model.User(0,"a","a","a", "a", "a", true, "a");
-            Abstract = "";
-            Bids = new Dictionary<Participant, string>();
+            Bids = new Dictionary<Participant, int>();
             Reviewers = new List<Participant>();
             Reviews = new List<Review>();
             AdditionalAuthors = new List<Author>();
@@ -77,7 +78,7 @@ namespace Model
             
         }
 
-        public void AddBid(Participant p, string b)
+        public void AddBid(Participant p, int b)
         {
             Bids.Add(p, b);
         }

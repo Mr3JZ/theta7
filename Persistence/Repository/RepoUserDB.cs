@@ -35,7 +35,15 @@ namespace Persistence.Repository
         {
             using (var context = new ISSEntities2(Util.ConnectionStringWithPassword.doIt()))
             {
-                User newser = new User(u.IdUser,u.Username,u.Name,u.Password,u.Email,u.Affiliation,u.Website,u.isSpecial);
+                User newser = new User();
+
+                newser.Username = u.Username;
+                newser.Name = u.Name;
+                newser.Password = u.Password;
+                newser.Email = u.Email;
+                newser.Affilliation = u.Affiliation;
+                newser.WebPage = u.Website;
+                newser.canBePCMember = u.isSpecial;
 
                 context.Users.Add(newser);
                 context.SaveChanges();

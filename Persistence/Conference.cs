@@ -14,6 +14,17 @@ namespace Persistence
     
     public partial class Conference
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Conference()
+        {
+            this.AvailableRooms = new HashSet<AvailableRoom>();
+            this.ConferenceParticipants = new HashSet<ConferenceParticipant>();
+            this.Papers = new HashSet<Paper>();
+            this.PCMembers = new HashSet<PCMember>();
+            this.Sessions = new HashSet<Session>();
+            this.Topics = new HashSet<Topic>();
+        }
+    
         public int ConferenceId { get; set; }
         public string Name { get; set; }
         public string Edition { get; set; }
@@ -28,5 +39,18 @@ namespace Persistence
         public System.DateTime DeadlineBiddingPaper { get; set; }
         public System.DateTime DeadlineEvaluation { get; set; }
         public System.DateTime DeadlineParticipation { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AvailableRoom> AvailableRooms { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ConferenceParticipant> ConferenceParticipants { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Paper> Papers { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PCMember> PCMembers { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Session> Sessions { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Topic> Topics { get; set; }
     }
 }

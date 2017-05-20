@@ -33,6 +33,17 @@ namespace Persistence
     
         public virtual DbSet<Conference> Conferences { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<AdditionalAuthor> AdditionalAuthors { get; set; }
+        public virtual DbSet<Address> Addresses { get; set; }
+        public virtual DbSet<AvailableRoom> AvailableRooms { get; set; }
+        public virtual DbSet<Bid> Bids { get; set; }
+        public virtual DbSet<ConferenceParticipant> ConferenceParticipants { get; set; }
+        public virtual DbSet<Paper> Papers { get; set; }
+        public virtual DbSet<Payment> Payments { get; set; }
+        public virtual DbSet<PCMember> PCMembers { get; set; }
+        public virtual DbSet<Review> Reviews { get; set; }
+        public virtual DbSet<Session> Sessions { get; set; }
+        public virtual DbSet<Topic> Topics { get; set; }
     
         public virtual int insertUser(string username, string name, string password, string email, string affiliation, string webPage)
         {
@@ -61,6 +72,28 @@ namespace Persistence
                 new ObjectParameter("WebPage", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("insertUser", usernameParameter, nameParameter, passwordParameter, emailParameter, affiliationParameter, webPageParameter);
+        }
+    
+        public virtual int PopulatePaperReservations(Nullable<int> conferenceId, Nullable<int> duration)
+        {
+            var conferenceIdParameter = conferenceId.HasValue ?
+                new ObjectParameter("ConferenceId", conferenceId) :
+                new ObjectParameter("ConferenceId", typeof(int));
+    
+            var durationParameter = duration.HasValue ?
+                new ObjectParameter("Duration", duration) :
+                new ObjectParameter("Duration", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PopulatePaperReservations", conferenceIdParameter, durationParameter);
+        }
+    
+        public virtual int PopulateRoomReservations(Nullable<int> conferenceId)
+        {
+            var conferenceIdParameter = conferenceId.HasValue ?
+                new ObjectParameter("ConferenceId", conferenceId) :
+                new ObjectParameter("ConferenceId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PopulateRoomReservations", conferenceIdParameter);
         }
     }
 }

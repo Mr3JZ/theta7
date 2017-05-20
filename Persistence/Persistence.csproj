@@ -63,7 +63,31 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdditionalAuthor.cs">
+      <DependentUpon>TestModel2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Address.cs">
+      <DependentUpon>TestModel2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AvailableRoom.cs">
+      <DependentUpon>TestModel2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Bid.cs">
+      <DependentUpon>TestModel2.tt</DependentUpon>
+    </Compile>
     <Compile Include="Conference.cs">
+      <DependentUpon>TestModel2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ConferenceParticipant.cs">
+      <DependentUpon>TestModel2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Paper.cs">
+      <DependentUpon>TestModel2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Payment.cs">
+      <DependentUpon>TestModel2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PCMember.cs">
       <DependentUpon>TestModel2.tt</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -81,9 +105,16 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Repository\RepoConference.cs" />
+    <Compile Include="Repository\RepoPaperDB.cs" />
     <Compile Include="Repository\RepoPayment.cs" />
     <Compile Include="Repository\RepositoryException.cs" />
     <Compile Include="Repository\RepoUserDB.cs" />
+    <Compile Include="Review.cs">
+      <DependentUpon>TestModel2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Session.cs">
+      <DependentUpon>TestModel2.tt</DependentUpon>
+    </Compile>
     <Compile Include="TestModel2.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -98,6 +129,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>TestModel2.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Topic.cs">
+      <DependentUpon>TestModel2.tt</DependentUpon>
     </Compile>
     <Compile Include="User.cs">
       <DependentUpon>TestModel2.tt</DependentUpon>
