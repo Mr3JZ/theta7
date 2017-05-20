@@ -27,6 +27,9 @@ GO
 IF OBJECT_ID(N'[dbo].[Reviews]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Reviews];
 GO
+IF OBJECT_ID(N'[dbo].[Messages]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Messages];
+GO
 IF OBJECT_ID(N'[dbo].[AdditionalAuthors]', 'U') IS NOT NULL
     DROP TABLE [dbo].[AdditionalAuthors];
 GO
@@ -236,5 +239,13 @@ CREATE TABLE [dbo].[Bids] (
     [BiddingEvaluation] int  NOT NULL,
 	Foreign Key ([PCMemberUserId], [PCMemberConferenceId]) REFERENCES PcMembers(UserId, ConferenceId),
 	PRIMARY KEY(PcMemberUserId, [PCMemberConferenceId], PaperId)
+);
+GO
+
+-- Creating table 'Messages'
+Create Table [dbo].[Messages](
+	MessageId int Primary Key identity(1,1),
+	UserId int Foreign Key References Users(UserId),
+	MessageBody NVarchar(3000)
 );
 GO
