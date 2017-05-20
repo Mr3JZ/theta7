@@ -27,8 +27,8 @@ GO
 IF OBJECT_ID(N'[dbo].[Reviews]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Reviews];
 GO
-IF OBJECT_ID(N'[dbo].[Messages]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Messages];
+IF OBJECT_ID(N'[dbo].[MessagesC]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[MessagesC];
 GO
 IF OBJECT_ID(N'[dbo].[AdditionalAuthors]', 'U') IS NOT NULL
     DROP TABLE [dbo].[AdditionalAuthors];
@@ -243,7 +243,7 @@ CREATE TABLE [dbo].[Bids] (
 GO
 
 -- Creating table 'Messages'
-Create Table [dbo].[Messages](
+Create Table [dbo].[MessagesC](
 	MessageId int Primary Key identity(1,1),
 	UserId int Foreign Key References Users(UserId),
 	MessageBody NVarchar(3000)
