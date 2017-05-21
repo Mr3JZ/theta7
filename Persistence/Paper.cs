@@ -19,6 +19,7 @@ namespace Persistence
         {
             this.AdditionalAuthors = new HashSet<AdditionalAuthor>();
             this.Bids = new HashSet<Bid>();
+            this.PaperReservations = new HashSet<PaperReservation>();
             this.Reviews = new HashSet<Review>();
         }
     
@@ -39,6 +40,8 @@ namespace Persistence
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Bid> Bids { get; set; }
         public virtual Conference Conference { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PaperReservation> PaperReservations { get; set; }
         public virtual Topic Topic { get; set; }
         public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

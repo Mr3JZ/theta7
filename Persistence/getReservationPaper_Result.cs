@@ -10,17 +10,16 @@
 namespace Persistence
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Review
+    public partial class getReservationPaper_Result
     {
-        public int PCMemberUserId { get; set; }
-        public int PCMemberConferenceId { get; set; }
-        public int PaperId { get; set; }
-        public Nullable<int> Evaluation { get; set; }
-        public string Recommandations { get; set; }
-    
-        public virtual Paper Paper { get; set; }
-        public virtual PCMember PCMember { get; set; }
+        public int SessionId { get; set; }
+        public string RoomName { get; set; }
+        public string Street { get; set; }
+        public string City { get; set; }
+        public string PostalCode { get; set; }
+        public Nullable<System.DateTime> Data { get; set; }
+        public Nullable<System.TimeSpan> Timp { get; set; }
+        public int Duration { get; set; }
     }
 }

@@ -12,24 +12,23 @@ namespace Persistence
     using System;
     using System.Collections.Generic;
     
-    public partial class Session
+    public partial class RoomReservation
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Session()
+        public RoomReservation()
         {
-            this.RoomReservations = new HashSet<RoomReservation>();
+            this.PaperReservations = new HashSet<PaperReservation>();
         }
     
+        public int RoomReservationId { get; set; }
         public int SessionId { get; set; }
-        public int ConferenceId { get; set; }
-        public string Name { get; set; }
-        public string Topic { get; set; }
-        public int SessionChairId { get; set; }
-        public int PCMemberConferenceId { get; set; }
+        public int RoomId { get; set; }
+        public System.DateTime BeginDate { get; set; }
+        public System.DateTime EndDate { get; set; }
     
-        public virtual Conference Conference { get; set; }
-        public virtual PCMember PCMember { get; set; }
+        public virtual AvailableRoom AvailableRoom { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RoomReservation> RoomReservations { get; set; }
+        public virtual ICollection<PaperReservation> PaperReservations { get; set; }
+        public virtual Session Session { get; set; }
     }
 }

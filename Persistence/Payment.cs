@@ -23,7 +23,7 @@ namespace Persistence
         public int PaymentId { get; set; }
         public System.DateTime PaymentDate { get; set; }
         public int NrOfTickets { get; set; }
-        public int PaidSum { get; set; }
+        public double PaidSum { get; set; }
         public bool SuccessfulTransaction { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

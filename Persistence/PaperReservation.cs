@@ -12,15 +12,15 @@ namespace Persistence
     using System;
     using System.Collections.Generic;
     
-    public partial class Review
+    public partial class PaperReservation
     {
-        public int PCMemberUserId { get; set; }
-        public int PCMemberConferenceId { get; set; }
+        public int PaperReservationId { get; set; }
+        public Nullable<int> RoomReservationId { get; set; }
         public int PaperId { get; set; }
-        public Nullable<int> Evaluation { get; set; }
-        public string Recommandations { get; set; }
+        public Nullable<System.DateTime> BeginTime { get; set; }
+        public int Duration { get; set; }
     
         public virtual Paper Paper { get; set; }
-        public virtual PCMember PCMember { get; set; }
+        public virtual RoomReservation RoomReservation { get; set; }
     }
 }

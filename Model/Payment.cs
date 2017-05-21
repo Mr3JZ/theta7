@@ -5,7 +5,7 @@ namespace Model
     [Serializable]
     public class Payment
     {
-        public Payment(int id,int paidSum, int nrOfTickets, DateTime paymentDate, bool successfulTransaction, Participant buyer)
+        public Payment(int id,double paidSum, int nrOfTickets, DateTime paymentDate, bool successfulTransaction, Participant buyer)
         {
             this.Id = id;
             this.PaidSum = paidSum;
@@ -17,7 +17,7 @@ namespace Model
 
         public int Id { get;set; }
 
-        public int PaidSum { get; set; }
+        public double PaidSum { get; set; }
 
         public int NrOfTickets { get; set; }
 

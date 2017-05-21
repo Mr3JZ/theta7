@@ -12,15 +12,15 @@ namespace Persistence
     using System;
     using System.Collections.Generic;
     
-    public partial class Review
+    public partial class getPossiblePCMember
     {
-        public int PCMemberUserId { get; set; }
-        public int PCMemberConferenceId { get; set; }
-        public int PaperId { get; set; }
-        public Nullable<int> Evaluation { get; set; }
-        public string Recommandations { get; set; }
-    
-        public virtual Paper Paper { get; set; }
-        public virtual PCMember PCMember { get; set; }
+        public int UserId { get; set; }
+        public string Username { get; set; }
+        public string Name { get; set; }
+        public string Password { get; set; }
+        public string Email { get; set; }
+        public string Affilliation { get; set; }
+        public string WebPage { get; set; }
+        public bool canBePCMember { get; set; }
     }
 }
