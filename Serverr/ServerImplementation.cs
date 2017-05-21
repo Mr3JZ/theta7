@@ -40,8 +40,12 @@ namespace Server
 
         public List<Model.Conference> GetConferences()
         {
-            //return confRepo.getAll();
-            throw new NotImplementedException();
+            return repoConference.getConferences();
+        }
+
+        public Model.Conference GetConference(int id)
+        {
+            return repoConference.getConference(id);
         }
 
         public void Login(Model.User u, IClient client)

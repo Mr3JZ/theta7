@@ -55,5 +55,15 @@ namespace Client
             User user = new User(-1, username, password, name, affiliation, email, isSpecial, website);
             server.Register(user);
         }
+
+        public List<Model.Conference> getConferences()
+        {
+            return server.GetConferences();
+        }
+
+        public Model.Conference getConference(int id)
+        {
+            return server.GetConference(id);
+        }
     }
 }
