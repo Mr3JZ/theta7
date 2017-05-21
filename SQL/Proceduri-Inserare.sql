@@ -9,6 +9,7 @@ IF OBJECT_ID('ISS..createConferenceTopic ') is not null DROP Procedure createCon
 IF OBJECT_ID('ISS..createAvailableRoom') is not null DROP Procedure createAvailableRoom
 IF OBJECT_ID('ISS..insertUser') is not null DROP Procedure insertUser
 IF OBJECT_ID('ISS..createPCMember') is not null DROP Procedure createPCMember
+IF OBJECT_ID('ISS..uspInsertMessage') is not null DROP Procedure uspInsertMessage
 Go
 
 --!!!! Validarile lungimilor stringurilor se vor face in UI, cat si validari precum 
@@ -238,5 +239,19 @@ BEGIN CATCH
 END CATCH
 
 GO
+
+--Insereaza in tabelul Messages
+--Are nevoie de id-ul userului si corpul mesajului
+Create proc uspInsertMessage(@UserId int, @mesaj NVarchar(3000)) As
+BEGIN
+	Begin try
+		Insert into MessagesC(UserId, MessageBody)
+			Values (@UserId, @mesaj);
+	End try
+	Begin Catch
+		Raiserror ('Error inserting the message',16,1);
+	End Catch
+End
+Go
 
 
