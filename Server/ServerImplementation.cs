@@ -5,16 +5,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Model;
-
+using Persistence.Repository;
 namespace Server
 {
     public class ServerImplementation : MarshalByRefObject, IServer
     {
         //toate repo-urile...
-
+        private RepoUserDB repoUser;
 
         private readonly IDictionary<String, IClient> loggedClients;
 
+        public ServerImplementation(RepoUserDB repoUser)
+        {
+            this.repoUser = repoUser;
+        }
         public List<Conference> GetConferences()
         {
             //return confRepo.getAll();
@@ -23,14 +27,25 @@ namespace Server
 
         public void Login(User u, IClient client)
         {
-            //cauta in user repo User u si daca parola ii ok baga clientu in dictionar, altfel exceptie
-            throw new NotImplementedException();
+            if (loggedClients.ContainsKey(u.Username) == true)
+                throw new NotImplementedException();//User already logged in
+
+            List<Model.User> allUsers = repoUser.GetAll();
+            foreach (Model.User user in allUsers)
+                if (user.Username.Equals(u.Username) && user.Password.Equals(u.Password))
+                {
+                    loggedClients.Add(u.Username, client);
+                    return;
+                }
+
+            throw new NotImplementedException();//Invalid user
         }
 
         public void Logout(User u, IClient client)
         {
-            //scoate clientu din dictionar, eventual validari
-            throw new NotImplementedException();
+            if(loggedClients[u.Username] == null)
+                throw new NotImplementedException();//User is not logged in
+            loggedClients.Remove(u.Username);
         }
 
         public void NewPaper(Conference c, Paper p)

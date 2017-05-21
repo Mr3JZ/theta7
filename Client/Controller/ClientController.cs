@@ -28,5 +28,23 @@ namespace Client
         {
             throw new NotImplementedException();
         }
+
+        public void login(string username, string password)
+        {
+            User user = new User(username, password);
+            server.Login(user, this);
+            currentUser = user;
+        }
+        public void logout()
+        {
+            try
+            {
+                server.Logout(currentUser, this);
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+        }
     }
 }

@@ -9,6 +9,17 @@ namespace Model
     [Serializable]
     public class User
     {
+        public User(string username, string password)
+        {
+            this.Username = username;
+            this.Password = password;
+            this.IdUser = -1;
+            this.Name = "";
+            this.Affiliation = "";
+            this.Email = "";
+            this.isSpecial = false;
+            this.Website = "";
+        }
         public User(int idUser, string username, string password, string name, string affiliation, string email, bool isSpecial, string website)
         {
             IdUser = idUser;
