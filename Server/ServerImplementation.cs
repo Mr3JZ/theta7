@@ -47,6 +47,12 @@ namespace Server
                 throw new NotImplementedException();//User is not logged in
             loggedClients.Remove(u.Username);
         }
+        public void Register(User user)
+        {
+            //Verifica daca user-ul exista in BD
+            ///daca exista arunca exceptie
+            repoUser.Add(user);
+        }
 
         public void NewPaper(Conference c, Paper p)
         {

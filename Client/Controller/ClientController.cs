@@ -46,5 +46,10 @@ namespace Client
                 Console.WriteLine(ex.ToString());
             }
         }
+        public void register(string username, string password, string name, string affiliation, string email, string website, bool isSpecial)
+        {
+            User user = new User(-1, username, password, name, affiliation, email, isSpecial, website);
+            server.Register(user);
+        }
     }
 }
