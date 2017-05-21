@@ -11,6 +11,7 @@ namespace Services
     {
         void Login(User u, IClient client);
         void Logout(User u, IClient client);
+        void Register(User user);
         List<Conference> GetConferences();
         void NewParticipant(Conference c, Participant p);
         void NewPaper(Conference c, Paper p);

@@ -14,6 +14,12 @@ namespace Persistence
     
     public partial class Session
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Session()
+        {
+            this.RoomReservations = new HashSet<RoomReservation>();
+        }
+    
         public int SessionId { get; set; }
         public int ConferenceId { get; set; }
         public string Name { get; set; }
@@ -23,5 +29,7 @@ namespace Persistence
     
         public virtual Conference Conference { get; set; }
         public virtual PCMember PCMember { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<RoomReservation> RoomReservations { get; set; }
     }
 }

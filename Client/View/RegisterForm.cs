@@ -197,14 +197,51 @@ namespace Client.View
 
         private void registerButton_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("button register have been pressed");
-            Console.WriteLine(usernameTextBox.Text);
-            Console.WriteLine(passwordTextBox.Text);
-            Console.WriteLine(nameTextBox.Text);
-            Console.WriteLine(affiliationTextBox.Text);
-            Console.WriteLine(emailTextBox.Text);
-            Console.WriteLine(websiteTextBox.Text);
-            Console.WriteLine(PCMemberCheckBox.CheckState);
+            if (ValidateRegisterText())
+            {
+                try
+                {
+                    //ctrl.register(usernameTextBox.Text, passwordTextBox.Text,nameTextBox.Text,affiliationTextBox.Text,emailTextBox.Text,websiteTextBox.Text,PCMemberCheckBox.CheckState);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+            }
+        }
+        private bool ValidateRegisterText()
+        {
+            if (string.IsNullOrEmpty(usernameTextBox.Text))
+            {
+                MessageBox.Show("Please enter a valid username");
+                return false;
+            }
+            if (string.IsNullOrEmpty(passwordTextBox.Text))
+            {
+                MessageBox.Show("Please enter a valid password");
+                return false;
+            }
+            if (string.IsNullOrEmpty(nameTextBox.Text))
+            {
+                MessageBox.Show("Please enter a valid name");
+                return false;
+            }
+            if (string.IsNullOrEmpty(affiliationTextBox.Text))
+            {
+                MessageBox.Show("Please enter a valid affiliation");
+                return false;
+            }
+            if (string.IsNullOrEmpty(emailTextBox.Text))
+            {
+                MessageBox.Show("Please enter a valid email");
+                return false;
+            }
+            if (string.IsNullOrEmpty(websiteTextBox.Text))
+            {
+                MessageBox.Show("Please enter a valid website");
+                return false;
+            }
+            return true;
         }
     }
 }

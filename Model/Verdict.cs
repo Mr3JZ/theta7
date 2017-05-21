@@ -8,12 +8,12 @@ namespace Model
 {
     public enum Verdict
     {
-        STRONG_ACCEPT,
-        ACCEPT,
-        WEAK_ACCEPT,
-        BORDERLINE,
-        WEAK_REJECT,
-        REJECT,
-        STRONG_REJECT
+        STRONG_ACCEPT=1,
+        ACCEPT=2,
+        WEAK_ACCEPT=3,
+        BORDERLINE=4,
+        WEAK_REJECT=5,
+        REJECT=6,
+        STRONG_REJECT=7
     }
 }

@@ -11,19 +11,15 @@ namespace Model
         public int IdSession { get; set; }
         public List<Reservation> Papers { get; set; }
         public Participant SessionChair { get; set; }
-        public DateTime BeginDate { get; set; }
-        public DateTime EndDate { get; set; }
         
 
 
-        public Session(int idSession, List<Reservation> papers, Participant sessionChair, DateTime beginDate, DateTime endDate)
+        public Session(int idSession, List<Reservation> papers, Participant sessionChair)
         {
        
             IdSession = idSession;
             Papers = papers;
             SessionChair = sessionChair;
-            BeginDate = beginDate;
-            EndDate = endDate;
         }
     }
 }

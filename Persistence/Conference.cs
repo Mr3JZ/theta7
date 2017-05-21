@@ -33,7 +33,7 @@ namespace Persistence
         public string City { get; set; }
         public string Country { get; set; }
         public string Website { get; set; }
-        public int Price { get; set; }
+        public double Price { get; set; }
         public System.DateTime DeadlineAbstractPaper { get; set; }
         public System.DateTime DeadlineCompletePaper { get; set; }
         public System.DateTime DeadlineBiddingPaper { get; set; }

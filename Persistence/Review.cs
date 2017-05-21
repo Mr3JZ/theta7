@@ -17,7 +17,7 @@ namespace Persistence
         public int PCMemberUserId { get; set; }
         public int PCMemberConferenceId { get; set; }
         public int PaperId { get; set; }
-        public string Evaluation { get; set; }
+        public Nullable<int> Evaluation { get; set; }
         public string Recommandations { get; set; }
     
         public virtual Paper Paper { get; set; }

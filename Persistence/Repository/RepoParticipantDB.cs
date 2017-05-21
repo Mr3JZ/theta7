@@ -50,7 +50,7 @@ namespace Persistence.Repository
                     ConferenceParticipant participant = new ConferenceParticipant();
                     participant.UserId = p.User.IdUser;
                     participant.ConferenceId = p.ConferenceId;
-
+                    participant.PaymentId = -1;
 
                     context.ConferenceParticipants.Add(participant);
                     context.SaveChanges();
@@ -62,6 +62,9 @@ namespace Persistence.Repository
                     pcm.ConferenceId = p.ConferenceId;
                     pcm.isChair = p.IsChair;
                     pcm.isCoChair = p.IsCochair;
+
+                    context.PCMembers.Add(pcm);
+                    context.SaveChanges();
                 }
             }
         }

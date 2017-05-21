@@ -61,8 +61,7 @@ namespace Persistence.Repository
                                 Model.User reviewer = new Model.User(us.UserId, us.Username, us.Password, us.Name, us.Affilliation, us.Email, us.canBePCMember, us.WebPage);
                                 Model.Participant participant = new Model.Participant(reviewer, r.PCMemberConferenceId, pcm.isChair, pcm.isCoChair, true, false);
 
-                                Verdict v;
-                                Enum.TryParse(r.Evaluation, out v);
+                                Verdict v = (Verdict)r.Evaluation;
 
                                 Model.Review review = new Model.Review(0, participant, v, r.Recommandations);
 
@@ -80,6 +79,7 @@ namespace Persistence.Repository
 
             return all;
         }
+
 
         public void Add(Model.Paper p)
         {
@@ -180,7 +180,7 @@ namespace Persistence.Repository
                         rev.PCMemberUserId = review.Reviewer.User.IdUser;
                         rev.PCMemberConferenceId = review.Reviewer.ConferenceId;
                         rev.PaperId = paperId;
-                        rev.Evaluation= Enum.GetName(review.Verdict.GetType(), review.Verdict);
+                        rev.Evaluation= (int)review.Verdict;
                         rev.Recommandations = review.Comments;
 
                         context.Reviews.Add(rev);

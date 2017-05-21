@@ -93,7 +93,28 @@ namespace Persistence.Repository
 
         public List<Model.Conference> getConferences()
         {
-            return conferences;
+            List<Model.Conference> all = new List<Model.Conference>();
+            using (var context = new ISSEntities2(Util.ConnectionStringWithPassword.doIt()))
+            {
+                foreach(var c in context.getConferences)
+                {
+                    List<string> topics = new List<string>();
+                    foreach (var t in context.getTopicsFor1Conference(c.ConferenceId))
+                    {
+                        topics.Add(t.TopicName);
+                    }
+
+                    Model.Conference conf = new Model.Conference(c.ConferenceId,c.Name,c.Edition,topics,c.DeadlineAbstractPaper,c.DeadlineCompletePaper,c.DeadlineBiddingPaper,c.DeadlineEvaluation,c.DeadlineParticipation,c.City,c.Country,c.Website,c.Price,c.BeginDate,c.EndDate);
+                    all.Add(conf);
+                    //pune papers pa dinafara (din repoPaper)
+                    //pune si participanti pa dinafara (din repoParticipant)
+                    //pune si sesiunile fuck it
+                }
+            }
+
+                    
+
+            return all;
         }
     }
 }

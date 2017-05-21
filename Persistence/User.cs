@@ -14,31 +14,15 @@ namespace Persistence
     
     public partial class User
     {
-        private int idUser;
-        private string affiliation;
-        private string website;
-        private bool isSpecial;
-
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public User()
         {
             this.ConferenceParticipants = new HashSet<ConferenceParticipant>();
+            this.MessagesCs = new HashSet<MessagesC>();
             this.Papers = new HashSet<Paper>();
             this.PCMembers = new HashSet<PCMember>();
         }
-
-        public User(int idUser, string username, string name, string password, string email, string affiliation, string website, bool isSpecial)
-        {
-            this.idUser = idUser;
-            Username = username;
-            Name = name;
-            Password = password;
-            Email = email;
-            this.affiliation = affiliation;
-            this.website = website;
-            this.isSpecial = isSpecial;
-        }
-
+    
         public int UserId { get; set; }
         public string Username { get; set; }
         public string Name { get; set; }
@@ -50,6 +34,8 @@ namespace Persistence
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ConferenceParticipant> ConferenceParticipants { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<MessagesC> MessagesCs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Paper> Papers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

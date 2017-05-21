@@ -14,10 +14,13 @@ namespace Client.View
     {
         private bool waterMarkUsernameActive;
         private bool waterMarkPasswordActive;
+        private ClientController ctrl;
 
-        public LoginForm()
+
+        public LoginForm(ClientController ctrl)
         {
             InitializeComponent();
+            this.ctrl = ctrl;
             initUsernameView();
             initPasswordView();
         }
@@ -82,14 +85,36 @@ namespace Client.View
 
         private void loginButton_Click(object sender, EventArgs e)
         {
-            Console.Write("BUTTON LOGIN HAVE BEEN PRESSED");
-            Console.WriteLine(usernameTextBox.Text);
-            Console.WriteLine(passwordTextBox.Text);
+            if (ValidateLoginText())
+            {
+                try
+                {
+                    ctrl.login(usernameTextBox.Text, passwordTextBox.Text);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+            }
         }
 
         private void registerLabel_Click(object sender, EventArgs e)
         {
             new RegisterForm().ShowDialog();
+        }
+        private bool ValidateLoginText()
+        {
+            if (string.IsNullOrEmpty(usernameTextBox.Text))
+            {
+                MessageBox.Show("Please enter a valid username");
+                return false;
+            }
+            if (string.IsNullOrEmpty(passwordTextBox.Text))
+            {
+                MessageBox.Show("Please enter a valid password");
+                return false;
+            }
+            return true;
         }
     }
 }

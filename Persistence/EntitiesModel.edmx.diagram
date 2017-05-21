@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3a709bb3ba3143a1ad449bda06c08eab" Name="Diagram1">
+        <EntityTypeShape EntityType="ISSModel.AdditionalAuthor" Width="1.5" PointX="7.5" PointY="18.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ISSModel.Address" Width="1.5" PointX="0.75" PointY="16.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ISSModel.AvailableRoom" Width="1.5" PointX="3" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ISSModel.Bid" Width="1.5" PointX="7.5" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ISSModel.ConferenceParticipant" Width="1.5" PointX="6" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ISSModel.Conference" Width="1.5" PointX="0.75" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ISSModel.MessagesC" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ISSModel.PaperReservation" Width="1.5" PointX="10.75" PointY="16.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ISSModel.Paper" Width="1.5" PointX="5.25" PointY="17.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ISSModel.Payment" Width="1.5" PointX="3.75" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ISSModel.PCMember" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ISSModel.Review" Width="1.5" PointX="10.5" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ISSModel.RoomReservation" Width="1.5" PointX="8.5" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ISSModel.Session" Width="1.5" PointX="5.25" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ISSModel.Topic" Width="1.5" PointX="3" PointY="27" IsExpanded="true" />
+        <EntityTypeShape EntityType="ISSModel.User" Width="1.5" PointX="0.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="ISSModel.getConference" Width="1.5" PointX="5.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ISSModel.getMessagesAll" Width="1.5" PointX="7.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ISSModel.getPossiblePCMember" Width="1.5" PointX="7.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ISSModel.getUser" Width="1.5" PointX="9.75" PointY="1.125" IsExpanded="true" />
+        <AssociationConnector Association="ISSModel.FK__Additiona__Paper__662B2B3B" ManuallyRouted="false" />
+        <AssociationConnector Association="ISSModel.FK__Available__Addre__6FB49575" ManuallyRouted="false" />
+        <AssociationConnector Association="ISSModel.FK__Available__Confe__6EC0713C" ManuallyRouted="false" />
+        <AssociationConnector Association="ISSModel.FK__RoomReser__RoomI__73852659" ManuallyRouted="false" />
+        <AssociationConnector Association="ISSModel.FK__Bids__7D0E9093" ManuallyRouted="false" />
+        <AssociationConnector Association="ISSModel.FK__Bids__PaperId__7C1A6C5A" ManuallyRouted="false" />
+        <AssociationConnector Association="ISSModel.FK__Conferenc__Confe__55F4C372" ManuallyRouted="false" />
+        <AssociationConnector Association="ISSModel.FK__Conferenc__Payme__56E8E7AB" ManuallyRouted="false" />
+        <AssociationConnector Association="ISSModel.FK__Conferenc__UserI__55009F39" ManuallyRouted="false" />
+        <AssociationConnector Association="ISSModel.FK__Papers__Conferen__59C55456" ManuallyRouted="false" />
+        <AssociationConnector Association="ISSModel.FK__PCMembers__Confe__5F7E2DAC" ManuallyRouted="false" />
+        <AssociationConnector Association="ISSModel.FK__Sessions__Confer__690797E6" ManuallyRouted="false" />
+        <AssociationConnector Association="ISSModel.FK__Topics__Conferen__503BEA1C" ManuallyRouted="false" />
+        <AssociationConnector Association="ISSModel.FK__MessagesC__UserI__7FEAFD3E" ManuallyRouted="false" />
+        <AssociationConnector Association="ISSModel.FK__PaperRese__Paper__7849DB76" ManuallyRouted="false" />
+        <AssociationConnector Association="ISSModel.FK__PaperRese__RoomR__7755B73D" ManuallyRouted="false" />
+        <AssociationConnector Association="ISSModel.FK__Papers__TopicId__5BAD9CC8" ManuallyRouted="false" />
+        <AssociationConnector Association="ISSModel.FK__Papers__UserId__5AB9788F" ManuallyRouted="false" />
+        <AssociationConnector Association="ISSModel.FK__Reviews__PaperId__625A9A57" ManuallyRouted="false" />
+        <AssociationConnector Association="ISSModel.FK__PCMembers__UserI__5E8A0973" ManuallyRouted="false" />
+        <AssociationConnector Association="ISSModel.FK__Reviews__634EBE90" ManuallyRouted="false" />
+        <AssociationConnector Association="ISSModel.FK__Sessions__69FBBC1F" ManuallyRouted="false" />
+        <AssociationConnector Association="ISSModel.FK__RoomReser__Sessi__72910220" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

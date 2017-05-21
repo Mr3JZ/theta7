@@ -64,31 +64,103 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdditionalAuthor.cs">
-      <DependentUpon>TestModel2.tt</DependentUpon>
+      <DependentUpon>EntitiesModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Address.cs">
-      <DependentUpon>TestModel2.tt</DependentUpon>
+      <DependentUpon>EntitiesModel.tt</DependentUpon>
     </Compile>
     <Compile Include="AvailableRoom.cs">
-      <DependentUpon>TestModel2.tt</DependentUpon>
+      <DependentUpon>EntitiesModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Bid.cs">
-      <DependentUpon>TestModel2.tt</DependentUpon>
+      <DependentUpon>EntitiesModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Conference.cs">
-      <DependentUpon>TestModel2.tt</DependentUpon>
+      <DependentUpon>EntitiesModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ConferenceParticipant.cs">
-      <DependentUpon>TestModel2.tt</DependentUpon>
+      <DependentUpon>EntitiesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntitiesModel.Context.cs">
+      <DependentUpon>EntitiesModel.Context.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="EntitiesModel.cs">
+      <DependentUpon>EntitiesModel.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="EntitiesModel.Designer.cs">
+      <DependentUpon>EntitiesModel.edmx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="getAdditionalAuthors_Result.cs">
+      <DependentUpon>EntitiesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="getBidsResult_Result.cs">
+      <DependentUpon>EntitiesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="getConference.cs">
+      <DependentUpon>EntitiesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="getMessagesAll.cs">
+      <DependentUpon>EntitiesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="getMessagesUser_Result.cs">
+      <DependentUpon>EntitiesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="getPapersConference_Result.cs">
+      <DependentUpon>EntitiesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="getPapersSession_Result.cs">
+      <DependentUpon>EntitiesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="getParticpantsConference_Result.cs">
+      <DependentUpon>EntitiesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="getPayment_Result.cs">
+      <DependentUpon>EntitiesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="getPCMembersConference_Result.cs">
+      <DependentUpon>EntitiesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="getPossiblePCMember.cs">
+      <DependentUpon>EntitiesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="getReservationPaper_Result.cs">
+      <DependentUpon>EntitiesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="getReviewsPaper_Result.cs">
+      <DependentUpon>EntitiesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="getReviewsPcMember_Result.cs">
+      <DependentUpon>EntitiesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="getSessionsForConference_Result.cs">
+      <DependentUpon>EntitiesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="getTopicsFor1Conference_Result.cs">
+      <DependentUpon>EntitiesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="getUser.cs">
+      <DependentUpon>EntitiesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MessagesC.cs">
+      <DependentUpon>EntitiesModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Paper.cs">
-      <DependentUpon>TestModel2.tt</DependentUpon>
+      <DependentUpon>EntitiesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PaperReservation.cs">
+      <DependentUpon>EntitiesModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Payment.cs">
-      <DependentUpon>TestModel2.tt</DependentUpon>
+      <DependentUpon>EntitiesModel.tt</DependentUpon>
     </Compile>
     <Compile Include="PCMember.cs">
-      <DependentUpon>TestModel2.tt</DependentUpon>
+      <DependentUpon>EntitiesModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -104,6 +176,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Repository\RepoMessageDB.cs" />
+    <Compile Include="Repository\RepoSessionDB.cs" />
+    <Compile Include="Repository\RepoAvailableRoomDB.cs" />
     <Compile Include="Repository\RepoConference.cs" />
     <Compile Include="Repository\RepoPaperDB.cs" />
     <Compile Include="Repository\RepoParticipantDB.cs" />
@@ -111,50 +186,38 @@
     <Compile Include="Repository\RepositoryException.cs" />
     <Compile Include="Repository\RepoUserDB.cs" />
     <Compile Include="Review.cs">
-      <DependentUpon>TestModel2.tt</DependentUpon>
+      <DependentUpon>EntitiesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RoomReservation.cs">
+      <DependentUpon>EntitiesModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Session.cs">
-      <DependentUpon>TestModel2.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TestModel2.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>TestModel2.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TestModel2.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>TestModel2.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TestModel2.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>TestModel2.edmx</DependentUpon>
+      <DependentUpon>EntitiesModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Topic.cs">
-      <DependentUpon>TestModel2.tt</DependentUpon>
+      <DependentUpon>EntitiesModel.tt</DependentUpon>
     </Compile>
     <Compile Include="User.cs">
-      <DependentUpon>TestModel2.tt</DependentUpon>
+      <DependentUpon>EntitiesModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Util\ConnectionStringWithPassword.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EntityDeploy Include="EntitiesModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>EntitiesModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="EntitiesModel.edmx.diagram">
+      <DependentUpon>EntitiesModel.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-    <EntityDeploy Include="TestModel2.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>TestModel2.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="TestModel2.edmx.diagram">
-      <DependentUpon>TestModel2.edmx</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -169,15 +232,15 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="TestModel2.Context.tt">
+    <Content Include="EntitiesModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>TestModel2.edmx</DependentUpon>
-      <LastGenOutput>TestModel2.Context.cs</LastGenOutput>
+      <DependentUpon>EntitiesModel.edmx</DependentUpon>
+      <LastGenOutput>EntitiesModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="TestModel2.tt">
+    <Content Include="EntitiesModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>TestModel2.edmx</DependentUpon>
-      <LastGenOutput>TestModel2.cs</LastGenOutput>
+      <DependentUpon>EntitiesModel.edmx</DependentUpon>
+      <LastGenOutput>EntitiesModel.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

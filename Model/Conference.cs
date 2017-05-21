@@ -9,16 +9,6 @@ namespace Model
     [Serializable]
     public class Conference
     {
-        private int conferenceId;     
-        private DateTime deadlineAbstractPaper;
-        private DateTime deadlineCompletePaper;
-        private DateTime deadlineBiddingPaper;
-        private DateTime deadlineEvaluation;
-        private DateTime deadlineParticipation;
-        private int price;
-        private DateTime beginDate;
-        private DateTime endDate;
-
         public List<Participant> Participants { get; set; }
         public List<Session> Sessions{get;set;}
         public List<Paper> Papers{get;set;}
@@ -33,13 +23,13 @@ namespace Model
         public string City { get; set; }
         public string Country { get; set; }
         public string Website { get; set; }
-        public int AdmissionPrice { get; set; }
+        public double AdmissionPrice { get; set; }
         public DateTime BeginDate { get; set; }
         public DateTime EndDate { get; set; }
         public int Id { get; set; }
 
         
-        public Conference(int id,string name, string edition, List<string> topics, DateTime deadlineAbstract, DateTime deadlineComplet, DateTime deadlineBidding, DateTime deadlineEvaluation, DateTime deadlineParticipation, string city, string country, string website, int admissionPrice, DateTime beginDate, DateTime endDate)
+        public Conference(int id,string name, string edition, List<string> topics, DateTime deadlineAbstract, DateTime deadlineComplet, DateTime deadlineBidding, DateTime deadlineEvaluation, DateTime deadlineParticipation, string city, string country, string website, double admissionPrice, DateTime beginDate, DateTime endDate)
         {
             Name = name;
             Edition = edition;

@@ -1,0 +1,2108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ISSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AdditionalAuthors">
+          <Key>
+            <PropertyRef Name="AdditionalAuthorId" />
+          </Key>
+          <Property Name="AdditionalAuthorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Affiliation" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PaperId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Addresses">
+          <Key>
+            <PropertyRef Name="AddressId" />
+          </Key>
+          <Property Name="AddressId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Street" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="City" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="PostalCode" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AvailableRooms">
+          <Key>
+            <PropertyRef Name="RoomId" />
+          </Key>
+          <Property Name="RoomId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ConferenceId" Type="int" Nullable="false" />
+          <Property Name="RoomName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Capacity" Type="int" Nullable="false" />
+          <Property Name="AddressId" Type="int" Nullable="false" />
+          <Property Name="BeginDate" Type="datetime" Nullable="false" />
+          <Property Name="EndDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Bids">
+          <Key>
+            <PropertyRef Name="PCMemberUserId" />
+            <PropertyRef Name="PCMemberConferenceId" />
+            <PropertyRef Name="PaperId" />
+          </Key>
+          <Property Name="PCMemberUserId" Type="int" Nullable="false" />
+          <Property Name="PCMemberConferenceId" Type="int" Nullable="false" />
+          <Property Name="PaperId" Type="int" Nullable="false" />
+          <Property Name="BiddingEvaluation" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ConferenceParticipants">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="ConferenceId" />
+            <PropertyRef Name="PaymentId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="ConferenceId" Type="int" Nullable="false" />
+          <Property Name="PaymentId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Conferences">
+          <Key>
+            <PropertyRef Name="ConferenceId" />
+          </Key>
+          <Property Name="ConferenceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Edition" Type="nvarchar" MaxLength="20" />
+          <Property Name="BeginDate" Type="datetime" Nullable="false" />
+          <Property Name="EndDate" Type="datetime" Nullable="false" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Country" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Website" Type="nvarchar" MaxLength="50" />
+          <Property Name="Price" Type="float" Nullable="false" />
+          <Property Name="DeadlineAbstractPaper" Type="datetime" Nullable="false" />
+          <Property Name="DeadlineCompletePaper" Type="datetime" Nullable="false" />
+          <Property Name="DeadlineBiddingPaper" Type="datetime" Nullable="false" />
+          <Property Name="DeadlineEvaluation" Type="datetime" Nullable="false" />
+          <Property Name="DeadlineParticipation" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MessagesC">
+          <Key>
+            <PropertyRef Name="MessageId" />
+          </Key>
+          <Property Name="MessageId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="MessageBody" Type="nvarchar" MaxLength="3000" />
+        </EntityType>
+        <EntityType Name="PaperReservations">
+          <Key>
+            <PropertyRef Name="PaperReservationId" />
+          </Key>
+          <Property Name="PaperReservationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoomReservationId" Type="int" />
+          <Property Name="PaperId" Type="int" Nullable="false" />
+          <Property Name="BeginTime" Type="datetime" />
+          <Property Name="Duration" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Papers">
+          <Key>
+            <PropertyRef Name="PaperId" />
+          </Key>
+          <Property Name="PaperId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Resume" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Domain" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Subdomain" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Filepath" Type="nvarchar" MaxLength="240" Nullable="false" />
+          <Property Name="EvaluationResult" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsEmailSent" Type="bit" Nullable="false" />
+          <Property Name="ConferenceId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="TopicId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Payments">
+          <Key>
+            <PropertyRef Name="PaymentId" />
+          </Key>
+          <Property Name="PaymentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PaymentDate" Type="datetime" Nullable="false" />
+          <Property Name="NrOfTickets" Type="int" Nullable="false" />
+          <Property Name="PaidSum" Type="float" Nullable="false" />
+          <Property Name="SuccessfulTransaction" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PCMembers">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="ConferenceId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="ConferenceId" Type="int" Nullable="false" />
+          <Property Name="isChair" Type="bit" Nullable="false" />
+          <Property Name="isCoChair" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Reviews">
+          <Key>
+            <PropertyRef Name="PCMemberUserId" />
+            <PropertyRef Name="PCMemberConferenceId" />
+            <PropertyRef Name="PaperId" />
+          </Key>
+          <Property Name="PCMemberUserId" Type="int" Nullable="false" />
+          <Property Name="PCMemberConferenceId" Type="int" Nullable="false" />
+          <Property Name="PaperId" Type="int" Nullable="false" />
+          <Property Name="Evaluation" Type="int" />
+          <Property Name="Recommandations" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="RoomReservations">
+          <Key>
+            <PropertyRef Name="RoomReservationId" />
+          </Key>
+          <Property Name="RoomReservationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SessionId" Type="int" Nullable="false" />
+          <Property Name="RoomId" Type="int" Nullable="false" />
+          <Property Name="BeginDate" Type="datetime" Nullable="false" />
+          <Property Name="EndDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sessions">
+          <Key>
+            <PropertyRef Name="SessionId" />
+          </Key>
+          <Property Name="SessionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ConferenceId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="60" Nullable="false" />
+          <Property Name="Topic" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SessionChairId" Type="int" Nullable="false" />
+          <Property Name="PCMemberConferenceId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Topics">
+          <Key>
+            <PropertyRef Name="TopicId" />
+          </Key>
+          <Property Name="TopicId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TopicName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ConferenceId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Affilliation" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="WebPage" Type="nvarchar" MaxLength="50" />
+          <Property Name="canBePCMember" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ISS.dbo.getConferences' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="getConferences">
+          <Key>
+            <PropertyRef Name="ConferenceId" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="BeginDate" />
+            <PropertyRef Name="EndDate" />
+            <PropertyRef Name="City" />
+            <PropertyRef Name="Country" />
+            <PropertyRef Name="Price" />
+            <PropertyRef Name="DeadlineAbstractPaper" />
+            <PropertyRef Name="DeadlineCompletePaper" />
+            <PropertyRef Name="DeadlineBiddingPaper" />
+            <PropertyRef Name="DeadlineEvaluation" />
+            <PropertyRef Name="DeadlineParticipation" />
+          </Key>
+          <Property Name="ConferenceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Edition" Type="nvarchar" MaxLength="20" />
+          <Property Name="BeginDate" Type="datetime" Nullable="false" />
+          <Property Name="EndDate" Type="datetime" Nullable="false" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Country" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Website" Type="nvarchar" MaxLength="50" />
+          <Property Name="Price" Type="float" Nullable="false" />
+          <Property Name="DeadlineAbstractPaper" Type="datetime" Nullable="false" />
+          <Property Name="DeadlineCompletePaper" Type="datetime" Nullable="false" />
+          <Property Name="DeadlineBiddingPaper" Type="datetime" Nullable="false" />
+          <Property Name="DeadlineEvaluation" Type="datetime" Nullable="false" />
+          <Property Name="DeadlineParticipation" Type="datetime" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ISS.dbo.getMessagesAll' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="getMessagesAll">
+          <Key>
+            <PropertyRef Name="MessageId" />
+          </Key>
+          <Property Name="MessageId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="MessageBody" Type="nvarchar" MaxLength="3000" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ISS.dbo.getPossiblePCMembers' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="getPossiblePCMembers">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="Username" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Password" />
+            <PropertyRef Name="Email" />
+            <PropertyRef Name="Affilliation" />
+            <PropertyRef Name="canBePCMember" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Affilliation" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="WebPage" Type="nvarchar" MaxLength="50" />
+          <Property Name="canBePCMember" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ISS.dbo.getUsers' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="getUsers">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="Username" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Password" />
+            <PropertyRef Name="Email" />
+            <PropertyRef Name="Affilliation" />
+            <PropertyRef Name="canBePCMember" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Affilliation" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="WebPage" Type="nvarchar" MaxLength="50" />
+          <Property Name="canBePCMember" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Additiona__Paper__662B2B3B">
+          <End Role="Papers" Type="Self.Papers" Multiplicity="1" />
+          <End Role="AdditionalAuthors" Type="Self.AdditionalAuthors" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Papers">
+              <PropertyRef Name="PaperId" />
+            </Principal>
+            <Dependent Role="AdditionalAuthors">
+              <PropertyRef Name="PaperId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Available__Addre__6FB49575">
+          <End Role="Addresses" Type="Self.Addresses" Multiplicity="1" />
+          <End Role="AvailableRooms" Type="Self.AvailableRooms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Addresses">
+              <PropertyRef Name="AddressId" />
+            </Principal>
+            <Dependent Role="AvailableRooms">
+              <PropertyRef Name="AddressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Available__Confe__6EC0713C">
+          <End Role="Conferences" Type="Self.Conferences" Multiplicity="1" />
+          <End Role="AvailableRooms" Type="Self.AvailableRooms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Conferences">
+              <PropertyRef Name="ConferenceId" />
+            </Principal>
+            <Dependent Role="AvailableRooms">
+              <PropertyRef Name="ConferenceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Bids__7D0E9093">
+          <End Role="PCMembers" Type="Self.PCMembers" Multiplicity="1" />
+          <End Role="Bids" Type="Self.Bids" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PCMembers">
+              <PropertyRef Name="UserId" />
+              <PropertyRef Name="ConferenceId" />
+            </Principal>
+            <Dependent Role="Bids">
+              <PropertyRef Name="PCMemberUserId" />
+              <PropertyRef Name="PCMemberConferenceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Bids__PaperId__7C1A6C5A">
+          <End Role="Papers" Type="Self.Papers" Multiplicity="1" />
+          <End Role="Bids" Type="Self.Bids" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Papers">
+              <PropertyRef Name="PaperId" />
+            </Principal>
+            <Dependent Role="Bids">
+              <PropertyRef Name="PaperId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Conferenc__Confe__55F4C372">
+          <End Role="Conferences" Type="Self.Conferences" Multiplicity="1" />
+          <End Role="ConferenceParticipants" Type="Self.ConferenceParticipants" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Conferences">
+              <PropertyRef Name="ConferenceId" />
+            </Principal>
+            <Dependent Role="ConferenceParticipants">
+              <PropertyRef Name="ConferenceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Conferenc__Payme__56E8E7AB">
+          <End Role="Payments" Type="Self.Payments" Multiplicity="1" />
+          <End Role="ConferenceParticipants" Type="Self.ConferenceParticipants" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Payments">
+              <PropertyRef Name="PaymentId" />
+            </Principal>
+            <Dependent Role="ConferenceParticipants">
+              <PropertyRef Name="PaymentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Conferenc__UserI__55009F39">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="ConferenceParticipants" Type="Self.ConferenceParticipants" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="ConferenceParticipants">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MessagesC__UserI__7FEAFD3E">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="MessagesC" Type="Self.MessagesC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="MessagesC">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PaperRese__Paper__7849DB76">
+          <End Role="Papers" Type="Self.Papers" Multiplicity="1" />
+          <End Role="PaperReservations" Type="Self.PaperReservations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Papers">
+              <PropertyRef Name="PaperId" />
+            </Principal>
+            <Dependent Role="PaperReservations">
+              <PropertyRef Name="PaperId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PaperRese__RoomR__7755B73D">
+          <End Role="RoomReservations" Type="Self.RoomReservations" Multiplicity="0..1" />
+          <End Role="PaperReservations" Type="Self.PaperReservations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoomReservations">
+              <PropertyRef Name="RoomReservationId" />
+            </Principal>
+            <Dependent Role="PaperReservations">
+              <PropertyRef Name="RoomReservationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Papers__Conferen__59C55456">
+          <End Role="Conferences" Type="Self.Conferences" Multiplicity="1" />
+          <End Role="Papers" Type="Self.Papers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Conferences">
+              <PropertyRef Name="ConferenceId" />
+            </Principal>
+            <Dependent Role="Papers">
+              <PropertyRef Name="ConferenceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Papers__TopicId__5BAD9CC8">
+          <End Role="Topics" Type="Self.Topics" Multiplicity="1" />
+          <End Role="Papers" Type="Self.Papers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Topics">
+              <PropertyRef Name="TopicId" />
+            </Principal>
+            <Dependent Role="Papers">
+              <PropertyRef Name="TopicId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Papers__UserId__5AB9788F">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Papers" Type="Self.Papers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Papers">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PCMembers__Confe__5F7E2DAC">
+          <End Role="Conferences" Type="Self.Conferences" Multiplicity="1" />
+          <End Role="PCMembers" Type="Self.PCMembers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Conferences">
+              <PropertyRef Name="ConferenceId" />
+            </Principal>
+            <Dependent Role="PCMembers">
+              <PropertyRef Name="ConferenceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PCMembers__UserI__5E8A0973">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="PCMembers" Type="Self.PCMembers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="PCMembers">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reviews__634EBE90">
+          <End Role="PCMembers" Type="Self.PCMembers" Multiplicity="1" />
+          <End Role="Reviews" Type="Self.Reviews" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PCMembers">
+              <PropertyRef Name="UserId" />
+              <PropertyRef Name="ConferenceId" />
+            </Principal>
+            <Dependent Role="Reviews">
+              <PropertyRef Name="PCMemberUserId" />
+              <PropertyRef Name="PCMemberConferenceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reviews__PaperId__625A9A57">
+          <End Role="Papers" Type="Self.Papers" Multiplicity="1" />
+          <End Role="Reviews" Type="Self.Reviews" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Papers">
+              <PropertyRef Name="PaperId" />
+            </Principal>
+            <Dependent Role="Reviews">
+              <PropertyRef Name="PaperId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RoomReser__RoomI__73852659">
+          <End Role="AvailableRooms" Type="Self.AvailableRooms" Multiplicity="1" />
+          <End Role="RoomReservations" Type="Self.RoomReservations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AvailableRooms">
+              <PropertyRef Name="RoomId" />
+            </Principal>
+            <Dependent Role="RoomReservations">
+              <PropertyRef Name="RoomId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RoomReser__Sessi__72910220">
+          <End Role="Sessions" Type="Self.Sessions" Multiplicity="1" />
+          <End Role="RoomReservations" Type="Self.RoomReservations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sessions">
+              <PropertyRef Name="SessionId" />
+            </Principal>
+            <Dependent Role="RoomReservations">
+              <PropertyRef Name="SessionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sessions__69FBBC1F">
+          <End Role="PCMembers" Type="Self.PCMembers" Multiplicity="1" />
+          <End Role="Sessions" Type="Self.Sessions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PCMembers">
+              <PropertyRef Name="UserId" />
+              <PropertyRef Name="ConferenceId" />
+            </Principal>
+            <Dependent Role="Sessions">
+              <PropertyRef Name="SessionChairId" />
+              <PropertyRef Name="PCMemberConferenceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sessions__Confer__690797E6">
+          <End Role="Conferences" Type="Self.Conferences" Multiplicity="1" />
+          <End Role="Sessions" Type="Self.Sessions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Conferences">
+              <PropertyRef Name="ConferenceId" />
+            </Principal>
+            <Dependent Role="Sessions">
+              <PropertyRef Name="ConferenceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Topics__Conferen__503BEA1C">
+          <End Role="Conferences" Type="Self.Conferences" Multiplicity="1" />
+          <End Role="Topics" Type="Self.Topics" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Conferences">
+              <PropertyRef Name="ConferenceId" />
+            </Principal>
+            <Dependent Role="Topics">
+              <PropertyRef Name="ConferenceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="getAdditionalAuthors" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idPaper" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+                <Property Name="Affiliation" Type="nvarchar" MaxLength="50" Nullable="false" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="getBidsResult" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idPaper" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="PCMemberUserId" Type="int" Nullable="false" />
+                <Property Name="BiddingEvaluation" Type="int" Nullable="false" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="getMessagesUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idUser" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="MessageId" Type="int" Nullable="false" />
+                <Property Name="MessageBody" Type="nvarchar" MaxLength="3000" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="getPapersConference" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idConference" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="PaperId" Type="int" Nullable="false" />
+                <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+                <Property Name="Resume" Type="nvarchar" MaxLength="500" Nullable="false" />
+                <Property Name="Domain" Type="nvarchar" MaxLength="30" Nullable="false" />
+                <Property Name="Subdomain" Type="nvarchar" MaxLength="30" Nullable="false" />
+                <Property Name="Filepath" Type="nvarchar" MaxLength="240" Nullable="false" />
+                <Property Name="EvaluationResult" Type="nvarchar" MaxLength="50" />
+                <Property Name="IsEmailSent" Type="bit" Nullable="false" />
+                <Property Name="UserId" Type="int" Nullable="false" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="getPapersSession" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idSession" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="PaperId" Type="int" Nullable="false" />
+                <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+                <Property Name="Resume" Type="nvarchar" MaxLength="500" Nullable="false" />
+                <Property Name="Domain" Type="nvarchar" MaxLength="30" Nullable="false" />
+                <Property Name="Subdomain" Type="nvarchar" MaxLength="30" Nullable="false" />
+                <Property Name="Filepath" Type="nvarchar" MaxLength="240" Nullable="false" />
+                <Property Name="EvaluationResult" Type="nvarchar" MaxLength="50" />
+                <Property Name="IsEmailSent" Type="bit" Nullable="false" />
+                <Property Name="UserId" Type="int" Nullable="false" />
+                <Property Name="TopicName" Type="nvarchar" MaxLength="50" Nullable="false" />
+                <Property Name="RoomReservationId" Type="int" />
+                <Property Name="BeginTime" Type="datetime" />
+                <Property Name="Duration" Type="int" Nullable="false" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="getParticpantsConference" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idConference" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="UserId" Type="int" Nullable="false" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="getPayment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idUser" Type="int" Mode="In" />
+          <Parameter Name="idConference" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="PaymentId" Type="int" Nullable="false" />
+                <Property Name="PaymentDate" Type="datetime" Nullable="false" />
+                <Property Name="NrOfTickets" Type="int" Nullable="false" />
+                <Property Name="PaidSum" Type="float" Nullable="false" />
+                <Property Name="SuccessfulTransaction" Type="bit" Nullable="false" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="getPCMembersConference" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idConference" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="UserId" Type="int" Nullable="false" />
+                <Property Name="isChair" Type="bit" Nullable="false" />
+                <Property Name="isCoChair" Type="bit" Nullable="false" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="getReservationPaper" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idPaper" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="SessionId" Type="int" Nullable="false" />
+                <Property Name="RoomName" Type="nvarchar" MaxLength="50" Nullable="false" />
+                <Property Name="Street" Type="nvarchar" MaxLength="30" Nullable="false" />
+                <Property Name="City" Type="nvarchar" MaxLength="30" Nullable="false" />
+                <Property Name="PostalCode" Type="nvarchar" MaxLength="30" Nullable="false" />
+                <Property Name="Data" Type="date" />
+                <Property Name="Timp" Type="time" Precision="7" />
+                <Property Name="Duration" Type="int" Nullable="false" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="getReviewsPaper" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idPaper" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="PCMemberUserId" Type="int" Nullable="false" />
+                <Property Name="Evaluation" Type="int" />
+                <Property Name="Recommandations" Type="nvarchar" MaxLength="200" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="getReviewsPcMember" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idPcMember" Type="int" Mode="In" />
+          <Parameter Name="idConference" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="PaperId" Type="int" Nullable="false" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="getSessionsForConference" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idConference" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="Name" Type="nvarchar" MaxLength="60" Nullable="false" />
+                <Property Name="SessionChairId" Type="int" Nullable="false" />
+                <Property Name="SessionId" Type="int" Nullable="false" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="getTopicsFor1Conference" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idConference" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="TopicName" Type="nvarchar" MaxLength="50" Nullable="false" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <EntityContainer Name="ISSModelStoreContainer">
+          <EntitySet Name="AdditionalAuthors" EntityType="Self.AdditionalAuthors" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Addresses" EntityType="Self.Addresses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AvailableRooms" EntityType="Self.AvailableRooms" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Bids" EntityType="Self.Bids" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ConferenceParticipants" EntityType="Self.ConferenceParticipants" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Conferences" EntityType="Self.Conferences" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MessagesC" EntityType="Self.MessagesC" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaperReservations" EntityType="Self.PaperReservations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Papers" EntityType="Self.Papers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Payments" EntityType="Self.Payments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PCMembers" EntityType="Self.PCMembers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reviews" EntityType="Self.Reviews" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RoomReservations" EntityType="Self.RoomReservations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sessions" EntityType="Self.Sessions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Topics" EntityType="Self.Topics" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="getConferences" EntityType="Self.getConferences" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [getConferences].[ConferenceId] AS [ConferenceId], 
+    [getConferences].[Name] AS [Name], 
+    [getConferences].[Edition] AS [Edition], 
+    [getConferences].[BeginDate] AS [BeginDate], 
+    [getConferences].[EndDate] AS [EndDate], 
+    [getConferences].[City] AS [City], 
+    [getConferences].[Country] AS [Country], 
+    [getConferences].[Website] AS [Website], 
+    [getConferences].[Price] AS [Price], 
+    [getConferences].[DeadlineAbstractPaper] AS [DeadlineAbstractPaper], 
+    [getConferences].[DeadlineCompletePaper] AS [DeadlineCompletePaper], 
+    [getConferences].[DeadlineBiddingPaper] AS [DeadlineBiddingPaper], 
+    [getConferences].[DeadlineEvaluation] AS [DeadlineEvaluation], 
+    [getConferences].[DeadlineParticipation] AS [DeadlineParticipation]
+    FROM [dbo].[getConferences] AS [getConferences]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="getMessagesAll" EntityType="Self.getMessagesAll" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [getMessagesAll].[MessageId] AS [MessageId], 
+    [getMessagesAll].[UserId] AS [UserId], 
+    [getMessagesAll].[MessageBody] AS [MessageBody]
+    FROM [dbo].[getMessagesAll] AS [getMessagesAll]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="getPossiblePCMembers" EntityType="Self.getPossiblePCMembers" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [getPossiblePCMembers].[UserId] AS [UserId], 
+    [getPossiblePCMembers].[Username] AS [Username], 
+    [getPossiblePCMembers].[Name] AS [Name], 
+    [getPossiblePCMembers].[Password] AS [Password], 
+    [getPossiblePCMembers].[Email] AS [Email], 
+    [getPossiblePCMembers].[Affilliation] AS [Affilliation], 
+    [getPossiblePCMembers].[WebPage] AS [WebPage], 
+    [getPossiblePCMembers].[canBePCMember] AS [canBePCMember]
+    FROM [dbo].[getPossiblePCMembers] AS [getPossiblePCMembers]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="getUsers" EntityType="Self.getUsers" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [getUsers].[UserId] AS [UserId], 
+    [getUsers].[Username] AS [Username], 
+    [getUsers].[Name] AS [Name], 
+    [getUsers].[Password] AS [Password], 
+    [getUsers].[Email] AS [Email], 
+    [getUsers].[Affilliation] AS [Affilliation], 
+    [getUsers].[WebPage] AS [WebPage], 
+    [getUsers].[canBePCMember] AS [canBePCMember]
+    FROM [dbo].[getUsers] AS [getUsers]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__Additiona__Paper__662B2B3B" Association="Self.FK__Additiona__Paper__662B2B3B">
+            <End Role="Papers" EntitySet="Papers" />
+            <End Role="AdditionalAuthors" EntitySet="AdditionalAuthors" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Available__Addre__6FB49575" Association="Self.FK__Available__Addre__6FB49575">
+            <End Role="Addresses" EntitySet="Addresses" />
+            <End Role="AvailableRooms" EntitySet="AvailableRooms" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Available__Confe__6EC0713C" Association="Self.FK__Available__Confe__6EC0713C">
+            <End Role="Conferences" EntitySet="Conferences" />
+            <End Role="AvailableRooms" EntitySet="AvailableRooms" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Bids__7D0E9093" Association="Self.FK__Bids__7D0E9093">
+            <End Role="PCMembers" EntitySet="PCMembers" />
+            <End Role="Bids" EntitySet="Bids" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Bids__PaperId__7C1A6C5A" Association="Self.FK__Bids__PaperId__7C1A6C5A">
+            <End Role="Papers" EntitySet="Papers" />
+            <End Role="Bids" EntitySet="Bids" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Conferenc__Confe__55F4C372" Association="Self.FK__Conferenc__Confe__55F4C372">
+            <End Role="Conferences" EntitySet="Conferences" />
+            <End Role="ConferenceParticipants" EntitySet="ConferenceParticipants" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Conferenc__Payme__56E8E7AB" Association="Self.FK__Conferenc__Payme__56E8E7AB">
+            <End Role="Payments" EntitySet="Payments" />
+            <End Role="ConferenceParticipants" EntitySet="ConferenceParticipants" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Conferenc__UserI__55009F39" Association="Self.FK__Conferenc__UserI__55009F39">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="ConferenceParticipants" EntitySet="ConferenceParticipants" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MessagesC__UserI__7FEAFD3E" Association="Self.FK__MessagesC__UserI__7FEAFD3E">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="MessagesC" EntitySet="MessagesC" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PaperRese__Paper__7849DB76" Association="Self.FK__PaperRese__Paper__7849DB76">
+            <End Role="Papers" EntitySet="Papers" />
+            <End Role="PaperReservations" EntitySet="PaperReservations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PaperRese__RoomR__7755B73D" Association="Self.FK__PaperRese__RoomR__7755B73D">
+            <End Role="RoomReservations" EntitySet="RoomReservations" />
+            <End Role="PaperReservations" EntitySet="PaperReservations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Papers__Conferen__59C55456" Association="Self.FK__Papers__Conferen__59C55456">
+            <End Role="Conferences" EntitySet="Conferences" />
+            <End Role="Papers" EntitySet="Papers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Papers__TopicId__5BAD9CC8" Association="Self.FK__Papers__TopicId__5BAD9CC8">
+            <End Role="Topics" EntitySet="Topics" />
+            <End Role="Papers" EntitySet="Papers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Papers__UserId__5AB9788F" Association="Self.FK__Papers__UserId__5AB9788F">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Papers" EntitySet="Papers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PCMembers__Confe__5F7E2DAC" Association="Self.FK__PCMembers__Confe__5F7E2DAC">
+            <End Role="Conferences" EntitySet="Conferences" />
+            <End Role="PCMembers" EntitySet="PCMembers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PCMembers__UserI__5E8A0973" Association="Self.FK__PCMembers__UserI__5E8A0973">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="PCMembers" EntitySet="PCMembers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reviews__634EBE90" Association="Self.FK__Reviews__634EBE90">
+            <End Role="PCMembers" EntitySet="PCMembers" />
+            <End Role="Reviews" EntitySet="Reviews" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reviews__PaperId__625A9A57" Association="Self.FK__Reviews__PaperId__625A9A57">
+            <End Role="Papers" EntitySet="Papers" />
+            <End Role="Reviews" EntitySet="Reviews" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RoomReser__RoomI__73852659" Association="Self.FK__RoomReser__RoomI__73852659">
+            <End Role="AvailableRooms" EntitySet="AvailableRooms" />
+            <End Role="RoomReservations" EntitySet="RoomReservations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RoomReser__Sessi__72910220" Association="Self.FK__RoomReser__Sessi__72910220">
+            <End Role="Sessions" EntitySet="Sessions" />
+            <End Role="RoomReservations" EntitySet="RoomReservations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sessions__69FBBC1F" Association="Self.FK__Sessions__69FBBC1F">
+            <End Role="PCMembers" EntitySet="PCMembers" />
+            <End Role="Sessions" EntitySet="Sessions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sessions__Confer__690797E6" Association="Self.FK__Sessions__Confer__690797E6">
+            <End Role="Conferences" EntitySet="Conferences" />
+            <End Role="Sessions" EntitySet="Sessions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Topics__Conferen__503BEA1C" Association="Self.FK__Topics__Conferen__503BEA1C">
+            <End Role="Conferences" EntitySet="Conferences" />
+            <End Role="Topics" EntitySet="Topics" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ISSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <ComplexType Name="getAdditionalAuthors_Result">
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Affiliation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="getBidsResult_Result">
+          <Property Name="PCMemberUserId" Type="Int32" Nullable="false" />
+          <Property Name="BiddingEvaluation" Type="Int32" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="getMessagesUser_Result">
+          <Property Name="MessageId" Type="Int32" Nullable="false" />
+          <Property Name="MessageBody" Type="String" MaxLength="3000" FixedLength="false" Unicode="true" />
+        </ComplexType>
+        <ComplexType Name="getPapersConference_Result">
+          <Property Name="PaperId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Resume" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Domain" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Subdomain" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Filepath" Type="String" MaxLength="240" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EvaluationResult" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsEmailSent" Type="Boolean" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="getPapersSession_Result">
+          <Property Name="PaperId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Resume" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Domain" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Subdomain" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Filepath" Type="String" MaxLength="240" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EvaluationResult" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsEmailSent" Type="Boolean" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="TopicName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RoomReservationId" Type="Int32" />
+          <Property Name="BeginTime" Type="DateTime" />
+          <Property Name="Duration" Type="Int32" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="getParticpantsConference_Result">
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="getPayment_Result">
+          <Property Name="PaymentId" Type="Int32" Nullable="false" />
+          <Property Name="PaymentDate" Type="DateTime" Nullable="false" />
+          <Property Name="NrOfTickets" Type="Int32" Nullable="false" />
+          <Property Name="PaidSum" Type="Double" Nullable="false" />
+          <Property Name="SuccessfulTransaction" Type="Boolean" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="getPCMembersConference_Result">
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="isChair" Type="Boolean" Nullable="false" />
+          <Property Name="isCoChair" Type="Boolean" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="getReservationPaper_Result">
+          <Property Name="SessionId" Type="Int32" Nullable="false" />
+          <Property Name="RoomName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Street" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="City" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PostalCode" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Data" Type="DateTime" />
+          <Property Name="Timp" Type="Time" />
+          <Property Name="Duration" Type="Int32" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="getReviewsPaper_Result">
+          <Property Name="PCMemberUserId" Type="Int32" Nullable="false" />
+          <Property Name="Evaluation" Type="Int32" />
+          <Property Name="Recommandations" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+        </ComplexType>
+        <ComplexType Name="getReviewsPcMember_Result">
+          <Property Name="PaperId" Type="Int32" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="getSessionsForConference_Result">
+          <Property Name="Name" Type="String" MaxLength="60" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SessionChairId" Type="Int32" Nullable="false" />
+          <Property Name="SessionId" Type="Int32" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="getTopicsFor1Conference_Result">
+          <Property Name="TopicName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="AdditionalAuthor">
+          <Key>
+            <PropertyRef Name="AdditionalAuthorId" />
+          </Key>
+          <Property Name="AdditionalAuthorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Affiliation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PaperId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Paper" Relationship="Self.FK__Additiona__Paper__662B2B3B" FromRole="AdditionalAuthors" ToRole="Papers" />
+        </EntityType>
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="AddressId" />
+          </Key>
+          <Property Name="AddressId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Street" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="City" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PostalCode" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AvailableRooms" Relationship="Self.FK__Available__Addre__6FB49575" FromRole="Addresses" ToRole="AvailableRooms" />
+        </EntityType>
+        <EntityType Name="AvailableRoom">
+          <Key>
+            <PropertyRef Name="RoomId" />
+          </Key>
+          <Property Name="RoomId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ConferenceId" Type="Int32" Nullable="false" />
+          <Property Name="RoomName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Capacity" Type="Int32" Nullable="false" />
+          <Property Name="AddressId" Type="Int32" Nullable="false" />
+          <Property Name="BeginDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Address" Relationship="Self.FK__Available__Addre__6FB49575" FromRole="AvailableRooms" ToRole="Addresses" />
+          <NavigationProperty Name="Conference" Relationship="Self.FK__Available__Confe__6EC0713C" FromRole="AvailableRooms" ToRole="Conferences" />
+          <NavigationProperty Name="RoomReservations" Relationship="Self.FK__RoomReser__RoomI__73852659" FromRole="AvailableRooms" ToRole="RoomReservations" />
+        </EntityType>
+        <EntityType Name="Bid">
+          <Key>
+            <PropertyRef Name="PCMemberUserId" />
+            <PropertyRef Name="PCMemberConferenceId" />
+            <PropertyRef Name="PaperId" />
+          </Key>
+          <Property Name="PCMemberUserId" Type="Int32" Nullable="false" />
+          <Property Name="PCMemberConferenceId" Type="Int32" Nullable="false" />
+          <Property Name="PaperId" Type="Int32" Nullable="false" />
+          <Property Name="BiddingEvaluation" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="PCMember" Relationship="Self.FK__Bids__7D0E9093" FromRole="Bids" ToRole="PCMembers" />
+          <NavigationProperty Name="Paper" Relationship="Self.FK__Bids__PaperId__7C1A6C5A" FromRole="Bids" ToRole="Papers" />
+        </EntityType>
+        <EntityType Name="ConferenceParticipant">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="ConferenceId" />
+            <PropertyRef Name="PaymentId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="ConferenceId" Type="Int32" Nullable="false" />
+          <Property Name="PaymentId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Conference" Relationship="Self.FK__Conferenc__Confe__55F4C372" FromRole="ConferenceParticipants" ToRole="Conferences" />
+          <NavigationProperty Name="Payment" Relationship="Self.FK__Conferenc__Payme__56E8E7AB" FromRole="ConferenceParticipants" ToRole="Payments" />
+          <NavigationProperty Name="User" Relationship="Self.FK__Conferenc__UserI__55009F39" FromRole="ConferenceParticipants" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Conference">
+          <Key>
+            <PropertyRef Name="ConferenceId" />
+          </Key>
+          <Property Name="ConferenceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Edition" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="BeginDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Website" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Double" Nullable="false" />
+          <Property Name="DeadlineAbstractPaper" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DeadlineCompletePaper" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DeadlineBiddingPaper" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DeadlineEvaluation" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DeadlineParticipation" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="AvailableRooms" Relationship="Self.FK__Available__Confe__6EC0713C" FromRole="Conferences" ToRole="AvailableRooms" />
+          <NavigationProperty Name="ConferenceParticipants" Relationship="Self.FK__Conferenc__Confe__55F4C372" FromRole="Conferences" ToRole="ConferenceParticipants" />
+          <NavigationProperty Name="Papers" Relationship="Self.FK__Papers__Conferen__59C55456" FromRole="Conferences" ToRole="Papers" />
+          <NavigationProperty Name="PCMembers" Relationship="Self.FK__PCMembers__Confe__5F7E2DAC" FromRole="Conferences" ToRole="PCMembers" />
+          <NavigationProperty Name="Sessions" Relationship="Self.FK__Sessions__Confer__690797E6" FromRole="Conferences" ToRole="Sessions" />
+          <NavigationProperty Name="Topics" Relationship="Self.FK__Topics__Conferen__503BEA1C" FromRole="Conferences" ToRole="Topics" />
+        </EntityType>
+        <EntityType Name="MessagesC">
+          <Key>
+            <PropertyRef Name="MessageId" />
+          </Key>
+          <Property Name="MessageId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="MessageBody" Type="String" MaxLength="3000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="User" Relationship="Self.FK__MessagesC__UserI__7FEAFD3E" FromRole="MessagesC" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="PaperReservation">
+          <Key>
+            <PropertyRef Name="PaperReservationId" />
+          </Key>
+          <Property Name="PaperReservationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoomReservationId" Type="Int32" />
+          <Property Name="PaperId" Type="Int32" Nullable="false" />
+          <Property Name="BeginTime" Type="DateTime" Precision="3" />
+          <Property Name="Duration" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Paper" Relationship="Self.FK__PaperRese__Paper__7849DB76" FromRole="PaperReservations" ToRole="Papers" />
+          <NavigationProperty Name="RoomReservation" Relationship="Self.FK__PaperRese__RoomR__7755B73D" FromRole="PaperReservations" ToRole="RoomReservations" />
+        </EntityType>
+        <EntityType Name="Paper">
+          <Key>
+            <PropertyRef Name="PaperId" />
+          </Key>
+          <Property Name="PaperId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Resume" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Domain" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Subdomain" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Filepath" Type="String" MaxLength="240" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EvaluationResult" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsEmailSent" Type="Boolean" Nullable="false" />
+          <Property Name="ConferenceId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="TopicId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AdditionalAuthors" Relationship="Self.FK__Additiona__Paper__662B2B3B" FromRole="Papers" ToRole="AdditionalAuthors" />
+          <NavigationProperty Name="Bids" Relationship="Self.FK__Bids__PaperId__7C1A6C5A" FromRole="Papers" ToRole="Bids" />
+          <NavigationProperty Name="Conference" Relationship="Self.FK__Papers__Conferen__59C55456" FromRole="Papers" ToRole="Conferences" />
+          <NavigationProperty Name="PaperReservations" Relationship="Self.FK__PaperRese__Paper__7849DB76" FromRole="Papers" ToRole="PaperReservations" />
+          <NavigationProperty Name="Topic" Relationship="Self.FK__Papers__TopicId__5BAD9CC8" FromRole="Papers" ToRole="Topics" />
+          <NavigationProperty Name="User" Relationship="Self.FK__Papers__UserId__5AB9788F" FromRole="Papers" ToRole="Users" />
+          <NavigationProperty Name="Reviews" Relationship="Self.FK__Reviews__PaperId__625A9A57" FromRole="Papers" ToRole="Reviews" />
+        </EntityType>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="PaymentId" />
+          </Key>
+          <Property Name="PaymentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PaymentDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="NrOfTickets" Type="Int32" Nullable="false" />
+          <Property Name="PaidSum" Type="Double" Nullable="false" />
+          <Property Name="SuccessfulTransaction" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ConferenceParticipants" Relationship="Self.FK__Conferenc__Payme__56E8E7AB" FromRole="Payments" ToRole="ConferenceParticipants" />
+        </EntityType>
+        <EntityType Name="PCMember">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="ConferenceId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="ConferenceId" Type="Int32" Nullable="false" />
+          <Property Name="isChair" Type="Boolean" Nullable="false" />
+          <Property Name="isCoChair" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Bids" Relationship="Self.FK__Bids__7D0E9093" FromRole="PCMembers" ToRole="Bids" />
+          <NavigationProperty Name="Conference" Relationship="Self.FK__PCMembers__Confe__5F7E2DAC" FromRole="PCMembers" ToRole="Conferences" />
+          <NavigationProperty Name="User" Relationship="Self.FK__PCMembers__UserI__5E8A0973" FromRole="PCMembers" ToRole="Users" />
+          <NavigationProperty Name="Reviews" Relationship="Self.FK__Reviews__634EBE90" FromRole="PCMembers" ToRole="Reviews" />
+          <NavigationProperty Name="Sessions" Relationship="Self.FK__Sessions__69FBBC1F" FromRole="PCMembers" ToRole="Sessions" />
+        </EntityType>
+        <EntityType Name="Review">
+          <Key>
+            <PropertyRef Name="PCMemberUserId" />
+            <PropertyRef Name="PCMemberConferenceId" />
+            <PropertyRef Name="PaperId" />
+          </Key>
+          <Property Name="PCMemberUserId" Type="Int32" Nullable="false" />
+          <Property Name="PCMemberConferenceId" Type="Int32" Nullable="false" />
+          <Property Name="PaperId" Type="Int32" Nullable="false" />
+          <Property Name="Evaluation" Type="Int32" />
+          <Property Name="Recommandations" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Paper" Relationship="Self.FK__Reviews__PaperId__625A9A57" FromRole="Reviews" ToRole="Papers" />
+          <NavigationProperty Name="PCMember" Relationship="Self.FK__Reviews__634EBE90" FromRole="Reviews" ToRole="PCMembers" />
+        </EntityType>
+        <EntityType Name="RoomReservation">
+          <Key>
+            <PropertyRef Name="RoomReservationId" />
+          </Key>
+          <Property Name="RoomReservationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SessionId" Type="Int32" Nullable="false" />
+          <Property Name="RoomId" Type="Int32" Nullable="false" />
+          <Property Name="BeginDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="AvailableRoom" Relationship="Self.FK__RoomReser__RoomI__73852659" FromRole="RoomReservations" ToRole="AvailableRooms" />
+          <NavigationProperty Name="PaperReservations" Relationship="Self.FK__PaperRese__RoomR__7755B73D" FromRole="RoomReservations" ToRole="PaperReservations" />
+          <NavigationProperty Name="Session" Relationship="Self.FK__RoomReser__Sessi__72910220" FromRole="RoomReservations" ToRole="Sessions" />
+        </EntityType>
+        <EntityType Name="Session">
+          <Key>
+            <PropertyRef Name="SessionId" />
+          </Key>
+          <Property Name="SessionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ConferenceId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="60" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Topic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SessionChairId" Type="Int32" Nullable="false" />
+          <Property Name="PCMemberConferenceId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Conference" Relationship="Self.FK__Sessions__Confer__690797E6" FromRole="Sessions" ToRole="Conferences" />
+          <NavigationProperty Name="PCMember" Relationship="Self.FK__Sessions__69FBBC1F" FromRole="Sessions" ToRole="PCMembers" />
+          <NavigationProperty Name="RoomReservations" Relationship="Self.FK__RoomReser__Sessi__72910220" FromRole="Sessions" ToRole="RoomReservations" />
+        </EntityType>
+        <EntityType Name="Topic">
+          <Key>
+            <PropertyRef Name="TopicId" />
+          </Key>
+          <Property Name="TopicId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TopicName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ConferenceId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Conference" Relationship="Self.FK__Topics__Conferen__503BEA1C" FromRole="Topics" ToRole="Conferences" />
+          <NavigationProperty Name="Papers" Relationship="Self.FK__Papers__TopicId__5BAD9CC8" FromRole="Topics" ToRole="Papers" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Affilliation" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="WebPage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="canBePCMember" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ConferenceParticipants" Relationship="Self.FK__Conferenc__UserI__55009F39" FromRole="Users" ToRole="ConferenceParticipants" />
+          <NavigationProperty Name="MessagesCs" Relationship="Self.FK__MessagesC__UserI__7FEAFD3E" FromRole="Users" ToRole="MessagesC" />
+          <NavigationProperty Name="Papers" Relationship="Self.FK__Papers__UserId__5AB9788F" FromRole="Users" ToRole="Papers" />
+          <NavigationProperty Name="PCMembers" Relationship="Self.FK__PCMembers__UserI__5E8A0973" FromRole="Users" ToRole="PCMembers" />
+        </EntityType>
+        <EntityType Name="getConference">
+          <Key>
+            <PropertyRef Name="ConferenceId" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="BeginDate" />
+            <PropertyRef Name="EndDate" />
+            <PropertyRef Name="City" />
+            <PropertyRef Name="Country" />
+            <PropertyRef Name="Price" />
+            <PropertyRef Name="DeadlineAbstractPaper" />
+            <PropertyRef Name="DeadlineCompletePaper" />
+            <PropertyRef Name="DeadlineBiddingPaper" />
+            <PropertyRef Name="DeadlineEvaluation" />
+            <PropertyRef Name="DeadlineParticipation" />
+          </Key>
+          <Property Name="ConferenceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Edition" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="BeginDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Website" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Double" Nullable="false" />
+          <Property Name="DeadlineAbstractPaper" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DeadlineCompletePaper" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DeadlineBiddingPaper" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DeadlineEvaluation" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DeadlineParticipation" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="getMessagesAll">
+          <Key>
+            <PropertyRef Name="MessageId" />
+          </Key>
+          <Property Name="MessageId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="MessageBody" Type="String" MaxLength="3000" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="getPossiblePCMember">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="Username" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Password" />
+            <PropertyRef Name="Email" />
+            <PropertyRef Name="Affilliation" />
+            <PropertyRef Name="canBePCMember" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Affilliation" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="WebPage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="canBePCMember" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="getUser">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="Username" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Password" />
+            <PropertyRef Name="Email" />
+            <PropertyRef Name="Affilliation" />
+            <PropertyRef Name="canBePCMember" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Affilliation" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="WebPage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="canBePCMember" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Additiona__Paper__662B2B3B">
+          <End Role="Papers" Type="Self.Paper" Multiplicity="1" />
+          <End Role="AdditionalAuthors" Type="Self.AdditionalAuthor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Papers">
+              <PropertyRef Name="PaperId" />
+            </Principal>
+            <Dependent Role="AdditionalAuthors">
+              <PropertyRef Name="PaperId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Available__Addre__6FB49575">
+          <End Role="Addresses" Type="Self.Address" Multiplicity="1" />
+          <End Role="AvailableRooms" Type="Self.AvailableRoom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Addresses">
+              <PropertyRef Name="AddressId" />
+            </Principal>
+            <Dependent Role="AvailableRooms">
+              <PropertyRef Name="AddressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Available__Confe__6EC0713C">
+          <End Role="Conferences" Type="Self.Conference" Multiplicity="1" />
+          <End Role="AvailableRooms" Type="Self.AvailableRoom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Conferences">
+              <PropertyRef Name="ConferenceId" />
+            </Principal>
+            <Dependent Role="AvailableRooms">
+              <PropertyRef Name="ConferenceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RoomReser__RoomI__73852659">
+          <End Role="AvailableRooms" Type="Self.AvailableRoom" Multiplicity="1" />
+          <End Role="RoomReservations" Type="Self.RoomReservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AvailableRooms">
+              <PropertyRef Name="RoomId" />
+            </Principal>
+            <Dependent Role="RoomReservations">
+              <PropertyRef Name="RoomId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Bids__7D0E9093">
+          <End Role="PCMembers" Type="Self.PCMember" Multiplicity="1" />
+          <End Role="Bids" Type="Self.Bid" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PCMembers">
+              <PropertyRef Name="UserId" />
+              <PropertyRef Name="ConferenceId" />
+            </Principal>
+            <Dependent Role="Bids">
+              <PropertyRef Name="PCMemberUserId" />
+              <PropertyRef Name="PCMemberConferenceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Bids__PaperId__7C1A6C5A">
+          <End Role="Papers" Type="Self.Paper" Multiplicity="1" />
+          <End Role="Bids" Type="Self.Bid" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Papers">
+              <PropertyRef Name="PaperId" />
+            </Principal>
+            <Dependent Role="Bids">
+              <PropertyRef Name="PaperId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Conferenc__Confe__55F4C372">
+          <End Role="Conferences" Type="Self.Conference" Multiplicity="1" />
+          <End Role="ConferenceParticipants" Type="Self.ConferenceParticipant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Conferences">
+              <PropertyRef Name="ConferenceId" />
+            </Principal>
+            <Dependent Role="ConferenceParticipants">
+              <PropertyRef Name="ConferenceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Conferenc__Payme__56E8E7AB">
+          <End Role="Payments" Type="Self.Payment" Multiplicity="1" />
+          <End Role="ConferenceParticipants" Type="Self.ConferenceParticipant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Payments">
+              <PropertyRef Name="PaymentId" />
+            </Principal>
+            <Dependent Role="ConferenceParticipants">
+              <PropertyRef Name="PaymentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Conferenc__UserI__55009F39">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="ConferenceParticipants" Type="Self.ConferenceParticipant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="ConferenceParticipants">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Papers__Conferen__59C55456">
+          <End Role="Conferences" Type="Self.Conference" Multiplicity="1" />
+          <End Role="Papers" Type="Self.Paper" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Conferences">
+              <PropertyRef Name="ConferenceId" />
+            </Principal>
+            <Dependent Role="Papers">
+              <PropertyRef Name="ConferenceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PCMembers__Confe__5F7E2DAC">
+          <End Role="Conferences" Type="Self.Conference" Multiplicity="1" />
+          <End Role="PCMembers" Type="Self.PCMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Conferences">
+              <PropertyRef Name="ConferenceId" />
+            </Principal>
+            <Dependent Role="PCMembers">
+              <PropertyRef Name="ConferenceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sessions__Confer__690797E6">
+          <End Role="Conferences" Type="Self.Conference" Multiplicity="1" />
+          <End Role="Sessions" Type="Self.Session" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Conferences">
+              <PropertyRef Name="ConferenceId" />
+            </Principal>
+            <Dependent Role="Sessions">
+              <PropertyRef Name="ConferenceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Topics__Conferen__503BEA1C">
+          <End Role="Conferences" Type="Self.Conference" Multiplicity="1" />
+          <End Role="Topics" Type="Self.Topic" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Conferences">
+              <PropertyRef Name="ConferenceId" />
+            </Principal>
+            <Dependent Role="Topics">
+              <PropertyRef Name="ConferenceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MessagesC__UserI__7FEAFD3E">
+          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+          <End Role="MessagesC" Type="Self.MessagesC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="MessagesC">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PaperRese__Paper__7849DB76">
+          <End Role="Papers" Type="Self.Paper" Multiplicity="1" />
+          <End Role="PaperReservations" Type="Self.PaperReservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Papers">
+              <PropertyRef Name="PaperId" />
+            </Principal>
+            <Dependent Role="PaperReservations">
+              <PropertyRef Name="PaperId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PaperRese__RoomR__7755B73D">
+          <End Role="RoomReservations" Type="Self.RoomReservation" Multiplicity="0..1" />
+          <End Role="PaperReservations" Type="Self.PaperReservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoomReservations">
+              <PropertyRef Name="RoomReservationId" />
+            </Principal>
+            <Dependent Role="PaperReservations">
+              <PropertyRef Name="RoomReservationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Papers__TopicId__5BAD9CC8">
+          <End Role="Topics" Type="Self.Topic" Multiplicity="1" />
+          <End Role="Papers" Type="Self.Paper" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Topics">
+              <PropertyRef Name="TopicId" />
+            </Principal>
+            <Dependent Role="Papers">
+              <PropertyRef Name="TopicId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Papers__UserId__5AB9788F">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="Papers" Type="Self.Paper" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Papers">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reviews__PaperId__625A9A57">
+          <End Role="Papers" Type="Self.Paper" Multiplicity="1" />
+          <End Role="Reviews" Type="Self.Review" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Papers">
+              <PropertyRef Name="PaperId" />
+            </Principal>
+            <Dependent Role="Reviews">
+              <PropertyRef Name="PaperId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PCMembers__UserI__5E8A0973">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="PCMembers" Type="Self.PCMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="PCMembers">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reviews__634EBE90">
+          <End Role="PCMembers" Type="Self.PCMember" Multiplicity="1" />
+          <End Role="Reviews" Type="Self.Review" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PCMembers">
+              <PropertyRef Name="UserId" />
+              <PropertyRef Name="ConferenceId" />
+            </Principal>
+            <Dependent Role="Reviews">
+              <PropertyRef Name="PCMemberUserId" />
+              <PropertyRef Name="PCMemberConferenceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sessions__69FBBC1F">
+          <End Role="PCMembers" Type="Self.PCMember" Multiplicity="1" />
+          <End Role="Sessions" Type="Self.Session" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PCMembers">
+              <PropertyRef Name="UserId" />
+              <PropertyRef Name="ConferenceId" />
+            </Principal>
+            <Dependent Role="Sessions">
+              <PropertyRef Name="SessionChairId" />
+              <PropertyRef Name="PCMemberConferenceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RoomReser__Sessi__72910220">
+          <End Role="Sessions" Type="Self.Session" Multiplicity="1" />
+          <End Role="RoomReservations" Type="Self.RoomReservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sessions">
+              <PropertyRef Name="SessionId" />
+            </Principal>
+            <Dependent Role="RoomReservations">
+              <PropertyRef Name="SessionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ISSEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AdditionalAuthors" EntityType="Self.AdditionalAuthor" />
+          <EntitySet Name="Addresses" EntityType="Self.Address" />
+          <EntitySet Name="AvailableRooms" EntityType="Self.AvailableRoom" />
+          <EntitySet Name="Bids" EntityType="Self.Bid" />
+          <EntitySet Name="ConferenceParticipants" EntityType="Self.ConferenceParticipant" />
+          <EntitySet Name="Conferences" EntityType="Self.Conference" />
+          <EntitySet Name="MessagesCs" EntityType="Self.MessagesC" />
+          <EntitySet Name="PaperReservations" EntityType="Self.PaperReservation" />
+          <EntitySet Name="Papers" EntityType="Self.Paper" />
+          <EntitySet Name="Payments" EntityType="Self.Payment" />
+          <EntitySet Name="PCMembers" EntityType="Self.PCMember" />
+          <EntitySet Name="Reviews" EntityType="Self.Review" />
+          <EntitySet Name="RoomReservations" EntityType="Self.RoomReservation" />
+          <EntitySet Name="Sessions" EntityType="Self.Session" />
+          <EntitySet Name="Topics" EntityType="Self.Topic" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="getConferences" EntityType="Self.getConference" />
+          <EntitySet Name="getMessagesAlls" EntityType="Self.getMessagesAll" />
+          <EntitySet Name="getPossiblePCMembers" EntityType="Self.getPossiblePCMember" />
+          <EntitySet Name="getUsers" EntityType="Self.getUser" />
+          <AssociationSet Name="FK__Additiona__Paper__662B2B3B" Association="Self.FK__Additiona__Paper__662B2B3B">
+            <End Role="Papers" EntitySet="Papers" />
+            <End Role="AdditionalAuthors" EntitySet="AdditionalAuthors" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Available__Addre__6FB49575" Association="Self.FK__Available__Addre__6FB49575">
+            <End Role="Addresses" EntitySet="Addresses" />
+            <End Role="AvailableRooms" EntitySet="AvailableRooms" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Available__Confe__6EC0713C" Association="Self.FK__Available__Confe__6EC0713C">
+            <End Role="Conferences" EntitySet="Conferences" />
+            <End Role="AvailableRooms" EntitySet="AvailableRooms" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RoomReser__RoomI__73852659" Association="Self.FK__RoomReser__RoomI__73852659">
+            <End Role="AvailableRooms" EntitySet="AvailableRooms" />
+            <End Role="RoomReservations" EntitySet="RoomReservations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Bids__7D0E9093" Association="Self.FK__Bids__7D0E9093">
+            <End Role="PCMembers" EntitySet="PCMembers" />
+            <End Role="Bids" EntitySet="Bids" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Bids__PaperId__7C1A6C5A" Association="Self.FK__Bids__PaperId__7C1A6C5A">
+            <End Role="Papers" EntitySet="Papers" />
+            <End Role="Bids" EntitySet="Bids" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Conferenc__Confe__55F4C372" Association="Self.FK__Conferenc__Confe__55F4C372">
+            <End Role="Conferences" EntitySet="Conferences" />
+            <End Role="ConferenceParticipants" EntitySet="ConferenceParticipants" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Conferenc__Payme__56E8E7AB" Association="Self.FK__Conferenc__Payme__56E8E7AB">
+            <End Role="Payments" EntitySet="Payments" />
+            <End Role="ConferenceParticipants" EntitySet="ConferenceParticipants" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Conferenc__UserI__55009F39" Association="Self.FK__Conferenc__UserI__55009F39">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="ConferenceParticipants" EntitySet="ConferenceParticipants" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Papers__Conferen__59C55456" Association="Self.FK__Papers__Conferen__59C55456">
+            <End Role="Conferences" EntitySet="Conferences" />
+            <End Role="Papers" EntitySet="Papers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PCMembers__Confe__5F7E2DAC" Association="Self.FK__PCMembers__Confe__5F7E2DAC">
+            <End Role="Conferences" EntitySet="Conferences" />
+            <End Role="PCMembers" EntitySet="PCMembers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sessions__Confer__690797E6" Association="Self.FK__Sessions__Confer__690797E6">
+            <End Role="Conferences" EntitySet="Conferences" />
+            <End Role="Sessions" EntitySet="Sessions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Topics__Conferen__503BEA1C" Association="Self.FK__Topics__Conferen__503BEA1C">
+            <End Role="Conferences" EntitySet="Conferences" />
+            <End Role="Topics" EntitySet="Topics" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MessagesC__UserI__7FEAFD3E" Association="Self.FK__MessagesC__UserI__7FEAFD3E">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="MessagesC" EntitySet="MessagesCs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PaperRese__Paper__7849DB76" Association="Self.FK__PaperRese__Paper__7849DB76">
+            <End Role="Papers" EntitySet="Papers" />
+            <End Role="PaperReservations" EntitySet="PaperReservations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PaperRese__RoomR__7755B73D" Association="Self.FK__PaperRese__RoomR__7755B73D">
+            <End Role="RoomReservations" EntitySet="RoomReservations" />
+            <End Role="PaperReservations" EntitySet="PaperReservations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Papers__TopicId__5BAD9CC8" Association="Self.FK__Papers__TopicId__5BAD9CC8">
+            <End Role="Topics" EntitySet="Topics" />
+            <End Role="Papers" EntitySet="Papers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Papers__UserId__5AB9788F" Association="Self.FK__Papers__UserId__5AB9788F">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Papers" EntitySet="Papers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reviews__PaperId__625A9A57" Association="Self.FK__Reviews__PaperId__625A9A57">
+            <End Role="Papers" EntitySet="Papers" />
+            <End Role="Reviews" EntitySet="Reviews" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PCMembers__UserI__5E8A0973" Association="Self.FK__PCMembers__UserI__5E8A0973">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="PCMembers" EntitySet="PCMembers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reviews__634EBE90" Association="Self.FK__Reviews__634EBE90">
+            <End Role="PCMembers" EntitySet="PCMembers" />
+            <End Role="Reviews" EntitySet="Reviews" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sessions__69FBBC1F" Association="Self.FK__Sessions__69FBBC1F">
+            <End Role="PCMembers" EntitySet="PCMembers" />
+            <End Role="Sessions" EntitySet="Sessions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RoomReser__Sessi__72910220" Association="Self.FK__RoomReser__Sessi__72910220">
+            <End Role="Sessions" EntitySet="Sessions" />
+            <End Role="RoomReservations" EntitySet="RoomReservations" />
+          </AssociationSet>
+          <FunctionImport Name="getAdditionalAuthors" IsComposable="true" ReturnType="Collection(ISSModel.getAdditionalAuthors_Result)">
+            <Parameter Name="idPaper" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="getBidsResult" IsComposable="true" ReturnType="Collection(ISSModel.getBidsResult_Result)">
+            <Parameter Name="idPaper" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="getMessagesUser" IsComposable="true" ReturnType="Collection(ISSModel.getMessagesUser_Result)">
+            <Parameter Name="idUser" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="getPapersConference" IsComposable="true" ReturnType="Collection(ISSModel.getPapersConference_Result)">
+            <Parameter Name="idConference" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="getPapersSession" IsComposable="true" ReturnType="Collection(ISSModel.getPapersSession_Result)">
+            <Parameter Name="idSession" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="getParticpantsConference" IsComposable="true" ReturnType="Collection(ISSModel.getParticpantsConference_Result)">
+            <Parameter Name="idConference" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="getPayment" IsComposable="true" ReturnType="Collection(ISSModel.getPayment_Result)">
+            <Parameter Name="idUser" Mode="In" Type="Int32" />
+            <Parameter Name="idConference" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="getPCMembersConference" IsComposable="true" ReturnType="Collection(ISSModel.getPCMembersConference_Result)">
+            <Parameter Name="idConference" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="getReservationPaper" IsComposable="true" ReturnType="Collection(ISSModel.getReservationPaper_Result)">
+            <Parameter Name="idPaper" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="getReviewsPaper" IsComposable="true" ReturnType="Collection(ISSModel.getReviewsPaper_Result)">
+            <Parameter Name="idPaper" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="getReviewsPcMember" IsComposable="true" ReturnType="Collection(ISSModel.getReviewsPcMember_Result)">
+            <Parameter Name="idPcMember" Mode="In" Type="Int32" />
+            <Parameter Name="idConference" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="getSessionsForConference" IsComposable="true" ReturnType="Collection(ISSModel.getSessionsForConference_Result)">
+            <Parameter Name="idConference" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="getTopicsFor1Conference" IsComposable="true" ReturnType="Collection(ISSModel.getTopicsFor1Conference_Result)">
+            <Parameter Name="idConference" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ISSModelStoreContainer" CdmEntityContainer="ISSEntities2">
+          <EntitySetMapping Name="AdditionalAuthors">
+            <EntityTypeMapping TypeName="ISSModel.AdditionalAuthor">
+              <MappingFragment StoreEntitySet="AdditionalAuthors">
+                <ScalarProperty Name="AdditionalAuthorId" ColumnName="AdditionalAuthorId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Affiliation" ColumnName="Affiliation" />
+                <ScalarProperty Name="PaperId" ColumnName="PaperId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Addresses">
+            <EntityTypeMapping TypeName="ISSModel.Address">
+              <MappingFragment StoreEntitySet="Addresses">
+                <ScalarProperty Name="AddressId" ColumnName="AddressId" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AvailableRooms">
+            <EntityTypeMapping TypeName="ISSModel.AvailableRoom">
+              <MappingFragment StoreEntitySet="AvailableRooms">
+                <ScalarProperty Name="RoomId" ColumnName="RoomId" />
+                <ScalarProperty Name="ConferenceId" ColumnName="ConferenceId" />
+                <ScalarProperty Name="RoomName" ColumnName="RoomName" />
+                <ScalarProperty Name="Capacity" ColumnName="Capacity" />
+                <ScalarProperty Name="AddressId" ColumnName="AddressId" />
+                <ScalarProperty Name="BeginDate" ColumnName="BeginDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Bids">
+            <EntityTypeMapping TypeName="ISSModel.Bid">
+              <MappingFragment StoreEntitySet="Bids">
+                <ScalarProperty Name="PCMemberUserId" ColumnName="PCMemberUserId" />
+                <ScalarProperty Name="PCMemberConferenceId" ColumnName="PCMemberConferenceId" />
+                <ScalarProperty Name="PaperId" ColumnName="PaperId" />
+                <ScalarProperty Name="BiddingEvaluation" ColumnName="BiddingEvaluation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ConferenceParticipants">
+            <EntityTypeMapping TypeName="ISSModel.ConferenceParticipant">
+              <MappingFragment StoreEntitySet="ConferenceParticipants">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ConferenceId" ColumnName="ConferenceId" />
+                <ScalarProperty Name="PaymentId" ColumnName="PaymentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Conferences">
+            <EntityTypeMapping TypeName="ISSModel.Conference">
+              <MappingFragment StoreEntitySet="Conferences">
+                <ScalarProperty Name="ConferenceId" ColumnName="ConferenceId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Edition" ColumnName="Edition" />
+                <ScalarProperty Name="BeginDate" ColumnName="BeginDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Website" ColumnName="Website" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="DeadlineAbstractPaper" ColumnName="DeadlineAbstractPaper" />
+                <ScalarProperty Name="DeadlineCompletePaper" ColumnName="DeadlineCompletePaper" />
+                <ScalarProperty Name="DeadlineBiddingPaper" ColumnName="DeadlineBiddingPaper" />
+                <ScalarProperty Name="DeadlineEvaluation" ColumnName="DeadlineEvaluation" />
+                <ScalarProperty Name="DeadlineParticipation" ColumnName="DeadlineParticipation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MessagesCs">
+            <EntityTypeMapping TypeName="ISSModel.MessagesC">
+              <MappingFragment StoreEntitySet="MessagesC">
+                <ScalarProperty Name="MessageId" ColumnName="MessageId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="MessageBody" ColumnName="MessageBody" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaperReservations">
+            <EntityTypeMapping TypeName="ISSModel.PaperReservation">
+              <MappingFragment StoreEntitySet="PaperReservations">
+                <ScalarProperty Name="PaperReservationId" ColumnName="PaperReservationId" />
+                <ScalarProperty Name="RoomReservationId" ColumnName="RoomReservationId" />
+                <ScalarProperty Name="PaperId" ColumnName="PaperId" />
+                <ScalarProperty Name="BeginTime" ColumnName="BeginTime" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Papers">
+            <EntityTypeMapping TypeName="ISSModel.Paper">
+              <MappingFragment StoreEntitySet="Papers">
+                <ScalarProperty Name="PaperId" ColumnName="PaperId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Resume" ColumnName="Resume" />
+                <ScalarProperty Name="Domain" ColumnName="Domain" />
+                <ScalarProperty Name="Subdomain" ColumnName="Subdomain" />
+                <ScalarProperty Name="Filepath" ColumnName="Filepath" />
+                <ScalarProperty Name="EvaluationResult" ColumnName="EvaluationResult" />
+                <ScalarProperty Name="IsEmailSent" ColumnName="IsEmailSent" />
+                <ScalarProperty Name="ConferenceId" ColumnName="ConferenceId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="TopicId" ColumnName="TopicId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Payments">
+            <EntityTypeMapping TypeName="ISSModel.Payment">
+              <MappingFragment StoreEntitySet="Payments">
+                <ScalarProperty Name="PaymentId" ColumnName="PaymentId" />
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+                <ScalarProperty Name="NrOfTickets" ColumnName="NrOfTickets" />
+                <ScalarProperty Name="PaidSum" ColumnName="PaidSum" />
+                <ScalarProperty Name="SuccessfulTransaction" ColumnName="SuccessfulTransaction" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PCMembers">
+            <EntityTypeMapping TypeName="ISSModel.PCMember">
+              <MappingFragment StoreEntitySet="PCMembers">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ConferenceId" ColumnName="ConferenceId" />
+                <ScalarProperty Name="isChair" ColumnName="isChair" />
+                <ScalarProperty Name="isCoChair" ColumnName="isCoChair" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reviews">
+            <EntityTypeMapping TypeName="ISSModel.Review">
+              <MappingFragment StoreEntitySet="Reviews">
+                <ScalarProperty Name="PCMemberUserId" ColumnName="PCMemberUserId" />
+                <ScalarProperty Name="PCMemberConferenceId" ColumnName="PCMemberConferenceId" />
+                <ScalarProperty Name="PaperId" ColumnName="PaperId" />
+                <ScalarProperty Name="Evaluation" ColumnName="Evaluation" />
+                <ScalarProperty Name="Recommandations" ColumnName="Recommandations" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoomReservations">
+            <EntityTypeMapping TypeName="ISSModel.RoomReservation">
+              <MappingFragment StoreEntitySet="RoomReservations">
+                <ScalarProperty Name="RoomReservationId" ColumnName="RoomReservationId" />
+                <ScalarProperty Name="SessionId" ColumnName="SessionId" />
+                <ScalarProperty Name="RoomId" ColumnName="RoomId" />
+                <ScalarProperty Name="BeginDate" ColumnName="BeginDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sessions">
+            <EntityTypeMapping TypeName="ISSModel.Session">
+              <MappingFragment StoreEntitySet="Sessions">
+                <ScalarProperty Name="SessionId" ColumnName="SessionId" />
+                <ScalarProperty Name="ConferenceId" ColumnName="ConferenceId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Topic" ColumnName="Topic" />
+                <ScalarProperty Name="SessionChairId" ColumnName="SessionChairId" />
+                <ScalarProperty Name="PCMemberConferenceId" ColumnName="PCMemberConferenceId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Topics">
+            <EntityTypeMapping TypeName="ISSModel.Topic">
+              <MappingFragment StoreEntitySet="Topics">
+                <ScalarProperty Name="TopicId" ColumnName="TopicId" />
+                <ScalarProperty Name="TopicName" ColumnName="TopicName" />
+                <ScalarProperty Name="ConferenceId" ColumnName="ConferenceId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="ISSModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Affilliation" ColumnName="Affilliation" />
+                <ScalarProperty Name="WebPage" ColumnName="WebPage" />
+                <ScalarProperty Name="canBePCMember" ColumnName="canBePCMember" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="getConferences">
+            <EntityTypeMapping TypeName="ISSModel.getConference">
+              <MappingFragment StoreEntitySet="getConferences">
+                <ScalarProperty Name="ConferenceId" ColumnName="ConferenceId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Edition" ColumnName="Edition" />
+                <ScalarProperty Name="BeginDate" ColumnName="BeginDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Website" ColumnName="Website" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="DeadlineAbstractPaper" ColumnName="DeadlineAbstractPaper" />
+                <ScalarProperty Name="DeadlineCompletePaper" ColumnName="DeadlineCompletePaper" />
+                <ScalarProperty Name="DeadlineBiddingPaper" ColumnName="DeadlineBiddingPaper" />
+                <ScalarProperty Name="DeadlineEvaluation" ColumnName="DeadlineEvaluation" />
+                <ScalarProperty Name="DeadlineParticipation" ColumnName="DeadlineParticipation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="getMessagesAlls">
+            <EntityTypeMapping TypeName="ISSModel.getMessagesAll">
+              <MappingFragment StoreEntitySet="getMessagesAll">
+                <ScalarProperty Name="MessageId" ColumnName="MessageId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="MessageBody" ColumnName="MessageBody" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="getPossiblePCMembers">
+            <EntityTypeMapping TypeName="ISSModel.getPossiblePCMember">
+              <MappingFragment StoreEntitySet="getPossiblePCMembers">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Affilliation" ColumnName="Affilliation" />
+                <ScalarProperty Name="WebPage" ColumnName="WebPage" />
+                <ScalarProperty Name="canBePCMember" ColumnName="canBePCMember" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="getUsers">
+            <EntityTypeMapping TypeName="ISSModel.getUser">
+              <MappingFragment StoreEntitySet="getUsers">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Affilliation" ColumnName="Affilliation" />
+                <ScalarProperty Name="WebPage" ColumnName="WebPage" />
+                <ScalarProperty Name="canBePCMember" ColumnName="canBePCMember" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionName="ISSModel.Store.getAdditionalAuthors" FunctionImportName="getAdditionalAuthors">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ISSModel.getAdditionalAuthors_Result">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Affiliation" ColumnName="Affiliation" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="ISSModel.Store.getBidsResult" FunctionImportName="getBidsResult">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ISSModel.getBidsResult_Result">
+                <ScalarProperty Name="PCMemberUserId" ColumnName="PCMemberUserId" />
+                <ScalarProperty Name="BiddingEvaluation" ColumnName="BiddingEvaluation" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="ISSModel.Store.getMessagesUser" FunctionImportName="getMessagesUser">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ISSModel.getMessagesUser_Result">
+                <ScalarProperty Name="MessageId" ColumnName="MessageId" />
+                <ScalarProperty Name="MessageBody" ColumnName="MessageBody" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="ISSModel.Store.getPapersConference" FunctionImportName="getPapersConference">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ISSModel.getPapersConference_Result">
+                <ScalarProperty Name="PaperId" ColumnName="PaperId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Resume" ColumnName="Resume" />
+                <ScalarProperty Name="Domain" ColumnName="Domain" />
+                <ScalarProperty Name="Subdomain" ColumnName="Subdomain" />
+                <ScalarProperty Name="Filepath" ColumnName="Filepath" />
+                <ScalarProperty Name="EvaluationResult" ColumnName="EvaluationResult" />
+                <ScalarProperty Name="IsEmailSent" ColumnName="IsEmailSent" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="ISSModel.Store.getPapersSession" FunctionImportName="getPapersSession">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ISSModel.getPapersSession_Result">
+                <ScalarProperty Name="PaperId" ColumnName="PaperId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Resume" ColumnName="Resume" />
+                <ScalarProperty Name="Domain" ColumnName="Domain" />
+                <ScalarProperty Name="Subdomain" ColumnName="Subdomain" />
+                <ScalarProperty Name="Filepath" ColumnName="Filepath" />
+                <ScalarProperty Name="EvaluationResult" ColumnName="EvaluationResult" />
+                <ScalarProperty Name="IsEmailSent" ColumnName="IsEmailSent" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="TopicName" ColumnName="TopicName" />
+                <ScalarProperty Name="RoomReservationId" ColumnName="RoomReservationId" />
+                <ScalarProperty Name="BeginTime" ColumnName="BeginTime" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="ISSModel.Store.getParticpantsConference" FunctionImportName="getParticpantsConference">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ISSModel.getParticpantsConference_Result">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="ISSModel.Store.getPayment" FunctionImportName="getPayment">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ISSModel.getPayment_Result">
+                <ScalarProperty Name="PaymentId" ColumnName="PaymentId" />
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+                <ScalarProperty Name="NrOfTickets" ColumnName="NrOfTickets" />
+                <ScalarProperty Name="PaidSum" ColumnName="PaidSum" />
+                <ScalarProperty Name="SuccessfulTransaction" ColumnName="SuccessfulTransaction" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="ISSModel.Store.getPCMembersConference" FunctionImportName="getPCMembersConference">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ISSModel.getPCMembersConference_Result">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="isChair" ColumnName="isChair" />
+                <ScalarProperty Name="isCoChair" ColumnName="isCoChair" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="ISSModel.Store.getReservationPaper" FunctionImportName="getReservationPaper">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ISSModel.getReservationPaper_Result">
+                <ScalarProperty Name="SessionId" ColumnName="SessionId" />
+                <ScalarProperty Name="RoomName" ColumnName="RoomName" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="Timp" ColumnName="Timp" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="ISSModel.Store.getReviewsPaper" FunctionImportName="getReviewsPaper">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ISSModel.getReviewsPaper_Result">
+                <ScalarProperty Name="PCMemberUserId" ColumnName="PCMemberUserId" />
+                <ScalarProperty Name="Evaluation" ColumnName="Evaluation" />
+                <ScalarProperty Name="Recommandations" ColumnName="Recommandations" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="ISSModel.Store.getReviewsPcMember" FunctionImportName="getReviewsPcMember">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ISSModel.getReviewsPcMember_Result">
+                <ScalarProperty Name="PaperId" ColumnName="PaperId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="ISSModel.Store.getSessionsForConference" FunctionImportName="getSessionsForConference">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ISSModel.getSessionsForConference_Result">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="SessionChairId" ColumnName="SessionChairId" />
+                <ScalarProperty Name="SessionId" ColumnName="SessionId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="ISSModel.Store.getTopicsFor1Conference" FunctionImportName="getTopicsFor1Conference">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ISSModel.getTopicsFor1Conference_Result">
+                <ScalarProperty Name="TopicName" ColumnName="TopicName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
