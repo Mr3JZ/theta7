@@ -13,6 +13,9 @@ namespace Persistence
         [STAThread]
         static void Main()
         {
+
+
+            
             Repository.RepoPaperDB repoP = new Repository.RepoPaperDB();
             Repository.RepoParticipantDB repoParticipant = new Repository.RepoParticipantDB();
 
@@ -43,6 +46,7 @@ namespace Persistence
 
 
             }
+            
 
 
 
@@ -85,7 +89,6 @@ namespace Persistence
             */
 
 
-            return;
         }
     }
 }

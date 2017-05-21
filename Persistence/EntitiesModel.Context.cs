@@ -21,7 +21,11 @@ namespace Persistence
             : base("name=ISSEntities2")
         {
         }
-    
+
+        public ISSEntities2(string nameOrConnectionString) : base(nameOrConnectionString)
+        {
+        }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
@@ -86,6 +90,16 @@ namespace Persistence
                 new ObjectParameter("idConference", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<getPapersConference_Result>("[ISSEntities2].[getPapersConference](@idConference)", idConferenceParameter);
+        }
+    
+        [DbFunction("ISSEntities2", "getPapersSession")]
+        public virtual IQueryable<getPapersSession_Result> getPapersSession(Nullable<int> idSession)
+        {
+            var idSessionParameter = idSession.HasValue ?
+                new ObjectParameter("idSession", idSession) :
+                new ObjectParameter("idSession", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<getPapersSession_Result>("[ISSEntities2].[getPapersSession](@idSession)", idSessionParameter);
         }
     
         [DbFunction("ISSEntities2", "getParticpantsConference")]
@@ -174,28 +188,6 @@ namespace Persistence
                 new ObjectParameter("idConference", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<getTopicsFor1Conference_Result>("[ISSEntities2].[getTopicsFor1Conference](@idConference)", idConferenceParameter);
-        }
-    
-        public virtual int PopulatePaperReservations(Nullable<int> conferenceId, Nullable<int> duration)
-        {
-            var conferenceIdParameter = conferenceId.HasValue ?
-                new ObjectParameter("ConferenceId", conferenceId) :
-                new ObjectParameter("ConferenceId", typeof(int));
-    
-            var durationParameter = duration.HasValue ?
-                new ObjectParameter("Duration", duration) :
-                new ObjectParameter("Duration", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PopulatePaperReservations", conferenceIdParameter, durationParameter);
-        }
-    
-        public virtual int PopulateRoomReservations(Nullable<int> conferenceId)
-        {
-            var conferenceIdParameter = conferenceId.HasValue ?
-                new ObjectParameter("ConferenceId", conferenceId) :
-                new ObjectParameter("ConferenceId", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PopulateRoomReservations", conferenceIdParameter);
         }
     }
 }

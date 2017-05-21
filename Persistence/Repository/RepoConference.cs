@@ -93,7 +93,7 @@ namespace Persistence.Repository
 
         public List<Model.Conference> getConferences()
         {
-            List<Conference> all = new List<Conference>();
+            List<Model.Conference> all = new List<Model.Conference>();
             using (var context = new ISSEntities2(Util.ConnectionStringWithPassword.doIt()))
             {
                 foreach(var c in context.getConferences)
@@ -105,44 +105,16 @@ namespace Persistence.Repository
                     }
 
                     Model.Conference conf = new Model.Conference(c.ConferenceId,c.Name,c.Edition,topics,c.DeadlineAbstractPaper,c.DeadlineCompletePaper,c.DeadlineBiddingPaper,c.DeadlineEvaluation,c.DeadlineParticipation,c.City,c.Country,c.Website,c.Price,c.BeginDate,c.EndDate);
-
+                    all.Add(conf);
                     //pune papers pa dinafara (din repoPaper)
                     //pune si participanti pa dinafara (din repoParticipant)
-
-                    /* fml
-                    List<Model.Session> sessions = new List<Model.Session>();
-                    foreach(var s in context.getSessionsForConference(c.ConferenceId))
-                    {
-                        List<Model.Reservation> papers = new List<Model.Reservation>();
-
-                        var us = context.Users.Find(s.SessionChairId);
-                        var user= new Model.User(us.UserId, us.Username, us.Password, us.Name, us.Affilliation, us.Email, us.canBePCMember, us.WebPage);
-                        var pcm = context.PCMembers.Find(s.SessionChairId,c.ConferenceId);
-                        Model.Participant chair = new Model.Participant(user, c.ConferenceId, pcm.isChair, pcm.isCoChair, true, false);
-
-                        sessions.Add(new Model.Session(0, papers, chair));
-
-                    }
-                    */
-                    /*
-                    foreach(var s in context.Sessions)
-                    {
-                        if (s.ConferenceId == c.ConferenceId)
-                        {
-                            foreach(var r in s.RoomReservations)
-                                foreach(var p in r.PaperReservations)
-
-                        }
-                    }*/
-
-                    
-                    
+                    //pune si sesiunile fuck it
                 }
             }
 
                     
 
-            return conferences;
+            return all;
         }
     }
 }

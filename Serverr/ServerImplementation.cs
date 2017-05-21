@@ -35,6 +35,7 @@ namespace Server
             this.repoParticipant = repoParticipant;
             this.repoPayment = repoPayment;
             this.repoSession = repoSession;
+            loggedClients = new Dictionary<String, IClient>();
         }
 
         public List<Model.Conference> GetConferences()
@@ -74,7 +75,7 @@ namespace Server
 
         public void NewPaper(Model.Conference c, Model.Paper p)
         {
-            Console.WriteLine("futai");
+            throw new NotImplementedException();
         }
 
         public void NewParticipant(Model.Conference c, Participant p)

@@ -9,7 +9,7 @@ using System.Runtime.Remoting.Channels.Tcp;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Services
+namespace Serverr
 {
     class StartServer
     {
@@ -39,7 +39,6 @@ namespace Services
 
             Console.WriteLine("Server go");
             Console.ReadLine();
-
         }
     }
 }

@@ -8,7 +8,7 @@ using Model;
 
 namespace Client
 {
-    class ClientController: MarshalByRefObject, IClient
+    public class ClientController : MarshalByRefObject, IClient
     {
         private readonly IServer server;
         private User currentUser;
@@ -34,6 +34,10 @@ namespace Client
             User user = new User(username, password);
             server.Login(user, this);
             currentUser = user;
+
+
+            Console.WriteLine("k");
+
         }
         public void logout()
         {
@@ -41,7 +45,7 @@ namespace Client
             {
                 server.Logout(currentUser, this);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
             }

@@ -600,6 +600,28 @@ warning 6002: The table/view 'ISS.dbo.getUsers' does not have a primary key defi
             </CollectionType>
           </ReturnType>
         </Function>
+        <Function Name="getPapersSession" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idSession" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="PaperId" Type="int" Nullable="false" />
+                <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+                <Property Name="Resume" Type="nvarchar" MaxLength="500" Nullable="false" />
+                <Property Name="Domain" Type="nvarchar" MaxLength="30" Nullable="false" />
+                <Property Name="Subdomain" Type="nvarchar" MaxLength="30" Nullable="false" />
+                <Property Name="Filepath" Type="nvarchar" MaxLength="240" Nullable="false" />
+                <Property Name="EvaluationResult" Type="nvarchar" MaxLength="50" />
+                <Property Name="IsEmailSent" Type="bit" Nullable="false" />
+                <Property Name="UserId" Type="int" Nullable="false" />
+                <Property Name="TopicName" Type="nvarchar" MaxLength="50" Nullable="false" />
+                <Property Name="RoomReservationId" Type="int" />
+                <Property Name="BeginTime" Type="datetime" />
+                <Property Name="Duration" Type="int" Nullable="false" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
         <Function Name="getParticpantsConference" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="idConference" Type="int" Mode="In" />
           <ReturnType>
@@ -698,13 +720,6 @@ warning 6002: The table/view 'ISS.dbo.getUsers' does not have a primary key defi
               </RowType>
             </CollectionType>
           </ReturnType>
-        </Function>
-        <Function Name="PopulatePaperReservations" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="ConferenceId" Type="int" Mode="In" />
-          <Parameter Name="Duration" Type="int" Mode="In" />
-        </Function>
-        <Function Name="PopulateRoomReservations" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="ConferenceId" Type="int" Mode="In" />
         </Function>
         <EntityContainer Name="ISSModelStoreContainer">
           <EntitySet Name="AdditionalAuthors" EntityType="Self.AdditionalAuthors" Schema="dbo" store:Type="Tables" />
@@ -892,6 +907,21 @@ warning 6002: The table/view 'ISS.dbo.getUsers' does not have a primary key defi
           <Property Name="EvaluationResult" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IsEmailSent" Type="Boolean" Nullable="false" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="getPapersSession_Result">
+          <Property Name="PaperId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Resume" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Domain" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Subdomain" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Filepath" Type="String" MaxLength="240" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EvaluationResult" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsEmailSent" Type="Boolean" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="TopicName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RoomReservationId" Type="Int32" />
+          <Property Name="BeginTime" Type="DateTime" />
+          <Property Name="Duration" Type="Int32" Nullable="false" />
         </ComplexType>
         <ComplexType Name="getParticpantsConference_Result">
           <Property Name="UserId" Type="Int32" Nullable="false" />
@@ -1641,6 +1671,9 @@ warning 6002: The table/view 'ISS.dbo.getUsers' does not have a primary key defi
           <FunctionImport Name="getPapersConference" IsComposable="true" ReturnType="Collection(ISSModel.getPapersConference_Result)">
             <Parameter Name="idConference" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="getPapersSession" IsComposable="true" ReturnType="Collection(ISSModel.getPapersSession_Result)">
+            <Parameter Name="idSession" Mode="In" Type="Int32" />
+          </FunctionImport>
           <FunctionImport Name="getParticpantsConference" IsComposable="true" ReturnType="Collection(ISSModel.getParticpantsConference_Result)">
             <Parameter Name="idConference" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -1666,13 +1699,6 @@ warning 6002: The table/view 'ISS.dbo.getUsers' does not have a primary key defi
           </FunctionImport>
           <FunctionImport Name="getTopicsFor1Conference" IsComposable="true" ReturnType="Collection(ISSModel.getTopicsFor1Conference_Result)">
             <Parameter Name="idConference" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="PopulatePaperReservations">
-            <Parameter Name="ConferenceId" Mode="In" Type="Int32" />
-            <Parameter Name="Duration" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="PopulateRoomReservations">
-            <Parameter Name="ConferenceId" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
       </Schema>
@@ -1964,6 +1990,25 @@ warning 6002: The table/view 'ISS.dbo.getUsers' does not have a primary key defi
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="ISSModel.Store.getPapersSession" FunctionImportName="getPapersSession">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ISSModel.getPapersSession_Result">
+                <ScalarProperty Name="PaperId" ColumnName="PaperId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Resume" ColumnName="Resume" />
+                <ScalarProperty Name="Domain" ColumnName="Domain" />
+                <ScalarProperty Name="Subdomain" ColumnName="Subdomain" />
+                <ScalarProperty Name="Filepath" ColumnName="Filepath" />
+                <ScalarProperty Name="EvaluationResult" ColumnName="EvaluationResult" />
+                <ScalarProperty Name="IsEmailSent" ColumnName="IsEmailSent" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="TopicName" ColumnName="TopicName" />
+                <ScalarProperty Name="RoomReservationId" ColumnName="RoomReservationId" />
+                <ScalarProperty Name="BeginTime" ColumnName="BeginTime" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionName="ISSModel.Store.getParticpantsConference" FunctionImportName="getParticpantsConference">
             <ResultMapping>
               <ComplexTypeMapping TypeName="ISSModel.getParticpantsConference_Result">
@@ -2037,8 +2082,6 @@ warning 6002: The table/view 'ISS.dbo.getUsers' does not have a primary key defi
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="PopulatePaperReservations" FunctionName="ISSModel.Store.PopulatePaperReservations" />
-          <FunctionImportMapping FunctionImportName="PopulateRoomReservations" FunctionName="ISSModel.Store.PopulateRoomReservations" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

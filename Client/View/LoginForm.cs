@@ -14,11 +14,13 @@ namespace Client.View
     {
         private bool waterMarkUsernameActive;
         private bool waterMarkPasswordActive;
-        //private ClientController ctrl;
-        public LoginForm()
+        private ClientController ctrl;
+
+
+        public LoginForm(ClientController ctrl)
         {
             InitializeComponent();
-            //this.ctrl = ctrl;
+            this.ctrl = ctrl;
             initUsernameView();
             initPasswordView();
         }
@@ -87,7 +89,7 @@ namespace Client.View
             {
                 try
                 {
-                    //ctrl.login(usernameTextBox.Text, passwordTextBox.Text);
+                    ctrl.login(usernameTextBox.Text, passwordTextBox.Text);
                 }
                 catch (Exception ex)
                 {

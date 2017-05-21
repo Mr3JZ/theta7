@@ -82,19 +82,19 @@
       <DependentUpon>EntitiesModel.tt</DependentUpon>
     </Compile>
     <Compile Include="EntitiesModel.Context.cs">
+      <DependentUpon>EntitiesModel.Context.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>EntitiesModel.Context.tt</DependentUpon>
     </Compile>
     <Compile Include="EntitiesModel.cs">
+      <DependentUpon>EntitiesModel.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>EntitiesModel.tt</DependentUpon>
     </Compile>
     <Compile Include="EntitiesModel.Designer.cs">
+      <DependentUpon>EntitiesModel.edmx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>EntitiesModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="getAdditionalAuthors_Result.cs">
       <DependentUpon>EntitiesModel.tt</DependentUpon>
@@ -112,6 +112,9 @@
       <DependentUpon>EntitiesModel.tt</DependentUpon>
     </Compile>
     <Compile Include="getPapersConference_Result.cs">
+      <DependentUpon>EntitiesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="getPapersSession_Result.cs">
       <DependentUpon>EntitiesModel.tt</DependentUpon>
     </Compile>
     <Compile Include="getParticpantsConference_Result.cs">
@@ -173,6 +176,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Repository\RepoMessageDB.cs" />
+    <Compile Include="Repository\RepoSessionDB.cs" />
     <Compile Include="Repository\RepoAvailableRoomDB.cs" />
     <Compile Include="Repository\RepoConference.cs" />
     <Compile Include="Repository\RepoPaperDB.cs" />
