@@ -40,14 +40,14 @@ namespace Server
 
         public List<Model.Conference> GetConferences()
         {
-            //return confRepo.getAll();
+            return repoConference.getConferences();
             throw new NotImplementedException();
         }
 
         public void Login(Model.User u, IClient client)
         {
             if (loggedClients.ContainsKey(u.Username) == true)
-                throw new NotImplementedException();//User already logged in
+                throw new ServerException("User already logged in");
 
             List<Model.User> allUsers = repoUser.GetAll();
             foreach (Model.User user in allUsers)
@@ -57,7 +57,7 @@ namespace Server
                     return;
                 }
 
-            throw new NotImplementedException();//Invalid user
+            throw new ServerException("Invalid user");
         }
 
         public void Logout(Model.User u, IClient client)

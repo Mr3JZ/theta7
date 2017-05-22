@@ -9,7 +9,7 @@ using System.Runtime.Remoting.Channels.Tcp;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Serverr
+namespace Server
 {
     class StartServer
     {

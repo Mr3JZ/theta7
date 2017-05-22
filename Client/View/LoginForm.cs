@@ -87,20 +87,21 @@ namespace Client.View
         {
             if (ValidateLoginText())
             {
-                try
+                if(ctrl.login(usernameTextBox.Text, passwordTextBox.Text))
                 {
-                    ctrl.login(usernameTextBox.Text, passwordTextBox.Text);
+                    Console.WriteLine("k");
+                    ///GO TO NEXT FORM
                 }
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show(ex.ToString());
+                    MessageBox.Show("Invalid account!");
                 }
             }
         }
 
         private void registerLabel_Click(object sender, EventArgs e)
         {
-            new RegisterForm().ShowDialog();
+            new RegisterForm(ctrl).ShowDialog();
         }
         private bool ValidateLoginText()
         {
