@@ -35,10 +35,8 @@ namespace Client
             server.Login(user, this);
             currentUser = user;
 
-
-            Console.WriteLine("k");
-
         }
+
         public void logout()
         {
             try
@@ -65,5 +63,22 @@ namespace Client
         {
             return server.GetConference(id);
         }
+
+        
+        public List<Review> getReviewsByPaper(int paperId)
+        {
+            return server.GetReviewsByPaper(paperId);
+        }
+
+        public void addReview(int paperId, Review r)
+        {
+            server.AddReview(paperId, r);
+        }
+
+        public void addParticipant(Participant p)
+        {
+            server.AddParticipant(p);
+        }
+        
     }
 }
