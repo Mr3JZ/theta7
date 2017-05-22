@@ -90,6 +90,18 @@ namespace Client.View
                 try
                 {
                     ctrl.login(usernameTextBox.Text, passwordTextBox.Text);
+                    if (usernameTextBox.Text.Equals("admin"))
+                    {
+                        GeneralForm gf = new GeneralForm(ctrl, "admin");
+                        gf.Show();
+                        this.Hide();
+                    }
+                    else
+                    {
+                        GeneralForm gf = new GeneralForm(ctrl, "normal");
+                        gf.Show();
+                        this.Hide();
+                    }
                 }
                 catch (Exception ex)
                 {
