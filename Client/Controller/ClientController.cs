@@ -43,6 +43,7 @@ namespace Client
                 return false;
             }
         }
+
         public void logout()
         {
             try
@@ -115,5 +116,32 @@ namespace Client
             }
             return specialUsersList;
         }
+
+        public List<Model.Conference> getConferences()
+        {
+            return server.GetConferences();
+        }
+
+        public Model.Conference getConference(int id)
+        {
+            return server.GetConference(id);
+        }
+
+        
+        public List<Review> getReviewsByPaper(int paperId)
+        {
+            return server.GetReviewsByPaper(paperId);
+        }
+
+        public void addReview(int paperId, Review r)
+        {
+            server.AddReview(paperId, r);
+        }
+
+        public void addParticipant(Participant p)
+        {
+            server.AddParticipant(p);
+        }
+        
     }
 }

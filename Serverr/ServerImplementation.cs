@@ -41,7 +41,12 @@ namespace Server
         public List<Model.Conference> GetConferences()
         {
             return repoConference.getConferences();
-            throw new NotImplementedException();
+        }
+
+        public Model.Conference GetConference(int id)
+        {
+            var conf= repoConference.getConference(id);
+            return conf;
         }
 
         public void Login(Model.User u, IClient client)
@@ -78,10 +83,9 @@ namespace Server
             throw new NotImplementedException();
         }
 
-        public void NewParticipant(Model.Conference c, Participant p)
+        public void AddParticipant(Participant p)
         {
-            //adauga participant nou, eventual notifica
-            throw new NotImplementedException();
+            repoParticipant.Add(p);
         }
 
         public void NewPayment(Model.Payment p)
@@ -100,6 +104,21 @@ namespace Server
         {
             //updateaza o lucrare, eventual notifica 
             throw new NotImplementedException();
+        }
+
+        public List<Model.Review> GetReviewsByPaper(int paperId)
+        {
+            return repoPaper.GetReviewsByPaper(paperId);
+        }
+
+        public void AddReview(int paperId, Model.Review r)
+        {
+            repoPaper.AddReview(paperId, r);
+        }
+
+        public List<Model.User> GetSpecialUsers()
+        {
+            return repoUser.GetAll().Where(x => {return x.isSpecial == true; }).ToList();
         }
     }
 }

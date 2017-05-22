@@ -90,6 +90,24 @@ namespace Persistence.Repository
             }
         }
 
+        public Model.Conference getConference(int id)
+        {
+            using (var context = new ISSEntities2(Util.ConnectionStringWithPassword.doIt()))
+            {
+                Conference u = context.Conferences.Find(id);
+                if (u != null)
+                {
+                    throw new RepositoryException("No conference with given id!");
+                }
+                List<string> topics = new List<string>();
+                foreach (var t in context.getTopicsFor1Conference(id))
+                {
+                    topics.Add(t.TopicName);
+                }
+                return new Model.Conference(id,u.Name,u.Edition, topics, u.DeadlineAbstractPaper,u.DeadlineCompletePaper,u.DeadlineBiddingPaper,u.DeadlineEvaluation,u.DeadlineParticipation,u.City,u.Country,u.Website,u.Price,u.BeginDate,u.EndDate);
+            }
+        }
+
 
         public List<Model.Conference> getConferences()
         {
