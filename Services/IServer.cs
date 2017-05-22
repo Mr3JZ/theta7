@@ -16,12 +16,13 @@ namespace Services
         Conference GetConference(int id);
         List<Review> GetReviewsByPaper(int paperId);
         List<User> GetSpecialUsers();
+        List<User> GetAllUsers();
         void AddReview(int paperId, Review r);
         void AddParticipant(Participant p);
         void NewPaper(Conference c, Paper p);
         void UpdatePaper(Paper p);
         void UpdateConference(Conference c);
         void NewPayment(Payment p);
-
+        void AddConference(Conference conference);
     }
 }

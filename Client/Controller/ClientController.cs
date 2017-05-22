@@ -19,16 +19,55 @@ namespace Client
             this.currentUser = null;
         }
 
+        ///CONFERENCE
+        
         public void updatedConference(Conference c)
         {
             throw new NotImplementedException();
         }
+        public List<Model.Conference> getAllConferences()
+        {
+            return server.GetConferences();
+        }
+        public Model.Conference getConference(int id)
+        {
+            return server.GetConference(id);
+        }
+        public List<Model.Conference> getMyConferences() //daca am timp o voi face mai frumoasa; daca aveti timp, feel free and change it
+        {
+            List<Model.Conference> allConferences = getAllConferences();
+            List<Model.Conference> myConferences = new List<Model.Conference>();
+            foreach (Conference conference in allConferences)
+            {
+                foreach (Participant participant in conference.Participants)
+                {
+                    if (participant.User.Name.Equals(currentUser.Name))
+                    {
+                        myConferences.Add(conference);
+                        break;
+                    }
+                }
+            }
+            return myConferences;
+        }
+        public void AddConference(string name, string edition, List<string> topics, DateTime deadlineAbstract,
+                DateTime deadlineComplet, DateTime deadlineBidding, DateTime deadlineEvaluation, DateTime deadlineParticipation,
+                string city, string country, string website, double admissionPrice, DateTime beginDate, DateTime endDate)
+        {
+            Conference conference = new Conference(-1, name, edition, topics, deadlineAbstract, deadlineComplet, deadlineBidding, deadlineEvaluation, deadlineParticipation,
+                city, country, website, admissionPrice, beginDate, endDate);
+            server.AddConference(conference);
+        }
+
+        ///PAPER
 
         public void updatedPaper(Paper p)
         {
             throw new NotImplementedException();
         }
 
+        ///USER
+        
         public bool login(string username, string password)
         {
             try
@@ -43,7 +82,6 @@ namespace Client
                 return false;
             }
         }
-
         public void logout()
         {
             try
@@ -68,44 +106,38 @@ namespace Client
                 return false;
             }
         }
-        public List<Model.Conference> getAllConferences()
+        public List<Model.User> GetAllUsers()
         {
-            return server.GetConferences();
+            return server.GetAllUsers();
         }
-        public List<Model.Conference> getMyConferences() //daca am timp o voi face mai frumoasa; daca aveti timp, feel free and change it
+        public string getMyRank(string name, string edition, string city)
         {
             List<Model.Conference> allConferences = getAllConferences();
-            List<Model.Conference> myConferences = new List<Model.Conference>();
-            foreach(Conference conference in allConferences)
+            foreach (Model.Conference conference in allConferences)
             {
-                foreach(Participant participant in conference.Participants)
-                {
-                    if(participant.User.Name.Equals(currentUser.Name))
-                    {
-                        myConferences.Add(conference);
-                        break;
-                    }
-                }
-            }
-            return myConferences;
-        }
-        public string getMyRank(Conference conference)
-        {
-            foreach(Model.Participant participant in conference.Participants)
-            {
-                if(participant.User.Name.Equals(currentUser.Name))
-                {
-                    if (participant.IsChair)
-                        return "IsChair";
-                    if (participant.IsCochair)
-                        return "IsCoChair";
-                    else //(participant.IsNormalUser)
-                        return "IsNormalUser";
-
-                }
+                if (conference.Name.Equals(name) && conference.Edition.Equals(edition) && conference.City.Equals(city))
+                    foreach (Model.Participant participant in conference.Participants)
+                        if (participant.User.Name.Equals(currentUser.Name))
+                        {
+                            if (participant.IsChair)
+                                return "IsChair";
+                            if (participant.IsCochair)
+                                return "IsCoChair";
+                            if (participant.CanBePCMember)
+                                return "CanBePCMember";
+                            else
+                                return "IsNormalUser";
+                        }
             }
             return "User not found in conference";
         }
+        public List<Model.User> GetSpecialUsers()
+        {
+            return server.GetSpecialUsers();
+        }
+
+        ///PARTICIPANT
+
         public List<Model.Participant> getSpecialParticipants(Conference conference)
         {
             List<Model.Participant> specialUsersList = new List<Model.Participant>();
@@ -116,32 +148,20 @@ namespace Client
             }
             return specialUsersList;
         }
-
-        public List<Model.Conference> getConferences()
-        {
-            return server.GetConferences();
-        }
-
-        public Model.Conference getConference(int id)
-        {
-            return server.GetConference(id);
-        }
-
-        
-        public List<Review> getReviewsByPaper(int paperId)
-        {
-            return server.GetReviewsByPaper(paperId);
-        }
-
-        public void addReview(int paperId, Review r)
-        {
-            server.AddReview(paperId, r);
-        }
-
         public void addParticipant(Participant p)
         {
             server.AddParticipant(p);
         }
-        
+
+        ///REVIEW
+
+        public List<Review> getReviewsByPaper(int paperId)
+        {
+            return server.GetReviewsByPaper(paperId);
+        }
+        public void addReview(int paperId, Review r)
+        {
+            server.AddReview(paperId, r);
+        }
     }
 }

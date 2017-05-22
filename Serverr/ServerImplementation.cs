@@ -135,5 +135,13 @@ namespace Server
         {
             return repoUser.GetAll().Where(x => {return x.isSpecial == true; }).ToList();
         }
+        public List<Model.User> GetAllUsers()
+        {
+            return repoUser.GetAll();
+        }
+        public void AddConference(Model.Conference conference)
+        {
+            repoConference.addConference(conference);
+        }
     }
 }
