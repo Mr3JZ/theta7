@@ -143,5 +143,13 @@ namespace Server
         {
             repoConference.addConference(conference);
         }
+        public void AddMessage(Model.Message message)
+        {
+            repoMessage.Add(message);
+        }
+        public List<Model.Message> GetUserMessages(int userID)
+        {
+            return repoMessage.GetByUser(userID);
+        }
     }
 }
