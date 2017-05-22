@@ -87,7 +87,7 @@ namespace Client.View
         {
             if (ValidateLoginText())
             {
-                try
+                if(ctrl.login(usernameTextBox.Text, passwordTextBox.Text))
                 {
                     ctrl.login(usernameTextBox.Text, passwordTextBox.Text);
                     if (usernameTextBox.Text.Equals("admin"))
@@ -103,16 +103,16 @@ namespace Client.View
                         this.Hide();
                     }
                 }
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show(ex.ToString());
+                    MessageBox.Show("Invalid account!");
                 }
             }
         }
 
         private void registerLabel_Click(object sender, EventArgs e)
         {
-            new RegisterForm().ShowDialog();
+            new RegisterForm(ctrl).ShowDialog();
         }
         private bool ValidateLoginText()
         {

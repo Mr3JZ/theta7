@@ -115,6 +115,10 @@
       <Project>{f94ec6bb-d80f-4888-98ce-8426860e98ce}</Project>
       <Name>Model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Serverr\Server.csproj">
+      <Project>{9c147296-04b3-44aa-be1f-b536b3aeb659}</Project>
+      <Name>Server</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Services\Services.csproj">
       <Project>{2f8b3f95-a7b4-4d00-a389-06dad87e4c77}</Project>
       <Name>Services</Name>

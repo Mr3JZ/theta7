@@ -13,7 +13,11 @@ namespace Services
         void Logout(User u, IClient client);
         void Register(User user);
         List<Conference> GetConferences();
-        void NewParticipant(Conference c, Participant p);
+        Conference GetConference(int id);
+        List<Review> GetReviewsByPaper(int paperId);
+        List<User> GetSpecialUsers();
+        void AddReview(int paperId, Review r);
+        void AddParticipant(Participant p);
         void NewPaper(Conference c, Paper p);
         void UpdatePaper(Paper p);
         void UpdateConference(Conference c);

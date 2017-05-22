@@ -40,14 +40,34 @@ namespace Server
 
         public List<Model.Conference> GetConferences()
         {
-            //return confRepo.getAll();
-            throw new NotImplementedException();
+            var all= repoConference.getConferences();
+
+            foreach(var conf in all)
+            {
+                conf.Papers = repoPaper.GetByConference(conf.Id);
+                conf.Participants = repoParticipant.GetByConference(conf.Id);
+                conf.Sessions = repoSession.GetByConference(conf.Id);
+            }
+
+            return all;
+
+        }
+
+        public Model.Conference GetConference(int id)
+        {
+            var conf= repoConference.getConference(id);
+
+            conf.Papers = repoPaper.GetByConference(conf.Id);
+            conf.Participants = repoParticipant.GetByConference(conf.Id);
+            conf.Sessions = repoSession.GetByConference(conf.Id);
+
+            return conf;
         }
 
         public void Login(Model.User u, IClient client)
         {
             if (loggedClients.ContainsKey(u.Username) == true)
-                throw new NotImplementedException();//User already logged in
+                throw new ServerException("User already logged in");
 
             List<Model.User> allUsers = repoUser.GetAll();
             foreach (Model.User user in allUsers)
@@ -57,7 +77,7 @@ namespace Server
                     return;
                 }
 
-            throw new NotImplementedException();//Invalid user
+            throw new ServerException("Invalid user");
         }
 
         public void Logout(Model.User u, IClient client)
@@ -78,10 +98,9 @@ namespace Server
             throw new NotImplementedException();
         }
 
-        public void NewParticipant(Model.Conference c, Participant p)
+        public void AddParticipant(Participant p)
         {
-            //adauga participant nou, eventual notifica
-            throw new NotImplementedException();
+            repoParticipant.Add(p);
         }
 
         public void NewPayment(Model.Payment p)
@@ -100,6 +119,21 @@ namespace Server
         {
             //updateaza o lucrare, eventual notifica 
             throw new NotImplementedException();
+        }
+
+        public List<Model.Review> GetReviewsByPaper(int paperId)
+        {
+            return repoPaper.GetReviewsByPaper(paperId);
+        }
+
+        public void AddReview(int paperId, Model.Review r)
+        {
+            repoPaper.AddReview(paperId, r);
+        }
+
+        public List<Model.User> GetSpecialUsers()
+        {
+            return repoUser.GetAll().Where(x => {return x.isSpecial == true; }).ToList();
         }
     }
 }

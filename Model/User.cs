@@ -9,6 +9,7 @@ namespace Model
     [Serializable]
     public class User
     {
+        public User() { }
         public User(string username, string password)
         {
             this.Username = username;

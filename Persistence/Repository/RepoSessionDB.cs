@@ -9,10 +9,9 @@ namespace Persistence
 {
     public class RepoSessionDB
     {
-        public List<Model.Session> getByConference(int confId)
+        public List<Model.Session> GetByConference(int confId)
         {
             List<Model.Session> all = new List<Model.Session>();
-            Console.WriteLine("plm");
             return all;
 
 

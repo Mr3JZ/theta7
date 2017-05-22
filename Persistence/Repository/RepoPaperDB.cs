@@ -15,7 +15,7 @@ namespace Persistence.Repository
 
             using (var context = new ISSEntities2(Util.ConnectionStringWithPassword.doIt()))
             {
-                foreach(Paper paper in context.Papers)
+                foreach (Paper paper in context.Papers)
                 {
                     if (paper.ConferenceId == confId)
                     {
@@ -27,7 +27,7 @@ namespace Persistence.Repository
                         Model.Paper p = new Model.Paper(paper.PaperId, paper.ConferenceId, user, paper.Name, paper.Filepath, paper.Domain, paper.Subdomain, paper.Resume, t.TopicName);
 
                         List<Author> authors = new List<Author>();
-                        foreach(AdditionalAuthor a in context.AdditionalAuthors)
+                        foreach (AdditionalAuthor a in context.AdditionalAuthors)
                         {
                             if (a.PaperId == paper.PaperId)
                             {
@@ -38,7 +38,7 @@ namespace Persistence.Repository
 
                         p.AdditionalAuthors = authors;
 
-                        foreach(Bid b in context.Bids)
+                        foreach (Bid b in context.Bids)
                         {
                             if (b.PaperId == paper.PaperId)
                             {
@@ -48,27 +48,25 @@ namespace Persistence.Repository
                                 Model.Participant participant = new Model.Participant(bidder, b.PCMemberConferenceId, pcm.isChair, pcm.isCoChair, true, false);
 
                                 p.AddBid(participant, b.BiddingEvaluation);
-                                
+
                             }
                         }
 
-                        foreach(Review r in context.Reviews)
+                        foreach (var r in context.getReviewsPaper(paper.PaperId))
                         {
-                            if (r.PaperId == paper.PaperId)
-                            {
-                                User us = context.Users.Find(r.PCMemberUserId);
-                                PCMember pcm = context.PCMembers.Find(r.PCMemberUserId, r.PCMemberConferenceId);
-                                Model.User reviewer = new Model.User(us.UserId, us.Username, us.Password, us.Name, us.Affilliation, us.Email, us.canBePCMember, us.WebPage);
-                                Model.Participant participant = new Model.Participant(reviewer, r.PCMemberConferenceId, pcm.isChair, pcm.isCoChair, true, false);
+                            User us = context.Users.Find(r.PCMemberUserId);
+                            PCMember pcm = context.PCMembers.Find(r.PCMemberUserId,paper.ConferenceId);
+                            Model.User reviewer = new Model.User(us.UserId, us.Username, us.Password, us.Name, us.Affilliation, us.Email, us.canBePCMember, us.WebPage);
+                            Model.Participant participant = new Model.Participant(reviewer, paper.ConferenceId, pcm.isChair, pcm.isCoChair, true, false);
 
-                                Verdict v = (Verdict)r.Evaluation;
+                            Verdict v = (Verdict)r.Evaluation;
 
-                                Model.Review review = new Model.Review(0, participant, v, r.Recommandations);
+                            Model.Review review = new Model.Review(0, participant, v, r.Recommandations);
 
-                                p.AddReviewer(participant);
-                                p.AddReview(review);
+                            p.AddReviewer(participant);
+                            p.AddReview(review);
 
-                            }
+
                         }
 
                         all.Add(p);
@@ -85,19 +83,19 @@ namespace Persistence.Repository
         {
             using (var context = new ISSEntities2(Util.ConnectionStringWithPassword.doIt()))
             {
-                Paper paper= new Paper();
+                Paper paper = new Paper();
                 paper.Name = p.Title;
                 paper.Resume = p.Resume;
                 paper.Domain = p.Domain;
                 paper.Subdomain = p.Subdomain;
                 paper.Filepath = p.Filepath;
-                paper.EvaluationResult = Enum.GetName(p.Status.GetType(),p.Status);
+                paper.EvaluationResult = Enum.GetName(p.Status.GetType(), p.Status);
                 paper.IsEmailSent = false;
                 paper.ConferenceId = p.ConferenceId;
                 paper.UserId = p.Uploader.IdUser;
                 //paper.TopicId get topic by name and conf
-                foreach(Topic topic in context.Topics)
-                    if(topic.TopicName==p.Topic && topic.ConferenceId == p.ConferenceId)
+                foreach (Topic topic in context.Topics)
+                    if (topic.TopicName == p.Topic && topic.ConferenceId == p.ConferenceId)
                     {
                         paper.TopicId = topic.TopicId;
                         break;
@@ -119,11 +117,11 @@ namespace Persistence.Repository
                 context.SaveChanges();
 
 
-                
+
             }
         }
 
-        public void Modify(int paperId,Model.Paper newP)
+        public void Modify(int paperId, Model.Paper newP)
         {
             using (var context = new ISSEntities2(Util.ConnectionStringWithPassword.doIt()))
             {
@@ -150,7 +148,7 @@ namespace Persistence.Repository
                         context.AdditionalAuthors.Add(aa);
                     }
 
-                foreach(KeyValuePair<Participant,int> bid in newP.Bids)
+                foreach (KeyValuePair<Participant, int> bid in newP.Bids)
                 {
                     //get bid by lucrare, participant add daca nu exista
                     bool exists = false;
@@ -172,15 +170,15 @@ namespace Persistence.Repository
                     }
                 }
 
-                foreach(Model.Review review in newP.Reviews)
+                foreach (Model.Review review in newP.Reviews)
                 {
-                    if (context.Reviews.Find(review.Reviewer.User.IdUser,newP.ConferenceId,newP.Id) == null)
+                    if (context.Reviews.Find(review.Reviewer.User.IdUser, newP.ConferenceId, newP.Id) == null)
                     {
                         Review rev = new Review();
                         rev.PCMemberUserId = review.Reviewer.User.IdUser;
                         rev.PCMemberConferenceId = review.Reviewer.ConferenceId;
                         rev.PaperId = paperId;
-                        rev.Evaluation= (int)review.Verdict;
+                        rev.Evaluation = (int)review.Verdict;
                         rev.Recommandations = review.Comments;
 
                         context.Reviews.Add(rev);
@@ -188,6 +186,45 @@ namespace Persistence.Repository
 
                 }
 
+                context.SaveChanges();
+            }
+        }
+
+        public List<Model.Review> GetReviewsByPaper(int paperId)
+        {
+            List<Model.Review> all = new List<Model.Review>();
+            using (var context = new ISSEntities2(Util.ConnectionStringWithPassword.doIt()))
+            {
+                var paper = context.Papers.Find(paperId);
+                foreach (var r in context.getReviewsPaper(paperId))
+                {
+                    User us = context.Users.Find(r.PCMemberUserId);
+                    PCMember pcm = context.PCMembers.Find(r.PCMemberUserId, paper.ConferenceId);
+                    Model.User reviewer = new Model.User(us.UserId, us.Username, us.Password, us.Name, us.Affilliation, us.Email, us.canBePCMember, us.WebPage);
+                    Model.Participant participant = new Model.Participant(reviewer, paper.ConferenceId, pcm.isChair, pcm.isCoChair, true, false);
+
+                    Verdict v = (Verdict)r.Evaluation;
+
+                    Model.Review review = new Model.Review(0, participant, v, r.Recommandations);
+                    all.Add(review);
+                }
+            }
+
+            return all;
+        }
+
+        public void AddReview(int paperId, Model.Review review)
+        {
+            Review rev = new Review();
+            rev.PCMemberUserId = review.Reviewer.User.IdUser;
+            rev.PCMemberConferenceId = review.Reviewer.ConferenceId;
+            rev.PaperId = paperId;
+            rev.Evaluation = (int)review.Verdict;
+            rev.Recommandations = review.Comments;
+
+            using (var context = new ISSEntities2(Util.ConnectionStringWithPassword.doIt()))
+            {
+                context.Reviews.Add(rev);
                 context.SaveChanges();
             }
         }

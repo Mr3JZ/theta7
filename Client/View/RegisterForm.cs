@@ -18,9 +18,11 @@ namespace Client.View
         private bool waterMarkAffiliationActive;
         private bool waterMarkEmailActive;
         private bool waterMarkWebsiteActive;
-
-        public RegisterForm()
+        private ClientController ctrl;
+        public RegisterForm(ClientController ctrl)
         {
+            this.ctrl = ctrl;
+
             InitializeComponent();
             initUsernameTextBox();
             initPasswordTextBox();
@@ -197,15 +199,19 @@ namespace Client.View
 
         private void registerButton_Click(object sender, EventArgs e)
         {
+            bool PCMember = false;
+            if (PCMemberCheckBox.CheckState == CheckState.Checked)
+                PCMember = true;
+
             if (ValidateRegisterText())
             {
-                try
+                if(ctrl.register(usernameTextBox.Text, passwordTextBox.Text,nameTextBox.Text,affiliationTextBox.Text,emailTextBox.Text,websiteTextBox.Text,PCMember))
                 {
-                    //ctrl.register(usernameTextBox.Text, passwordTextBox.Text,nameTextBox.Text,affiliationTextBox.Text,emailTextBox.Text,websiteTextBox.Text,PCMemberCheckBox.CheckState);
+                    this.Close();
                 }
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show(ex.ToString());
+                    MessageBox.Show("Invalid account");
                 }
             }
         }
