@@ -40,12 +40,27 @@ namespace Server
 
         public List<Model.Conference> GetConferences()
         {
-            return repoConference.getConferences();
+            var all= repoConference.getConferences();
+
+            foreach(var conf in all)
+            {
+                conf.Papers = repoPaper.GetByConference(conf.Id);
+                conf.Participants = repoParticipant.GetByConference(conf.Id);
+                conf.Sessions = repoSession.GetByConference(conf.Id);
+            }
+
+            return all;
+
         }
 
         public Model.Conference GetConference(int id)
         {
             var conf= repoConference.getConference(id);
+
+            conf.Papers = repoPaper.GetByConference(conf.Id);
+            conf.Participants = repoParticipant.GetByConference(conf.Id);
+            conf.Sessions = repoSession.GetByConference(conf.Id);
+
             return conf;
         }
 
