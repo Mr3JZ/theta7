@@ -39,5 +39,16 @@ namespace Client.View
             ctrl.logout();
             Application.Exit();
         }
+
+        private void buttonViewDetails_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonCreateConference_Click(object sender, EventArgs e)
+        {
+            AdminPanel ap = new AdminPanel(ctrl);
+            ap.Show();
+        }
     }
 }
