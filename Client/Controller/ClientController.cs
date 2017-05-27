@@ -29,9 +29,15 @@ namespace Client
         {
             return server.GetConferences();
         }
-        public Model.Conference getConference(int id)
+        public Model.Conference getConference(string name, string edition, string city)
         {
-            return server.GetConference(id);
+            List<Model.Conference> allConferences = getAllConferences();
+            foreach (Model.Conference conference in allConferences)
+            {
+                if (conference.Name.Equals(name) && conference.Edition.Equals(edition) && conference.City.Equals(city))
+                    return conference;
+            }
+            return null;
         }
         public List<Model.Conference> getMyConferences() //daca am timp o voi face mai frumoasa; daca aveti timp, feel free and change it
         {
@@ -66,8 +72,14 @@ namespace Client
             throw new NotImplementedException();
         }
 
+        public List<Model.Paper> getPapers(Conference conference)
+        {
+            //ar trebui sa returneze toate lucrarile userului curent la conferinta data ca parametru
+            return new List<Model.Paper>();
+        }
+
         ///USER
-        
+
         public bool login(string username, string password)
         {
             try
@@ -120,16 +132,16 @@ namespace Client
                         if (participant.User.Name.Equals(currentUser.Name))
                         {
                             if (participant.IsChair)
-                                return "IsChair";
+                                return "Chair";
                             if (participant.IsCochair)
-                                return "IsCoChair";
+                                return "CoChair";
                             if (participant.CanBePCMember)
-                                return "CanBePCMember";
+                                return "PCMember";
                             else
-                                return "IsNormalUser";
+                                return "NormalUser";
                         }
             }
-            return "User not found in conference";
+            return "Unregistered";
         }
         public List<Model.User> GetSpecialUsers()
         {
@@ -138,16 +150,28 @@ namespace Client
 
         ///PARTICIPANT
 
-        public List<Model.Participant> getSpecialParticipants(Conference conference)
+        public List<Model.Participant> getChairs(Conference conference)
         {
-            List<Model.Participant> specialUsersList = new List<Model.Participant>();
+            List<Model.Participant> chairList = new List<Model.Participant>();
             foreach(Model.Participant participant in conference.Participants)
             {
                 if (participant.IsChair || participant.IsCochair)
-                    specialUsersList.Add(participant);
+                    chairList.Add(participant);
             }
-            return specialUsersList;
+            return chairList;
         }
+
+        public List<Model.Participant> getPCMembers(Conference conference)
+        {
+            List<Model.Participant> memberList = new List<Model.Participant>();
+            foreach (Model.Participant participant in conference.Participants)
+            {
+                if (participant.CanBePCMember)
+                    memberList.Add(participant);
+            }
+            return memberList;
+        }
+
         public void addParticipant(Participant p)
         {
             server.AddParticipant(p);
@@ -155,9 +179,10 @@ namespace Client
 
         ///REVIEW
 
-        public List<Review> getReviewsByPaper(int paperId)
+        public List<Review> getReviewsByPaper(string title)
         {
-            return server.GetReviewsByPaper(paperId);
+            return new List<Review>();
+            //ar trebui sa returneze reviewurile dupa titlu si current user
         }
         public void addReview(int paperId, Review r)
         {
