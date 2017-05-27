@@ -188,5 +188,21 @@ namespace Client
         {
             server.AddReview(paperId, r);
         }
+
+        ///MESSAGES
+
+        public void AddMessage(string messageBody, int userID)
+        {
+            Message message = new Message(-1, messageBody, userID);
+            server.AddMessage(message);
+        }
+        public List<Message> GetMyMessages(int userID)
+        {
+            return server.GetUserMessages(userID).OrderBy(x => x.UserId).Reverse().ToList();
+        }
+        public List<Message> GetMyMessages(User user)
+        {
+            return server.GetUserMessages(user.IdUser).OrderBy(x => x.UserId).Reverse().ToList();
+        }
     }
 }

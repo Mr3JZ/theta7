@@ -24,5 +24,7 @@ namespace Services
         void UpdateConference(Conference c);
         void NewPayment(Payment p);
         void AddConference(Conference conference);
+        void AddMessage(Message message);
+        List<Model.Message> GetUserMessages(int userID);
     }
 }

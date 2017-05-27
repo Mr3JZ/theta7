@@ -89,7 +89,7 @@ namespace Client.View
             {
                 if(ctrl.login(usernameTextBox.Text, passwordTextBox.Text))
                 {
-                    ctrl.login(usernameTextBox.Text, passwordTextBox.Text);
+                    //ctrl.login(usernameTextBox.Text, passwordTextBox.Text);
                     if (usernameTextBox.Text.Equals("admin"))
                     {
                         GeneralForm gf = new GeneralForm(ctrl, "admin");

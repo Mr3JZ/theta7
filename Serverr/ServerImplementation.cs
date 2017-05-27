@@ -36,6 +36,8 @@ namespace Server
             this.repoPayment = repoPayment;
             this.repoSession = repoSession;
             loggedClients = new Dictionary<String, IClient>();
+
+            
         }
 
         public List<Model.Conference> GetConferences()
@@ -66,9 +68,10 @@ namespace Server
 
         public void Login(Model.User u, IClient client)
         {
+
             if (loggedClients.ContainsKey(u.Username) == true)
                 throw new ServerException("User already logged in");
-
+            
             List<Model.User> allUsers = repoUser.GetAll();
             foreach (Model.User user in allUsers)
                 if (user.Username.Equals(u.Username) && user.Password.Equals(u.Password))
@@ -142,6 +145,14 @@ namespace Server
         public void AddConference(Model.Conference conference)
         {
             repoConference.addConference(conference);
+        }
+        public void AddMessage(Model.Message message)
+        {
+            repoMessage.Add(message);
+        }
+        public List<Model.Message> GetUserMessages(int userID)
+        {
+            return repoMessage.GetByUser(userID);
         }
     }
 }
