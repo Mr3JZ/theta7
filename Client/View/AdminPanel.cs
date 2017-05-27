@@ -14,8 +14,9 @@ namespace Client.View
     {
         ClientController ctrl;
 
-        public AdminPanel()
+        public AdminPanel(ClientController c)
         {
+            ctrl = c;
             InitializeComponent();
         }
 

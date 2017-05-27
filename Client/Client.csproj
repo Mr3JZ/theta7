@@ -36,6 +36,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Runtime.Remoting" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -56,6 +57,12 @@
     </Compile>
     <Compile Include="View\AdminPanel.Designer.cs">
       <DependentUpon>AdminPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ConferenceDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ConferenceDetails.Designer.cs">
+      <DependentUpon>ConferenceDetails.cs</DependentUpon>
     </Compile>
     <Compile Include="View\GeneralForm.cs">
       <SubType>Form</SubType>
@@ -88,6 +95,9 @@
     <EmbeddedResource Include="View\AdminPanel.resx">
       <DependentUpon>AdminPanel.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\ConferenceDetails.resx">
+      <DependentUpon>ConferenceDetails.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\GeneralForm.resx">
       <DependentUpon>GeneralForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -97,6 +107,7 @@
     <EmbeddedResource Include="View\RegisterForm.resx">
       <DependentUpon>RegisterForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
