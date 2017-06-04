@@ -56,6 +56,7 @@ namespace Client
             }
             return myConferences;
         }
+
         public void AddConference(string name, string edition, List<string> topics, DateTime deadlineAbstract,
                 DateTime deadlineComplet, DateTime deadlineBidding, DateTime deadlineEvaluation, DateTime deadlineParticipation,
                 string city, string country, string website, double admissionPrice, DateTime beginDate, DateTime endDate)
@@ -74,8 +75,7 @@ namespace Client
 
         public List<Model.Paper> getPapers(Conference conference)
         {
-            //ar trebui sa returneze toate lucrarile userului curent la conferinta data ca parametru
-            return new List<Model.Paper>();
+            return conference.Papers.Where(p => { return p.Uploader.Username == currentUser.Username; }).ToList();
         }
 
         ///USER
@@ -175,6 +175,11 @@ namespace Client
         public void addParticipant(Participant p)
         {
             server.AddParticipant(p);
+        }
+
+        public void addPayment(Participant p,int paidSum)
+        {
+            server.NewPayment(p, paidSum);
         }
 
         ///REVIEW

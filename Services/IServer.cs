@@ -22,7 +22,8 @@ namespace Services
         void NewPaper(Conference c, Paper p);
         void UpdatePaper(Paper p);
         void UpdateConference(Conference c);
-        void NewPayment(Payment p);
+        //detaliile despre Payment se calculeaza in repoPayment(succes,nrTickets);
+        void NewPayment(Participant p,int paidSum);
         void AddConference(Conference conference);
         void AddMessage(Message message);
         List<Model.Message> GetUserMessages(int userID);
