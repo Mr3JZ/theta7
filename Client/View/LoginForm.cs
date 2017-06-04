@@ -89,10 +89,10 @@ namespace Client.View
             {
                 if(ctrl.login(usernameTextBox.Text, passwordTextBox.Text))
                 {
-                    //ctrl.login(usernameTextBox.Text, passwordTextBox.Text);
+                    
                     if (usernameTextBox.Text.Equals("admin"))
                     {
-                        GeneralForm gf = new GeneralForm(ctrl, "admin");
+                        AdminPanel2 gf = new AdminPanel2(ctrl);
                         gf.Show();
                         this.Hide();
                     }

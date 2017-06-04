@@ -83,5 +83,10 @@ namespace Client.View
             BindingList<Review> myreviews = new BindingList<Review>(ctrl.getReviewsByPaper(title));
             dataGridViewMyReviews.DataSource = myreviews;
         }
+
+        private void buttonRegisterConference_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

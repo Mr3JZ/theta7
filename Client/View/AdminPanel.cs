@@ -72,5 +72,10 @@ namespace Client.View
 
             this.Close();
         }
+
+        private void AdminPanel_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

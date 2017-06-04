@@ -29,6 +29,27 @@
         private void InitializeComponent()
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPageConferenceDetailed = new System.Windows.Forms.TabPage();
+            this.labelConferenceFee = new System.Windows.Forms.Label();
+            this.labelParticipationDeadline = new System.Windows.Forms.Label();
+            this.labelAbstractDeadline = new System.Windows.Forms.Label();
+            this.labelConferecePlace = new System.Windows.Forms.Label();
+            this.labelConferenceDuration = new System.Windows.Forms.Label();
+            this.buttonRegisterConference = new System.Windows.Forms.Button();
+            this.buttonSchedule = new System.Windows.Forms.Button();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.listBoxConferenceTopics = new System.Windows.Forms.ListBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.dataGridViewConferencePCMembers = new System.Windows.Forms.DataGridView();
+            this.label12 = new System.Windows.Forms.Label();
+            this.labelConferenceEdition = new System.Windows.Forms.Label();
+            this.labelConferenceName = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.dataGridViewConferenceChairs = new System.Windows.Forms.DataGridView();
             this.tabPageParticipant = new System.Windows.Forms.TabPage();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -61,36 +82,15 @@
             this.label8 = new System.Windows.Forms.Label();
             this.dataGridViewUploadedPapers = new System.Windows.Forms.DataGridView();
             this.tabPageChair = new System.Windows.Forms.TabPage();
-            this.tabPageConferenceDetailed = new System.Windows.Forms.TabPage();
-            this.dataGridViewConferenceChairs = new System.Windows.Forms.DataGridView();
-            this.label11 = new System.Windows.Forms.Label();
-            this.labelConferenceName = new System.Windows.Forms.Label();
-            this.labelConferenceEdition = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.dataGridViewConferencePCMembers = new System.Windows.Forms.DataGridView();
-            this.label13 = new System.Windows.Forms.Label();
-            this.listBoxConferenceTopics = new System.Windows.Forms.ListBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.buttonSchedule = new System.Windows.Forms.Button();
-            this.buttonRegisterConference = new System.Windows.Forms.Button();
-            this.labelConferenceDuration = new System.Windows.Forms.Label();
-            this.labelConferecePlace = new System.Windows.Forms.Label();
-            this.labelAbstractDeadline = new System.Windows.Forms.Label();
-            this.labelParticipationDeadline = new System.Windows.Forms.Label();
-            this.labelConferenceFee = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
+            this.tabPageConferenceDetailed.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewConferencePCMembers)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewConferenceChairs)).BeginInit();
             this.tabPageParticipant.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMyReviews)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMyPapers)).BeginInit();
             this.tabPagePCMember.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUploadedPapers)).BeginInit();
-            this.tabPageConferenceDetailed.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewConferenceChairs)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewConferencePCMembers)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -104,6 +104,224 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(600, 400);
             this.tabControl1.TabIndex = 0;
+            // 
+            // tabPageConferenceDetailed
+            // 
+            this.tabPageConferenceDetailed.Controls.Add(this.labelConferenceFee);
+            this.tabPageConferenceDetailed.Controls.Add(this.labelParticipationDeadline);
+            this.tabPageConferenceDetailed.Controls.Add(this.labelAbstractDeadline);
+            this.tabPageConferenceDetailed.Controls.Add(this.labelConferecePlace);
+            this.tabPageConferenceDetailed.Controls.Add(this.labelConferenceDuration);
+            this.tabPageConferenceDetailed.Controls.Add(this.buttonRegisterConference);
+            this.tabPageConferenceDetailed.Controls.Add(this.buttonSchedule);
+            this.tabPageConferenceDetailed.Controls.Add(this.label18);
+            this.tabPageConferenceDetailed.Controls.Add(this.label17);
+            this.tabPageConferenceDetailed.Controls.Add(this.label16);
+            this.tabPageConferenceDetailed.Controls.Add(this.label15);
+            this.tabPageConferenceDetailed.Controls.Add(this.label14);
+            this.tabPageConferenceDetailed.Controls.Add(this.listBoxConferenceTopics);
+            this.tabPageConferenceDetailed.Controls.Add(this.label13);
+            this.tabPageConferenceDetailed.Controls.Add(this.dataGridViewConferencePCMembers);
+            this.tabPageConferenceDetailed.Controls.Add(this.label12);
+            this.tabPageConferenceDetailed.Controls.Add(this.labelConferenceEdition);
+            this.tabPageConferenceDetailed.Controls.Add(this.labelConferenceName);
+            this.tabPageConferenceDetailed.Controls.Add(this.label11);
+            this.tabPageConferenceDetailed.Controls.Add(this.dataGridViewConferenceChairs);
+            this.tabPageConferenceDetailed.Location = new System.Drawing.Point(4, 22);
+            this.tabPageConferenceDetailed.Name = "tabPageConferenceDetailed";
+            this.tabPageConferenceDetailed.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageConferenceDetailed.Size = new System.Drawing.Size(592, 374);
+            this.tabPageConferenceDetailed.TabIndex = 3;
+            this.tabPageConferenceDetailed.Text = "Overview";
+            this.tabPageConferenceDetailed.UseVisualStyleBackColor = true;
+            // 
+            // labelConferenceFee
+            // 
+            this.labelConferenceFee.AutoSize = true;
+            this.labelConferenceFee.Location = new System.Drawing.Point(445, 315);
+            this.labelConferenceFee.Name = "labelConferenceFee";
+            this.labelConferenceFee.Size = new System.Drawing.Size(85, 13);
+            this.labelConferenceFee.TabIndex = 19;
+            this.labelConferenceFee.Text = "-conference fee-";
+            // 
+            // labelParticipationDeadline
+            // 
+            this.labelParticipationDeadline.AutoSize = true;
+            this.labelParticipationDeadline.Location = new System.Drawing.Point(445, 295);
+            this.labelParticipationDeadline.Name = "labelParticipationDeadline";
+            this.labelParticipationDeadline.Size = new System.Drawing.Size(113, 13);
+            this.labelParticipationDeadline.TabIndex = 18;
+            this.labelParticipationDeadline.Text = "-participation deadline-";
+            // 
+            // labelAbstractDeadline
+            // 
+            this.labelAbstractDeadline.AutoSize = true;
+            this.labelAbstractDeadline.Location = new System.Drawing.Point(445, 275);
+            this.labelAbstractDeadline.Name = "labelAbstractDeadline";
+            this.labelAbstractDeadline.Size = new System.Drawing.Size(94, 13);
+            this.labelAbstractDeadline.TabIndex = 17;
+            this.labelAbstractDeadline.Text = "-abstract deadline-";
+            // 
+            // labelConferecePlace
+            // 
+            this.labelConferecePlace.AutoSize = true;
+            this.labelConferecePlace.Location = new System.Drawing.Point(445, 255);
+            this.labelConferecePlace.Name = "labelConferecePlace";
+            this.labelConferecePlace.Size = new System.Drawing.Size(96, 13);
+            this.labelConferecePlace.TabIndex = 16;
+            this.labelConferecePlace.Text = "-conference place-";
+            // 
+            // labelConferenceDuration
+            // 
+            this.labelConferenceDuration.AutoSize = true;
+            this.labelConferenceDuration.Location = new System.Drawing.Point(445, 235);
+            this.labelConferenceDuration.Name = "labelConferenceDuration";
+            this.labelConferenceDuration.Size = new System.Drawing.Size(108, 13);
+            this.labelConferenceDuration.TabIndex = 15;
+            this.labelConferenceDuration.Text = "-conference duration-";
+            // 
+            // buttonRegisterConference
+            // 
+            this.buttonRegisterConference.Enabled = false;
+            this.buttonRegisterConference.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonRegisterConference.Location = new System.Drawing.Point(456, 339);
+            this.buttonRegisterConference.Name = "buttonRegisterConference";
+            this.buttonRegisterConference.Size = new System.Drawing.Size(126, 25);
+            this.buttonRegisterConference.TabIndex = 14;
+            this.buttonRegisterConference.Text = "Register";
+            this.buttonRegisterConference.UseVisualStyleBackColor = true;
+            this.buttonRegisterConference.Visible = false;
+            this.buttonRegisterConference.Click += new System.EventHandler(this.buttonRegisterConference_Click);
+            // 
+            // buttonSchedule
+            // 
+            this.buttonSchedule.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonSchedule.Location = new System.Drawing.Point(320, 339);
+            this.buttonSchedule.Name = "buttonSchedule";
+            this.buttonSchedule.Size = new System.Drawing.Size(126, 25);
+            this.buttonSchedule.TabIndex = 13;
+            this.buttonSchedule.Text = "View schedule";
+            this.buttonSchedule.UseVisualStyleBackColor = true;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(320, 315);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(84, 13);
+            this.label18.TabIndex = 12;
+            this.label18.Text = "Registration fee:";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(320, 295);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(113, 13);
+            this.label17.TabIndex = 11;
+            this.label17.Text = "Registration (listeners):";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(320, 275);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(118, 13);
+            this.label16.TabIndex = 10;
+            this.label16.Text = "Registration (speakers):";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(320, 255);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(37, 13);
+            this.label15.TabIndex = 9;
+            this.label15.Text = "Place:";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(320, 235);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(50, 13);
+            this.label14.TabIndex = 8;
+            this.label14.Text = "Duration:";
+            // 
+            // listBoxConferenceTopics
+            // 
+            this.listBoxConferenceTopics.FormattingEnabled = true;
+            this.listBoxConferenceTopics.Location = new System.Drawing.Point(320, 130);
+            this.listBoxConferenceTopics.Name = "listBoxConferenceTopics";
+            this.listBoxConferenceTopics.Size = new System.Drawing.Size(262, 82);
+            this.listBoxConferenceTopics.TabIndex = 7;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(403, 110);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(96, 13);
+            this.label13.TabIndex = 6;
+            this.label13.Text = "Conference topics:";
+            // 
+            // dataGridViewConferencePCMembers
+            // 
+            this.dataGridViewConferencePCMembers.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridViewConferencePCMembers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewConferencePCMembers.Location = new System.Drawing.Point(10, 220);
+            this.dataGridViewConferencePCMembers.Name = "dataGridViewConferencePCMembers";
+            this.dataGridViewConferencePCMembers.Size = new System.Drawing.Size(300, 144);
+            this.dataGridViewConferencePCMembers.TabIndex = 5;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(125, 200);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(69, 13);
+            this.label12.TabIndex = 4;
+            this.label12.Text = "PC members:";
+            // 
+            // labelConferenceEdition
+            // 
+            this.labelConferenceEdition.AutoSize = true;
+            this.labelConferenceEdition.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.labelConferenceEdition.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelConferenceEdition.Location = new System.Drawing.Point(214, 40);
+            this.labelConferenceEdition.Name = "labelConferenceEdition";
+            this.labelConferenceEdition.Size = new System.Drawing.Size(182, 24);
+            this.labelConferenceEdition.TabIndex = 3;
+            this.labelConferenceEdition.Text = "-Conference edition-";
+            // 
+            // labelConferenceName
+            // 
+            this.labelConferenceName.AutoSize = true;
+            this.labelConferenceName.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.labelConferenceName.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelConferenceName.Location = new System.Drawing.Point(197, 0);
+            this.labelConferenceName.Name = "labelConferenceName";
+            this.labelConferenceName.Size = new System.Drawing.Size(220, 29);
+            this.labelConferenceName.TabIndex = 2;
+            this.labelConferenceName.Text = "-Conference name-";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(137, 110);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(45, 13);
+            this.label11.TabIndex = 1;
+            this.label11.Text = "Chair(s):";
+            // 
+            // dataGridViewConferenceChairs
+            // 
+            this.dataGridViewConferenceChairs.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridViewConferenceChairs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewConferenceChairs.Location = new System.Drawing.Point(10, 130);
+            this.dataGridViewConferenceChairs.Name = "dataGridViewConferenceChairs";
+            this.dataGridViewConferenceChairs.Size = new System.Drawing.Size(300, 60);
+            this.dataGridViewConferenceChairs.TabIndex = 0;
             // 
             // tabPageParticipant
             // 
@@ -428,223 +646,6 @@
             this.tabPageChair.Text = "Chair";
             this.tabPageChair.UseVisualStyleBackColor = true;
             // 
-            // tabPageConferenceDetailed
-            // 
-            this.tabPageConferenceDetailed.Controls.Add(this.labelConferenceFee);
-            this.tabPageConferenceDetailed.Controls.Add(this.labelParticipationDeadline);
-            this.tabPageConferenceDetailed.Controls.Add(this.labelAbstractDeadline);
-            this.tabPageConferenceDetailed.Controls.Add(this.labelConferecePlace);
-            this.tabPageConferenceDetailed.Controls.Add(this.labelConferenceDuration);
-            this.tabPageConferenceDetailed.Controls.Add(this.buttonRegisterConference);
-            this.tabPageConferenceDetailed.Controls.Add(this.buttonSchedule);
-            this.tabPageConferenceDetailed.Controls.Add(this.label18);
-            this.tabPageConferenceDetailed.Controls.Add(this.label17);
-            this.tabPageConferenceDetailed.Controls.Add(this.label16);
-            this.tabPageConferenceDetailed.Controls.Add(this.label15);
-            this.tabPageConferenceDetailed.Controls.Add(this.label14);
-            this.tabPageConferenceDetailed.Controls.Add(this.listBoxConferenceTopics);
-            this.tabPageConferenceDetailed.Controls.Add(this.label13);
-            this.tabPageConferenceDetailed.Controls.Add(this.dataGridViewConferencePCMembers);
-            this.tabPageConferenceDetailed.Controls.Add(this.label12);
-            this.tabPageConferenceDetailed.Controls.Add(this.labelConferenceEdition);
-            this.tabPageConferenceDetailed.Controls.Add(this.labelConferenceName);
-            this.tabPageConferenceDetailed.Controls.Add(this.label11);
-            this.tabPageConferenceDetailed.Controls.Add(this.dataGridViewConferenceChairs);
-            this.tabPageConferenceDetailed.Location = new System.Drawing.Point(4, 22);
-            this.tabPageConferenceDetailed.Name = "tabPageConferenceDetailed";
-            this.tabPageConferenceDetailed.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageConferenceDetailed.Size = new System.Drawing.Size(592, 374);
-            this.tabPageConferenceDetailed.TabIndex = 3;
-            this.tabPageConferenceDetailed.Text = "Overview";
-            this.tabPageConferenceDetailed.UseVisualStyleBackColor = true;
-            // 
-            // dataGridViewConferenceChairs
-            // 
-            this.dataGridViewConferenceChairs.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridViewConferenceChairs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewConferenceChairs.Location = new System.Drawing.Point(10, 130);
-            this.dataGridViewConferenceChairs.Name = "dataGridViewConferenceChairs";
-            this.dataGridViewConferenceChairs.Size = new System.Drawing.Size(300, 60);
-            this.dataGridViewConferenceChairs.TabIndex = 0;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(137, 110);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(45, 13);
-            this.label11.TabIndex = 1;
-            this.label11.Text = "Chair(s):";
-            // 
-            // labelConferenceName
-            // 
-            this.labelConferenceName.AutoSize = true;
-            this.labelConferenceName.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.labelConferenceName.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelConferenceName.Location = new System.Drawing.Point(197, 0);
-            this.labelConferenceName.Name = "labelConferenceName";
-            this.labelConferenceName.Size = new System.Drawing.Size(220, 29);
-            this.labelConferenceName.TabIndex = 2;
-            this.labelConferenceName.Text = "-Conference name-";
-            // 
-            // labelConferenceEdition
-            // 
-            this.labelConferenceEdition.AutoSize = true;
-            this.labelConferenceEdition.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.labelConferenceEdition.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelConferenceEdition.Location = new System.Drawing.Point(214, 40);
-            this.labelConferenceEdition.Name = "labelConferenceEdition";
-            this.labelConferenceEdition.Size = new System.Drawing.Size(182, 24);
-            this.labelConferenceEdition.TabIndex = 3;
-            this.labelConferenceEdition.Text = "-Conference edition-";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(125, 200);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(69, 13);
-            this.label12.TabIndex = 4;
-            this.label12.Text = "PC members:";
-            // 
-            // dataGridViewConferencePCMembers
-            // 
-            this.dataGridViewConferencePCMembers.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridViewConferencePCMembers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewConferencePCMembers.Location = new System.Drawing.Point(10, 220);
-            this.dataGridViewConferencePCMembers.Name = "dataGridViewConferencePCMembers";
-            this.dataGridViewConferencePCMembers.Size = new System.Drawing.Size(300, 144);
-            this.dataGridViewConferencePCMembers.TabIndex = 5;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(403, 110);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(96, 13);
-            this.label13.TabIndex = 6;
-            this.label13.Text = "Conference topics:";
-            // 
-            // listBoxConferenceTopics
-            // 
-            this.listBoxConferenceTopics.FormattingEnabled = true;
-            this.listBoxConferenceTopics.Location = new System.Drawing.Point(320, 130);
-            this.listBoxConferenceTopics.Name = "listBoxConferenceTopics";
-            this.listBoxConferenceTopics.Size = new System.Drawing.Size(262, 82);
-            this.listBoxConferenceTopics.TabIndex = 7;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(320, 235);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(50, 13);
-            this.label14.TabIndex = 8;
-            this.label14.Text = "Duration:";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(320, 255);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(37, 13);
-            this.label15.TabIndex = 9;
-            this.label15.Text = "Place:";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(320, 275);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(118, 13);
-            this.label16.TabIndex = 10;
-            this.label16.Text = "Registration (speakers):";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(320, 295);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(113, 13);
-            this.label17.TabIndex = 11;
-            this.label17.Text = "Registration (listeners):";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(320, 315);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(84, 13);
-            this.label18.TabIndex = 12;
-            this.label18.Text = "Registration fee:";
-            // 
-            // buttonSchedule
-            // 
-            this.buttonSchedule.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonSchedule.Location = new System.Drawing.Point(320, 339);
-            this.buttonSchedule.Name = "buttonSchedule";
-            this.buttonSchedule.Size = new System.Drawing.Size(126, 25);
-            this.buttonSchedule.TabIndex = 13;
-            this.buttonSchedule.Text = "View schedule";
-            this.buttonSchedule.UseVisualStyleBackColor = true;
-            // 
-            // buttonRegisterConference
-            // 
-            this.buttonRegisterConference.Enabled = false;
-            this.buttonRegisterConference.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonRegisterConference.Location = new System.Drawing.Point(456, 339);
-            this.buttonRegisterConference.Name = "buttonRegisterConference";
-            this.buttonRegisterConference.Size = new System.Drawing.Size(126, 25);
-            this.buttonRegisterConference.TabIndex = 14;
-            this.buttonRegisterConference.Text = "Register";
-            this.buttonRegisterConference.UseVisualStyleBackColor = true;
-            this.buttonRegisterConference.Visible = false;
-            // 
-            // labelConferenceDuration
-            // 
-            this.labelConferenceDuration.AutoSize = true;
-            this.labelConferenceDuration.Location = new System.Drawing.Point(445, 235);
-            this.labelConferenceDuration.Name = "labelConferenceDuration";
-            this.labelConferenceDuration.Size = new System.Drawing.Size(108, 13);
-            this.labelConferenceDuration.TabIndex = 15;
-            this.labelConferenceDuration.Text = "-conference duration-";
-            // 
-            // labelConferecePlace
-            // 
-            this.labelConferecePlace.AutoSize = true;
-            this.labelConferecePlace.Location = new System.Drawing.Point(445, 255);
-            this.labelConferecePlace.Name = "labelConferecePlace";
-            this.labelConferecePlace.Size = new System.Drawing.Size(96, 13);
-            this.labelConferecePlace.TabIndex = 16;
-            this.labelConferecePlace.Text = "-conference place-";
-            // 
-            // labelAbstractDeadline
-            // 
-            this.labelAbstractDeadline.AutoSize = true;
-            this.labelAbstractDeadline.Location = new System.Drawing.Point(445, 275);
-            this.labelAbstractDeadline.Name = "labelAbstractDeadline";
-            this.labelAbstractDeadline.Size = new System.Drawing.Size(94, 13);
-            this.labelAbstractDeadline.TabIndex = 17;
-            this.labelAbstractDeadline.Text = "-abstract deadline-";
-            // 
-            // labelParticipationDeadline
-            // 
-            this.labelParticipationDeadline.AutoSize = true;
-            this.labelParticipationDeadline.Location = new System.Drawing.Point(445, 295);
-            this.labelParticipationDeadline.Name = "labelParticipationDeadline";
-            this.labelParticipationDeadline.Size = new System.Drawing.Size(113, 13);
-            this.labelParticipationDeadline.TabIndex = 18;
-            this.labelParticipationDeadline.Text = "-participation deadline-";
-            // 
-            // labelConferenceFee
-            // 
-            this.labelConferenceFee.AutoSize = true;
-            this.labelConferenceFee.Location = new System.Drawing.Point(445, 315);
-            this.labelConferenceFee.Name = "labelConferenceFee";
-            this.labelConferenceFee.Size = new System.Drawing.Size(85, 13);
-            this.labelConferenceFee.TabIndex = 19;
-            this.labelConferenceFee.Text = "-conference fee-";
-            // 
             // ConferenceDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -654,6 +655,10 @@
             this.Name = "ConferenceDetails";
             this.Text = "ConferenceDetails";
             this.tabControl1.ResumeLayout(false);
+            this.tabPageConferenceDetailed.ResumeLayout(false);
+            this.tabPageConferenceDetailed.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewConferencePCMembers)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewConferenceChairs)).EndInit();
             this.tabPageParticipant.ResumeLayout(false);
             this.tabPageParticipant.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMyReviews)).EndInit();
@@ -661,10 +666,6 @@
             this.tabPagePCMember.ResumeLayout(false);
             this.tabPagePCMember.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUploadedPapers)).EndInit();
-            this.tabPageConferenceDetailed.ResumeLayout(false);
-            this.tabPageConferenceDetailed.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewConferenceChairs)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewConferencePCMembers)).EndInit();
             this.ResumeLayout(false);
 
         }
