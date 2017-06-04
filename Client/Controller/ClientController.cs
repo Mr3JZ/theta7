@@ -74,8 +74,7 @@ namespace Client
 
         public List<Model.Paper> getPapers(Conference conference)
         {
-            //ar trebui sa returneze toate lucrarile userului curent la conferinta data ca parametru
-            return new List<Model.Paper>();
+            return conference.Papers.Where(p => { return p.Uploader.Username == currentUser.Username; }).ToList();
         }
 
         ///USER
@@ -183,6 +182,11 @@ namespace Client
         {
             return new List<Review>();
             //ar trebui sa returneze reviewurile dupa titlu si current user
+            //titlu nu-i unique, deci nu se poate garanta returnarea reviewurilor bune
+        }
+        public List<Review> getReviewsByPaper(int paperId)
+        {
+            return server.GetReviewsByPaper(paperId);
         }
         public void addReview(int paperId, Review r)
         {
