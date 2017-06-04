@@ -188,6 +188,11 @@ namespace Client
         {
             return new List<Review>();
             //ar trebui sa returneze reviewurile dupa titlu si current user
+            //titlu nu-i unique, deci nu se poate garanta returnarea reviewurilor bune
+        }
+        public List<Review> getReviewsByPaper(int paperId)
+        {
+            return server.GetReviewsByPaper(paperId);
         }
         public void addReview(int paperId, Review r)
         {
