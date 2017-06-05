@@ -23,6 +23,17 @@ namespace Persistence.Repository
             }
         }
 
+        public void Delete(Message m)
+        {
+
+            using (var context = new ISSEntities2(Util.ConnectionStringWithPassword.doIt()))
+            {
+                var message = context.MessagesCs.Find(m.MessageId);
+                context.MessagesCs.Remove(message);
+                context.SaveChanges();
+            }
+        }
+
         public List<Message> GetByUser(int userId)
         {
             List<Message> all = new List<Message>();

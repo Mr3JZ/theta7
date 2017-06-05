@@ -217,10 +217,14 @@ namespace Client
 
         ///MESSAGES
 
-        public void AddMessage(string messageBody, int userID)
+        public void AddMessage(string messageBody)
         {
-            Message message = new Message(-1, messageBody, userID);
+            Message message = new Message(-1, messageBody, currentUser.IdUser);
             server.AddMessage(message);
+        }
+        public void DeleteMessage(Message message)
+        {
+            server.DeleteMessage(message);
         }
         public List<Message> GetMyMessages(int userID)
         {

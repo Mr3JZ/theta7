@@ -153,6 +153,10 @@ namespace Server
         {
             repoMessage.Add(message);
         }
+        public void DeleteMessage(Model.Message message)
+        {
+            repoMessage.Delete(message);
+        }
         public List<Model.Message> GetUserMessages(int userID)
         {
             return repoMessage.GetByUser(userID);
