@@ -20,7 +20,7 @@ namespace Server
         private RepoPaperDB repoPaper;
         private RepoParticipantDB repoParticipant;
         private RepoPayment repoPayment;
-        private Persistence.RepoSessionDB repoSession;
+        private RepoSessionDB repoSession;
         
 
         private readonly IDictionary<String, IClient> loggedClients;

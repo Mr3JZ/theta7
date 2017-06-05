@@ -124,9 +124,6 @@ namespace Persistence.Repository
 
                     Model.Conference conf = new Model.Conference(c.ConferenceId,c.Name,c.Edition,topics,c.DeadlineAbstractPaper,c.DeadlineCompletePaper,c.DeadlineBiddingPaper,c.DeadlineEvaluation,c.DeadlineParticipation,c.City,c.Country,c.Website,c.Price,c.BeginDate,c.EndDate);
                     all.Add(conf);
-                    //pune papers pa dinafara (din repoPaper)
-                    //pune si participanti pa dinafara (din repoParticipant)
-                    //pune si sesiunile fuck it
                 }
             }
 
