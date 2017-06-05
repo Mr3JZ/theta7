@@ -32,13 +32,11 @@ namespace Client.View
             {
                 buttonRegisterConference.Visible = true;
                 buttonRegisterConference.Enabled = true;
-                tabControl1.TabPages.RemoveAt(3);
                 tabControl1.TabPages.RemoveAt(2);
                 tabControl1.TabPages.RemoveAt(1);
             }
             else if (rank.Equals("NormalUser"))
             {
-                tabControl1.TabPages.RemoveAt(3);
                 tabControl1.TabPages.RemoveAt(2);
                 AdjustParticipant();
             }
