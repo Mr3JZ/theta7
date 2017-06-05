@@ -43,11 +43,7 @@ namespace Client.View
                 DateTime end = dateTimePicker7.Value;
                 List<String> topics = new List<string>();
                 ctrl.AddConference(name, edition, topics, abs, complete, bidding, evaluation, participation, city, country, website, price, begin, end);
-            }
-            catch (RepositoryException ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
+            }           
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());

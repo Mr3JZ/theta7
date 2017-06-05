@@ -20,7 +20,7 @@ namespace Server
         private RepoPaperDB repoPaper;
         private RepoParticipantDB repoParticipant;
         private RepoPayment repoPayment;
-        private Persistence.RepoSessionDB repoSession;
+        private RepoSessionDB repoSession;
         
 
         private readonly IDictionary<String, IClient> loggedClients;
@@ -106,9 +106,9 @@ namespace Server
             repoParticipant.Add(p);
         }
         /*Adauga un payment*/
-        public void NewPayment(Model.Participant p, int paidSum)
+        public void NewPayment(Model.Participant p, int nrTickets,Model.Conference conf)
         {
-            repoPayment.addPayment(p, paidSum);
+            repoPayment.addPayment(p, nrTickets,conf);
             
         }
         

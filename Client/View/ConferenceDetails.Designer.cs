@@ -30,6 +30,8 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageConferenceDetailed = new System.Windows.Forms.TabPage();
+            this.numericUpDownPaidSum = new System.Windows.Forms.NumericUpDown();
+            this.labelPaidSum = new System.Windows.Forms.Label();
             this.labelConferenceFee = new System.Windows.Forms.Label();
             this.labelParticipationDeadline = new System.Windows.Forms.Label();
             this.labelAbstractDeadline = new System.Windows.Forms.Label();
@@ -51,6 +53,7 @@
             this.label11 = new System.Windows.Forms.Label();
             this.dataGridViewConferenceChairs = new System.Windows.Forms.DataGridView();
             this.tabPageParticipant = new System.Windows.Forms.TabPage();
+            this.buttonUpdatePaper = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -67,6 +70,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridViewMyPapers = new System.Windows.Forms.DataGridView();
             this.tabPagePCMember = new System.Windows.Forms.TabPage();
+            this.buttonPushDeadline = new System.Windows.Forms.Button();
+            this.labelNewDeadline = new System.Windows.Forms.Label();
+            this.labeloldDeadline = new System.Windows.Forms.Label();
+            this.dateTimePickerNewDeadline = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerOldDeadline = new System.Windows.Forms.DateTimePicker();
+            this.comboBoxDeadlines = new System.Windows.Forms.ComboBox();
+            this.labelPushDeadlines = new System.Windows.Forms.Label();
             this.buttonEvaluate = new System.Windows.Forms.Button();
             this.comboBoxEvaluation = new System.Windows.Forms.ComboBox();
             this.labelBidEvaluate = new System.Windows.Forms.Label();
@@ -76,18 +86,9 @@
             this.buttonReadPaperAbstract = new System.Windows.Forms.Button();
             this.labelUploadedToReview = new System.Windows.Forms.Label();
             this.dataGridViewUploadedPapers = new System.Windows.Forms.DataGridView();
-            this.labelPushDeadlines = new System.Windows.Forms.Label();
-            this.comboBoxDeadlines = new System.Windows.Forms.ComboBox();
-            this.dateTimePickerOldDeadline = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePickerNewDeadline = new System.Windows.Forms.DateTimePicker();
-            this.labeloldDeadline = new System.Windows.Forms.Label();
-            this.labelNewDeadline = new System.Windows.Forms.Label();
-            this.buttonPushDeadline = new System.Windows.Forms.Button();
-            this.buttonUpdatePaper = new System.Windows.Forms.Button();
-            this.labelPaidSum = new System.Windows.Forms.Label();
-            this.numericUpDownPaidSum = new System.Windows.Forms.NumericUpDown();
             this.tabControl1.SuspendLayout();
             this.tabPageConferenceDetailed.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPaidSum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewConferencePCMembers)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewConferenceChairs)).BeginInit();
             this.tabPageParticipant.SuspendLayout();
@@ -95,7 +96,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMyPapers)).BeginInit();
             this.tabPagePCMember.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUploadedPapers)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPaidSum)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -136,15 +136,27 @@
             this.tabPageConferenceDetailed.Location = new System.Drawing.Point(4, 22);
             this.tabPageConferenceDetailed.Name = "tabPageConferenceDetailed";
             this.tabPageConferenceDetailed.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageConferenceDetailed.Size = new System.Drawing.Size(592, 374);
-            this.tabPageConferenceDetailed.TabIndex = 3;
-            this.tabPageConferenceDetailed.Text = "Overview";
-            this.tabPageConferenceDetailed.UseVisualStyleBackColor = true;
             this.tabPageConferenceDetailed.Size = new System.Drawing.Size(592, 405);
             this.tabPageConferenceDetailed.TabIndex = 3;
             this.tabPageConferenceDetailed.Text = "Overview";
             this.tabPageConferenceDetailed.UseVisualStyleBackColor = true;
             this.tabPageConferenceDetailed.Click += new System.EventHandler(this.tabPageConferenceDetailed_Click);
+            // 
+            // numericUpDownPaidSum
+            // 
+            this.numericUpDownPaidSum.Location = new System.Drawing.Point(448, 338);
+            this.numericUpDownPaidSum.Name = "numericUpDownPaidSum";
+            this.numericUpDownPaidSum.Size = new System.Drawing.Size(105, 20);
+            this.numericUpDownPaidSum.TabIndex = 21;
+            // 
+            // labelPaidSum
+            // 
+            this.labelPaidSum.AutoSize = true;
+            this.labelPaidSum.Location = new System.Drawing.Point(320, 338);
+            this.labelPaidSum.Name = "labelPaidSum";
+            this.labelPaidSum.Size = new System.Drawing.Size(93, 13);
+            this.labelPaidSum.TabIndex = 20;
+            this.labelPaidSum.Text = "Number of tickets:";
             // 
             // labelConferenceFee
             // 
@@ -282,7 +294,7 @@
             this.dataGridViewConferencePCMembers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewConferencePCMembers.Location = new System.Drawing.Point(10, 220);
             this.dataGridViewConferencePCMembers.Name = "dataGridViewConferencePCMembers";
-            this.dataGridViewConferencePCMembers.Size = new System.Drawing.Size(300, 144);
+            this.dataGridViewConferencePCMembers.Size = new System.Drawing.Size(300, 169);
             this.dataGridViewConferencePCMembers.TabIndex = 5;
             // 
             // label12
@@ -355,10 +367,20 @@
             this.tabPageParticipant.Location = new System.Drawing.Point(4, 22);
             this.tabPageParticipant.Name = "tabPageParticipant";
             this.tabPageParticipant.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageParticipant.Size = new System.Drawing.Size(592, 374);
+            this.tabPageParticipant.Size = new System.Drawing.Size(592, 405);
             this.tabPageParticipant.TabIndex = 0;
             this.tabPageParticipant.Text = "Participant";
             this.tabPageParticipant.UseVisualStyleBackColor = true;
+            // 
+            // buttonUpdatePaper
+            // 
+            this.buttonUpdatePaper.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonUpdatePaper.Location = new System.Drawing.Point(456, 210);
+            this.buttonUpdatePaper.Name = "buttonUpdatePaper";
+            this.buttonUpdatePaper.Size = new System.Drawing.Size(126, 25);
+            this.buttonUpdatePaper.TabIndex = 18;
+            this.buttonUpdatePaper.Text = "Update paper";
+            this.buttonUpdatePaper.UseVisualStyleBackColor = true;
             // 
             // label6
             // 
@@ -416,6 +438,7 @@
             this.buttonAddWithAbs.TabIndex = 11;
             this.buttonAddWithAbs.Text = "Add new abstract";
             this.buttonAddWithAbs.UseVisualStyleBackColor = true;
+            this.buttonAddWithAbs.Click += new System.EventHandler(this.buttonAddWithAbs_Click);
             // 
             // textBoxPaperSubdomain
             // 
@@ -513,10 +536,83 @@
             this.tabPagePCMember.Location = new System.Drawing.Point(4, 22);
             this.tabPagePCMember.Name = "tabPagePCMember";
             this.tabPagePCMember.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPagePCMember.Size = new System.Drawing.Size(592, 374);
+            this.tabPagePCMember.Size = new System.Drawing.Size(592, 405);
             this.tabPagePCMember.TabIndex = 1;
             this.tabPagePCMember.Text = "PC Member";
             this.tabPagePCMember.UseVisualStyleBackColor = true;
+            // 
+            // buttonPushDeadline
+            // 
+            this.buttonPushDeadline.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonPushDeadline.Location = new System.Drawing.Point(320, 250);
+            this.buttonPushDeadline.Name = "buttonPushDeadline";
+            this.buttonPushDeadline.Size = new System.Drawing.Size(262, 21);
+            this.buttonPushDeadline.TabIndex = 15;
+            this.buttonPushDeadline.Text = "Push deadline";
+            this.buttonPushDeadline.UseVisualStyleBackColor = true;
+            this.buttonPushDeadline.Visible = false;
+            // 
+            // labelNewDeadline
+            // 
+            this.labelNewDeadline.AutoSize = true;
+            this.labelNewDeadline.Location = new System.Drawing.Point(482, 200);
+            this.labelNewDeadline.Name = "labelNewDeadline";
+            this.labelNewDeadline.Size = new System.Drawing.Size(75, 13);
+            this.labelNewDeadline.TabIndex = 14;
+            this.labelNewDeadline.Text = "New deadline:";
+            this.labelNewDeadline.Visible = false;
+            // 
+            // labeloldDeadline
+            // 
+            this.labeloldDeadline.AutoSize = true;
+            this.labeloldDeadline.Location = new System.Drawing.Point(349, 200);
+            this.labeloldDeadline.Name = "labeloldDeadline";
+            this.labeloldDeadline.Size = new System.Drawing.Size(69, 13);
+            this.labeloldDeadline.TabIndex = 13;
+            this.labeloldDeadline.Text = "Old deadline:";
+            this.labeloldDeadline.Visible = false;
+            // 
+            // dateTimePickerNewDeadline
+            // 
+            this.dateTimePickerNewDeadline.Location = new System.Drawing.Point(456, 220);
+            this.dateTimePickerNewDeadline.Name = "dateTimePickerNewDeadline";
+            this.dateTimePickerNewDeadline.Size = new System.Drawing.Size(126, 20);
+            this.dateTimePickerNewDeadline.TabIndex = 12;
+            this.dateTimePickerNewDeadline.Visible = false;
+            // 
+            // dateTimePickerOldDeadline
+            // 
+            this.dateTimePickerOldDeadline.Location = new System.Drawing.Point(320, 220);
+            this.dateTimePickerOldDeadline.Name = "dateTimePickerOldDeadline";
+            this.dateTimePickerOldDeadline.Size = new System.Drawing.Size(126, 20);
+            this.dateTimePickerOldDeadline.TabIndex = 11;
+            this.dateTimePickerOldDeadline.Visible = false;
+            // 
+            // comboBoxDeadlines
+            // 
+            this.comboBoxDeadlines.FormattingEnabled = true;
+            this.comboBoxDeadlines.Items.AddRange(new object[] {
+            "Abstract",
+            "Complete paper",
+            "Bidding",
+            "Evaluation",
+            "Participation"});
+            this.comboBoxDeadlines.Location = new System.Drawing.Point(320, 170);
+            this.comboBoxDeadlines.Name = "comboBoxDeadlines";
+            this.comboBoxDeadlines.Size = new System.Drawing.Size(262, 21);
+            this.comboBoxDeadlines.TabIndex = 10;
+            this.comboBoxDeadlines.Visible = false;
+            this.comboBoxDeadlines.SelectedIndexChanged += new System.EventHandler(this.comboBoxDeadlines_SelectedIndexChanged);
+            // 
+            // labelPushDeadlines
+            // 
+            this.labelPushDeadlines.AutoSize = true;
+            this.labelPushDeadlines.Location = new System.Drawing.Point(410, 150);
+            this.labelPushDeadlines.Name = "labelPushDeadlines";
+            this.labelPushDeadlines.Size = new System.Drawing.Size(82, 13);
+            this.labelPushDeadlines.TabIndex = 9;
+            this.labelPushDeadlines.Text = "Push deadlines:";
+            this.labelPushDeadlines.Visible = false;
             // 
             // buttonEvaluate
             // 
@@ -531,6 +627,14 @@
             // comboBoxEvaluation
             // 
             this.comboBoxEvaluation.FormattingEnabled = true;
+            this.comboBoxEvaluation.Items.AddRange(new object[] {
+            "Strong reject",
+            "Reject",
+            "Weak reject",
+            "Borderline",
+            "Weak accept",
+            "Accept",
+            "Strong accept"});
             this.comboBoxEvaluation.Location = new System.Drawing.Point(320, 90);
             this.comboBoxEvaluation.Name = "comboBoxEvaluation";
             this.comboBoxEvaluation.Size = new System.Drawing.Size(126, 21);
@@ -605,98 +709,6 @@
             this.dataGridViewUploadedPapers.Size = new System.Drawing.Size(300, 334);
             this.dataGridViewUploadedPapers.TabIndex = 0;
             // 
-            // labelPushDeadlines
-            // 
-            this.labelPushDeadlines.AutoSize = true;
-            this.labelPushDeadlines.Location = new System.Drawing.Point(410, 150);
-            this.labelPushDeadlines.Name = "labelPushDeadlines";
-            this.labelPushDeadlines.Size = new System.Drawing.Size(82, 13);
-            this.labelPushDeadlines.TabIndex = 9;
-            this.labelPushDeadlines.Text = "Push deadlines:";
-            this.labelPushDeadlines.Visible = false;
-            // 
-            // comboBoxDeadlines
-            // 
-            this.comboBoxDeadlines.FormattingEnabled = true;
-            this.comboBoxDeadlines.Location = new System.Drawing.Point(320, 170);
-            this.comboBoxDeadlines.Name = "comboBoxDeadlines";
-            this.comboBoxDeadlines.Size = new System.Drawing.Size(262, 21);
-            this.comboBoxDeadlines.TabIndex = 10;
-            this.comboBoxDeadlines.Visible = false;
-            // 
-            // dateTimePickerOldDeadline
-            // 
-            this.dateTimePickerOldDeadline.Location = new System.Drawing.Point(320, 220);
-            this.dateTimePickerOldDeadline.Name = "dateTimePickerOldDeadline";
-            this.dateTimePickerOldDeadline.Size = new System.Drawing.Size(126, 20);
-            this.dateTimePickerOldDeadline.TabIndex = 11;
-            this.dateTimePickerOldDeadline.Visible = false;
-            // 
-            // dateTimePickerNewDeadline
-            // 
-            this.dateTimePickerNewDeadline.Location = new System.Drawing.Point(456, 220);
-            this.dateTimePickerNewDeadline.Name = "dateTimePickerNewDeadline";
-            this.dateTimePickerNewDeadline.Size = new System.Drawing.Size(126, 20);
-            this.dateTimePickerNewDeadline.TabIndex = 12;
-            this.dateTimePickerNewDeadline.Visible = false;
-            // 
-            // labeloldDeadline
-            // 
-            this.labeloldDeadline.AutoSize = true;
-            this.labeloldDeadline.Location = new System.Drawing.Point(349, 200);
-            this.labeloldDeadline.Name = "labeloldDeadline";
-            this.labeloldDeadline.Size = new System.Drawing.Size(69, 13);
-            this.labeloldDeadline.TabIndex = 13;
-            this.labeloldDeadline.Text = "Old deadline:";
-            this.labeloldDeadline.Visible = false;
-            // 
-            // labelNewDeadline
-            // 
-            this.labelNewDeadline.AutoSize = true;
-            this.labelNewDeadline.Location = new System.Drawing.Point(482, 200);
-            this.labelNewDeadline.Name = "labelNewDeadline";
-            this.labelNewDeadline.Size = new System.Drawing.Size(75, 13);
-            this.labelNewDeadline.TabIndex = 14;
-            this.labelNewDeadline.Text = "New deadline:";
-            this.labelNewDeadline.Visible = false;
-            // 
-            // buttonPushDeadline
-            // 
-            this.buttonPushDeadline.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonPushDeadline.Location = new System.Drawing.Point(320, 250);
-            this.buttonPushDeadline.Name = "buttonPushDeadline";
-            this.buttonPushDeadline.Size = new System.Drawing.Size(262, 21);
-            this.buttonPushDeadline.TabIndex = 15;
-            this.buttonPushDeadline.Text = "Push deadline";
-            this.buttonPushDeadline.UseVisualStyleBackColor = true;
-            this.buttonPushDeadline.Visible = false;
-            // 
-            // buttonUpdatePaper
-            // 
-            this.buttonUpdatePaper.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonUpdatePaper.Location = new System.Drawing.Point(456, 210);
-            this.buttonUpdatePaper.Name = "buttonUpdatePaper";
-            this.buttonUpdatePaper.Size = new System.Drawing.Size(126, 25);
-            this.buttonUpdatePaper.TabIndex = 18;
-            this.buttonUpdatePaper.Text = "Update paper";
-            this.buttonUpdatePaper.UseVisualStyleBackColor = true;
-            // 
-            // labelPaidSum
-            // 
-            this.labelPaidSum.AutoSize = true;
-            this.labelPaidSum.Location = new System.Drawing.Point(320, 338);
-            this.labelPaidSum.Name = "labelPaidSum";
-            this.labelPaidSum.Size = new System.Drawing.Size(66, 13);
-            this.labelPaidSum.TabIndex = 20;
-            this.labelPaidSum.Text = "Suma Platita";
-            // 
-            // numericUpDownPaidSum
-            // 
-            this.numericUpDownPaidSum.Location = new System.Drawing.Point(448, 338);
-            this.numericUpDownPaidSum.Name = "numericUpDownPaidSum";
-            this.numericUpDownPaidSum.Size = new System.Drawing.Size(105, 20);
-            this.numericUpDownPaidSum.TabIndex = 21;
-            // 
             // ConferenceDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -708,6 +720,7 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPageConferenceDetailed.ResumeLayout(false);
             this.tabPageConferenceDetailed.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPaidSum)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewConferencePCMembers)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewConferenceChairs)).EndInit();
             this.tabPageParticipant.ResumeLayout(false);
@@ -717,7 +730,6 @@
             this.tabPagePCMember.ResumeLayout(false);
             this.tabPagePCMember.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUploadedPapers)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPaidSum)).EndInit();
             this.ResumeLayout(false);
 
         }

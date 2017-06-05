@@ -94,7 +94,7 @@ namespace Client.View
                     
                     if (usernameTextBox.Text.Equals("admin"))
                     {
-                        AdminPanel2 gf = new AdminPanel2(ctrl);
+                        GeneralForm gf = new GeneralForm(ctrl, "admin");
                         gf.Show();
                         this.Hide();
                     }

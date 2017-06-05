@@ -22,22 +22,21 @@ namespace Persistence.Repository
          * Condition:Participant is normal user
          * Id doesn't matter?
          */
-        public void addPayment(Participant participant, int paidSum)
+        public void addPayment(Participant participant, int nrTickets,Model.Conference conference)
         {
             if (participant.IsNormalUser)
             {
                 int conferenceId = participant.ConferenceId;
                 RepoConference repo = new RepoConference();
-                Model.Conference conference = repo.getConference(conferenceId);
                 double priceTicketForConference = conference.AdmissionPrice;
-                int nrTickets = 0;
+                double paidSum = 0;
                 if (priceTicketForConference != 0)
                 {
-                    nrTickets = (int)(paidSum / priceTicketForConference);
+                    paidSum =nrTickets * priceTicketForConference;
                 }
                 else
                 {
-                    throw new RepositoryException("You can participate for free.Enjoy!");
+                    throw new Exception("You can participate for free.Enjoy!");
                 }
                 DateTime PaymentDate = DateTime.Now;
                 bool SuccessfulTransaction = true;
@@ -53,7 +52,7 @@ namespace Persistence.Repository
                     payment1.SuccessfulTransaction = payment.SuccessfulTransaction;
                     context.Payments.Add(payment1);
                     context.SaveChanges();
-
+                    /*
                     ConferenceParticipant confP = new ConferenceParticipant();//daca a facut plata devine un participant la conferinta.
                     if (context.ConferenceParticipants.Find(payment.Buyer.User.IdUser, conference.Id, payment1.PaymentId) == null)
                     {
@@ -65,7 +64,7 @@ namespace Persistence.Repository
                     context.ConferenceParticipants.Add(confP);
 
                  
-                    context.SaveChanges();
+                    context.SaveChanges();*/
                    
 
 

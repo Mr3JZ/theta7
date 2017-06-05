@@ -18,7 +18,7 @@ namespace Client
             this.server = server;
             this.currentUser = null;
         }
-
+        
         public User getCurrentUser()
         {
             return currentUser;
@@ -44,6 +44,18 @@ namespace Client
             }
             return null;
         }
+        public Model.Conference getConferenceById(int id)
+        {
+            List<Model.Conference> allConferences = getAllConferences();
+            foreach (Model.Conference conference in allConferences)
+            {
+                if (conference.Id == id)
+                    return conference;
+            }
+            return null;
+        }
+
+
         public List<Model.Conference> getMyConferences() //daca am timp o voi face mai frumoasa; daca aveti timp, feel free and change it
         {
             List<Model.Conference> allConferences = getAllConferences();
@@ -182,9 +194,9 @@ namespace Client
             server.AddParticipant(p);
         }
 
-        public void addPayment(Participant p,int paidSum)
+        public void addPayment(Participant p,int paidSum,Conference conf)
         {
-            server.NewPayment(p, paidSum);
+            server.NewPayment(p, paidSum,conf);
         }
 
         ///REVIEW
@@ -215,9 +227,9 @@ namespace Client
         {
             return server.GetUserMessages(userID).OrderBy(x => x.UserId).Reverse().ToList();
         }
-        public List<Message> GetMyMessages(User user)
+        public List<Message> GetMyMessages()
         {
-            return server.GetUserMessages(user.IdUser).OrderBy(x => x.UserId).Reverse().ToList();
+            return server.GetUserMessages(currentUser.IdUser).OrderBy(x => x.UserId).Reverse().ToList();
         }
     }
 }
