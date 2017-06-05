@@ -19,6 +19,11 @@ namespace Client
             this.currentUser = null;
         }
 
+        public User getCurrentUser()
+        {
+            return currentUser;
+        }
+
         ///CONFERENCE
         
         public void updatedConference(Conference c)

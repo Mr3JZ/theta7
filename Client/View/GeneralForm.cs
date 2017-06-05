@@ -48,6 +48,7 @@ namespace Client.View
             Conference conf = ctrl.getConference(name, edition, city);
             string rank = ctrl.getMyRank(name, edition, city);
             ConferenceDetails cf = new ConferenceDetails(ctrl, conf, rank);
+            cf.Show();
         }
 
         private void buttonCreateConference_Click(object sender, EventArgs e)
