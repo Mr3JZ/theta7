@@ -30,7 +30,7 @@ namespace Persistence.Repository.Tests
                 Assert.AreEqual(repo.getPayments().Count, 2);
                 */
             }
-            catch (RepositoryException e)
+            catch (Exception e)
             {
                 Console.Write(e.StackTrace);
             }

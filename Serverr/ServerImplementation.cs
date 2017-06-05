@@ -106,9 +106,9 @@ namespace Server
             repoParticipant.Add(p);
         }
         /*Adauga un payment*/
-        public void NewPayment(Model.Participant p, int paidSum)
+        public void NewPayment(Model.Participant p, int paidSum,Model.Conference conf)
         {
-            repoPayment.addPayment(p, paidSum);
+            repoPayment.addPayment(p, paidSum,conf);
             
         }
         

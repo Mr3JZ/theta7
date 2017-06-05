@@ -22,7 +22,7 @@ namespace Persistence.Repository
         {
             if (c.AdmissionPrice < 1)
             {
-                throw new RepositoryException("Conference admission price must be >=1!");
+                throw new Exception("Conference admission price must be >=1!");
             }
             if ((DateTime.Compare(c.DeadlineAbstract, c.DeadlineComplet) < 0) && (DateTime.Compare(c.DeadlineComplet, c.DeadlineParticipation) < 0) && (DateTime.Compare(c.DeadlineParticipation, c.DeadlineBidding) < 0))
             {
@@ -32,7 +32,7 @@ namespace Persistence.Repository
                     {
                         if (conf.Id == c.Id)
                         {
-                            throw new RepositoryException("Conference already exist!");
+                            throw new Exception("Conference already exist!");
                         }
                     }
 
@@ -59,7 +59,7 @@ namespace Persistence.Repository
                             context.Conferences.Add(conference);
                             context.SaveChanges();
                         }
-                        else throw new RepositoryException("Conference already exists!");
+                        else throw new Exception("Conference already exists!");
                     }
                         
                     //TO DO->ADD PC MEMBERS.Astept functia
@@ -97,7 +97,7 @@ namespace Persistence.Repository
                 Conference u = context.Conferences.Find(id);
                 if (u != null)
                 {
-                    throw new RepositoryException("No conference with given id!");
+                    throw new Exception("No conference with given id!");
                 }
                 List<string> topics = new List<string>();
                 foreach (var t in context.getTopicsFor1Conference(id))
@@ -107,7 +107,7 @@ namespace Persistence.Repository
                 return new Model.Conference(id,u.Name,u.Edition, topics, u.DeadlineAbstractPaper,u.DeadlineCompletePaper,u.DeadlineBiddingPaper,u.DeadlineEvaluation,u.DeadlineParticipation,u.City,u.Country,u.Website,u.Price,u.BeginDate,u.EndDate);
             }
         }
-
+        
 
         public List<Model.Conference> getConferences()
         {
