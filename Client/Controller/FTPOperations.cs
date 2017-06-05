@@ -50,14 +50,12 @@ namespace Client.Controller
         public static void createFile(int conferenceID, string filepath) //it will update if exists
         {
             string folderName = conferenceID.ToString();
-            string temp = filepath;
-            temp = temp + "/";
-            string filename = temp.Split('/').Last();
+            string filename = filepath.Split('\\').Last();
             Console.WriteLine(filename);
             using (WebClient client = new WebClient())
             {
                 client.Credentials = new NetworkCredential("IssUser", "password");
-                client.UploadFile("ftp://issftp.ddns.net/newfoldertest3/" + filename, "STOR", filepath);
+                client.UploadFile("ftp://issftp.ddns.net/"+folderName+"/" + filename, "STOR", filepath);
             }
         }
     }

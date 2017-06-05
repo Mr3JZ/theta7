@@ -23,6 +23,7 @@ namespace Client.View
             ctrl = c;
             conf = co;
             rank = r;
+            Console.WriteLine("rank:" + r);
             InitializeComponent();
             AdjustView();
         }
