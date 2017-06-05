@@ -90,6 +90,9 @@ namespace Client.View
 
         private void AdjustPCMember()
         {
+            BindingList<Paper> allPapers = new BindingList<Paper>(ctrl.getAllPapersConference(conf));
+            dataGridViewUploadedPapers.DataSource = allPapers;
+
             if (rank.Equals("Chair") && DateTime.Now<conf.BeginDate)
             {
                 labelPushDeadlines.Visible = true;
@@ -152,8 +155,9 @@ namespace Client.View
 
         private void dataGridViewMyPapers_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            string title = dataGridViewMyPapers.CurrentRow.Cells[0].ToString();
-            BindingList<Review> myreviews = new BindingList<Review>(ctrl.getReviewsByPaper(title));
+            //string title = dataGridViewMyPapers.CurrentRow.Cells[0].ToString();
+            int paperId = ((Paper)dataGridViewMyPapers.CurrentRow.DataBoundItem).Id;
+            BindingList<Review> myreviews = new BindingList<Review>(ctrl.getReviewsByPaper(paperId));
             dataGridViewMyReviews.DataSource = myreviews;
         }
 
@@ -190,6 +194,20 @@ namespace Client.View
 
         private void buttonAddWithAbs_Click(object sender, EventArgs e)
         {
+
+        }
+        private void buttonEvaluate_Click(object sender, EventArgs e)
+        {
+            Paper selectedPaper = (Paper)dataGridViewUploadedPapers.CurrentRow.DataBoundItem;
+            Participant self = conf.Participants.Where(x => { return x.User == ctrl.getCurrentUser(); }).ToList()[0];
+            if (selectedPaper.Reviewers.Contains(self))
+            {
+                new ReviewForm(ctrl, self, selectedPaper.Id).ShowDialog();
+            }
+            else
+            {
+                //nu esti reviewer, nu poti
+            }
 
         }
 

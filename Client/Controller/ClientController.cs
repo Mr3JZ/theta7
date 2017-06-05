@@ -95,6 +95,11 @@ namespace Client
             return conference.Papers.Where(p => { return p.Uploader.Username == currentUser.Username; }).ToList();
         }
 
+        public List<Paper> getAllPapersConference(Conference conference)
+        {
+            return conference.Papers;
+        }
+
         ///USER
 
         public bool login(string username, string password)

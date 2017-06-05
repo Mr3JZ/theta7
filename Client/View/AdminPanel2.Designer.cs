@@ -82,11 +82,16 @@
             // 
             // dataGridViewComitee
             // 
+            this.dataGridViewComitee.AllowUserToAddRows = false;
+            this.dataGridViewComitee.AllowUserToDeleteRows = false;
             this.dataGridViewComitee.BackgroundColor = System.Drawing.Color.White;
             this.dataGridViewComitee.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewComitee.Location = new System.Drawing.Point(15, 62);
             this.dataGridViewComitee.Name = "dataGridViewComitee";
-            this.dataGridViewComitee.Size = new System.Drawing.Size(280, 355);
+            this.dataGridViewComitee.ReadOnly = true;
+            this.dataGridViewComitee.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dataGridViewComitee.RowHeadersVisible = false;
+            this.dataGridViewComitee.Size = new System.Drawing.Size(280, 363);
             this.dataGridViewComitee.TabIndex = 3;
             // 
             // label2
@@ -101,32 +106,37 @@
             // 
             // dataGridViewAddedChairs
             // 
+            this.dataGridViewAddedChairs.AllowUserToAddRows = false;
+            this.dataGridViewAddedChairs.AllowUserToDeleteRows = false;
             this.dataGridViewAddedChairs.BackgroundColor = System.Drawing.Color.White;
             this.dataGridViewAddedChairs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewAddedChairs.Location = new System.Drawing.Point(320, 62);
             this.dataGridViewAddedChairs.Name = "dataGridViewAddedChairs";
-            this.dataGridViewAddedChairs.Size = new System.Drawing.Size(280, 59);
+            this.dataGridViewAddedChairs.RowHeadersVisible = false;
+            this.dataGridViewAddedChairs.Size = new System.Drawing.Size(280, 78);
             this.dataGridViewAddedChairs.TabIndex = 5;
             // 
             // buttonAddChair
             // 
             this.buttonAddChair.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonAddChair.Location = new System.Drawing.Point(320, 141);
+            this.buttonAddChair.Location = new System.Drawing.Point(320, 153);
             this.buttonAddChair.Name = "buttonAddChair";
             this.buttonAddChair.Size = new System.Drawing.Size(126, 25);
             this.buttonAddChair.TabIndex = 6;
             this.buttonAddChair.Text = "Add chair";
             this.buttonAddChair.UseVisualStyleBackColor = true;
+            this.buttonAddChair.Click += new System.EventHandler(this.buttonAddChair_Click);
             // 
             // buttonRemoveChair
             // 
             this.buttonRemoveChair.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonRemoveChair.Location = new System.Drawing.Point(479, 141);
+            this.buttonRemoveChair.Location = new System.Drawing.Point(479, 152);
             this.buttonRemoveChair.Name = "buttonRemoveChair";
             this.buttonRemoveChair.Size = new System.Drawing.Size(121, 25);
             this.buttonRemoveChair.TabIndex = 7;
             this.buttonRemoveChair.Text = "Remove chair";
             this.buttonRemoveChair.UseVisualStyleBackColor = true;
+            this.buttonRemoveChair.Click += new System.EventHandler(this.buttonRemoveChair_Click);
             // 
             // label3
             // 
@@ -139,10 +149,13 @@
             // 
             // dataGridViewAddedPCMembers
             // 
+            this.dataGridViewAddedPCMembers.AllowUserToAddRows = false;
+            this.dataGridViewAddedPCMembers.AllowUserToDeleteRows = false;
             this.dataGridViewAddedPCMembers.BackgroundColor = System.Drawing.Color.White;
             this.dataGridViewAddedPCMembers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewAddedPCMembers.Location = new System.Drawing.Point(320, 210);
             this.dataGridViewAddedPCMembers.Name = "dataGridViewAddedPCMembers";
+            this.dataGridViewAddedPCMembers.RowHeadersVisible = false;
             this.dataGridViewAddedPCMembers.Size = new System.Drawing.Size(280, 215);
             this.dataGridViewAddedPCMembers.TabIndex = 11;
             // 
@@ -155,6 +168,7 @@
             this.buttonAddPCMember.TabIndex = 12;
             this.buttonAddPCMember.Text = "Add PC member";
             this.buttonAddPCMember.UseVisualStyleBackColor = true;
+            this.buttonAddPCMember.Click += new System.EventHandler(this.buttonAddPCMember_Click);
             // 
             // buttonRemovePCMember
             // 
@@ -165,6 +179,7 @@
             this.buttonRemovePCMember.TabIndex = 13;
             this.buttonRemovePCMember.Text = "Remove PC member";
             this.buttonRemovePCMember.UseVisualStyleBackColor = true;
+            this.buttonRemovePCMember.Click += new System.EventHandler(this.buttonRemovePCMember_Click);
             // 
             // label4
             // 

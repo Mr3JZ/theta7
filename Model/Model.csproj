@@ -49,6 +49,7 @@
     <Compile Include="Author.cs" />
     <Compile Include="Conference.cs" />
     <Compile Include="Message.cs" />
+    <Compile Include="NamedVerdict.cs" />
     <Compile Include="Paper.cs" />
     <Compile Include="Reservation.cs" />
     <Compile Include="Session.cs" />
