@@ -85,6 +85,8 @@ namespace Client.View
 
         private void loginButton_Click(object sender, EventArgs e)
         {
+            loginButton.Enabled = false;
+            registerLabel.Enabled = false;
             if (ValidateLoginText())
             {
                 if(ctrl.login(usernameTextBox.Text, passwordTextBox.Text))
@@ -108,6 +110,8 @@ namespace Client.View
                     MessageBox.Show("Invalid account!");
                 }
             }
+            loginButton.Enabled = true;
+            registerLabel.Enabled = true;
         }
 
         private void registerLabel_Click(object sender, EventArgs e)
