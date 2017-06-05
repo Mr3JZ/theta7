@@ -199,6 +199,7 @@ namespace Client.View
 
         private void registerButton_Click(object sender, EventArgs e)
         {
+            registerButton.Enabled = false;
             bool PCMember = false;
             if (PCMemberCheckBox.CheckState == CheckState.Checked)
                 PCMember = true;
@@ -207,6 +208,7 @@ namespace Client.View
             {
                 if(ctrl.register(usernameTextBox.Text, passwordTextBox.Text,nameTextBox.Text,affiliationTextBox.Text,emailTextBox.Text,websiteTextBox.Text,PCMember))
                 {
+                    MessageBox.Show("Register successful");
                     this.Close();
                 }
                 else
@@ -214,6 +216,7 @@ namespace Client.View
                     MessageBox.Show("Invalid account");
                 }
             }
+            registerButton.Enabled = true;
         }
         private bool ValidateRegisterText()
         {

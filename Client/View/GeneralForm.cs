@@ -32,6 +32,7 @@ namespace Client.View
                 buttonCreateConference.Visible = false;
                 buttonCreateConference.Enabled = false;
             }
+            populateAllConferencesView();
         }
 
         private void GeneralForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -42,18 +43,40 @@ namespace Client.View
 
         private void buttonViewDetails_Click(object sender, EventArgs e)
         {
-            string name = dataGridViewAllConferences.SelectedRows[0].Cells[0].ToString();
-            string edition = dataGridViewAllConferences.SelectedRows[0].Cells[1].ToString();
-            string city = dataGridViewAllConferences.SelectedRows[0].Cells[2].ToString();
+            string name = dataGridViewAllConferences.CurrentRow.Cells[0].ToString();
+            string edition = dataGridViewAllConferences.CurrentRow.Cells[1].ToString();
+            string city = dataGridViewAllConferences.CurrentRow.Cells[2].ToString();
             Conference conf = ctrl.getConference(name, edition, city);
             string rank = ctrl.getMyRank(name, edition, city);
             ConferenceDetails cf = new ConferenceDetails(ctrl, conf, rank);
+            cf.Show();
         }
 
         private void buttonCreateConference_Click(object sender, EventArgs e)
         {
             AdminPanel ap = new AdminPanel(ctrl);
             ap.Show();
+        }
+        private void populateAllConferencesView()
+        {
+            dataGridViewAllConferences.AutoGenerateColumns = false;
+
+            //create the colum programically
+            DataGridViewCell cell = new DataGridViewTextBoxCell();
+            DataGridViewTextBoxColumn colFileName = new DataGridViewTextBoxColumn()
+            {
+                CellTemplate = cell,
+                Name = "Name",
+                HeaderText = "Conference name",
+                DataPropertyName = "Name" // Tell the column which property of FileName it should use
+            };
+
+            dataGridViewAllConferences.Columns.Add(colFileName);
+
+            var filelist = ctrl.getAllConferences().ToList();
+            var filenamesList = new BindingList<Model.Conference>(filelist); // <-- BindingList
+
+            dataGridViewAllConferences.DataSource = filenamesList;
         }
     }
 }

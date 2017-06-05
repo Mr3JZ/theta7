@@ -84,6 +84,8 @@
             this.labelNewDeadline = new System.Windows.Forms.Label();
             this.buttonPushDeadline = new System.Windows.Forms.Button();
             this.buttonUpdatePaper = new System.Windows.Forms.Button();
+            this.labelPaidSum = new System.Windows.Forms.Label();
+            this.numericUpDownPaidSum = new System.Windows.Forms.NumericUpDown();
             this.tabControl1.SuspendLayout();
             this.tabPageConferenceDetailed.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewConferencePCMembers)).BeginInit();
@@ -93,6 +95,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMyPapers)).BeginInit();
             this.tabPagePCMember.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUploadedPapers)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPaidSum)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -103,11 +106,13 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(600, 400);
+            this.tabControl1.Size = new System.Drawing.Size(600, 431);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPageConferenceDetailed
             // 
+            this.tabPageConferenceDetailed.Controls.Add(this.numericUpDownPaidSum);
+            this.tabPageConferenceDetailed.Controls.Add(this.labelPaidSum);
             this.tabPageConferenceDetailed.Controls.Add(this.labelConferenceFee);
             this.tabPageConferenceDetailed.Controls.Add(this.labelParticipationDeadline);
             this.tabPageConferenceDetailed.Controls.Add(this.labelAbstractDeadline);
@@ -135,6 +140,11 @@
             this.tabPageConferenceDetailed.TabIndex = 3;
             this.tabPageConferenceDetailed.Text = "Overview";
             this.tabPageConferenceDetailed.UseVisualStyleBackColor = true;
+            this.tabPageConferenceDetailed.Size = new System.Drawing.Size(592, 405);
+            this.tabPageConferenceDetailed.TabIndex = 3;
+            this.tabPageConferenceDetailed.Text = "Overview";
+            this.tabPageConferenceDetailed.UseVisualStyleBackColor = true;
+            this.tabPageConferenceDetailed.Click += new System.EventHandler(this.tabPageConferenceDetailed_Click);
             // 
             // labelConferenceFee
             // 
@@ -185,18 +195,19 @@
             // 
             this.buttonRegisterConference.Enabled = false;
             this.buttonRegisterConference.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonRegisterConference.Location = new System.Drawing.Point(456, 339);
+            this.buttonRegisterConference.Location = new System.Drawing.Point(448, 364);
             this.buttonRegisterConference.Name = "buttonRegisterConference";
             this.buttonRegisterConference.Size = new System.Drawing.Size(126, 25);
             this.buttonRegisterConference.TabIndex = 14;
             this.buttonRegisterConference.Text = "Register";
             this.buttonRegisterConference.UseVisualStyleBackColor = true;
             this.buttonRegisterConference.Visible = false;
+            this.buttonRegisterConference.Click += new System.EventHandler(this.buttonRegisterConference_Click);
             // 
             // buttonSchedule
             // 
             this.buttonSchedule.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonSchedule.Location = new System.Drawing.Point(320, 339);
+            this.buttonSchedule.Location = new System.Drawing.Point(316, 364);
             this.buttonSchedule.Name = "buttonSchedule";
             this.buttonSchedule.Size = new System.Drawing.Size(126, 25);
             this.buttonSchedule.TabIndex = 13;
@@ -670,11 +681,27 @@
             this.buttonUpdatePaper.Text = "Update paper";
             this.buttonUpdatePaper.UseVisualStyleBackColor = true;
             // 
+            // labelPaidSum
+            // 
+            this.labelPaidSum.AutoSize = true;
+            this.labelPaidSum.Location = new System.Drawing.Point(320, 338);
+            this.labelPaidSum.Name = "labelPaidSum";
+            this.labelPaidSum.Size = new System.Drawing.Size(66, 13);
+            this.labelPaidSum.TabIndex = 20;
+            this.labelPaidSum.Text = "Suma Platita";
+            // 
+            // numericUpDownPaidSum
+            // 
+            this.numericUpDownPaidSum.Location = new System.Drawing.Point(448, 338);
+            this.numericUpDownPaidSum.Name = "numericUpDownPaidSum";
+            this.numericUpDownPaidSum.Size = new System.Drawing.Size(105, 20);
+            this.numericUpDownPaidSum.TabIndex = 21;
+            // 
             // ConferenceDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(600, 400);
+            this.ClientSize = new System.Drawing.Size(612, 432);
             this.Controls.Add(this.tabControl1);
             this.Name = "ConferenceDetails";
             this.Text = "ConferenceDetails";
@@ -690,6 +717,7 @@
             this.tabPagePCMember.ResumeLayout(false);
             this.tabPagePCMember.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUploadedPapers)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPaidSum)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -752,5 +780,7 @@
         private System.Windows.Forms.ComboBox comboBoxDeadlines;
         private System.Windows.Forms.Label labelPushDeadlines;
         private System.Windows.Forms.Button buttonUpdatePaper;
+        private System.Windows.Forms.Label labelPaidSum;
+        private System.Windows.Forms.NumericUpDown numericUpDownPaidSum;
     }
 }

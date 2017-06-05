@@ -85,14 +85,16 @@ namespace Client.View
 
         private void loginButton_Click(object sender, EventArgs e)
         {
+            loginButton.Enabled = false;
+            registerLabel.Enabled = false;
             if (ValidateLoginText())
             {
                 if(ctrl.login(usernameTextBox.Text, passwordTextBox.Text))
                 {
-                    //ctrl.login(usernameTextBox.Text, passwordTextBox.Text);
+                    
                     if (usernameTextBox.Text.Equals("admin"))
                     {
-                        GeneralForm gf = new GeneralForm(ctrl, "admin");
+                        AdminPanel2 gf = new AdminPanel2(ctrl);
                         gf.Show();
                         this.Hide();
                     }
@@ -108,6 +110,8 @@ namespace Client.View
                     MessageBox.Show("Invalid account!");
                 }
             }
+            loginButton.Enabled = true;
+            registerLabel.Enabled = true;
         }
 
         private void registerLabel_Click(object sender, EventArgs e)

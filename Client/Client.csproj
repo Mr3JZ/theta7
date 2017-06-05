@@ -58,6 +58,12 @@
     <Compile Include="View\AdminPanel.Designer.cs">
       <DependentUpon>AdminPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\AdminPanel2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\AdminPanel2.Designer.cs">
+      <DependentUpon>AdminPanel2.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\ConferenceDetails.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,6 +101,9 @@
     <EmbeddedResource Include="View\AdminPanel.resx">
       <DependentUpon>AdminPanel.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\AdminPanel2.resx">
+      <DependentUpon>AdminPanel2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\ConferenceDetails.resx">
       <DependentUpon>ConferenceDetails.cs</DependentUpon>
     </EmbeddedResource>
@@ -125,6 +134,10 @@
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{f94ec6bb-d80f-4888-98ce-8426860e98ce}</Project>
       <Name>Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Persistence\Persistence.csproj">
+      <Project>{10E9488C-47E4-486A-A5F7-590A67A58FDC}</Project>
+      <Name>Persistence</Name>
     </ProjectReference>
     <ProjectReference Include="..\Serverr\Server.csproj">
       <Project>{9c147296-04b3-44aa-be1f-b536b3aeb659}</Project>

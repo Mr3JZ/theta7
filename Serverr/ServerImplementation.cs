@@ -105,13 +105,13 @@ namespace Server
         {
             repoParticipant.Add(p);
         }
-
-        public void NewPayment(Model.Payment p)
+        /*Adauga un payment*/
+        public void NewPayment(Model.Participant p, int paidSum)
         {
-            //adauga payment, notifica
-            throw new NotImplementedException();
+            repoPayment.addPayment(p, paidSum);
+            
         }
-
+        
         public void UpdateConference(Model.Conference c)
         {
             //updateaza o conferinta existenta, apelat la sesiuni noi
@@ -138,14 +138,17 @@ namespace Server
         {
             return repoUser.GetAll().Where(x => {return x.isSpecial == true; }).ToList();
         }
+
         public List<Model.User> GetAllUsers()
         {
             return repoUser.GetAll();
         }
+
         public void AddConference(Model.Conference conference)
         {
             repoConference.addConference(conference);
         }
+
         public void AddMessage(Model.Message message)
         {
             repoMessage.Add(message);

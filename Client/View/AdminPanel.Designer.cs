@@ -78,7 +78,6 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
@@ -100,6 +99,7 @@
             this.label35 = new System.Windows.Forms.Label();
             this.label36 = new System.Windows.Forms.Label();
             this.label37 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewComitee)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAddedChairs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAddedPCMembers)).BeginInit();
@@ -507,15 +507,6 @@
             this.label15.TabIndex = 49;
             this.label15.Text = "Participation deadline:";
             // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(770, 310);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(106, 13);
-            this.label16.TabIndex = 50;
-            this.label16.Text = "Participation price($):";
-            // 
             // label17
             // 
             this.label17.AutoSize = true;
@@ -706,11 +697,21 @@
             this.label37.TabIndex = 71;
             this.label37.Text = "m:";
             // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(752, 310);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(106, 13);
+            this.label16.TabIndex = 72;
+            this.label16.Text = "Participation price($):";
+            // 
             // AdminPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(900, 395);
+            this.Controls.Add(this.label16);
             this.Controls.Add(this.label37);
             this.Controls.Add(this.label36);
             this.Controls.Add(this.label35);
@@ -732,7 +733,6 @@
             this.Controls.Add(this.label19);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.label17);
-            this.Controls.Add(this.label16);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label13);
@@ -785,6 +785,7 @@
             this.Controls.Add(this.dataGridViewComitee);
             this.Name = "AdminPanel";
             this.Text = "AdminPanel";
+            this.Load += new System.EventHandler(this.AdminPanel_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewComitee)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAddedChairs)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAddedPCMembers)).EndInit();
@@ -845,7 +846,6 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label19;
@@ -867,5 +867,6 @@
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.Label label36;
         private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.Label label16;
     }
 }

@@ -66,12 +66,12 @@ namespace Persistence.Repository
                 }
                 else
                 {
-                    throw new RepositoryException("Dates must be in chronological order!");
+                    throw new Exception("Dates must be in chronological order!");
                 }
             }
             else
             {
-                throw new RepositoryException("Dates must be in chronological order!");
+                throw new Exception("Dates must be in chronological order!");
             }
         }
 
