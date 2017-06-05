@@ -22,17 +22,17 @@ namespace Persistence.Repository
          * Condition:Participant is normal user
          * Id doesn't matter?
          */
-        public void addPayment(Participant participant, int paidSum,Model.Conference conference)
+        public void addPayment(Participant participant, int nrTickets,Model.Conference conference)
         {
             if (participant.IsNormalUser)
             {
                 int conferenceId = participant.ConferenceId;
                 RepoConference repo = new RepoConference();
                 double priceTicketForConference = conference.AdmissionPrice;
-                int nrTickets = 0;
+                double paidSum = 0;
                 if (priceTicketForConference != 0)
                 {
-                    nrTickets = (int)(paidSum / priceTicketForConference);
+                    paidSum =nrTickets * priceTicketForConference;
                 }
                 else
                 {

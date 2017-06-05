@@ -154,9 +154,9 @@
             this.labelPaidSum.AutoSize = true;
             this.labelPaidSum.Location = new System.Drawing.Point(320, 338);
             this.labelPaidSum.Name = "labelPaidSum";
-            this.labelPaidSum.Size = new System.Drawing.Size(66, 13);
+            this.labelPaidSum.Size = new System.Drawing.Size(93, 13);
             this.labelPaidSum.TabIndex = 20;
-            this.labelPaidSum.Text = "Suma Platita";
+            this.labelPaidSum.Text = "Number of tickets:";
             // 
             // labelConferenceFee
             // 

@@ -58,10 +58,10 @@ namespace Client.View
         private void AdjustOverview()
         {
             int size;
-            labelConferenceDuration.Text = conf.BeginDate.ToString() + "-" + conf.BeginDate.ToString();
+            labelConferenceDuration.Text = conf.BeginDate.ToShortDateString().ToString() + "-" + conf.BeginDate.ToShortDateString().ToString();
             labelConferecePlace.Text = conf.City + " , " + conf.Country;
-            labelAbstractDeadline.Text = conf.DeadlineAbstract.ToString();
-            labelParticipationDeadline.Text = conf.DeadlineParticipation.ToString();
+            labelAbstractDeadline.Text = conf.DeadlineAbstract.ToShortDateString().ToString();
+            labelParticipationDeadline.Text = conf.DeadlineParticipation.ToShortDateString().ToString();
             labelConferenceFee.Text = "$" + conf.AdmissionPrice.ToString();
             labelConferenceName.Text = conf.Name;
             size = labelConferenceName.Width;
@@ -161,11 +161,15 @@ namespace Client.View
         {
             try
             {
-                int paidSum = (int)numericUpDownPaidSum.Value;
+                int nrTickets = (int)numericUpDownPaidSum.Value;
                 //Only listeners have to pay->so he has to be normalUser
                 Participant p = new Participant(ctrl.getCurrentUser(), conf.Id, false, false, false, true);
+                double x = conf.AdmissionPrice * nrTickets;
+                if (MessageBox.Show( "Price to pay: "+x.ToString(),"Price", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation) == DialogResult.OK)
+                {
+                    ctrl.addPayment(p, nrTickets, conf);
+                }
                 
-                ctrl.addPayment(p, paidSum,conf);
             }catch(Exception ex)
             {
                 MessageBox.Show(ex.ToString());
