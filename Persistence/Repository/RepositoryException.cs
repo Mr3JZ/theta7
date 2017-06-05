@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace Persistence.Repository
 {
     /*Class for throwing exceptions*/
+    [Serializable]
     public class RepositoryException:Exception
     {
         public RepositoryException() { }
