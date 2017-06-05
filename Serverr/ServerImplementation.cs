@@ -66,7 +66,7 @@ namespace Server
             return conf;
         }
 
-        public void Login(Model.User u, IClient client)
+        public Model.User Login(Model.User u, IClient client)
         {
 
             if (loggedClients.ContainsKey(u.Username) == true)
@@ -77,7 +77,7 @@ namespace Server
                 if (user.Username.Equals(u.Username) && user.Password.Equals(u.Password))
                 {
                     loggedClients.Add(u.Username, client);
-                    return;
+                    return user;
                 }
 
             throw new ServerException("Invalid user");

@@ -102,8 +102,7 @@ namespace Client
             try
             {
                 User user = new User(username, password);
-                server.Login(user, this);
-                currentUser = user;
+                currentUser=server.Login(user, this);
                 return true;
             } catch(ServerException err)
             {
