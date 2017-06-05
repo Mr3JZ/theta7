@@ -129,7 +129,7 @@ namespace Client.View
             {
                 int index = listBoxNotifications.SelectedIndex;
                 List<Model.Message> messages = ctrl.GetMyMessages();
-                //ctrl.DeleteMessage(messages[index]);
+                ctrl.DeleteMessage(messages[index]);
             }
         }
 
