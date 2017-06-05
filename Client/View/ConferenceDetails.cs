@@ -103,5 +103,100 @@ namespace Client.View
 
 
         }
-    }
-}
+
+        private void comboBoxDeadlines_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonAddWithAbs_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonPushDeadline_Click(object sender, EventArgs e)
+        {
+            //trebuie sa aleg din combo box ce deadline.
+            /*Alege abstract.Vf daca abstract vechi<abstract nou.
+            
+            */
+           
+            if (comboBoxDeadlines.Text.ToString().Equals("Abstract"))
+                /*we have to modify abstract.To do so we have to be sure that:
+                    --old abstract < new abstract
+                    --new abstract < complete deadline     
+             */   
+            {
+                if ((dateTimePickerNewDeadline.Value > conf.DeadlineAbstract)&&(dateTimePickerNewDeadline.Value<conf.DeadlineComplet))
+                {
+                    conf.DeadlineAbstract = dateTimePickerNewDeadline.Value;
+                    ctrl.updatedConference(conf);
+                    MessageBox.Show("Deadline has been changed!");
+                }
+            }
+           
+            if (comboBoxDeadlines.Text.ToString().Equals("Complete paper"))
+            /*we have to modify complete paper deadline.To do so we have to be sure that:
+                --old complete < new complete paper
+                --new complete paper < participation deadline     
+         */
+            
+              {
+                  if ((dateTimePickerNewDeadline.Value > conf.DeadlineComplet) && (dateTimePickerNewDeadline.Value < conf.DeadlineBidding))
+                  {
+                      conf.DeadlineComplet = dateTimePickerNewDeadline.Value;
+                      ctrl.updatedConference(conf);
+                      MessageBox.Show("Deadline has been changed!");
+                }
+              }
+
+
+            if (comboBoxDeadlines.Text.ToString().Equals("Bidding"))
+            /*we have to modify  bidding.To do so we have to be sure that:
+                --old bidding < new bidding paper
+                --new bidding paper < evaluation deadline     
+         */
+
+            {
+                if ((dateTimePickerNewDeadline.Value > conf.DeadlineBidding) && (dateTimePickerNewDeadline.Value < conf.DeadlineEvaluation))
+                {
+                    conf.DeadlineBidding = dateTimePickerNewDeadline.Value;
+                    ctrl.updatedConference(conf);
+                    MessageBox.Show("Deadline has been changed!");
+                }
+            }
+
+            if (comboBoxDeadlines.Text.ToString().Equals("Participation"))
+            /*we have to modify  participation.To do so we have to be sure that:
+                --old participation < new participation paper
+                --new particiation paper < bidding deadline     
+         */
+
+            {
+                if ((dateTimePickerNewDeadline.Value > conf.DeadlineParticipation) && (dateTimePickerNewDeadline.Value < conf.DeadlineBidding))
+                {
+                    conf.DeadlineParticipation = dateTimePickerNewDeadline.Value;
+                    ctrl.updatedConference(conf);
+                    MessageBox.Show("Deadline has been changed!");
+                }
+            }
+
+
+            if (comboBoxDeadlines.Text.ToString().Equals("Evaluation"))
+            /*we have to modify  evaluation.To do so we have to be sure that:
+                --old evaluation < new evaluation paper
+                --new evaluation paper < begin deadline     
+         */
+
+            {
+                if ((dateTimePickerNewDeadline.Value > conf.DeadlineEvaluation) && (dateTimePickerNewDeadline.Value < conf.BeginDate))
+                {
+                    conf.DeadlineEvaluation = dateTimePickerNewDeadline.Value;
+                    ctrl.updatedConference(conf);
+                    MessageBox.Show("Deadline has been changed!");
+                }
+            }
+        }
+      }
+  }
+ 

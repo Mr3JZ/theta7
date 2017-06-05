@@ -114,8 +114,8 @@ namespace Server
         
         public void UpdateConference(Model.Conference c)
         {
-            //updateaza o conferinta existenta, apelat la sesiuni noi
-            throw new NotImplementedException();
+
+            repoConference.updateConference(c);
         }
 
         public void UpdatePaper(Model.Paper p)

@@ -28,7 +28,7 @@ namespace Client
         
         public void updatedConference(Conference c)
         {
-            throw new NotImplementedException();
+             server.UpdateConference(c);
         }
         public List<Model.Conference> getAllConferences()
         {

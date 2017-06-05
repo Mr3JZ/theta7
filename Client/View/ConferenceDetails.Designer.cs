@@ -518,6 +518,80 @@
             this.tabPagePCMember.Text = "PC Member";
             this.tabPagePCMember.UseVisualStyleBackColor = true;
             // 
+            // buttonPushDeadline
+            // 
+            this.buttonPushDeadline.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonPushDeadline.Location = new System.Drawing.Point(320, 250);
+            this.buttonPushDeadline.Name = "buttonPushDeadline";
+            this.buttonPushDeadline.Size = new System.Drawing.Size(262, 21);
+            this.buttonPushDeadline.TabIndex = 15;
+            this.buttonPushDeadline.Text = "Push deadline";
+            this.buttonPushDeadline.UseVisualStyleBackColor = true;
+            this.buttonPushDeadline.Visible = false;
+            this.buttonPushDeadline.Click += new System.EventHandler(this.buttonPushDeadline_Click);
+            // 
+            // labelNewDeadline
+            // 
+            this.labelNewDeadline.AutoSize = true;
+            this.labelNewDeadline.Location = new System.Drawing.Point(482, 200);
+            this.labelNewDeadline.Name = "labelNewDeadline";
+            this.labelNewDeadline.Size = new System.Drawing.Size(75, 13);
+            this.labelNewDeadline.TabIndex = 14;
+            this.labelNewDeadline.Text = "New deadline:";
+            this.labelNewDeadline.Visible = false;
+            // 
+            // labeloldDeadline
+            // 
+            this.labeloldDeadline.AutoSize = true;
+            this.labeloldDeadline.Location = new System.Drawing.Point(349, 200);
+            this.labeloldDeadline.Name = "labeloldDeadline";
+            this.labeloldDeadline.Size = new System.Drawing.Size(69, 13);
+            this.labeloldDeadline.TabIndex = 13;
+            this.labeloldDeadline.Text = "Old deadline:";
+            this.labeloldDeadline.Visible = false;
+            // 
+            // dateTimePickerNewDeadline
+            // 
+            this.dateTimePickerNewDeadline.Location = new System.Drawing.Point(456, 220);
+            this.dateTimePickerNewDeadline.Name = "dateTimePickerNewDeadline";
+            this.dateTimePickerNewDeadline.Size = new System.Drawing.Size(126, 20);
+            this.dateTimePickerNewDeadline.TabIndex = 12;
+            this.dateTimePickerNewDeadline.Visible = false;
+            // 
+            // dateTimePickerOldDeadline
+            // 
+            this.dateTimePickerOldDeadline.Location = new System.Drawing.Point(320, 220);
+            this.dateTimePickerOldDeadline.Name = "dateTimePickerOldDeadline";
+            this.dateTimePickerOldDeadline.Size = new System.Drawing.Size(126, 20);
+            this.dateTimePickerOldDeadline.TabIndex = 11;
+            this.dateTimePickerOldDeadline.Visible = false;
+            // 
+            // comboBoxDeadlines
+            // 
+            this.comboBoxDeadlines.FormattingEnabled = true;
+            this.comboBoxDeadlines.Items.AddRange(new object[] {
+            "Abstract",
+            "Complete paper",
+            "Bidding",
+            "Evaluation",
+            "Participation"});
+            this.comboBoxDeadlines.Location = new System.Drawing.Point(320, 170);
+            this.comboBoxDeadlines.Name = "comboBoxDeadlines";
+            this.comboBoxDeadlines.Size = new System.Drawing.Size(262, 21);
+            this.comboBoxDeadlines.TabIndex = 10;
+            this.comboBoxDeadlines.Visible = false;
+            this.comboBoxDeadlines.SelectedIndexChanged += new System.EventHandler(this.comboBoxDeadlines_SelectedIndexChanged);
+            // 
+            // labelPushDeadlines
+            // 
+            this.labelPushDeadlines.AutoSize = true;
+            this.labelPushDeadlines.Location = new System.Drawing.Point(410, 150);
+            this.labelPushDeadlines.Name = "labelPushDeadlines";
+            this.labelPushDeadlines.Size = new System.Drawing.Size(82, 13);
+            this.labelPushDeadlines.TabIndex = 9;
+            this.labelPushDeadlines.Text = "Push deadlines:";
+            this.labelPushDeadlines.Visible = false;
+            // 
             // buttonEvaluate
             // 
             this.buttonEvaluate.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
