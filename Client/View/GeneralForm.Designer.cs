@@ -113,6 +113,7 @@
             this.dataGridViewAllConferences.BackgroundColor = System.Drawing.Color.White;
             this.dataGridViewAllConferences.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewAllConferences.Location = new System.Drawing.Point(10, 10);
+            this.dataGridViewAllConferences.MultiSelect = false;
             this.dataGridViewAllConferences.Name = "dataGridViewAllConferences";
             this.dataGridViewAllConferences.Size = new System.Drawing.Size(400, 304);
             this.dataGridViewAllConferences.TabIndex = 0;

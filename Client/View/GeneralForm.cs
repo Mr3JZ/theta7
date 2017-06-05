@@ -42,9 +42,9 @@ namespace Client.View
 
         private void buttonViewDetails_Click(object sender, EventArgs e)
         {
-            string name = dataGridViewAllConferences.SelectedRows[0].Cells[0].ToString();
-            string edition = dataGridViewAllConferences.SelectedRows[0].Cells[1].ToString();
-            string city = dataGridViewAllConferences.SelectedRows[0].Cells[2].ToString();
+            string name = dataGridViewAllConferences.CurrentRow.Cells[0].ToString();
+            string edition = dataGridViewAllConferences.CurrentRow.Cells[1].ToString();
+            string city = dataGridViewAllConferences.CurrentRow.Cells[2].ToString();
             Conference conf = ctrl.getConference(name, edition, city);
             string rank = ctrl.getMyRank(name, edition, city);
             ConferenceDetails cf = new ConferenceDetails(ctrl, conf, rank);
