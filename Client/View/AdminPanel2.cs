@@ -66,20 +66,20 @@ namespace Client.View
                 }
                 else
                 {
-                    foreach(var c in addedChairs)
+                    foreach (var c in addedChairs)
                     {
                         Participant chair = new Participant(c, addedConf.Id, false, true, true, false);
                         ctrl.addParticipant(chair);
                     }
                 }
 
-                foreach(var p in addedPCMembers)
+                foreach (var p in addedPCMembers)
                 {
-                    Participant pcm = new Participant(p, addedConf.Id, false, false, true,false);
+                    Participant pcm = new Participant(p, addedConf.Id, false, false, true, false);
                     ctrl.addParticipant(pcm);
                 }
-                
-            }           
+
+            }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
@@ -92,7 +92,13 @@ namespace Client.View
         {
             if (dataGridViewComitee.CurrentRow.Index != -1)
             {
-                addedChairs.Add((Model.User)dataGridViewComitee.CurrentRow.DataBoundItem);
+                User toAdd = (Model.User)dataGridViewComitee.CurrentRow.DataBoundItem;
+                if (addedChairs.Contains(toAdd) || addedPCMembers.Contains(toAdd))
+                {
+                    MessageBox.Show("Already a Chair/PC Member");
+                }
+                else
+                    addedChairs.Add(toAdd);
             }
         }
 
@@ -100,7 +106,13 @@ namespace Client.View
         {
             if (dataGridViewComitee.CurrentRow.Index != -1)
             {
-                addedPCMembers.Add((Model.User)dataGridViewComitee.CurrentRow.DataBoundItem);
+                User toAdd = (Model.User)dataGridViewComitee.CurrentRow.DataBoundItem;
+                if (addedChairs.Contains(toAdd) || addedPCMembers.Contains(toAdd))
+                {
+                    MessageBox.Show("Already a Chair/PC Member");
+                }
+                else
+                    addedPCMembers.Add((Model.User)dataGridViewComitee.CurrentRow.DataBoundItem);
             }
         }
 
@@ -116,8 +128,8 @@ namespace Client.View
         {
             if (dataGridViewAddedPCMembers.CurrentRow.Index != -1)
             {
-                addedChairs.Remove((Model.User)dataGridViewAddedPCMembers.CurrentRow.DataBoundItem);
+                addedPCMembers.Remove((Model.User)dataGridViewAddedPCMembers.CurrentRow.DataBoundItem);
             }
         }
     }
-    }
+}
