@@ -53,13 +53,13 @@
             this.label11 = new System.Windows.Forms.Label();
             this.dataGridViewConferenceChairs = new System.Windows.Forms.DataGridView();
             this.tabPageParticipant = new System.Windows.Forms.TabPage();
-            this.buttonUpdatePaper = new System.Windows.Forms.Button();
+            this.buttonAddPaper = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.buttonRemovePaper = new System.Windows.Forms.Button();
             this.buttonSaveChanges = new System.Windows.Forms.Button();
-            this.buttonAddWithAbs = new System.Windows.Forms.Button();
+            this.buttonAddAbstract = new System.Windows.Forms.Button();
             this.textBoxPaperSubdomain = new System.Windows.Forms.TextBox();
             this.textBoxPaperDomain = new System.Windows.Forms.TextBox();
             this.textBoxPaperName = new System.Windows.Forms.TextBox();
@@ -296,6 +296,7 @@
             this.dataGridViewConferencePCMembers.Name = "dataGridViewConferencePCMembers";
             this.dataGridViewConferencePCMembers.Size = new System.Drawing.Size(300, 169);
             this.dataGridViewConferencePCMembers.TabIndex = 5;
+            this.dataGridViewConferencePCMembers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewConferencePCMembers_CellContentClick);
             // 
             // label12
             // 
@@ -348,13 +349,13 @@
             // 
             // tabPageParticipant
             // 
-            this.tabPageParticipant.Controls.Add(this.buttonUpdatePaper);
+            this.tabPageParticipant.Controls.Add(this.buttonAddPaper);
             this.tabPageParticipant.Controls.Add(this.label6);
             this.tabPageParticipant.Controls.Add(this.label5);
             this.tabPageParticipant.Controls.Add(this.label4);
             this.tabPageParticipant.Controls.Add(this.buttonRemovePaper);
             this.tabPageParticipant.Controls.Add(this.buttonSaveChanges);
-            this.tabPageParticipant.Controls.Add(this.buttonAddWithAbs);
+            this.tabPageParticipant.Controls.Add(this.buttonAddAbstract);
             this.tabPageParticipant.Controls.Add(this.textBoxPaperSubdomain);
             this.tabPageParticipant.Controls.Add(this.textBoxPaperDomain);
             this.tabPageParticipant.Controls.Add(this.textBoxPaperName);
@@ -372,15 +373,16 @@
             this.tabPageParticipant.Text = "Participant";
             this.tabPageParticipant.UseVisualStyleBackColor = true;
             // 
-            // buttonUpdatePaper
+            // buttonAddPaper
             // 
-            this.buttonUpdatePaper.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonUpdatePaper.Location = new System.Drawing.Point(456, 210);
-            this.buttonUpdatePaper.Name = "buttonUpdatePaper";
-            this.buttonUpdatePaper.Size = new System.Drawing.Size(126, 25);
-            this.buttonUpdatePaper.TabIndex = 18;
-            this.buttonUpdatePaper.Text = "Update paper";
-            this.buttonUpdatePaper.UseVisualStyleBackColor = true;
+            this.buttonAddPaper.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonAddPaper.Location = new System.Drawing.Point(456, 210);
+            this.buttonAddPaper.Name = "buttonAddPaper";
+            this.buttonAddPaper.Size = new System.Drawing.Size(126, 25);
+            this.buttonAddPaper.TabIndex = 18;
+            this.buttonAddPaper.Text = "Add paper";
+            this.buttonAddPaper.UseVisualStyleBackColor = true;
+            this.buttonAddPaper.Click += new System.EventHandler(this.buttonAddPaper_Click);
             // 
             // label6
             // 
@@ -429,16 +431,16 @@
             this.buttonSaveChanges.Text = "Save changes";
             this.buttonSaveChanges.UseVisualStyleBackColor = true;
             // 
-            // buttonAddWithAbs
+            // buttonAddAbstract
             // 
-            this.buttonAddWithAbs.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonAddWithAbs.Location = new System.Drawing.Point(320, 210);
-            this.buttonAddWithAbs.Name = "buttonAddWithAbs";
-            this.buttonAddWithAbs.Size = new System.Drawing.Size(126, 25);
-            this.buttonAddWithAbs.TabIndex = 11;
-            this.buttonAddWithAbs.Text = "Add new abstract";
-            this.buttonAddWithAbs.UseVisualStyleBackColor = true;
-            this.buttonAddWithAbs.Click += new System.EventHandler(this.buttonAddWithAbs_Click);
+            this.buttonAddAbstract.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonAddAbstract.Location = new System.Drawing.Point(320, 210);
+            this.buttonAddAbstract.Name = "buttonAddAbstract";
+            this.buttonAddAbstract.Size = new System.Drawing.Size(126, 25);
+            this.buttonAddAbstract.TabIndex = 11;
+            this.buttonAddAbstract.Text = "Add abstract";
+            this.buttonAddAbstract.UseVisualStyleBackColor = true;
+            this.buttonAddAbstract.Click += new System.EventHandler(this.buttonAddWithAbs_Click);
             // 
             // textBoxPaperSubdomain
             // 
@@ -753,7 +755,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button buttonRemovePaper;
         private System.Windows.Forms.Button buttonSaveChanges;
-        private System.Windows.Forms.Button buttonAddWithAbs;
+        private System.Windows.Forms.Button buttonAddAbstract;
         private System.Windows.Forms.Button buttonReadPaperAbstract;
         private System.Windows.Forms.Label labelUploadedToReview;
         private System.Windows.Forms.DataGridView dataGridViewUploadedPapers;
@@ -791,7 +793,7 @@
         private System.Windows.Forms.DateTimePicker dateTimePickerOldDeadline;
         private System.Windows.Forms.ComboBox comboBoxDeadlines;
         private System.Windows.Forms.Label labelPushDeadlines;
-        private System.Windows.Forms.Button buttonUpdatePaper;
+        private System.Windows.Forms.Button buttonAddPaper;
         private System.Windows.Forms.Label labelPaidSum;
         private System.Windows.Forms.NumericUpDown numericUpDownPaidSum;
     }

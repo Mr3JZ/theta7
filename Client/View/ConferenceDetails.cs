@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Model;
 using Persistence.Repository;
+using Client.Controller;
 
 namespace Client.View
 {
@@ -188,6 +189,25 @@ namespace Client.View
         }
 
         private void buttonAddWithAbs_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonAddPaper_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog theDialog = new OpenFileDialog();
+            theDialog.Title = "Open Text File";
+            theDialog.Filter = "PDF files|*.pdf|Microsoft Word files|*.doc;*.docx|Power Point files|*.ppt;*.pptx";
+            theDialog.InitialDirectory = @"C:\";
+            if (theDialog.ShowDialog() == DialogResult.OK)
+            {
+                string filepath = theDialog.FileName.ToString();
+                FTPOperations.createFolder(conf.Id);
+                FTPOperations.createFile(conf.Id,filepath);
+            }
+        }
+
+        private void dataGridViewConferencePCMembers_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

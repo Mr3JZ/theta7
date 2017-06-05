@@ -116,15 +116,7 @@ namespace Client.View
 
         private void registerLabel_Click(object sender, EventArgs e)
         {
-            //new RegisterForm(ctrl).ShowDialog();
-            OpenFileDialog theDialog = new OpenFileDialog();
-            theDialog.Title = "Open Text File";
-            theDialog.Filter = "PDF files|*.pdf|Microsoft Word files|*.doc;*.docx|Power Point files|*.ppt;*.pptx";
-            theDialog.InitialDirectory = @"C:\";
-            if (theDialog.ShowDialog() == DialogResult.OK)
-            {
-                MessageBox.Show(theDialog.FileName.ToString());
-            }
+            new RegisterForm(ctrl).ShowDialog();
         }
         private bool ValidateLoginText()
         {
