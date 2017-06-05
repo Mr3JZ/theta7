@@ -168,6 +168,7 @@ namespace Client.View
                 if (MessageBox.Show( "Price to pay: "+x.ToString(),"Price", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation) == DialogResult.OK)
                 {
                     ctrl.addPayment(p, nrTickets, conf);
+                   
                 }
                 
             }catch(Exception ex)
