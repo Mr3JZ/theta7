@@ -86,14 +86,6 @@ namespace Client.View
 
         private void buttonRegisterConference_Click(object sender, EventArgs e)
         {
-            int paidSum = (int)numericUpDownPaidSum.Value;
-            //Only listeners have to pay->so he has to be normalUser
-            Participant p = new Participant(ctrl.getCurrentUser(),conf.Id,false,false,false,true);
-            ctrl.addPayment(p, paidSum);
-        }
-
-        private void tabPageConferenceDetailed_Click(object sender, EventArgs e)
-        {
 
         }
     }

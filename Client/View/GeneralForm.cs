@@ -32,6 +32,7 @@ namespace Client.View
                 buttonCreateConference.Visible = false;
                 buttonCreateConference.Enabled = false;
             }
+            populateAllConferencesView();
         }
 
         private void GeneralForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -55,6 +56,27 @@ namespace Client.View
         {
             AdminPanel ap = new AdminPanel(ctrl);
             ap.Show();
+        }
+        private void populateAllConferencesView()
+        {
+            dataGridViewAllConferences.AutoGenerateColumns = false;
+
+            //create the colum programically
+            DataGridViewCell cell = new DataGridViewTextBoxCell();
+            DataGridViewTextBoxColumn colFileName = new DataGridViewTextBoxColumn()
+            {
+                CellTemplate = cell,
+                Name = "Name",
+                HeaderText = "Conference name",
+                DataPropertyName = "Name" // Tell the column which property of FileName it should use
+            };
+
+            dataGridViewAllConferences.Columns.Add(colFileName);
+
+            var filelist = ctrl.getAllConferences().ToList();
+            var filenamesList = new BindingList<Model.Conference>(filelist); // <-- BindingList
+
+            dataGridViewAllConferences.DataSource = filenamesList;
         }
     }
 }
