@@ -85,6 +85,7 @@
             this.buttonLogout1.TabIndex = 3;
             this.buttonLogout1.Text = "Logout";
             this.buttonLogout1.UseVisualStyleBackColor = true;
+            this.buttonLogout1.Click += new System.EventHandler(this.buttonLogout1_Click);
             // 
             // buttonViewDetails
             // 
@@ -141,6 +142,7 @@
             this.buttonDeleteMessage.TabIndex = 3;
             this.buttonDeleteMessage.Text = "Delete message";
             this.buttonDeleteMessage.UseVisualStyleBackColor = true;
+            this.buttonDeleteMessage.Click += new System.EventHandler(this.buttonDeleteMessage_Click);
             // 
             // buttonReadMessage
             // 
@@ -151,6 +153,7 @@
             this.buttonReadMessage.TabIndex = 2;
             this.buttonReadMessage.Text = "Read message";
             this.buttonReadMessage.UseVisualStyleBackColor = true;
+            this.buttonReadMessage.Click += new System.EventHandler(this.buttonReadMessage_Click);
             // 
             // buttonLogout2
             // 
@@ -161,6 +164,7 @@
             this.buttonLogout2.TabIndex = 1;
             this.buttonLogout2.Text = "Logout";
             this.buttonLogout2.UseVisualStyleBackColor = true;
+            this.buttonLogout2.Click += new System.EventHandler(this.buttonLogout2_Click);
             // 
             // listBoxNotifications
             // 
@@ -192,6 +196,7 @@
             this.buttonViewDetailsMy.TabIndex = 2;
             this.buttonViewDetailsMy.Text = "View conference details";
             this.buttonViewDetailsMy.UseVisualStyleBackColor = true;
+            this.buttonViewDetailsMy.Click += new System.EventHandler(this.buttonViewDetailsMy_Click);
             // 
             // buttonLogout3
             // 
@@ -202,6 +207,7 @@
             this.buttonLogout3.TabIndex = 1;
             this.buttonLogout3.Text = "Logout";
             this.buttonLogout3.UseVisualStyleBackColor = true;
+            this.buttonLogout3.Click += new System.EventHandler(this.buttonLogout3_Click);
             // 
             // dataGridViewMyConferences
             // 
@@ -211,6 +217,7 @@
             this.dataGridViewMyConferences.Name = "dataGridViewMyConferences";
             this.dataGridViewMyConferences.Size = new System.Drawing.Size(400, 304);
             this.dataGridViewMyConferences.TabIndex = 0;
+            this.dataGridViewMyConferences.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewMyConferences_CellContentClick);
             // 
             // GeneralForm
             // 

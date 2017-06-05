@@ -66,7 +66,7 @@ namespace Server
             return conf;
         }
 
-        public void Login(Model.User u, IClient client)
+        public Model.User Login(Model.User u, IClient client)
         {
 
             if (loggedClients.ContainsKey(u.Username) == true)
@@ -77,7 +77,7 @@ namespace Server
                 if (user.Username.Equals(u.Username) && user.Password.Equals(u.Password))
                 {
                     loggedClients.Add(u.Username, client);
-                    return;
+                    return user;
                 }
 
             throw new ServerException("Invalid user");
@@ -106,9 +106,9 @@ namespace Server
             repoParticipant.Add(p);
         }
         /*Adauga un payment*/
-        public void NewPayment(Model.Participant p, int paidSum,Model.Conference conf)
+        public void NewPayment(Model.Participant p, int nrTickets,Model.Conference conf)
         {
-            repoPayment.addPayment(p, paidSum,conf);
+            repoPayment.addPayment(p, nrTickets,conf);
             
         }
         
@@ -152,6 +152,10 @@ namespace Server
         public void AddMessage(Model.Message message)
         {
             repoMessage.Add(message);
+        }
+        public void DeleteMessage(Model.Message message)
+        {
+            repoMessage.Delete(message);
         }
         public List<Model.Message> GetUserMessages(int userID)
         {

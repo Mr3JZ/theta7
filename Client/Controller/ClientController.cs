@@ -102,8 +102,7 @@ namespace Client
             try
             {
                 User user = new User(username, password);
-                server.Login(user, this);
-                currentUser = user;
+                currentUser=server.Login(user, this);
                 return true;
             } catch(ServerException err)
             {
@@ -218,18 +217,22 @@ namespace Client
 
         ///MESSAGES
 
-        public void AddMessage(string messageBody, int userID)
+        public void AddMessage(string messageBody)
         {
-            Message message = new Message(-1, messageBody, userID);
+            Message message = new Message(-1, messageBody, currentUser.IdUser);
             server.AddMessage(message);
+        }
+        public void DeleteMessage(Message message)
+        {
+            server.DeleteMessage(message);
         }
         public List<Message> GetMyMessages(int userID)
         {
             return server.GetUserMessages(userID).OrderBy(x => x.UserId).Reverse().ToList();
         }
-        public List<Message> GetMyMessages(User user)
+        public List<Message> GetMyMessages()
         {
-            return server.GetUserMessages(user.IdUser).OrderBy(x => x.UserId).Reverse().ToList();
+            return server.GetUserMessages(currentUser.IdUser).OrderBy(x => x.UserId).Reverse().ToList();
         }
     }
 }
