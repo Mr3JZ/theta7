@@ -18,7 +18,7 @@ namespace Client
             this.server = server;
             this.currentUser = null;
         }
-
+        
         public User getCurrentUser()
         {
             return currentUser;
@@ -44,6 +44,18 @@ namespace Client
             }
             return null;
         }
+        public Model.Conference getConferenceById(int id)
+        {
+            List<Model.Conference> allConferences = getAllConferences();
+            foreach (Model.Conference conference in allConferences)
+            {
+                if (conference.Id == id)
+                    return conference;
+            }
+            return null;
+        }
+
+
         public List<Model.Conference> getMyConferences() //daca am timp o voi face mai frumoasa; daca aveti timp, feel free and change it
         {
             List<Model.Conference> allConferences = getAllConferences();
@@ -182,9 +194,9 @@ namespace Client
             server.AddParticipant(p);
         }
 
-        public void addPayment(Participant p,int paidSum)
+        public void addPayment(Participant p,int paidSum,Conference conf)
         {
-            server.NewPayment(p, paidSum);
+            server.NewPayment(p, paidSum,conf);
         }
 
         ///REVIEW

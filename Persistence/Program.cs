@@ -14,8 +14,7 @@ namespace Persistence
         static void Main()
         {
 
-
-            
+            /*
             Repository.RepoPaperDB repoP = new Repository.RepoPaperDB();
             Repository.RepoParticipantDB repoParticipant = new Repository.RepoParticipantDB();
 

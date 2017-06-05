@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Model;
+using Persistence.Repository;
 
 namespace Client.View
 {
@@ -158,11 +159,17 @@ namespace Client.View
 
         private void buttonRegisterConference_Click(object sender, EventArgs e)
         {
-
-            int paidSum = (int)numericUpDownPaidSum.Value;
-            //Only listeners have to pay->so he has to be normalUser
-            Participant p = new Participant(ctrl.getCurrentUser(), conf.Id, false, false, false, true);
-            ctrl.addPayment(p, paidSum);
+            try
+            {
+                int paidSum = (int)numericUpDownPaidSum.Value;
+                //Only listeners have to pay->so he has to be normalUser
+                Participant p = new Participant(ctrl.getCurrentUser(), conf.Id, false, false, false, true);
+                
+                ctrl.addPayment(p, paidSum,conf);
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
 
         private void tabPageConferenceDetailed_Click(object sender, EventArgs e)
