@@ -43,9 +43,9 @@ namespace Client.View
 
         private void buttonViewDetails_Click(object sender, EventArgs e)
         {
-            string name = dataGridViewAllConferences.CurrentRow.Cells[0].ToString();
-            string edition = dataGridViewAllConferences.CurrentRow.Cells[1].ToString();
-            string city = dataGridViewAllConferences.CurrentRow.Cells[2].ToString();
+            string name = dataGridViewAllConferences.CurrentRow.Cells[0].Value.ToString();
+            string edition = dataGridViewAllConferences.CurrentRow.Cells[1].Value.ToString();
+            string city = dataGridViewAllConferences.CurrentRow.Cells[2].Value.ToString();
             Conference conf = ctrl.getConference(name, edition, city);
             string rank = ctrl.getMyRank(name, edition, city);
             ConferenceDetails cf = new ConferenceDetails(ctrl, conf, rank);
@@ -63,6 +63,8 @@ namespace Client.View
 
             //create the colum programically
             DataGridViewCell cell = new DataGridViewTextBoxCell();
+            DataGridViewCell cellEdition = new DataGridViewTextBoxCell();
+            DataGridViewCell cellCity = new DataGridViewTextBoxCell();
             DataGridViewTextBoxColumn colFileName = new DataGridViewTextBoxColumn()
             {
                 CellTemplate = cell,
@@ -70,8 +72,24 @@ namespace Client.View
                 HeaderText = "Conference name",
                 DataPropertyName = "Name" // Tell the column which property of FileName it should use
             };
+            DataGridViewTextBoxColumn colFileNameEdition = new DataGridViewTextBoxColumn()
+            {
+                CellTemplate = cellEdition,
+                Name = "Edition",
+                HeaderText = "Edition",
+                DataPropertyName = "Edition" // Tell the column which property of FileName it should use
+            };
+            DataGridViewTextBoxColumn colFileNameCity = new DataGridViewTextBoxColumn()
+            {
+                CellTemplate = cellCity,
+                Name = "City",
+                HeaderText = "City",
+                DataPropertyName = "City" // Tell the column which property of FileName it should use
+            };
 
             dataGridViewAllConferences.Columns.Add(colFileName);
+            dataGridViewAllConferences.Columns.Add(colFileNameEdition);
+            dataGridViewAllConferences.Columns.Add(colFileNameCity);
 
             var filelist = ctrl.getAllConferences().ToList();
             var filenamesList = new BindingList<Model.Conference>(filelist); // <-- BindingList

@@ -37,7 +37,7 @@ namespace Persistence.Repository
                 }
                 else
                 {
-                    throw new RepositoryException("You can participate for free.Enjoy!");
+                    throw new Exception("You can participate for free.Enjoy!");
                 }
                 DateTime PaymentDate = DateTime.Now;
                 bool SuccessfulTransaction = true;

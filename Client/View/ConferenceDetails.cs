@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Model;
+using Persistence.Repository;
 
 namespace Client.View
 {
@@ -49,10 +50,10 @@ namespace Client.View
             labelConferecePlace.Text = conf.City + " , " + conf.Country;
             labelAbstractDeadline.Text = conf.DeadlineAbstract.ToString();
             labelParticipationDeadline.Text = conf.DeadlineParticipation.ToString();
-            labelConferenceFee.Text = "$"+conf.AdmissionPrice.ToString();
+            labelConferenceFee.Text = "$" + conf.AdmissionPrice.ToString();
             labelConferenceName.Text = conf.Name;
             size = labelConferenceName.Width;
-            labelConferenceName.SetBounds((592-size)/2,0,size,29);
+            labelConferenceName.SetBounds((592 - size) / 2, 0, size, 29);
             labelConferenceEdition.Text = conf.Edition;
             size = labelConferenceEdition.Width;
             labelConferenceName.SetBounds((592 - size) / 2, 40, size, 24);
@@ -62,7 +63,7 @@ namespace Client.View
             dataGridViewConferencePCMembers.DataSource = pcmembers;
             BindingList<string> topics = new BindingList<string>(conf.Topics);
             listBoxConferenceTopics.DataSource = topics;
-            if(DateTime.Now<conf.DeadlineEvaluation || DateTime.Now > conf.EndDate)
+            if (DateTime.Now < conf.DeadlineEvaluation || DateTime.Now > conf.EndDate)
             {
                 buttonSchedule.Enabled = false;
                 buttonSchedule.Visible = false;
@@ -84,11 +85,19 @@ namespace Client.View
 
         private void buttonRegisterConference_Click(object sender, EventArgs e)
         {
-
-            int paidSum = (int)numericUpDownPaidSum.Value;
-            //Only listeners have to pay->so he has to be normalUser
-            Participant p = new Participant(ctrl.getCurrentUser(), conf.Id, false, false, false, true);
-            ctrl.addPayment(p, paidSum);
+            try
+            {
+                int paidSum = (int)numericUpDownPaidSum.Value;
+                //Only listeners have to pay->so he has to be normalUser
+                Participant p = new Participant(ctrl.getCurrentUser(), conf.Id, false, false, false, true);
+                ctrl.addPayment(p, paidSum);
+            }catch (RepositoryException ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
 
         private void tabPageConferenceDetailed_Click(object sender, EventArgs e)
@@ -97,3 +106,4 @@ namespace Client.View
 
         }
     }
+}
