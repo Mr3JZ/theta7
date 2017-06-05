@@ -215,9 +215,9 @@ namespace Client
         {
             return server.GetUserMessages(userID).OrderBy(x => x.UserId).Reverse().ToList();
         }
-        public List<Message> GetMyMessages(User user)
+        public List<Message> GetMyMessages()
         {
-            return server.GetUserMessages(user.IdUser).OrderBy(x => x.UserId).Reverse().ToList();
+            return server.GetUserMessages(currentUser.IdUser).OrderBy(x => x.UserId).Reverse().ToList();
         }
     }
 }

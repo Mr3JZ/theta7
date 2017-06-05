@@ -33,6 +33,13 @@ namespace Client.View
                 buttonCreateConference.Enabled = false;
             }
             populateAllConferencesView();
+            populateNotifications();
+        }
+
+        private void populateNotifications()
+        {
+            BindingList<Model.Message> messages = new BindingList<Model.Message>(ctrl.GetMyMessages());
+            listBoxNotifications.DataSource = messages;
         }
 
         private void GeneralForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -54,7 +61,7 @@ namespace Client.View
 
         private void buttonCreateConference_Click(object sender, EventArgs e)
         {
-            AdminPanel ap = new AdminPanel(ctrl);
+            AdminPanel2 ap = new AdminPanel2(ctrl);
             ap.Show();
         }
         private void populateAllConferencesView()
@@ -77,6 +84,53 @@ namespace Client.View
             var filenamesList = new BindingList<Model.Conference>(filelist); // <-- BindingList
 
             dataGridViewAllConferences.DataSource = filenamesList;
+        }
+
+        private void buttonViewDetailsMy_Click(object sender, EventArgs e)
+        {
+            string name = dataGridViewAllConferences.CurrentRow.Cells[0].ToString();
+            string edition = dataGridViewAllConferences.CurrentRow.Cells[1].ToString();
+            string city = dataGridViewAllConferences.CurrentRow.Cells[2].ToString();
+            Conference conf = ctrl.getConference(name, edition, city);
+            string rank = ctrl.getMyRank(name, edition, city);
+            ConferenceDetails cf = new ConferenceDetails(ctrl, conf, rank);
+            cf.Show();
+        }
+
+        private void buttonReadMessage_Click(object sender, EventArgs e)
+        {
+            if (listBoxNotifications.SelectedItems.Count > 0)
+            {
+                MessageBox.Show(listBoxNotifications.SelectedItems[0].ToString());
+            }
+        }
+
+        private void buttonDeleteMessage_Click(object sender, EventArgs e)
+        {
+            if (listBoxNotifications.SelectedItems.Count > 0)
+            {
+                int index = listBoxNotifications.SelectedIndex;
+                List<Model.Message> messages = ctrl.GetMyMessages();
+                //ctrl.DeleteMessage(messages[index]);
+            }
+        }
+
+        private void buttonLogout1_Click(object sender, EventArgs e)
+        {
+            ctrl.logout();
+            Application.Exit();
+        }
+
+        private void buttonLogout2_Click(object sender, EventArgs e)
+        {
+            ctrl.logout();
+            Application.Exit();
+        }
+
+        private void buttonLogout3_Click(object sender, EventArgs e)
+        {
+            ctrl.logout();
+            Application.Exit();
         }
     }
 }

@@ -40,6 +40,18 @@ namespace Client.View
                 tabControl1.TabPages.RemoveAt(2);
                 AdjustParticipant();
             }
+            else
+            {
+                if (rank.Equals("Chair"))
+                {
+                    tabControl1.TabPages.RemoveAt(1);
+                }
+                else
+                {
+                    AdjustParticipant();
+                }
+                AdjustPCMember();
+            }
         }
 
         private void AdjustOverview()
@@ -49,10 +61,10 @@ namespace Client.View
             labelConferecePlace.Text = conf.City + " , " + conf.Country;
             labelAbstractDeadline.Text = conf.DeadlineAbstract.ToString();
             labelParticipationDeadline.Text = conf.DeadlineParticipation.ToString();
-            labelConferenceFee.Text = "$"+conf.AdmissionPrice.ToString();
+            labelConferenceFee.Text = "$" + conf.AdmissionPrice.ToString();
             labelConferenceName.Text = conf.Name;
             size = labelConferenceName.Width;
-            labelConferenceName.SetBounds((592-size)/2,0,size,29);
+            labelConferenceName.SetBounds((592 - size) / 2, 0, size, 29);
             labelConferenceEdition.Text = conf.Edition;
             size = labelConferenceEdition.Width;
             labelConferenceName.SetBounds((592 - size) / 2, 40, size, 24);
@@ -62,7 +74,7 @@ namespace Client.View
             dataGridViewConferencePCMembers.DataSource = pcmembers;
             BindingList<string> topics = new BindingList<string>(conf.Topics);
             listBoxConferenceTopics.DataSource = topics;
-            if(DateTime.Now<conf.DeadlineEvaluation || DateTime.Now > conf.EndDate)
+            if (DateTime.Now < conf.DeadlineEvaluation || DateTime.Now > conf.EndDate)
             {
                 buttonSchedule.Enabled = false;
                 buttonSchedule.Visible = false;
@@ -73,6 +85,68 @@ namespace Client.View
         {
             BindingList<Paper> mypapers = new BindingList<Paper>(ctrl.getPapers(conf));
             dataGridViewMyPapers.DataSource = mypapers;
+        }
+
+        private void AdjustPCMember()
+        {
+            if (rank.Equals("Chair") && DateTime.Now<conf.BeginDate)
+            {
+                labelPushDeadlines.Visible = true;
+                comboBoxDeadlines.Visible = true;
+                comboBoxDeadlines.Enabled = true;
+                labeloldDeadline.Visible = true;
+                labelNewDeadline.Visible = true;
+                dateTimePickerOldDeadline.Visible = true;
+                dateTimePickerOldDeadline.Enabled = true;
+                dateTimePickerNewDeadline.Visible = true;
+                dateTimePickerNewDeadline.Enabled = true;
+                buttonPushDeadline.Visible = true;
+                buttonPushDeadline.Enabled = true;
+            }
+            if (DateTime.Now < conf.DeadlineBidding && DateTime.Now > conf.DeadlineComplet)
+            {
+                labelBidEvaluate.Text = "Bidding";
+                comboBoxBidding.Visible = true;
+                comboBoxBidding.Enabled = true;
+                buttonBidding.Visible = true;
+                buttonBidding.Enabled = true;
+                comboBoxEvaluation.Visible = false;
+                comboBoxEvaluation.Enabled = false;
+                buttonEvaluate.Visible = false;
+                buttonEvaluate.Enabled = false;
+            }
+            else if (DateTime.Now < conf.DeadlineEvaluation && DateTime.Now > conf.DeadlineBidding)
+            {
+                labelBidEvaluate.Text = "Evaluation";
+                comboBoxBidding.Visible = false;
+                comboBoxBidding.Enabled = false;
+                buttonBidding.Visible = false;
+                buttonBidding.Enabled = false;
+                comboBoxEvaluation.Visible = true;
+                comboBoxEvaluation.Enabled = true;
+                buttonEvaluate.Visible = true;
+                buttonEvaluate.Enabled = true;
+            }
+            else
+            {
+                labelBidEvaluate.Visible = false;
+                comboBoxBidding.Visible = false;
+                comboBoxBidding.Enabled = false;
+                buttonBidding.Visible = false;
+                buttonBidding.Enabled = false;
+                comboBoxEvaluation.Visible = false;
+                comboBoxEvaluation.Enabled = false;
+                buttonEvaluate.Visible = false;
+                buttonEvaluate.Enabled = false;
+            }
+            if (DateTime.Now < conf.DeadlineBidding)
+            {
+                labelUploadedToReview.Text = "Uploaded papers";
+            }
+            else
+            {
+                labelUploadedToReview.Text = "Papers to evaluate";
+            }
         }
 
         private void dataGridViewMyPapers_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -96,4 +170,15 @@ namespace Client.View
 
 
         }
+
+        private void comboBoxDeadlines_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonAddWithAbs_Click(object sender, EventArgs e)
+        {
+
+        }
     }
+}
