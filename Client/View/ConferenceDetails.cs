@@ -49,10 +49,10 @@ namespace Client.View
             labelConferecePlace.Text = conf.City + " , " + conf.Country;
             labelAbstractDeadline.Text = conf.DeadlineAbstract.ToString();
             labelParticipationDeadline.Text = conf.DeadlineParticipation.ToString();
-            labelConferenceFee.Text = "$"+conf.AdmissionPrice.ToString();
+            labelConferenceFee.Text = "$" + conf.AdmissionPrice.ToString();
             labelConferenceName.Text = conf.Name;
             size = labelConferenceName.Width;
-            labelConferenceName.SetBounds((592-size)/2,0,size,29);
+            labelConferenceName.SetBounds((592 - size) / 2, 0, size, 29);
             labelConferenceEdition.Text = conf.Edition;
             size = labelConferenceEdition.Width;
             labelConferenceName.SetBounds((592 - size) / 2, 40, size, 24);
@@ -62,7 +62,7 @@ namespace Client.View
             dataGridViewConferencePCMembers.DataSource = pcmembers;
             BindingList<string> topics = new BindingList<string>(conf.Topics);
             listBoxConferenceTopics.DataSource = topics;
-            if(DateTime.Now<conf.DeadlineEvaluation || DateTime.Now > conf.EndDate)
+            if (DateTime.Now < conf.DeadlineEvaluation || DateTime.Now > conf.EndDate)
             {
                 buttonSchedule.Enabled = false;
                 buttonSchedule.Visible = false;
@@ -97,3 +97,4 @@ namespace Client.View
 
         }
     }
+}
