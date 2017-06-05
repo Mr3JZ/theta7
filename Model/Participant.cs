@@ -19,6 +19,9 @@ namespace Model
             IsNormalUser = isNormalUser;
         }
 
+        public Participant()
+        {
+        }
 
         public User User { get; set; }
         

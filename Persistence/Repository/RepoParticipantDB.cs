@@ -50,7 +50,7 @@ namespace Persistence.Repository
                     ConferenceParticipant participant = new ConferenceParticipant();
                     participant.UserId = p.User.IdUser;
                     participant.ConferenceId = p.ConferenceId;
-                    participant.PaymentId = -1;
+                    participant.PaymentId = 1;
 
                     context.ConferenceParticipants.Add(participant);
                     context.SaveChanges();

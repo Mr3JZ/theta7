@@ -553,6 +553,7 @@
             this.buttonPushDeadline.Text = "Push deadline";
             this.buttonPushDeadline.UseVisualStyleBackColor = true;
             this.buttonPushDeadline.Visible = false;
+            this.buttonPushDeadline.Click += new System.EventHandler(this.buttonPushDeadline_Click);
             // 
             // labelNewDeadline
             // 
@@ -625,6 +626,7 @@
             this.buttonEvaluate.TabIndex = 8;
             this.buttonEvaluate.Text = "Evaluate paper";
             this.buttonEvaluate.UseVisualStyleBackColor = true;
+            this.buttonEvaluate.Click += new System.EventHandler(this.buttonEvaluate_Click);
             // 
             // comboBoxEvaluation
             // 

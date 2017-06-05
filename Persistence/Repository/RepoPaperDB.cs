@@ -55,16 +55,20 @@ namespace Persistence.Repository
                         foreach (var r in context.getReviewsPaper(paper.PaperId))
                         {
                             User us = context.Users.Find(r.PCMemberUserId);
-                            PCMember pcm = context.PCMembers.Find(r.PCMemberUserId,paper.ConferenceId);
+                            PCMember pcm = context.PCMembers.Find(r.PCMemberUserId, paper.ConferenceId);
                             Model.User reviewer = new Model.User(us.UserId, us.Username, us.Password, us.Name, us.Affilliation, us.Email, us.canBePCMember, us.WebPage);
                             Model.Participant participant = new Model.Participant(reviewer, paper.ConferenceId, pcm.isChair, pcm.isCoChair, true, false);
 
-                            Verdict v = (Verdict)r.Evaluation;
+                            Model.Review review;
 
-                            Model.Review review = new Model.Review(0, participant, v, r.Recommandations);
+                            if (r.Evaluation != null)
+                            {
+                                Verdict v = (Verdict)r.Evaluation;
+                                review = new Model.Review(0, participant, v, r.Recommandations);
+                                p.AddReview(review);
+                            }
 
                             p.AddReviewer(participant);
-                            p.AddReview(review);
 
 
                         }
@@ -215,16 +219,13 @@ namespace Persistence.Repository
 
         public void AddReview(int paperId, Model.Review review)
         {
-            Review rev = new Review();
-            rev.PCMemberUserId = review.Reviewer.User.IdUser;
-            rev.PCMemberConferenceId = review.Reviewer.ConferenceId;
-            rev.PaperId = paperId;
-            rev.Evaluation = (int)review.Verdict;
-            rev.Recommandations = review.Comments;
-
             using (var context = new ISSEntities2(Util.ConnectionStringWithPassword.doIt()))
             {
-                context.Reviews.Add(rev);
+                Review rev = context.Reviews.Find(review.Reviewer.User.IdUser,review.Reviewer.ConferenceId,paperId);
+
+                rev.Evaluation = (int)review.Verdict;
+                rev.Recommandations = review.Comments;
+
                 context.SaveChanges();
             }
         }

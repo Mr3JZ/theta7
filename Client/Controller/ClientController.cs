@@ -28,7 +28,7 @@ namespace Client
         
         public void updatedConference(Conference c)
         {
-            throw new NotImplementedException();
+             server.UpdateConference(c);
         }
         public List<Model.Conference> getAllConferences()
         {
@@ -95,6 +95,11 @@ namespace Client
             return conference.Papers.Where(p => { return p.Uploader.Username == currentUser.Username; }).ToList();
         }
 
+        public List<Paper> getAllPapersConference(Conference conference)
+        {
+            return conference.Papers;
+        }
+
         ///USER
 
         public bool login(string username, string password)
@@ -102,8 +107,7 @@ namespace Client
             try
             {
                 User user = new User(username, password);
-                server.Login(user, this);
-                currentUser = user;
+                currentUser=server.Login(user, this);
                 return true;
             } catch(ServerException err)
             {
@@ -218,10 +222,14 @@ namespace Client
 
         ///MESSAGES
 
-        public void AddMessage(string messageBody, int userID)
+        public void AddMessage(string messageBody)
         {
-            Message message = new Message(-1, messageBody, userID);
+            Message message = new Message(-1, messageBody, currentUser.IdUser);
             server.AddMessage(message);
+        }
+        public void DeleteMessage(Message message)
+        {
+            server.DeleteMessage(message);
         }
         public List<Message> GetMyMessages(int userID)
         {

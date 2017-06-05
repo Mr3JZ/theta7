@@ -91,6 +91,9 @@ namespace Client.View
 
         private void AdjustPCMember()
         {
+            BindingList<Paper> allPapers = new BindingList<Paper>(ctrl.getAllPapersConference(conf));
+            dataGridViewUploadedPapers.DataSource = allPapers;
+
             if (rank.Equals("Chair") && DateTime.Now<conf.BeginDate)
             {
                 labelPushDeadlines.Visible = true;
@@ -153,8 +156,9 @@ namespace Client.View
 
         private void dataGridViewMyPapers_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            string title = dataGridViewMyPapers.CurrentRow.Cells[0].ToString();
-            BindingList<Review> myreviews = new BindingList<Review>(ctrl.getReviewsByPaper(title));
+            //string title = dataGridViewMyPapers.CurrentRow.Cells[0].ToString();
+            int paperId = ((Paper)dataGridViewMyPapers.CurrentRow.DataBoundItem).Id;
+            BindingList<Review> myreviews = new BindingList<Review>(ctrl.getReviewsByPaper(paperId));
             dataGridViewMyReviews.DataSource = myreviews;
         }
 
@@ -169,6 +173,7 @@ namespace Client.View
                 if (MessageBox.Show( "Price to pay: "+x.ToString(),"Price", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation) == DialogResult.OK)
                 {
                     ctrl.addPayment(p, nrTickets, conf);
+                   
                 }
                 
             }catch(Exception ex)
@@ -211,5 +216,108 @@ namespace Client.View
         {
 
         }
-    }
-}
+        private void buttonEvaluate_Click(object sender, EventArgs e)
+        {
+            Paper selectedPaper = (Paper)dataGridViewUploadedPapers.CurrentRow.DataBoundItem;
+
+            bool found = false;
+            foreach(var r in selectedPaper.Reviewers)
+            {
+                if (r.User.Username == ctrl.getCurrentUser().Username)
+                {
+                    new ReviewForm(ctrl, r, selectedPaper.Id).ShowDialog();
+                    found = true;
+                }
+            }
+            if(found==false)
+            {
+                MessageBox.Show("You're not a reviewer for the selected paper");
+            }
+
+        }
+
+        private void buttonPushDeadline_Click(object sender, EventArgs e)
+        {
+            //trebuie sa aleg din combo box ce deadline.
+            /*Alege abstract.Vf daca abstract vechi<abstract nou.
+            
+            */
+           
+            if (comboBoxDeadlines.Text.ToString().Equals("Abstract"))
+                /*we have to modify abstract.To do so we have to be sure that:
+                    --old abstract < new abstract
+                    --new abstract < complete deadline     
+             */   
+            {
+                if ((dateTimePickerNewDeadline.Value > conf.DeadlineAbstract)&&(dateTimePickerNewDeadline.Value<conf.DeadlineComplet))
+                {
+                    conf.DeadlineAbstract = dateTimePickerNewDeadline.Value;
+                    ctrl.updatedConference(conf);
+                    MessageBox.Show("Deadline has been changed!");
+                }
+            }
+           
+            if (comboBoxDeadlines.Text.ToString().Equals("Complete paper"))
+            /*we have to modify complete paper deadline.To do so we have to be sure that:
+                --old complete < new complete paper
+                --new complete paper < participation deadline     
+         */
+            
+              {
+                  if ((dateTimePickerNewDeadline.Value > conf.DeadlineComplet) && (dateTimePickerNewDeadline.Value < conf.DeadlineBidding))
+                  {
+                      conf.DeadlineComplet = dateTimePickerNewDeadline.Value;
+                      ctrl.updatedConference(conf);
+                      MessageBox.Show("Deadline has been changed!");
+                }
+              }
+
+
+            if (comboBoxDeadlines.Text.ToString().Equals("Bidding"))
+            /*we have to modify  bidding.To do so we have to be sure that:
+                --old bidding < new bidding paper
+                --new bidding paper < evaluation deadline     
+         */
+
+            {
+                if ((dateTimePickerNewDeadline.Value > conf.DeadlineBidding) && (dateTimePickerNewDeadline.Value < conf.DeadlineEvaluation))
+                {
+                    conf.DeadlineBidding = dateTimePickerNewDeadline.Value;
+                    ctrl.updatedConference(conf);
+                    MessageBox.Show("Deadline has been changed!");
+                }
+            }
+
+            if (comboBoxDeadlines.Text.ToString().Equals("Participation"))
+            /*we have to modify  participation.To do so we have to be sure that:
+                --old participation < new participation paper
+                --new particiation paper < bidding deadline     
+         */
+
+            {
+                if ((dateTimePickerNewDeadline.Value > conf.DeadlineParticipation) && (dateTimePickerNewDeadline.Value < conf.DeadlineBidding))
+                {
+                    conf.DeadlineParticipation = dateTimePickerNewDeadline.Value;
+                    ctrl.updatedConference(conf);
+                    MessageBox.Show("Deadline has been changed!");
+                }
+            }
+
+
+            if (comboBoxDeadlines.Text.ToString().Equals("Evaluation"))
+            /*we have to modify  evaluation.To do so we have to be sure that:
+                --old evaluation < new evaluation paper
+                --new evaluation paper < begin deadline     
+         */
+
+            {
+                if ((dateTimePickerNewDeadline.Value > conf.DeadlineEvaluation) && (dateTimePickerNewDeadline.Value < conf.BeginDate))
+                {
+                    conf.DeadlineEvaluation = dateTimePickerNewDeadline.Value;
+                    ctrl.updatedConference(conf);
+                    MessageBox.Show("Deadline has been changed!");
+                }
+            }
+        }
+      }
+  }

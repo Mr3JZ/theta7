@@ -217,6 +217,7 @@
             this.dataGridViewMyConferences.Name = "dataGridViewMyConferences";
             this.dataGridViewMyConferences.Size = new System.Drawing.Size(400, 304);
             this.dataGridViewMyConferences.TabIndex = 0;
+            this.dataGridViewMyConferences.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewMyConferences_CellContentClick);
             // 
             // GeneralForm
             // 

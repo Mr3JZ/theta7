@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Persistence.Repository
 {
@@ -52,24 +53,19 @@ namespace Persistence.Repository
                     payment1.SuccessfulTransaction = payment.SuccessfulTransaction;
                     context.Payments.Add(payment1);
                     context.SaveChanges();
-                    /*
+                    
                     ConferenceParticipant confP = new ConferenceParticipant();//daca a facut plata devine un participant la conferinta.
                     if (context.ConferenceParticipants.Find(payment.Buyer.User.IdUser, conference.Id, payment1.PaymentId) == null)
                     {
+                        MessageBox.Show(payment.Buyer.User.IdUser.ToString());
                         confP.UserId = participant.User.IdUser;
                         confP.ConferenceId = conference.Id;
                         confP.PaymentId = payment1.PaymentId;
+                        context.ConferenceParticipants.Add(confP);
+                        context.SaveChanges();
                     }
-                   
-                    context.ConferenceParticipants.Add(confP);
-
-                 
-                    context.SaveChanges();*/
-                   
-
-
-
-
+                                     
+                                       
                 }
 
 
