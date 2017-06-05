@@ -199,14 +199,19 @@ namespace Client.View
         private void buttonEvaluate_Click(object sender, EventArgs e)
         {
             Paper selectedPaper = (Paper)dataGridViewUploadedPapers.CurrentRow.DataBoundItem;
-            Participant self = conf.Participants.Where(x => { return x.User == ctrl.getCurrentUser(); }).ToList()[0];
-            if (selectedPaper.Reviewers.Contains(self))
+
+            bool found = false;
+            foreach(var r in selectedPaper.Reviewers)
             {
-                new ReviewForm(ctrl, self, selectedPaper.Id).ShowDialog();
+                if (r.User.Username == ctrl.getCurrentUser().Username)
+                {
+                    new ReviewForm(ctrl, r, selectedPaper.Id).ShowDialog();
+                    found = true;
+                }
             }
-            else
+            if(found==false)
             {
-                //nu esti reviewer, nu poti
+                MessageBox.Show("You're not a reviewer for the selected paper");
             }
 
         }
