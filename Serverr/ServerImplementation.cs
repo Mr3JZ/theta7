@@ -93,11 +93,15 @@ namespace Server
             throw new ServerException("User not logged in");//User is not logged in
             
         }
-        public void Register(Model.User user)
+        public bool Register(Model.User user)
         {
+            List<Model.User> all = repoUser.GetAll();
+            if (repoUser.GetAll().Any(x => x.Username.Equals(user.Username)))
+                return false;
             //Verifica daca user-ul exista in BD
             ///daca exista arunca exceptie
             repoUser.Add(user);
+            return true;
         }
 
 

@@ -11,7 +11,7 @@ namespace Services
     {
         Model.User Login(User u, IClient client);
         void Logout(User u, IClient client);
-        void Register(User user);
+        bool Register(User user);
         List<Conference> GetConferences();
         Conference GetConference(int id);
         List<Review> GetReviewsByPaper(int paperId);

@@ -138,8 +138,7 @@ namespace Client
             try
             {
                 User user = new User(-1, username, password, name, affiliation, email, isSpecial, website);
-                server.Register(user);
-                return true;
+                return server.Register(user);
             }
             catch (ServerException err)
             {
