@@ -354,5 +354,10 @@ namespace Client
             tempConfID = "";
             tempAbstractMessage = "";
         }
+        public void removePaper(int id)
+        {
+            server.removePaper(id);
+        }
+
     }
 }

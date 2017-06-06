@@ -715,6 +715,7 @@
             this.buttonReadPaperAbstract.TabIndex = 2;
             this.buttonReadPaperAbstract.Text = "Read paper abstract";
             this.buttonReadPaperAbstract.UseVisualStyleBackColor = true;
+            this.buttonReadPaperAbstract.Click += new System.EventHandler(this.buttonReadPaperAbstract_Click);
             // 
             // labelUploadedToReview
             // 

@@ -28,6 +28,6 @@ namespace Services
         void DeleteMessage(Message message);
         List<Model.Message> GetUserMessages(int userID);
         bool addPaper(Model.Paper paper);
-
+        void removePaper(int id);
     }
 }

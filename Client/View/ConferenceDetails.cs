@@ -637,15 +637,20 @@ namespace Client.View
 
         private void buttonRemovePaper_Click(object sender, EventArgs e)
         {
+
             DialogResult dialogResult = MessageBox.Show("Are you sure?", "Warning", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                //do something
+                Paper paper = ((Paper)dataGridViewMyPapers.CurrentRow.DataBoundItem);
+                int paperId = paper.Id;
+                ctrl.removePaper(paperId);
             }
-            else if (dialogResult == DialogResult.No)
-            {
-                //do something else
-            }
+        }
+
+        private void buttonReadPaperAbstract_Click(object sender, EventArgs e)
+        {
+            Paper selectedPaper = (Paper)dataGridViewUploadedPapers.CurrentRow.DataBoundItem;
+            MessageBox.Show(selectedPaper.Resume);
         }
     }
   }

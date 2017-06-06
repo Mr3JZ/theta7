@@ -166,5 +166,9 @@ namespace Server
             repoPaper.Add(paper);
             return true;
         }
+        public void removePaper(int id)
+        {
+            repoPaper.Remove(id);
+        }
     }
 }
