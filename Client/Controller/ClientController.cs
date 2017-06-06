@@ -348,5 +348,11 @@ namespace Client
             paper.Status = Status.PENDING;
             return server.addPaper(paper);
         }
+        public void revertRemembers()
+        {
+            tempFilePath = "";
+            tempConfID = "";
+            tempAbstractMessage = "";
+        }
     }
 }

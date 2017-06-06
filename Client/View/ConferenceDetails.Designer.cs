@@ -86,6 +86,7 @@
             this.buttonReadPaperAbstract = new System.Windows.Forms.Button();
             this.labelUploadedToReview = new System.Windows.Forms.Label();
             this.dataGridViewUploadedPapers = new System.Windows.Forms.DataGridView();
+            this.buttonDiscard = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPageConferenceDetailed.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPaidSum)).BeginInit();
@@ -357,6 +358,7 @@
             // 
             // tabPageParticipant
             // 
+            this.tabPageParticipant.Controls.Add(this.buttonDiscard);
             this.tabPageParticipant.Controls.Add(this.buttonAddPaper);
             this.tabPageParticipant.Controls.Add(this.label6);
             this.tabPageParticipant.Controls.Add(this.label5);
@@ -384,7 +386,7 @@
             // buttonAddPaper
             // 
             this.buttonAddPaper.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonAddPaper.Location = new System.Drawing.Point(456, 210);
+            this.buttonAddPaper.Location = new System.Drawing.Point(320, 241);
             this.buttonAddPaper.Name = "buttonAddPaper";
             this.buttonAddPaper.Size = new System.Drawing.Size(126, 25);
             this.buttonAddPaper.TabIndex = 18;
@@ -422,17 +424,18 @@
             // buttonRemovePaper
             // 
             this.buttonRemovePaper.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonRemovePaper.Location = new System.Drawing.Point(456, 245);
+            this.buttonRemovePaper.Location = new System.Drawing.Point(456, 210);
             this.buttonRemovePaper.Name = "buttonRemovePaper";
             this.buttonRemovePaper.Size = new System.Drawing.Size(126, 25);
             this.buttonRemovePaper.TabIndex = 14;
             this.buttonRemovePaper.Text = "Remove paper";
             this.buttonRemovePaper.UseVisualStyleBackColor = true;
+            this.buttonRemovePaper.Click += new System.EventHandler(this.buttonRemovePaper_Click);
             // 
             // buttonSaveChanges
             // 
             this.buttonSaveChanges.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonSaveChanges.Location = new System.Drawing.Point(320, 245);
+            this.buttonSaveChanges.Location = new System.Drawing.Point(320, 274);
             this.buttonSaveChanges.Name = "buttonSaveChanges";
             this.buttonSaveChanges.Size = new System.Drawing.Size(126, 25);
             this.buttonSaveChanges.TabIndex = 13;
@@ -735,6 +738,17 @@
             this.dataGridViewUploadedPapers.TabIndex = 0;
             this.dataGridViewUploadedPapers.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridViewConferenceChairs_CellFormatting);
             // 
+            // buttonDiscard
+            // 
+            this.buttonDiscard.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonDiscard.Location = new System.Drawing.Point(456, 241);
+            this.buttonDiscard.Name = "buttonDiscard";
+            this.buttonDiscard.Size = new System.Drawing.Size(126, 25);
+            this.buttonDiscard.TabIndex = 19;
+            this.buttonDiscard.Text = "Discard uploads";
+            this.buttonDiscard.UseVisualStyleBackColor = true;
+            this.buttonDiscard.Click += new System.EventHandler(this.buttonDiscard_Click);
+            // 
             // ConferenceDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -820,5 +834,6 @@
         private System.Windows.Forms.Button buttonAddPaper;
         private System.Windows.Forms.Label labelPaidSum;
         private System.Windows.Forms.NumericUpDown numericUpDownPaidSum;
+        private System.Windows.Forms.Button buttonDiscard;
     }
 }

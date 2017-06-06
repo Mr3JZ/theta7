@@ -26,6 +26,7 @@ namespace Client.View
             Console.WriteLine("rank:" + r);
             InitializeComponent();
             AdjustView();
+            buttonSaveChanges.Enabled = false;
         }
 
         private void AdjustView()
@@ -395,7 +396,13 @@ namespace Client.View
         {
             AbstractForm abstractForm = new AbstractForm();
             abstractForm.ShowDialog();
-            ctrl.rememberAbstract(abstractForm.absMessage);
+            if (abstractForm.absMessage.Length >= 1)
+            {
+                ctrl.rememberAbstract(abstractForm.absMessage);
+                buttonAddAbstract.Enabled = false;
+                if (buttonAddPaper.Enabled == false)
+                    buttonSaveChanges.Enabled = true;
+            }
         }
 
         private void buttonAddPaper_Click(object sender, EventArgs e)
@@ -408,6 +415,11 @@ namespace Client.View
             {
                 string filepath = theDialog.FileName.ToString();
                 ctrl.rememberPaper(filepath, conf.Id);
+                buttonAddPaper.Enabled = false;
+                if(buttonAddAbstract.Enabled == false)
+                {
+                    buttonSaveChanges.Enabled = true;
+                }
             }
         }
 
@@ -586,6 +598,10 @@ namespace Client.View
             if(ctrl.saveChanges(conf.Id, title, domain, subdomain, topic))
             {
                 MessageBox.Show("Upload successful");
+                buttonSaveChanges.Enabled = false;
+                buttonAddPaper.Enabled = true;
+                buttonAddAbstract.Enabled = true;
+                ctrl.revertRemembers();
             }
             else
             {
@@ -608,6 +624,27 @@ namespace Client.View
                     val = propInfo.GetValue(val, null);
                 }
                 e.Value = val;
+            }
+        }
+
+        private void buttonDiscard_Click(object sender, EventArgs e)
+        {
+            buttonSaveChanges.Enabled = false;
+            buttonAddPaper.Enabled = true;
+            buttonAddAbstract.Enabled = true;
+            ctrl.revertRemembers();
+        }
+
+        private void buttonRemovePaper_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Are you sure?", "Warning", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                //do something
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                //do something else
             }
         }
     }
