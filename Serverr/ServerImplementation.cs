@@ -96,10 +96,6 @@ namespace Server
             repoUser.Add(user);
         }
 
-        public void NewPaper(Model.Conference c, Model.Paper p)
-        {
-            throw new NotImplementedException();
-        }
 
         public void AddParticipant(Participant p)
         {
@@ -160,6 +156,10 @@ namespace Server
         public List<Model.Message> GetUserMessages(int userID)
         {
             return repoMessage.GetByUser(userID);
+        }
+        public void addPaper(Model.Paper paper)
+        {
+            repoPaper.Add(paper);
         }
     }
 }

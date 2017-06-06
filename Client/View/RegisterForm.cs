@@ -206,7 +206,7 @@ namespace Client.View
 
             if (ValidateRegisterText())
             {
-                if(ctrl.register(usernameTextBox.Text, passwordTextBox.Text,nameTextBox.Text,affiliationTextBox.Text,emailTextBox.Text,websiteTextBox.Text,PCMember))
+                if (ctrl.register(usernameTextBox.Text, passwordTextBox.Text, nameTextBox.Text, affiliationTextBox.Text, emailTextBox.Text, websiteTextBox.Text, PCMember))
                 {
                     MessageBox.Show("Register successful");
                     this.Close();

@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Model;
 using Persistence.Repository;
-using Client.Controller;
 
 namespace Client.View
 {
@@ -196,7 +195,9 @@ namespace Client.View
 
         private void buttonAddWithAbs_Click(object sender, EventArgs e)
         {
-
+            AbstractForm abstractForm = new AbstractForm();
+            abstractForm.ShowDialog();
+            ctrl.rememberAbstract(abstractForm.absMessage);
         }
 
         private void buttonAddPaper_Click(object sender, EventArgs e)
@@ -208,8 +209,7 @@ namespace Client.View
             if (theDialog.ShowDialog() == DialogResult.OK)
             {
                 string filepath = theDialog.FileName.ToString();
-                FTPOperations.createFolder(conf.Id);
-                FTPOperations.createFile(conf.Id,filepath);
+                ctrl.rememberPaper(filepath, conf.Id);
             }
         }
 
@@ -320,5 +320,72 @@ namespace Client.View
                 }
             }
         }
-      }
+
+        private void buttonReadFullPaper_Click(object sender, EventArgs e)
+        {
+            //Paper selectedPaper = (Paper)dataGridViewUploadedPapers.CurrentRow.DataBoundItem;
+            //selectedPaper.Filepath
+            //string s = "";
+            //conf
+            //try
+            //{
+            //    FtpWebRequest req = (FtpWebRequest)WebRequest.Create("ftp://issftp.ddns.net/1/");
+            //    req.Method = WebRequestMethods.Ftp.ListDirectory;
+            //    req.Credentials = new NetworkCredential("IssUser", "password");
+            //    FtpWebResponse response = (FtpWebResponse)req.GetResponse();
+            //    Stream responseStream = response.GetResponseStream();
+            //    StreamReader reader = new StreamReader(responseStream);
+            //    char[] names = reader.ReadToEnd().ToArray();
+            //    s = new string(names);
+            //    int numberOfRows = s.Count(f => f == '\n');
+            //    if (numberOfRows > 1)
+            //        Console.WriteLine("There is something wrong with the FTP, it has " + numberOfRows + " rows");
+            //    s = s.Replace('\r', '\0');
+            //    s = s.Replace('\n', '\0');
+            //    reader.Close();
+            //    response.Close();
+            //}
+            //catch (WebException ex)
+            //{
+            //    if (ex.Response != null)
+            //    {
+            //        FtpWebResponse response = (FtpWebResponse)ex.Response;
+            //        if (response.StatusCode == FtpStatusCode.ActionNotTakenFileUnavailable)
+            //        {
+            //            // Folder not found, create it
+            //            Console.WriteLine("Could not open folder");
+            //        }
+            //    }
+            //}
+            ////new RegisterForm(ctrl).ShowDialog();
+            //SaveFileDialog saveFileDialog = new SaveFileDialog();
+            //saveFileDialog.FileName = s;
+            //saveFileDialog.Filter = "All files(*.*) | *.* ";
+            //if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            //{
+            //    Console.WriteLine(saveFileDialog.FileName);
+            //    using (WebClient request = new WebClient())
+            //    {
+            //        request.Credentials = new NetworkCredential("IssUser", "password");
+            //        byte[] fileData = request.DownloadData("ftp://issftp.ddns.net/1/ppt-sample.ppt");
+
+            //        using (FileStream file = File.Create(saveFileDialog.FileName))
+            //        {
+            //            file.Write(fileData, 0, fileData.Length);
+            //            file.Close();
+            //        }
+            //        MessageBox.Show("Download Complete");
+            //    }
+            //}
+        }
+
+        private void buttonSaveChanges_Click(object sender, EventArgs e)
+        {
+            string title = textBoxPaperName.Text;
+            string domain = textBoxPaperDomain.Text;
+            string subdomain = textBoxPaperSubdomain.Text;
+            string topic = "AI";//comboBoxTopic.SelectedItem.ToString();
+            ctrl.saveChanges(conf.Id, title,domain, subdomain, topic);
+        }
+    }
   }

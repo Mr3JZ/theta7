@@ -430,6 +430,7 @@
             this.buttonSaveChanges.TabIndex = 13;
             this.buttonSaveChanges.Text = "Save changes";
             this.buttonSaveChanges.UseVisualStyleBackColor = true;
+            this.buttonSaveChanges.Click += new System.EventHandler(this.buttonSaveChanges_Click);
             // 
             // buttonAddAbstract
             // 
@@ -684,6 +685,7 @@
             this.buttonReadFullPaper.TabIndex = 3;
             this.buttonReadFullPaper.Text = "Read full paper";
             this.buttonReadFullPaper.UseVisualStyleBackColor = true;
+            this.buttonReadFullPaper.Click += new System.EventHandler(this.buttonReadFullPaper_Click);
             // 
             // buttonReadPaperAbstract
             // 

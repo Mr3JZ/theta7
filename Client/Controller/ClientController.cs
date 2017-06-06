@@ -6,29 +6,34 @@ using System.Threading.Tasks;
 using Services;
 using Model;
 using Server;
+using System.IO;
+using System.Net;
+
 namespace Client
 {
     public class ClientController : MarshalByRefObject, IClient
     {
         private readonly IServer server;
         private User currentUser;
-
+        private string tempFilePath;
+        private string tempConfID;
+        private string tempAbstractMessage;
         public ClientController(IServer server)
         {
             this.server = server;
             this.currentUser = null;
         }
-        
+
         public User getCurrentUser()
         {
             return currentUser;
         }
 
         ///CONFERENCE
-        
+
         public void updatedConference(Conference c)
         {
-             server.UpdateConference(c);
+            server.UpdateConference(c);
         }
         public List<Model.Conference> getAllConferences()
         {
@@ -107,9 +112,10 @@ namespace Client
             try
             {
                 User user = new User(username, password);
-                currentUser=server.Login(user, this);
+                currentUser = server.Login(user, this);
                 return true;
-            } catch(ServerException err)
+            }
+            catch (ServerException err)
             {
                 Console.WriteLine(err.Message);
                 return false;
@@ -133,7 +139,8 @@ namespace Client
                 User user = new User(-1, username, password, name, affiliation, email, isSpecial, website);
                 server.Register(user);
                 return true;
-            } catch(ServerException err)
+            }
+            catch (ServerException err)
             {
                 Console.WriteLine(err.Message);
                 return false;
@@ -174,7 +181,7 @@ namespace Client
         public List<Model.Participant> getChairs(Conference conference)
         {
             List<Model.Participant> chairList = new List<Model.Participant>();
-            foreach(Model.Participant participant in conference.Participants)
+            foreach (Model.Participant participant in conference.Participants)
             {
                 if (participant.IsChair || participant.IsCochair)
                     chairList.Add(participant);
@@ -198,9 +205,9 @@ namespace Client
             server.AddParticipant(p);
         }
 
-        public void addPayment(Participant p,int paidSum,Conference conf)
+        public void addPayment(Participant p, int paidSum, Conference conf)
         {
-            server.NewPayment(p, paidSum,conf);
+            server.NewPayment(p, paidSum, conf);
         }
 
         ///REVIEW
@@ -238,6 +245,86 @@ namespace Client
         public List<Message> GetMyMessages()
         {
             return server.GetUserMessages(currentUser.IdUser).OrderBy(x => x.UserId).Reverse().ToList();
+        }
+
+        ///FTP
+        public void createFolder(string conferenceID)
+        {
+            string folderName = conferenceID.ToString();
+            try
+            {
+                FtpWebRequest req = (FtpWebRequest)WebRequest.Create("ftp://issftp.ddns.net/" + folderName + "/");
+                req.Method = WebRequestMethods.Ftp.ListDirectory;
+                req.Credentials = new NetworkCredential("IssUser", "password");
+
+                using (FtpWebResponse response = (FtpWebResponse)req.GetResponse())
+                {
+                    // Folder already exists
+                    //Console.WriteLine("L am gasit");
+                }
+            }
+            catch (WebException ex)
+            {
+                if (ex.Response != null)
+                {
+                    FtpWebResponse response = (FtpWebResponse)ex.Response;
+                    if (response.StatusCode == FtpStatusCode.ActionNotTakenFileUnavailable)
+                    {
+                        // Folder not found, create it
+                        //Console.WriteLine("Nu l am gasit");
+                        WebRequest request = WebRequest.Create("ftp://issftp.ddns.net/" + folderName + "/");
+                        request.Method = WebRequestMethods.Ftp.MakeDirectory;
+                        request.Credentials = new NetworkCredential("IssUser", "password");
+                        using (var resp = (FtpWebResponse)request.GetResponse())
+                        {
+                            Console.WriteLine(resp.StatusCode);
+                        }
+                    }
+                }
+            }
+
+
+        }
+        public void createFile(string conferenceID, string filepath) //it will update if exists
+        {
+            string folderName = conferenceID.ToString();
+            string filename = filepath.Split('\\').Last();
+            Console.WriteLine(filename);
+            using (WebClient client = new WebClient())
+            {
+                client.Credentials = new NetworkCredential("IssUser", "password");
+                client.UploadFile("ftp://issftp.ddns.net/" + folderName + "/" + filename, "STOR", filepath);
+            }
+        }
+
+        public void rememberPaper(string filepath, int confID)
+        {
+            this.tempFilePath = filepath;
+            this.tempConfID = confID.ToString();
+        }
+        public void rememberAbstract(string abstractMessage)
+        {
+            tempAbstractMessage = abstractMessage;
+        }
+        public void saveChanges(int confId, string title, string domain, string subdomain, string topic)
+        {
+            createFolder(tempConfID);
+            createFile(tempConfID, tempFilePath);
+            Paper paper = new Paper();
+            paper.ConferenceId = confId;
+            paper.Uploader = currentUser;
+            paper.Title = title;
+            paper.Filepath = tempFilePath;
+            paper.Resume = tempAbstractMessage;
+            paper.Domain = domain;
+            paper.Subdomain = subdomain;
+            paper.Topic = topic;
+            paper.Bids = new Dictionary<Participant, int>();
+            paper.Reviewers = new List<Participant>();
+            paper.Reviews = new List<Review>();
+            paper.AdditionalAuthors = new List<Author>();
+            paper.Status = Status.PENDING;
+            server.addPaper(paper);
         }
     }
 }

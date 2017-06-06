@@ -19,7 +19,6 @@ namespace Services
         List<User> GetAllUsers();
         void AddReview(int paperId, Review r);
         void AddParticipant(Participant p);
-        void NewPaper(Conference c, Paper p);
         void UpdatePaper(Paper p);
         void UpdateConference(Conference c);
         //detaliile despre Payment se calculeaza in repoPayment(succes,paidSum);
@@ -28,5 +27,7 @@ namespace Services
         void AddMessage(Message message);
         void DeleteMessage(Message message);
         List<Model.Message> GetUserMessages(int userID);
+        void addPaper(Model.Paper paper);
+
     }
 }
