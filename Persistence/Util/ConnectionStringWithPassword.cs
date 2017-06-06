@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Persistence.Util
 {
-    static class ConnectionStringWithPassword
+    public static class ConnectionStringWithPassword
     {
         //connection string n-are password din motive de securitate deci trebe pus din cod
         public static string doIt()

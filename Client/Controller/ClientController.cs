@@ -126,6 +126,7 @@ namespace Client
             try
             {
                 server.Logout(currentUser, this);
+                return;
             }
             catch (Exception ex)
             {
@@ -156,6 +157,27 @@ namespace Client
             foreach (Model.Conference conference in allConferences)
             {
                 if (conference.Name.Equals(name) && conference.Edition.Equals(edition) && conference.City.Equals(city))
+                    foreach (Model.Participant participant in conference.Participants)
+                        if (participant.User.Name.Equals(currentUser.Name))
+                        {
+                            if (participant.IsChair)
+                                return "Chair";
+                            if (participant.IsCochair)
+                                return "CoChair";
+                            if (participant.CanBePCMember)
+                                return "PCMember";
+                            else
+                                return "NormalUser";
+                        }
+            }
+            return "Unregistered";
+        }
+        public string getMyRank(int confId)
+        {
+            List<Model.Conference> allConferences = getAllConferences();
+            foreach (Model.Conference conference in allConferences)
+            {
+                if (conference.Id==confId)
                     foreach (Model.Participant participant in conference.Participants)
                         if (participant.User.Name.Equals(currentUser.Name))
                         {

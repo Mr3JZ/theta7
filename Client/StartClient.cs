@@ -8,6 +8,7 @@ using System.Runtime.Remoting.Channels;
 using System.Collections;
 using System.Runtime.Remoting.Channels.Tcp;
 using Services;
+using System.Threading;
 
 namespace Client
 {
@@ -19,6 +20,7 @@ namespace Client
         [STAThread]
         static void Main()
         {
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 

@@ -189,5 +189,10 @@ namespace Persistence
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<getTopicsFor1Conference_Result>("[ISSEntities2].[getTopicsFor1Conference](@idConference)", idConferenceParameter);
         }
+    
+        public virtual int automaticJob()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("automaticJob");
+        }
     }
 }

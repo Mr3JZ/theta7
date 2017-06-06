@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ISSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="ISSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AdditionalAuthors">
           <Key>
             <PropertyRef Name="AdditionalAuthorId" />
@@ -267,7 +267,7 @@ warning 6002: The table/view 'ISS.dbo.getUsers' does not have a primary key defi
           <Property Name="WebPage" Type="nvarchar" MaxLength="50" />
           <Property Name="canBePCMember" Type="bit" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Additiona__Paper__662B2B3B">
+        <Association Name="FK__Additiona__Paper__1DB06A4F">
           <End Role="Papers" Type="Self.Papers" Multiplicity="1" />
           <End Role="AdditionalAuthors" Type="Self.AdditionalAuthors" Multiplicity="*" />
           <ReferentialConstraint>
@@ -279,7 +279,7 @@ warning 6002: The table/view 'ISS.dbo.getUsers' does not have a primary key defi
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Available__Addre__6FB49575">
+        <Association Name="FK__Available__Addre__2739D489">
           <End Role="Addresses" Type="Self.Addresses" Multiplicity="1" />
           <End Role="AvailableRooms" Type="Self.AvailableRooms" Multiplicity="*" />
           <ReferentialConstraint>
@@ -291,7 +291,7 @@ warning 6002: The table/view 'ISS.dbo.getUsers' does not have a primary key defi
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Available__Confe__6EC0713C">
+        <Association Name="FK__Available__Confe__2645B050">
           <End Role="Conferences" Type="Self.Conferences" Multiplicity="1" />
           <End Role="AvailableRooms" Type="Self.AvailableRooms" Multiplicity="*" />
           <ReferentialConstraint>
@@ -303,7 +303,7 @@ warning 6002: The table/view 'ISS.dbo.getUsers' does not have a primary key defi
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Bids__7D0E9093">
+        <Association Name="FK__Bids__3493CFA7">
           <End Role="PCMembers" Type="Self.PCMembers" Multiplicity="1" />
           <End Role="Bids" Type="Self.Bids" Multiplicity="*" />
           <ReferentialConstraint>
@@ -317,7 +317,7 @@ warning 6002: The table/view 'ISS.dbo.getUsers' does not have a primary key defi
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Bids__PaperId__7C1A6C5A">
+        <Association Name="FK__Bids__PaperId__339FAB6E">
           <End Role="Papers" Type="Self.Papers" Multiplicity="1" />
           <End Role="Bids" Type="Self.Bids" Multiplicity="*" />
           <ReferentialConstraint>
@@ -329,7 +329,7 @@ warning 6002: The table/view 'ISS.dbo.getUsers' does not have a primary key defi
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Conferenc__Confe__55F4C372">
+        <Association Name="FK__Conferenc__Confe__0D7A0286">
           <End Role="Conferences" Type="Self.Conferences" Multiplicity="1" />
           <End Role="ConferenceParticipants" Type="Self.ConferenceParticipants" Multiplicity="*" />
           <ReferentialConstraint>
@@ -341,7 +341,7 @@ warning 6002: The table/view 'ISS.dbo.getUsers' does not have a primary key defi
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Conferenc__Payme__56E8E7AB">
+        <Association Name="FK__Conferenc__Payme__0E6E26BF">
           <End Role="Payments" Type="Self.Payments" Multiplicity="1" />
           <End Role="ConferenceParticipants" Type="Self.ConferenceParticipants" Multiplicity="*" />
           <ReferentialConstraint>
@@ -353,7 +353,7 @@ warning 6002: The table/view 'ISS.dbo.getUsers' does not have a primary key defi
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Conferenc__UserI__55009F39">
+        <Association Name="FK__Conferenc__UserI__0C85DE4D">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="ConferenceParticipants" Type="Self.ConferenceParticipants" Multiplicity="*" />
           <ReferentialConstraint>
@@ -365,7 +365,7 @@ warning 6002: The table/view 'ISS.dbo.getUsers' does not have a primary key defi
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MessagesC__UserI__7FEAFD3E">
+        <Association Name="FK__MessagesC__UserI__37703C52">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="MessagesC" Type="Self.MessagesC" Multiplicity="*" />
           <ReferentialConstraint>
@@ -377,7 +377,7 @@ warning 6002: The table/view 'ISS.dbo.getUsers' does not have a primary key defi
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PaperRese__Paper__7849DB76">
+        <Association Name="FK__PaperRese__Paper__2FCF1A8A">
           <End Role="Papers" Type="Self.Papers" Multiplicity="1" />
           <End Role="PaperReservations" Type="Self.PaperReservations" Multiplicity="*" />
           <ReferentialConstraint>
@@ -389,7 +389,7 @@ warning 6002: The table/view 'ISS.dbo.getUsers' does not have a primary key defi
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PaperRese__RoomR__7755B73D">
+        <Association Name="FK__PaperRese__RoomR__2EDAF651">
           <End Role="RoomReservations" Type="Self.RoomReservations" Multiplicity="0..1" />
           <End Role="PaperReservations" Type="Self.PaperReservations" Multiplicity="*" />
           <ReferentialConstraint>
@@ -401,7 +401,7 @@ warning 6002: The table/view 'ISS.dbo.getUsers' does not have a primary key defi
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Papers__Conferen__59C55456">
+        <Association Name="FK__Papers__Conferen__114A936A">
           <End Role="Conferences" Type="Self.Conferences" Multiplicity="1" />
           <End Role="Papers" Type="Self.Papers" Multiplicity="*" />
           <ReferentialConstraint>
@@ -413,7 +413,7 @@ warning 6002: The table/view 'ISS.dbo.getUsers' does not have a primary key defi
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Papers__TopicId__5BAD9CC8">
+        <Association Name="FK__Papers__TopicId__1332DBDC">
           <End Role="Topics" Type="Self.Topics" Multiplicity="1" />
           <End Role="Papers" Type="Self.Papers" Multiplicity="*" />
           <ReferentialConstraint>
@@ -425,7 +425,7 @@ warning 6002: The table/view 'ISS.dbo.getUsers' does not have a primary key defi
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Papers__UserId__5AB9788F">
+        <Association Name="FK__Papers__UserId__123EB7A3">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="Papers" Type="Self.Papers" Multiplicity="*" />
           <ReferentialConstraint>
@@ -437,7 +437,7 @@ warning 6002: The table/view 'ISS.dbo.getUsers' does not have a primary key defi
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PCMembers__Confe__5F7E2DAC">
+        <Association Name="FK__PCMembers__Confe__17036CC0">
           <End Role="Conferences" Type="Self.Conferences" Multiplicity="1" />
           <End Role="PCMembers" Type="Self.PCMembers" Multiplicity="*" />
           <ReferentialConstraint>
@@ -449,7 +449,7 @@ warning 6002: The table/view 'ISS.dbo.getUsers' does not have a primary key defi
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PCMembers__UserI__5E8A0973">
+        <Association Name="FK__PCMembers__UserI__160F4887">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="PCMembers" Type="Self.PCMembers" Multiplicity="*" />
           <ReferentialConstraint>
@@ -461,7 +461,7 @@ warning 6002: The table/view 'ISS.dbo.getUsers' does not have a primary key defi
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Reviews__634EBE90">
+        <Association Name="FK__Reviews__1AD3FDA4">
           <End Role="PCMembers" Type="Self.PCMembers" Multiplicity="1" />
           <End Role="Reviews" Type="Self.Reviews" Multiplicity="*" />
           <ReferentialConstraint>
@@ -475,7 +475,7 @@ warning 6002: The table/view 'ISS.dbo.getUsers' does not have a primary key defi
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Reviews__PaperId__625A9A57">
+        <Association Name="FK__Reviews__PaperId__19DFD96B">
           <End Role="Papers" Type="Self.Papers" Multiplicity="1" />
           <End Role="Reviews" Type="Self.Reviews" Multiplicity="*" />
           <ReferentialConstraint>
@@ -487,7 +487,7 @@ warning 6002: The table/view 'ISS.dbo.getUsers' does not have a primary key defi
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__RoomReser__RoomI__73852659">
+        <Association Name="FK__RoomReser__RoomI__2B0A656D">
           <End Role="AvailableRooms" Type="Self.AvailableRooms" Multiplicity="1" />
           <End Role="RoomReservations" Type="Self.RoomReservations" Multiplicity="*" />
           <ReferentialConstraint>
@@ -499,7 +499,7 @@ warning 6002: The table/view 'ISS.dbo.getUsers' does not have a primary key defi
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__RoomReser__Sessi__72910220">
+        <Association Name="FK__RoomReser__Sessi__2A164134">
           <End Role="Sessions" Type="Self.Sessions" Multiplicity="1" />
           <End Role="RoomReservations" Type="Self.RoomReservations" Multiplicity="*" />
           <ReferentialConstraint>
@@ -511,7 +511,7 @@ warning 6002: The table/view 'ISS.dbo.getUsers' does not have a primary key defi
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Sessions__69FBBC1F">
+        <Association Name="FK__Sessions__2180FB33">
           <End Role="PCMembers" Type="Self.PCMembers" Multiplicity="1" />
           <End Role="Sessions" Type="Self.Sessions" Multiplicity="*" />
           <ReferentialConstraint>
@@ -525,7 +525,7 @@ warning 6002: The table/view 'ISS.dbo.getUsers' does not have a primary key defi
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Sessions__Confer__690797E6">
+        <Association Name="FK__Sessions__Confer__208CD6FA">
           <End Role="Conferences" Type="Self.Conferences" Multiplicity="1" />
           <End Role="Sessions" Type="Self.Sessions" Multiplicity="*" />
           <ReferentialConstraint>
@@ -537,7 +537,7 @@ warning 6002: The table/view 'ISS.dbo.getUsers' does not have a primary key defi
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Topics__Conferen__503BEA1C">
+        <Association Name="FK__Topics__Conferen__07C12930">
           <End Role="Conferences" Type="Self.Conferences" Multiplicity="1" />
           <End Role="Topics" Type="Self.Topics" Multiplicity="*" />
           <ReferentialConstraint>
@@ -549,6 +549,7 @@ warning 6002: The table/view 'ISS.dbo.getUsers' does not have a primary key defi
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="automaticJob" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="getAdditionalAuthors" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="idPaper" Type="int" Mode="In" />
           <ReturnType>
@@ -704,9 +705,9 @@ warning 6002: The table/view 'ISS.dbo.getUsers' does not have a primary key defi
           <ReturnType>
             <CollectionType>
               <RowType>
+                <Property Name="SessionId" Type="int" Nullable="false" />
                 <Property Name="Name" Type="nvarchar" MaxLength="60" Nullable="false" />
                 <Property Name="SessionChairId" Type="int" Nullable="false" />
-                <Property Name="SessionId" Type="int" Nullable="false" />
               </RowType>
             </CollectionType>
           </ReturnType>
@@ -787,101 +788,100 @@ warning 6002: The table/view 'ISS.dbo.getUsers' does not have a primary key defi
     [getUsers].[canBePCMember] AS [canBePCMember]
     FROM [dbo].[getUsers] AS [getUsers]</DefiningQuery>
           </EntitySet>
-          <AssociationSet Name="FK__Additiona__Paper__662B2B3B" Association="Self.FK__Additiona__Paper__662B2B3B">
+          <AssociationSet Name="FK__Additiona__Paper__1DB06A4F" Association="Self.FK__Additiona__Paper__1DB06A4F">
             <End Role="Papers" EntitySet="Papers" />
             <End Role="AdditionalAuthors" EntitySet="AdditionalAuthors" />
           </AssociationSet>
-          <AssociationSet Name="FK__Available__Addre__6FB49575" Association="Self.FK__Available__Addre__6FB49575">
+          <AssociationSet Name="FK__Available__Addre__2739D489" Association="Self.FK__Available__Addre__2739D489">
             <End Role="Addresses" EntitySet="Addresses" />
             <End Role="AvailableRooms" EntitySet="AvailableRooms" />
           </AssociationSet>
-          <AssociationSet Name="FK__Available__Confe__6EC0713C" Association="Self.FK__Available__Confe__6EC0713C">
+          <AssociationSet Name="FK__Available__Confe__2645B050" Association="Self.FK__Available__Confe__2645B050">
             <End Role="Conferences" EntitySet="Conferences" />
             <End Role="AvailableRooms" EntitySet="AvailableRooms" />
           </AssociationSet>
-          <AssociationSet Name="FK__Bids__7D0E9093" Association="Self.FK__Bids__7D0E9093">
+          <AssociationSet Name="FK__Bids__3493CFA7" Association="Self.FK__Bids__3493CFA7">
             <End Role="PCMembers" EntitySet="PCMembers" />
             <End Role="Bids" EntitySet="Bids" />
           </AssociationSet>
-          <AssociationSet Name="FK__Bids__PaperId__7C1A6C5A" Association="Self.FK__Bids__PaperId__7C1A6C5A">
+          <AssociationSet Name="FK__Bids__PaperId__339FAB6E" Association="Self.FK__Bids__PaperId__339FAB6E">
             <End Role="Papers" EntitySet="Papers" />
             <End Role="Bids" EntitySet="Bids" />
           </AssociationSet>
-          <AssociationSet Name="FK__Conferenc__Confe__55F4C372" Association="Self.FK__Conferenc__Confe__55F4C372">
+          <AssociationSet Name="FK__Conferenc__Confe__0D7A0286" Association="Self.FK__Conferenc__Confe__0D7A0286">
             <End Role="Conferences" EntitySet="Conferences" />
             <End Role="ConferenceParticipants" EntitySet="ConferenceParticipants" />
           </AssociationSet>
-          <AssociationSet Name="FK__Conferenc__Payme__56E8E7AB" Association="Self.FK__Conferenc__Payme__56E8E7AB">
+          <AssociationSet Name="FK__Conferenc__Payme__0E6E26BF" Association="Self.FK__Conferenc__Payme__0E6E26BF">
             <End Role="Payments" EntitySet="Payments" />
             <End Role="ConferenceParticipants" EntitySet="ConferenceParticipants" />
           </AssociationSet>
-          <AssociationSet Name="FK__Conferenc__UserI__55009F39" Association="Self.FK__Conferenc__UserI__55009F39">
+          <AssociationSet Name="FK__Conferenc__UserI__0C85DE4D" Association="Self.FK__Conferenc__UserI__0C85DE4D">
             <End Role="Users" EntitySet="Users" />
             <End Role="ConferenceParticipants" EntitySet="ConferenceParticipants" />
           </AssociationSet>
-          <AssociationSet Name="FK__MessagesC__UserI__7FEAFD3E" Association="Self.FK__MessagesC__UserI__7FEAFD3E">
+          <AssociationSet Name="FK__MessagesC__UserI__37703C52" Association="Self.FK__MessagesC__UserI__37703C52">
             <End Role="Users" EntitySet="Users" />
             <End Role="MessagesC" EntitySet="MessagesC" />
           </AssociationSet>
-          <AssociationSet Name="FK__PaperRese__Paper__7849DB76" Association="Self.FK__PaperRese__Paper__7849DB76">
+          <AssociationSet Name="FK__PaperRese__Paper__2FCF1A8A" Association="Self.FK__PaperRese__Paper__2FCF1A8A">
             <End Role="Papers" EntitySet="Papers" />
             <End Role="PaperReservations" EntitySet="PaperReservations" />
           </AssociationSet>
-          <AssociationSet Name="FK__PaperRese__RoomR__7755B73D" Association="Self.FK__PaperRese__RoomR__7755B73D">
+          <AssociationSet Name="FK__PaperRese__RoomR__2EDAF651" Association="Self.FK__PaperRese__RoomR__2EDAF651">
             <End Role="RoomReservations" EntitySet="RoomReservations" />
             <End Role="PaperReservations" EntitySet="PaperReservations" />
           </AssociationSet>
-          <AssociationSet Name="FK__Papers__Conferen__59C55456" Association="Self.FK__Papers__Conferen__59C55456">
+          <AssociationSet Name="FK__Papers__Conferen__114A936A" Association="Self.FK__Papers__Conferen__114A936A">
             <End Role="Conferences" EntitySet="Conferences" />
             <End Role="Papers" EntitySet="Papers" />
           </AssociationSet>
-          <AssociationSet Name="FK__Papers__TopicId__5BAD9CC8" Association="Self.FK__Papers__TopicId__5BAD9CC8">
+          <AssociationSet Name="FK__Papers__TopicId__1332DBDC" Association="Self.FK__Papers__TopicId__1332DBDC">
             <End Role="Topics" EntitySet="Topics" />
             <End Role="Papers" EntitySet="Papers" />
           </AssociationSet>
-          <AssociationSet Name="FK__Papers__UserId__5AB9788F" Association="Self.FK__Papers__UserId__5AB9788F">
+          <AssociationSet Name="FK__Papers__UserId__123EB7A3" Association="Self.FK__Papers__UserId__123EB7A3">
             <End Role="Users" EntitySet="Users" />
             <End Role="Papers" EntitySet="Papers" />
           </AssociationSet>
-          <AssociationSet Name="FK__PCMembers__Confe__5F7E2DAC" Association="Self.FK__PCMembers__Confe__5F7E2DAC">
+          <AssociationSet Name="FK__PCMembers__Confe__17036CC0" Association="Self.FK__PCMembers__Confe__17036CC0">
             <End Role="Conferences" EntitySet="Conferences" />
             <End Role="PCMembers" EntitySet="PCMembers" />
           </AssociationSet>
-          <AssociationSet Name="FK__PCMembers__UserI__5E8A0973" Association="Self.FK__PCMembers__UserI__5E8A0973">
+          <AssociationSet Name="FK__PCMembers__UserI__160F4887" Association="Self.FK__PCMembers__UserI__160F4887">
             <End Role="Users" EntitySet="Users" />
             <End Role="PCMembers" EntitySet="PCMembers" />
           </AssociationSet>
-          <AssociationSet Name="FK__Reviews__634EBE90" Association="Self.FK__Reviews__634EBE90">
+          <AssociationSet Name="FK__Reviews__1AD3FDA4" Association="Self.FK__Reviews__1AD3FDA4">
             <End Role="PCMembers" EntitySet="PCMembers" />
             <End Role="Reviews" EntitySet="Reviews" />
           </AssociationSet>
-          <AssociationSet Name="FK__Reviews__PaperId__625A9A57" Association="Self.FK__Reviews__PaperId__625A9A57">
+          <AssociationSet Name="FK__Reviews__PaperId__19DFD96B" Association="Self.FK__Reviews__PaperId__19DFD96B">
             <End Role="Papers" EntitySet="Papers" />
             <End Role="Reviews" EntitySet="Reviews" />
           </AssociationSet>
-          <AssociationSet Name="FK__RoomReser__RoomI__73852659" Association="Self.FK__RoomReser__RoomI__73852659">
+          <AssociationSet Name="FK__RoomReser__RoomI__2B0A656D" Association="Self.FK__RoomReser__RoomI__2B0A656D">
             <End Role="AvailableRooms" EntitySet="AvailableRooms" />
             <End Role="RoomReservations" EntitySet="RoomReservations" />
           </AssociationSet>
-          <AssociationSet Name="FK__RoomReser__Sessi__72910220" Association="Self.FK__RoomReser__Sessi__72910220">
+          <AssociationSet Name="FK__RoomReser__Sessi__2A164134" Association="Self.FK__RoomReser__Sessi__2A164134">
             <End Role="Sessions" EntitySet="Sessions" />
             <End Role="RoomReservations" EntitySet="RoomReservations" />
           </AssociationSet>
-          <AssociationSet Name="FK__Sessions__69FBBC1F" Association="Self.FK__Sessions__69FBBC1F">
+          <AssociationSet Name="FK__Sessions__2180FB33" Association="Self.FK__Sessions__2180FB33">
             <End Role="PCMembers" EntitySet="PCMembers" />
             <End Role="Sessions" EntitySet="Sessions" />
           </AssociationSet>
-          <AssociationSet Name="FK__Sessions__Confer__690797E6" Association="Self.FK__Sessions__Confer__690797E6">
+          <AssociationSet Name="FK__Sessions__Confer__208CD6FA" Association="Self.FK__Sessions__Confer__208CD6FA">
             <End Role="Conferences" EntitySet="Conferences" />
             <End Role="Sessions" EntitySet="Sessions" />
           </AssociationSet>
-          <AssociationSet Name="FK__Topics__Conferen__503BEA1C" Association="Self.FK__Topics__Conferen__503BEA1C">
+          <AssociationSet Name="FK__Topics__Conferen__07C12930" Association="Self.FK__Topics__Conferen__07C12930">
             <End Role="Conferences" EntitySet="Conferences" />
             <End Role="Topics" EntitySet="Topics" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ISSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1660,46 +1660,47 @@ warning 6002: The table/view 'ISS.dbo.getUsers' does not have a primary key defi
             <End Role="RoomReservations" EntitySet="RoomReservations" />
           </AssociationSet>
           <FunctionImport Name="getAdditionalAuthors" IsComposable="true" ReturnType="Collection(ISSModel.getAdditionalAuthors_Result)">
-            <Parameter Name="idPaper" Mode="In" Type="Int32" />
+          <Parameter Name="idPaper" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="getBidsResult" IsComposable="true" ReturnType="Collection(ISSModel.getBidsResult_Result)">
-            <Parameter Name="idPaper" Mode="In" Type="Int32" />
+          <Parameter Name="idPaper" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="getMessagesUser" IsComposable="true" ReturnType="Collection(ISSModel.getMessagesUser_Result)">
-            <Parameter Name="idUser" Mode="In" Type="Int32" />
+          <Parameter Name="idUser" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="getPapersConference" IsComposable="true" ReturnType="Collection(ISSModel.getPapersConference_Result)">
-            <Parameter Name="idConference" Mode="In" Type="Int32" />
+          <Parameter Name="idConference" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="getPapersSession" IsComposable="true" ReturnType="Collection(ISSModel.getPapersSession_Result)">
-            <Parameter Name="idSession" Mode="In" Type="Int32" />
+          <Parameter Name="idSession" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="getParticpantsConference" IsComposable="true" ReturnType="Collection(ISSModel.getParticpantsConference_Result)">
-            <Parameter Name="idConference" Mode="In" Type="Int32" />
+          <Parameter Name="idConference" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="getPayment" IsComposable="true" ReturnType="Collection(ISSModel.getPayment_Result)">
             <Parameter Name="idUser" Mode="In" Type="Int32" />
             <Parameter Name="idConference" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="getPCMembersConference" IsComposable="true" ReturnType="Collection(ISSModel.getPCMembersConference_Result)">
-            <Parameter Name="idConference" Mode="In" Type="Int32" />
+          <Parameter Name="idConference" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="getReservationPaper" IsComposable="true" ReturnType="Collection(ISSModel.getReservationPaper_Result)">
-            <Parameter Name="idPaper" Mode="In" Type="Int32" />
+          <Parameter Name="idPaper" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="getReviewsPaper" IsComposable="true" ReturnType="Collection(ISSModel.getReviewsPaper_Result)">
-            <Parameter Name="idPaper" Mode="In" Type="Int32" />
+          <Parameter Name="idPaper" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="getReviewsPcMember" IsComposable="true" ReturnType="Collection(ISSModel.getReviewsPcMember_Result)">
             <Parameter Name="idPcMember" Mode="In" Type="Int32" />
             <Parameter Name="idConference" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="getSessionsForConference" IsComposable="true" ReturnType="Collection(ISSModel.getSessionsForConference_Result)">
-            <Parameter Name="idConference" Mode="In" Type="Int32" />
+          <Parameter Name="idConference" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="getTopicsFor1Conference" IsComposable="true" ReturnType="Collection(ISSModel.getTopicsFor1Conference_Result)">
-            <Parameter Name="idConference" Mode="In" Type="Int32" />
+          <Parameter Name="idConference" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="automaticJob" />
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -2082,6 +2083,7 @@ warning 6002: The table/view 'ISS.dbo.getUsers' does not have a primary key defi
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="automaticJob" FunctionName="ISSModel.Store.automaticJob" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
