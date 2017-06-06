@@ -27,7 +27,7 @@ namespace Services
         void AddMessage(Message message);
         void DeleteMessage(Message message);
         List<Model.Message> GetUserMessages(int userID);
-        void addPaper(Model.Paper paper);
+        bool addPaper(Model.Paper paper);
 
     }
 }

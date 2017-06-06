@@ -328,7 +328,7 @@ namespace Client
         {
             tempAbstractMessage = abstractMessage;
         }
-        public void saveChanges(int confId, string title, string domain, string subdomain, string topic)
+        public bool saveChanges(int confId, string title, string domain, string subdomain, string topic)
         {
             createFolder(tempConfID);
             createFile(tempConfID, tempFilePath);
@@ -346,7 +346,7 @@ namespace Client
             paper.Reviews = new List<Review>();
             paper.AdditionalAuthors = new List<Author>();
             paper.Status = Status.PENDING;
-            server.addPaper(paper);
+            return server.addPaper(paper);
         }
     }
 }

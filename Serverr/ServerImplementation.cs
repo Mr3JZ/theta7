@@ -161,9 +161,10 @@ namespace Server
         {
             return repoMessage.GetByUser(userID);
         }
-        public void addPaper(Model.Paper paper)
+        public bool addPaper(Model.Paper paper)
         {
             repoPaper.Add(paper);
+            return true;
         }
     }
 }

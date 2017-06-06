@@ -23,7 +23,7 @@ namespace Server
                 {
                     using (var context = new ISSEntities2(Persistence.Util.ConnectionStringWithPassword.doIt()))
                     {
-                        context.automaticJob();
+                        //context.automaticJob();
                     }
                     Thread.Sleep(1000*60*60*24);
                 }

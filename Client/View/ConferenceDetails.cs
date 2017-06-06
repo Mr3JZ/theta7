@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Model;
 using Persistence.Repository;
-using Client.Controller;
 using System.Reflection;
 
 namespace Client.View
@@ -584,7 +583,15 @@ namespace Client.View
             string domain = textBoxPaperDomain.Text;
             string subdomain = textBoxPaperSubdomain.Text;
             string topic = "AI";//comboBoxTopic.SelectedItem.ToString();
-            ctrl.saveChanges(conf.Id, title,domain, subdomain, topic);
+            if(ctrl.saveChanges(conf.Id, title, domain, subdomain, topic))
+            {
+                MessageBox.Show("Upload successful");
+            }
+            else
+            {
+                Console.WriteLine("something is wrong with add");
+            }
+        }
         private void dataGridViewConferenceChairs_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             DataGridView grid = (DataGridView)sender;
