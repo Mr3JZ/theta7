@@ -358,6 +358,20 @@ namespace Client
         {
             server.removePaper(id);
         }
+        public bool savePaperToDisk(string filepath, int conferenceID, string filename)
+        {
+            using (WebClient request = new WebClient())
+            {
+                request.Credentials = new NetworkCredential("IssUser", "password");
+                byte[] fileData = request.DownloadData("ftp://issftp.ddns.net/" + conferenceID + "/" + filename);
 
+                using (FileStream file = File.Create(filepath))
+                {
+                    file.Write(fileData, 0, fileData.Length);
+                    file.Close();
+                }
+                return true;
+            }
+        }
     }
 }

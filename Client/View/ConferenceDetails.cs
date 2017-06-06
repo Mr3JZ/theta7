@@ -533,7 +533,7 @@ namespace Client.View
 
         private void buttonReadFullPaper_Click(object sender, EventArgs e)
         {
-            //Paper selectedPaper = (Paper)dataGridViewUploadedPapers.CurrentRow.DataBoundItem;
+            Paper selectedPaper = (Paper)dataGridViewUploadedPapers.CurrentRow.DataBoundItem;
             //selectedPaper.Filepath
             //string s = "";
             //conf
@@ -567,26 +567,19 @@ namespace Client.View
             //        }
             //    }
             //}
-            ////new RegisterForm(ctrl).ShowDialog();
-            //SaveFileDialog saveFileDialog = new SaveFileDialog();
-            //saveFileDialog.FileName = s;
-            //saveFileDialog.Filter = "All files(*.*) | *.* ";
-            //if (saveFileDialog.ShowDialog() == DialogResult.OK)
-            //{
-            //    Console.WriteLine(saveFileDialog.FileName);
-            //    using (WebClient request = new WebClient())
-            //    {
-            //        request.Credentials = new NetworkCredential("IssUser", "password");
-            //        byte[] fileData = request.DownloadData("ftp://issftp.ddns.net/1/ppt-sample.ppt");
-
-            //        using (FileStream file = File.Create(saveFileDialog.FileName))
-            //        {
-            //            file.Write(fileData, 0, fileData.Length);
-            //            file.Close();
-            //        }
-            //        MessageBox.Show("Download Complete");
-            //    }
-            //}
+            //new RegisterForm(ctrl).ShowDialog();
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            string filename = selectedPaper.Filepath.Split('\\').Last();
+            saveFileDialog.FileName = filename;
+            saveFileDialog.Filter = "All files(*.*) | *.* ";
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string filepath = saveFileDialog.FileName;
+                if (ctrl.savePaperToDisk(filepath, selectedPaper.ConferenceId, filename))
+                {
+                    MessageBox.Show("Download Complete");
+                }
+            }
         }
 
         private void buttonSaveChanges_Click(object sender, EventArgs e)
