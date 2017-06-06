@@ -137,7 +137,14 @@ namespace Client
         {
             try
             {
-                User user = new User(-1, username, password, name, affiliation, email, isSpecial, website);
+                User user = new User();
+                user.Username = username;
+                user.Password = password;
+                user.Name = name;
+                user.Affiliation = affiliation;
+                user.Email = email;
+                user.isSpecial = isSpecial;
+                user.Website = website;
                 return server.Register(user);
             }
             catch (ServerException err)
