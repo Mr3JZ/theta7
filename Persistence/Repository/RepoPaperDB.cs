@@ -154,11 +154,12 @@ namespace Persistence.Repository
 
                 foreach (KeyValuePair<Participant, int> bid in newP.Bids)
                 {
-                    //get bid by lucrare, participant add daca nu exista
+                    //get bid by lucrare, participant add daca nu exista, modify daca exista
                     bool exists = false;
                     foreach (Bid b in context.Bids)
                         if (b.PaperId == paperId && b.PCMemberUserId == bid.Key.User.IdUser)
                         {
+                            b.BiddingEvaluation = bid.Value;
                             exists = true;
                             break;
                         }
@@ -172,11 +173,14 @@ namespace Persistence.Repository
 
                         context.Bids.Add(b);
                     }
+
                 }
 
                 foreach (Model.Review review in newP.Reviews)
                 {
-                    if (context.Reviews.Find(review.Reviewer.User.IdUser, newP.ConferenceId, newP.Id) == null)
+                    //daca nu exista review adauga nou, altfel modifica
+                    Review r = context.Reviews.Find(review.Reviewer.User.IdUser, newP.ConferenceId, newP.Id);
+                    if ( r== null)
                     {
                         Review rev = new Review();
                         rev.PCMemberUserId = review.Reviewer.User.IdUser;
@@ -186,6 +190,11 @@ namespace Persistence.Repository
                         rev.Recommandations = review.Comments;
 
                         context.Reviews.Add(rev);
+                    }
+                    else
+                    {
+                        r.Evaluation = (int)review.Verdict;
+                        r.Recommandations = review.Comments;
                     }
 
                 }
