@@ -290,13 +290,17 @@
             // 
             // dataGridViewConferencePCMembers
             // 
+            this.dataGridViewConferencePCMembers.AllowUserToAddRows = false;
+            this.dataGridViewConferencePCMembers.AllowUserToDeleteRows = false;
             this.dataGridViewConferencePCMembers.BackgroundColor = System.Drawing.Color.White;
             this.dataGridViewConferencePCMembers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewConferencePCMembers.Location = new System.Drawing.Point(10, 220);
             this.dataGridViewConferencePCMembers.Name = "dataGridViewConferencePCMembers";
+            this.dataGridViewConferencePCMembers.RowHeadersVisible = false;
             this.dataGridViewConferencePCMembers.Size = new System.Drawing.Size(300, 169);
             this.dataGridViewConferencePCMembers.TabIndex = 5;
             this.dataGridViewConferencePCMembers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewConferencePCMembers_CellContentClick);
+            this.dataGridViewConferencePCMembers.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridViewConferenceChairs_CellFormatting);
             // 
             // label12
             // 
@@ -340,12 +344,16 @@
             // 
             // dataGridViewConferenceChairs
             // 
+            this.dataGridViewConferenceChairs.AllowUserToAddRows = false;
+            this.dataGridViewConferenceChairs.AllowUserToDeleteRows = false;
             this.dataGridViewConferenceChairs.BackgroundColor = System.Drawing.Color.White;
             this.dataGridViewConferenceChairs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewConferenceChairs.Location = new System.Drawing.Point(10, 130);
             this.dataGridViewConferenceChairs.Name = "dataGridViewConferenceChairs";
+            this.dataGridViewConferenceChairs.RowHeadersVisible = false;
             this.dataGridViewConferenceChairs.Size = new System.Drawing.Size(300, 60);
             this.dataGridViewConferenceChairs.TabIndex = 0;
+            this.dataGridViewConferenceChairs.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridViewConferenceChairs_CellFormatting);
             // 
             // tabPageParticipant
             // 
@@ -482,12 +490,16 @@
             // 
             // dataGridViewMyReviews
             // 
+            this.dataGridViewMyReviews.AllowUserToAddRows = false;
+            this.dataGridViewMyReviews.AllowUserToDeleteRows = false;
             this.dataGridViewMyReviews.BackgroundColor = System.Drawing.Color.White;
             this.dataGridViewMyReviews.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewMyReviews.Location = new System.Drawing.Point(10, 180);
             this.dataGridViewMyReviews.Name = "dataGridViewMyReviews";
+            this.dataGridViewMyReviews.RowHeadersVisible = false;
             this.dataGridViewMyReviews.Size = new System.Drawing.Size(300, 184);
             this.dataGridViewMyReviews.TabIndex = 3;
+            this.dataGridViewMyReviews.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridViewConferenceChairs_CellFormatting);
             // 
             // label2
             // 
@@ -509,12 +521,16 @@
             // 
             // dataGridViewMyPapers
             // 
+            this.dataGridViewMyPapers.AllowUserToAddRows = false;
+            this.dataGridViewMyPapers.AllowUserToDeleteRows = false;
             this.dataGridViewMyPapers.BackgroundColor = System.Drawing.Color.White;
             this.dataGridViewMyPapers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewMyPapers.Location = new System.Drawing.Point(10, 30);
             this.dataGridViewMyPapers.Name = "dataGridViewMyPapers";
+            this.dataGridViewMyPapers.RowHeadersVisible = false;
             this.dataGridViewMyPapers.Size = new System.Drawing.Size(300, 120);
             this.dataGridViewMyPapers.TabIndex = 0;
+            this.dataGridViewMyPapers.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridViewConferenceChairs_CellFormatting);
             this.dataGridViewMyPapers.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewMyPapers_RowHeaderMouseClick);
             // 
             // tabPagePCMember
@@ -706,12 +722,16 @@
             // 
             // dataGridViewUploadedPapers
             // 
+            this.dataGridViewUploadedPapers.AllowUserToAddRows = false;
+            this.dataGridViewUploadedPapers.AllowUserToDeleteRows = false;
             this.dataGridViewUploadedPapers.BackgroundColor = System.Drawing.Color.White;
             this.dataGridViewUploadedPapers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewUploadedPapers.Location = new System.Drawing.Point(10, 30);
             this.dataGridViewUploadedPapers.Name = "dataGridViewUploadedPapers";
+            this.dataGridViewUploadedPapers.RowHeadersVisible = false;
             this.dataGridViewUploadedPapers.Size = new System.Drawing.Size(300, 334);
             this.dataGridViewUploadedPapers.TabIndex = 0;
+            this.dataGridViewUploadedPapers.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridViewConferenceChairs_CellFormatting);
             // 
             // ConferenceDetails
             // 

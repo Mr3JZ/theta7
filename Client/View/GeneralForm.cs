@@ -59,6 +59,21 @@ namespace Client.View
             cf.Show();
         }
 
+        private void buttonViewDetailsMy_Click(object sender, EventArgs e)
+        {
+            /*
+            string name = dataGridViewMyConferences.CurrentRow.Cells[0].ToString();
+            string edition = dataGridViewMyConferences.CurrentRow.Cells[1].ToString();
+            string city = dataGridViewMyConferences.CurrentRow.Cells[2].ToString();
+            Conference conf = ctrl.getConference(name, edition, city);
+            */
+            int confId = ((Conference)dataGridViewMyConferences.CurrentRow.DataBoundItem).Id;
+            Conference conf = ctrl.getConferenceById(confId);
+            string rank = ctrl.getMyRank(confId);
+            ConferenceDetails cf = new ConferenceDetails(ctrl, conf, rank);
+            cf.Show();
+        }
+
         private void buttonCreateConference_Click(object sender, EventArgs e)
         {
             AdminPanel2 ap = new AdminPanel2(ctrl);
@@ -104,16 +119,7 @@ namespace Client.View
             dataGridViewAllConferences.DataSource = filenamesList;
         }
 
-        private void buttonViewDetailsMy_Click(object sender, EventArgs e)
-        {
-            string name = dataGridViewAllConferences.CurrentRow.Cells[0].ToString();
-            string edition = dataGridViewAllConferences.CurrentRow.Cells[1].ToString();
-            string city = dataGridViewAllConferences.CurrentRow.Cells[2].ToString();
-            Conference conf = ctrl.getConference(name, edition, city);
-            string rank = ctrl.getMyRank(name, edition, city);
-            ConferenceDetails cf = new ConferenceDetails(ctrl, conf, rank);
-            cf.Show();
-        }
+
 
         private void buttonReadMessage_Click(object sender, EventArgs e)
         {
@@ -135,19 +141,16 @@ namespace Client.View
 
         private void buttonLogout1_Click(object sender, EventArgs e)
         {
-            ctrl.logout();
             Application.Exit();
         }
 
         private void buttonLogout2_Click(object sender, EventArgs e)
         {
-            ctrl.logout();
             Application.Exit();
         }
 
         private void buttonLogout3_Click(object sender, EventArgs e)
         {
-            ctrl.logout();
             Application.Exit();
         }
 

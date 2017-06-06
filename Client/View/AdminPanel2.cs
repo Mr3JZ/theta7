@@ -23,13 +23,100 @@ namespace Client.View
             ctrl = c;
             InitializeComponent();
             BindingList<Model.User> possiblePcMembers = new BindingList<Model.User>(ctrl.GetSpecialUsers());
-            dataGridViewComitee.DataSource = possiblePcMembers;
-
             addedChairs = new BindingList<Model.User>();
             addedPCMembers = new BindingList<Model.User>();
 
+
+            dataGridViewComitee.AutoGenerateColumns = false;
+            dataGridViewAddedChairs.AutoGenerateColumns = false;
+            dataGridViewAddedPCMembers.AutoGenerateColumns = false;
+            //name, affiliation, email
+            DataGridViewTextBoxColumn nameCol = new DataGridViewTextBoxColumn()
+            {
+                CellTemplate = new DataGridViewTextBoxCell(),
+                Name = "Name",
+                HeaderText = "Name",
+                DataPropertyName = "Name"
+            };
+
+            DataGridViewTextBoxColumn affiliationCol = new DataGridViewTextBoxColumn()
+            {
+                CellTemplate = new DataGridViewTextBoxCell(),
+                Name = "Affiliation",
+                HeaderText = "Affiliation",
+                DataPropertyName = "Affiliation"
+            };
+
+            DataGridViewTextBoxColumn emailCol = new DataGridViewTextBoxColumn()
+            {
+                CellTemplate = new DataGridViewTextBoxCell(),
+                Name = "Email",
+                HeaderText = "E-Mail",
+                DataPropertyName = "Email"
+            };
+
+            dataGridViewComitee.Columns.Add(nameCol);
+            dataGridViewComitee.Columns.Add(affiliationCol);
+            dataGridViewComitee.Columns.Add(emailCol);
+
+            DataGridViewTextBoxColumn nameCol2 = new DataGridViewTextBoxColumn()
+            {
+                CellTemplate = new DataGridViewTextBoxCell(),
+                Name = "Name",
+                HeaderText = "Name",
+                DataPropertyName = "Name"
+            };
+            DataGridViewTextBoxColumn affiliationCol2 = new DataGridViewTextBoxColumn()
+            {
+                CellTemplate = new DataGridViewTextBoxCell(),
+                Name = "Affiliation",
+                HeaderText = "Affiliation",
+                DataPropertyName = "Affiliation"
+            };
+
+            DataGridViewTextBoxColumn emailCol2 = new DataGridViewTextBoxColumn()
+            {
+                CellTemplate = new DataGridViewTextBoxCell(),
+                Name = "Email",
+                HeaderText = "E-Mail",
+                DataPropertyName = "Email"
+            };
+
+            dataGridViewAddedChairs.Columns.Add(nameCol2);
+            dataGridViewAddedChairs.Columns.Add(affiliationCol2);
+            dataGridViewAddedChairs.Columns.Add(emailCol2);
+
+            DataGridViewTextBoxColumn nameCol3 = new DataGridViewTextBoxColumn()
+            {
+                CellTemplate = new DataGridViewTextBoxCell(),
+                Name = "Name",
+                HeaderText = "Name",
+                DataPropertyName = "Name"
+            };
+            DataGridViewTextBoxColumn affiliationCol3 = new DataGridViewTextBoxColumn()
+            {
+                CellTemplate = new DataGridViewTextBoxCell(),
+                Name = "Affiliation",
+                HeaderText = "Affiliation",
+                DataPropertyName = "Affiliation"
+            };
+
+            DataGridViewTextBoxColumn emailCol3 = new DataGridViewTextBoxColumn()
+            {
+                CellTemplate = new DataGridViewTextBoxCell(),
+                Name = "Email",
+                HeaderText = "E-Mail",
+                DataPropertyName = "Email"
+            };
+
+            dataGridViewAddedPCMembers.Columns.Add(nameCol3);
+            dataGridViewAddedPCMembers.Columns.Add(affiliationCol3);
+            dataGridViewAddedPCMembers.Columns.Add(emailCol3);
+
+            dataGridViewComitee.DataSource = possiblePcMembers;
             dataGridViewAddedChairs.DataSource = addedChairs;
             dataGridViewAddedPCMembers.DataSource = addedPCMembers;
+
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -118,17 +205,23 @@ namespace Client.View
 
         private void buttonRemoveChair_Click(object sender, EventArgs e)
         {
-            if (dataGridViewAddedChairs.CurrentRow.Index != -1)
+            if (dataGridViewAddedChairs.CurrentRow != null)
             {
-                addedChairs.Remove((Model.User)dataGridViewAddedChairs.CurrentRow.DataBoundItem);
+                if (dataGridViewAddedChairs.CurrentRow.Index != -1)
+                {
+                    addedChairs.Remove((Model.User)dataGridViewAddedChairs.CurrentRow.DataBoundItem);
+                }
             }
         }
 
         private void buttonRemovePCMember_Click(object sender, EventArgs e)
         {
-            if (dataGridViewAddedPCMembers.CurrentRow.Index != -1)
+            if (dataGridViewAddedChairs.CurrentRow != null)
             {
-                addedPCMembers.Remove((Model.User)dataGridViewAddedPCMembers.CurrentRow.DataBoundItem);
+                if (dataGridViewAddedPCMembers.CurrentRow.Index != -1)
+                {
+                    addedPCMembers.Remove((Model.User)dataGridViewAddedPCMembers.CurrentRow.DataBoundItem);
+                }
             }
         }
     }

@@ -85,9 +85,13 @@ namespace Server
 
         public void Logout(Model.User u, IClient client)
         {
-            if(loggedClients[u.Username] == null)
-                throw new NotImplementedException();//User is not logged in
-            loggedClients.Remove(u.Username);
+            if (loggedClients.ContainsKey(u.Username))
+            {
+                loggedClients.Remove(u.Username);
+                return;
+            }
+            throw new ServerException("User not logged in");//User is not logged in
+            
         }
         public void Register(Model.User user)
         {

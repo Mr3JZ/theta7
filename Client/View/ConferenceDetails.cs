@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Model;
 using Persistence.Repository;
 using Client.Controller;
+using System.Reflection;
 
 namespace Client.View
 {
@@ -59,6 +60,69 @@ namespace Client.View
 
         private void AdjustOverview()
         {
+            dataGridViewConferenceChairs.AutoGenerateColumns = false;
+
+            DataGridViewTextBoxColumn nameCol = new DataGridViewTextBoxColumn()
+            {
+                CellTemplate = new DataGridViewTextBoxCell(),
+                Name = "Name",
+                HeaderText = "Name",
+                DataPropertyName = "User.Name"
+            };
+
+            DataGridViewTextBoxColumn affiliationCol = new DataGridViewTextBoxColumn()
+            {
+                CellTemplate = new DataGridViewTextBoxCell(),
+                Name = "Affiliation",
+                HeaderText = "Affiliation",
+                DataPropertyName = "User.Affiliation"
+            };
+
+            DataGridViewTextBoxColumn emailCol = new DataGridViewTextBoxColumn()
+            {
+                CellTemplate = new DataGridViewTextBoxCell(),
+                Name = "Email",
+                HeaderText = "E-Mail",
+                DataPropertyName = "User.Email"
+            };
+
+            dataGridViewConferenceChairs.Columns.Add(nameCol);
+            dataGridViewConferenceChairs.Columns.Add(affiliationCol);
+            dataGridViewConferenceChairs.Columns.Add(emailCol);
+
+            dataGridViewConferencePCMembers.AutoGenerateColumns = false;
+
+            DataGridViewTextBoxColumn nameCol2 = new DataGridViewTextBoxColumn()
+            {
+                CellTemplate = new DataGridViewTextBoxCell(),
+                Name = "Name",
+                HeaderText = "Name",
+                DataPropertyName = "User.Name"
+            };
+
+            DataGridViewTextBoxColumn affiliationCol2 = new DataGridViewTextBoxColumn()
+            {
+                CellTemplate = new DataGridViewTextBoxCell(),
+                Name = "Affiliation",
+                HeaderText = "Affiliation",
+                DataPropertyName = "User.Affiliation"
+            };
+
+            DataGridViewTextBoxColumn emailCol2 = new DataGridViewTextBoxColumn()
+            {
+                CellTemplate = new DataGridViewTextBoxCell(),
+                Name = "Email",
+                HeaderText = "E-Mail",
+                DataPropertyName = "User.Email"
+            };
+
+            dataGridViewConferencePCMembers.Columns.Add(nameCol2);
+            dataGridViewConferencePCMembers.Columns.Add(affiliationCol2);
+            dataGridViewConferencePCMembers.Columns.Add(emailCol2);
+
+
+
+
             int size;
             labelConferenceDuration.Text = conf.BeginDate.ToShortDateString().ToString() + "-" + conf.BeginDate.ToShortDateString().ToString();
             labelConferecePlace.Text = conf.City + " , " + conf.Country;
@@ -86,12 +150,146 @@ namespace Client.View
 
         private void AdjustParticipant()
         {
+            dataGridViewMyPapers.AutoGenerateColumns = false;
+            //title, status, topic, domain, subdomain
+
+            DataGridViewTextBoxColumn titleCol = new DataGridViewTextBoxColumn()
+            {
+                CellTemplate = new DataGridViewTextBoxCell(),
+                Name = "Title",
+                HeaderText = "Title",
+                DataPropertyName = "Title"
+            };
+
+            DataGridViewTextBoxColumn statusCol = new DataGridViewTextBoxColumn()
+            {
+                CellTemplate = new DataGridViewTextBoxCell(),
+                Name = "Status",
+                HeaderText = "Status",
+                DataPropertyName = "Status"
+            };
+
+
+            DataGridViewTextBoxColumn topicCol = new DataGridViewTextBoxColumn()
+            {
+                CellTemplate = new DataGridViewTextBoxCell(),
+                Name = "Topic",
+                HeaderText = "Topic",
+                DataPropertyName = "Topic"
+            };
+
+            DataGridViewTextBoxColumn domainCol = new DataGridViewTextBoxColumn()
+            {
+                CellTemplate = new DataGridViewTextBoxCell(),
+                Name = "Domain",
+                HeaderText = "Domain",
+                DataPropertyName = "Domain"
+            };
+
+            DataGridViewTextBoxColumn subdomainCol = new DataGridViewTextBoxColumn()
+            {
+                CellTemplate = new DataGridViewTextBoxCell(),
+                Name = "Subdomain",
+                HeaderText = "Subdomain",
+                DataPropertyName = "Subdomain"
+            };
+
+            dataGridViewMyPapers.Columns.Add(titleCol);
+            dataGridViewMyPapers.Columns.Add(statusCol);
+            dataGridViewMyPapers.Columns.Add(topicCol);
+            dataGridViewMyPapers.Columns.Add(domainCol);
+            dataGridViewMyPapers.Columns.Add(subdomainCol);
+
+            dataGridViewMyReviews.AutoGenerateColumns = false;
+            //reviewer name, verdict, comments
+            DataGridViewTextBoxColumn verdictCol = new DataGridViewTextBoxColumn()
+            {
+                CellTemplate = new DataGridViewTextBoxCell(),
+                Name = "Verdict",
+                HeaderText = "Verdict",
+                DataPropertyName = "Verdict"
+            };
+
+            DataGridViewTextBoxColumn commentsCol = new DataGridViewTextBoxColumn()
+            {
+                CellTemplate = new DataGridViewTextBoxCell(),
+                Name = "Comments",
+                HeaderText = "Comments",
+                DataPropertyName = "Comments",
+            };
+
+            if(rank!= "PCMember")
+            {
+                DataGridViewTextBoxColumn nameCol = new DataGridViewTextBoxColumn()
+                {
+                    CellTemplate = new DataGridViewTextBoxCell(),
+                    Name = "RevName",
+                    HeaderText = "Reviewer",
+                    DataPropertyName = "Reviewer.Name",
+                };
+                dataGridViewMyReviews.Columns.Add(nameCol);
+            }
+
+            dataGridViewMyReviews.Columns.Add(verdictCol);
+            dataGridViewMyReviews.Columns.Add(commentsCol);
+
+
             BindingList<Paper> mypapers = new BindingList<Paper>(ctrl.getPapers(conf));
             dataGridViewMyPapers.DataSource = mypapers;
         }
 
         private void AdjustPCMember()
         {
+            dataGridViewUploadedPapers.AutoGenerateColumns = false;
+            //title, status, topic, domain, subdomain
+
+            DataGridViewTextBoxColumn titleCol = new DataGridViewTextBoxColumn()
+            {
+                CellTemplate = new DataGridViewTextBoxCell(),
+                Name = "Title",
+                HeaderText = "Title",
+                DataPropertyName = "Title"
+            };
+
+            DataGridViewTextBoxColumn statusCol = new DataGridViewTextBoxColumn()
+            {
+                CellTemplate = new DataGridViewTextBoxCell(),
+                Name = "Status",
+                HeaderText = "Status",
+                DataPropertyName = "Status"
+            };
+
+
+            DataGridViewTextBoxColumn topicCol = new DataGridViewTextBoxColumn()
+            {
+                CellTemplate = new DataGridViewTextBoxCell(),
+                Name = "Topic",
+                HeaderText = "Topic",
+                DataPropertyName = "Topic"
+            };
+
+            DataGridViewTextBoxColumn domainCol = new DataGridViewTextBoxColumn()
+            {
+                CellTemplate = new DataGridViewTextBoxCell(),
+                Name = "Domain",
+                HeaderText = "Domain",
+                DataPropertyName = "Domain"
+            };
+
+            DataGridViewTextBoxColumn subdomainCol = new DataGridViewTextBoxColumn()
+            {
+                CellTemplate = new DataGridViewTextBoxCell(),
+                Name = "Subdomain",
+                HeaderText = "Subdomain",
+                DataPropertyName = "Subdomain"
+            };
+
+            dataGridViewUploadedPapers.Columns.Add(titleCol);
+            dataGridViewUploadedPapers.Columns.Add(statusCol);
+            dataGridViewUploadedPapers.Columns.Add(topicCol);
+            dataGridViewUploadedPapers.Columns.Add(domainCol);
+            dataGridViewUploadedPapers.Columns.Add(subdomainCol);
+
             BindingList<Paper> allPapers = new BindingList<Paper>(ctrl.getAllPapersConference(conf));
             dataGridViewUploadedPapers.DataSource = allPapers;
 
@@ -320,5 +518,24 @@ namespace Client.View
                 }
             }
         }
-      }
+
+        private void dataGridViewConferenceChairs_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            DataGridView grid = (DataGridView)sender;
+            DataGridViewRow row = grid.Rows[e.RowIndex];
+            DataGridViewColumn col = grid.Columns[e.ColumnIndex];
+            if (row.DataBoundItem != null && col.DataPropertyName.Contains("."))
+            {
+                string[] props = col.DataPropertyName.Split('.');
+                PropertyInfo propInfo = row.DataBoundItem.GetType().GetProperty(props[0]);
+                object val = propInfo.GetValue(row.DataBoundItem, null);
+                for (int i = 1; i < props.Length; i++)
+                {
+                    propInfo = val.GetType().GetProperty(props[i]);
+                    val = propInfo.GetValue(val, null);
+                }
+                e.Value = val;
+            }
+        }
+    }
   }
