@@ -1,4 +1,5 @@
-﻿using Server;
+﻿using Persistence;
+using Server;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ using System.Runtime.Remoting;
 using System.Runtime.Remoting.Channels;
 using System.Runtime.Remoting.Channels.Tcp;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Server
@@ -15,6 +17,18 @@ namespace Server
     {
         static void Main(string[] args)
         {
+            new Thread(() =>
+            {
+                while (true)
+                {
+                    using (var context = new ISSEntities2(Persistence.Util.ConnectionStringWithPassword.doIt()))
+                    {
+                        context.automaticJob();
+                    }
+                    Thread.Sleep(1000*60*60*24);
+                }
+            }).Start();
+
             Persistence.Repository.RepoAvailableRoomDB repoAR = new Persistence.Repository.RepoAvailableRoomDB();
             Persistence.Repository.RepoConference repoC = new Persistence.Repository.RepoConference();
             Persistence.Repository.RepoMessageDB repoM = new Persistence.Repository.RepoMessageDB();
