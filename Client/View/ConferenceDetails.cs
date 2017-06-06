@@ -175,6 +175,7 @@ namespace Client.View
                 {
                     ctrl.addPayment(p, nrTickets, conf);
                    
+                    
                 }
                 
             }catch(Exception ex)
@@ -191,6 +192,16 @@ namespace Client.View
 
         private void comboBoxDeadlines_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (comboBoxDeadlines.Text.ToString().Equals("Abstract"))
+                dateTimePickerOldDeadline.Value = conf.DeadlineAbstract;
+            if (comboBoxDeadlines.Text.ToString().Equals("Complete paper"))
+                dateTimePickerOldDeadline.Value = conf.DeadlineComplet;
+            if (comboBoxDeadlines.Text.ToString().Equals("Bidding"))
+                dateTimePickerOldDeadline.Value = conf.DeadlineBidding;
+            if (comboBoxDeadlines.Text.ToString().Equals("Participation"))
+                dateTimePickerOldDeadline.Value = conf.DeadlineParticipation;
+            if (comboBoxDeadlines.Text.ToString().Equals("Evaluation"))
+                dateTimePickerOldDeadline.Value = conf.DeadlineEvaluation;
 
         }
 
@@ -236,24 +247,30 @@ namespace Client.View
             }
 
         }
-
+        private void comboBoxDeadlines_DropDownClosed(object sender, EventArgs e)
+        {
+            MessageBox.Show(comboBoxDeadlines.Text);
+  }
+      
         private void buttonPushDeadline_Click(object sender, EventArgs e)
         {
             //trebuie sa aleg din combo box ce deadline.
             /*Alege abstract.Vf daca abstract vechi<abstract nou.
             
             */
-           
+            bool k = false;
             if (comboBoxDeadlines.Text.ToString().Equals("Abstract"))
                 /*we have to modify abstract.To do so we have to be sure that:
                     --old abstract < new abstract
                     --new abstract < complete deadline     
              */   
             {
+                dateTimePickerOldDeadline.Value = conf.DeadlineAbstract;
                 if ((dateTimePickerNewDeadline.Value > conf.DeadlineAbstract)&&(dateTimePickerNewDeadline.Value<conf.DeadlineComplet))
                 {
                     conf.DeadlineAbstract = dateTimePickerNewDeadline.Value;
                     ctrl.updatedConference(conf);
+                    k = true;
                     MessageBox.Show("Deadline has been changed!");
                 }
             }
@@ -269,6 +286,7 @@ namespace Client.View
                   {
                       conf.DeadlineComplet = dateTimePickerNewDeadline.Value;
                       ctrl.updatedConference(conf);
+                      k = true;
                       MessageBox.Show("Deadline has been changed!");
                 }
               }
@@ -285,6 +303,7 @@ namespace Client.View
                 {
                     conf.DeadlineBidding = dateTimePickerNewDeadline.Value;
                     ctrl.updatedConference(conf);
+                    k = true;
                     MessageBox.Show("Deadline has been changed!");
                 }
             }
@@ -300,6 +319,7 @@ namespace Client.View
                 {
                     conf.DeadlineParticipation = dateTimePickerNewDeadline.Value;
                     ctrl.updatedConference(conf);
+                    k = true;
                     MessageBox.Show("Deadline has been changed!");
                 }
             }
@@ -316,9 +336,13 @@ namespace Client.View
                 {
                     conf.DeadlineEvaluation = dateTimePickerNewDeadline.Value;
                     ctrl.updatedConference(conf);
+                    k = true;
                     MessageBox.Show("Deadline has been changed!");
                 }
+
             }
+            if (k == false)
+                MessageBox.Show("Invalid input!");
         }
       }
   }

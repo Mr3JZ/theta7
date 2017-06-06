@@ -158,7 +158,7 @@ namespace Client.View
 
 
 
-        private void populateMyConferencesView()
+        public void populateMyConferencesView()
         {
             dataGridViewMyConferences.AutoGenerateColumns = false;
 

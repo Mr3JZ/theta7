@@ -56,8 +56,7 @@ namespace Persistence.Repository
                     
                     ConferenceParticipant confP = new ConferenceParticipant();//daca a facut plata devine un participant la conferinta.
                     if (context.ConferenceParticipants.Find(payment.Buyer.User.IdUser, conference.Id, payment1.PaymentId) == null)
-                    {
-                        MessageBox.Show(payment.Buyer.User.IdUser.ToString());
+                    {                        
                         confP.UserId = participant.User.IdUser;
                         confP.ConferenceId = conference.Id;
                         confP.PaymentId = payment1.PaymentId;

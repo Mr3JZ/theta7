@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Services;
 using Model;
 using Server;
+using System.Windows.Forms;
+
 namespace Client
 {
     public class ClientController : MarshalByRefObject, IClient
@@ -111,7 +113,11 @@ namespace Client
                 return true;
             } catch(ServerException err)
             {
-                Console.WriteLine(err.Message);
+                MessageBox.Show(err.ToString());
+                return false;
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
                 return false;
             }
         }
@@ -123,7 +129,7 @@ namespace Client
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.ToString());
+                MessageBox.Show(ex.ToString());
             }
         }
         public bool register(string username, string password, string name, string affiliation, string email, string website, bool isSpecial)
@@ -133,9 +139,15 @@ namespace Client
                 User user = new User(-1, username, password, name, affiliation, email, isSpecial, website);
                 server.Register(user);
                 return true;
-            } catch(ServerException err)
+            }
+            catch (ServerException err)
             {
-                Console.WriteLine(err.Message);
+                MessageBox.Show(err.Message);
+                return false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
                 return false;
             }
         }
@@ -224,18 +236,18 @@ namespace Client
 
         public void AddMessage(string messageBody)
         {
-            Message message = new Message(-1, messageBody, currentUser.IdUser);
+            Model.Message message = new Model.Message(-1, messageBody, currentUser.IdUser);
             server.AddMessage(message);
         }
-        public void DeleteMessage(Message message)
+        public void DeleteMessage(Model.Message message)
         {
             server.DeleteMessage(message);
         }
-        public List<Message> GetMyMessages(int userID)
+        public List<Model.Message> GetMyMessages(int userID)
         {
             return server.GetUserMessages(userID).OrderBy(x => x.UserId).Reverse().ToList();
         }
-        public List<Message> GetMyMessages()
+        public List<Model.Message> GetMyMessages()
         {
             return server.GetUserMessages(currentUser.IdUser).OrderBy(x => x.UserId).Reverse().ToList();
         }
