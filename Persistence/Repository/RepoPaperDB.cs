@@ -125,6 +125,16 @@ namespace Persistence.Repository
             }
         }
 
+        public void Remove(int id)
+        {
+            using (var context = new ISSEntities2(Util.ConnectionStringWithPassword.doIt()))
+            {
+                var u = context.Papers.Find(id);
+                context.Papers.Remove(u);
+                context.SaveChanges();
+            }
+        }
+
         public void Modify(int paperId, Model.Paper newP)
         {
             using (var context = new ISSEntities2(Util.ConnectionStringWithPassword.doIt()))
