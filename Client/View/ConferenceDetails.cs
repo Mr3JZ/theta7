@@ -133,14 +133,15 @@ namespace Client.View
             labelConferenceFee.Text = "$" + conf.AdmissionPrice.ToString();
             labelConferenceName.Text = conf.Name;
             size = labelConferenceName.Width;
-            labelConferenceName.SetBounds((592 - size) / 2, 0, size, 29);
+            //labelConferenceName.SetBounds((592 - size) / 2, 0, size, 29);
             labelConferenceEdition.Text = conf.Edition;
             size = labelConferenceEdition.Width;
-            labelConferenceName.SetBounds((592 - size) / 2, 40, size, 24);
+            //labelConferenceName.SetBounds((592 - size) / 2, 40, size, 24);
             BindingList<Participant> chairs = new BindingList<Participant>(ctrl.getChairs(conf));
             dataGridViewConferenceChairs.DataSource = chairs;
             BindingList<Participant> pcmembers = new BindingList<Participant>(ctrl.getPCMembers(conf));
             dataGridViewConferencePCMembers.DataSource = pcmembers;
+            dataGridViewConferencePCMembers.AutoResizeColumns();
             BindingList<string> topics = new BindingList<string>(conf.Topics);
             listBoxConferenceTopics.DataSource = topics;
             if (DateTime.Now < conf.DeadlineEvaluation || DateTime.Now > conf.EndDate)
@@ -371,7 +372,7 @@ namespace Client.View
                 //Only listeners have to pay->so he has to be normalUser
                 Participant p = new Participant(ctrl.getCurrentUser(), conf.Id, false, false, false, true);
                 double x = conf.AdmissionPrice * nrTickets;
-                if (MessageBox.Show( "Price to pay: "+x.ToString(),"Price", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation) == DialogResult.OK)
+                if (MessageBox.Show( "Price to pay: "+x.ToString()+"$","Price", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation) == DialogResult.OK)
                 {
                     ctrl.addPayment(p, nrTickets, conf);
                     ConferenceDetails cf = new ConferenceDetails(ctrl, conf, "NormalUser");
@@ -652,6 +653,7 @@ namespace Client.View
 
         private void buttonReadPaperAbstract_Click(object sender, EventArgs e)
         {
+            
             Paper selectedPaper = (Paper)dataGridViewUploadedPapers.CurrentRow.DataBoundItem;
             MessageBox.Show(selectedPaper.Resume);
         }

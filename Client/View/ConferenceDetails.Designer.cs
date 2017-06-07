@@ -30,6 +30,8 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageConferenceDetailed = new System.Windows.Forms.TabPage();
+            this.labelConferenceDuration = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.numericUpDownPaidSum = new System.Windows.Forms.NumericUpDown();
             this.labelPaidSum = new System.Windows.Forms.Label();
             this.labelConferenceFee = new System.Windows.Forms.Label();
@@ -87,8 +89,6 @@
             this.buttonReadPaperAbstract = new System.Windows.Forms.Button();
             this.labelUploadedToReview = new System.Windows.Forms.Label();
             this.dataGridViewUploadedPapers = new System.Windows.Forms.DataGridView();
-            this.labelConferenceDuration = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPageConferenceDetailed.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPaidSum)).BeginInit();
@@ -114,6 +114,7 @@
             // 
             // tabPageConferenceDetailed
             // 
+            this.tabPageConferenceDetailed.BackColor = System.Drawing.Color.Transparent;
             this.tabPageConferenceDetailed.Controls.Add(this.labelConferenceDuration);
             this.tabPageConferenceDetailed.Controls.Add(this.label8);
             this.tabPageConferenceDetailed.Controls.Add(this.numericUpDownPaidSum);
@@ -144,8 +145,25 @@
             this.tabPageConferenceDetailed.Size = new System.Drawing.Size(592, 405);
             this.tabPageConferenceDetailed.TabIndex = 3;
             this.tabPageConferenceDetailed.Text = "Overview";
-            this.tabPageConferenceDetailed.UseVisualStyleBackColor = true;
             this.tabPageConferenceDetailed.Click += new System.EventHandler(this.tabPageConferenceDetailed_Click);
+            // 
+            // labelConferenceDuration
+            // 
+            this.labelConferenceDuration.AutoSize = true;
+            this.labelConferenceDuration.Location = new System.Drawing.Point(445, 215);
+            this.labelConferenceDuration.Name = "labelConferenceDuration";
+            this.labelConferenceDuration.Size = new System.Drawing.Size(108, 13);
+            this.labelConferenceDuration.TabIndex = 23;
+            this.labelConferenceDuration.Text = "-conference duration-";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(320, 215);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(50, 13);
+            this.label8.TabIndex = 22;
+            this.label8.Text = "Duration:";
             // 
             // numericUpDownPaidSum
             // 
@@ -318,25 +336,25 @@
             // 
             // labelConferenceEdition
             // 
-            this.labelConferenceEdition.AutoSize = true;
             this.labelConferenceEdition.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.labelConferenceEdition.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelConferenceEdition.Location = new System.Drawing.Point(214, 40);
+            this.labelConferenceEdition.Location = new System.Drawing.Point(290, 68);
             this.labelConferenceEdition.Name = "labelConferenceEdition";
-            this.labelConferenceEdition.Size = new System.Drawing.Size(182, 24);
+            this.labelConferenceEdition.Size = new System.Drawing.Size(123, 24);
             this.labelConferenceEdition.TabIndex = 3;
             this.labelConferenceEdition.Text = "-Conference edition-";
             // 
             // labelConferenceName
             // 
-            this.labelConferenceName.AutoSize = true;
+            this.labelConferenceName.BackColor = System.Drawing.Color.Transparent;
             this.labelConferenceName.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.labelConferenceName.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelConferenceName.Location = new System.Drawing.Point(197, 0);
+            this.labelConferenceName.Location = new System.Drawing.Point(110, 17);
             this.labelConferenceName.Name = "labelConferenceName";
-            this.labelConferenceName.Size = new System.Drawing.Size(220, 29);
+            this.labelConferenceName.Size = new System.Drawing.Size(420, 29);
             this.labelConferenceName.TabIndex = 2;
             this.labelConferenceName.Text = "-Conference name-";
+            this.labelConferenceName.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label11
             // 
@@ -753,24 +771,6 @@
             this.dataGridViewUploadedPapers.Size = new System.Drawing.Size(300, 334);
             this.dataGridViewUploadedPapers.TabIndex = 0;
             this.dataGridViewUploadedPapers.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridViewConferenceChairs_CellFormatting);
-            // 
-            // labelConferenceDuration
-            // 
-            this.labelConferenceDuration.AutoSize = true;
-            this.labelConferenceDuration.Location = new System.Drawing.Point(445, 215);
-            this.labelConferenceDuration.Name = "labelConferenceDuration";
-            this.labelConferenceDuration.Size = new System.Drawing.Size(108, 13);
-            this.labelConferenceDuration.TabIndex = 23;
-            this.labelConferenceDuration.Text = "-conference duration-";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(320, 215);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(50, 13);
-            this.label8.TabIndex = 22;
-            this.label8.Text = "Duration:";
             // 
             // ConferenceDetails
             // 
