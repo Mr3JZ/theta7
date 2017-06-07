@@ -31,6 +31,73 @@ namespace Client.View
                 buttonCreateConference.Visible = false;
                 buttonCreateConference.Enabled = false;
             }
+
+            dataGridViewAllConferences.AutoGenerateColumns = false;
+
+            //create the colum programically
+            DataGridViewCell cell = new DataGridViewTextBoxCell();
+            DataGridViewCell cellEdition = new DataGridViewTextBoxCell();
+            DataGridViewCell cellCity = new DataGridViewTextBoxCell();
+            DataGridViewTextBoxColumn colFileName = new DataGridViewTextBoxColumn()
+            {
+                CellTemplate = cell,
+                Name = "Name",
+                HeaderText = "Conference name",
+                DataPropertyName = "Name" // Tell the column which property of FileName it should use
+            };
+            DataGridViewTextBoxColumn colFileNameEdition = new DataGridViewTextBoxColumn()
+            {
+                CellTemplate = cellEdition,
+                Name = "Edition",
+                HeaderText = "Edition",
+                DataPropertyName = "Edition" // Tell the column which property of FileName it should use
+            };
+            DataGridViewTextBoxColumn colFileNameCity = new DataGridViewTextBoxColumn()
+            {
+                CellTemplate = cellCity,
+                Name = "City",
+                HeaderText = "City",
+                DataPropertyName = "City" // Tell the column which property of FileName it should use
+            };
+
+            dataGridViewAllConferences.Columns.Add(colFileName);
+            dataGridViewAllConferences.Columns.Add(colFileNameEdition);
+            dataGridViewAllConferences.Columns.Add(colFileNameCity);
+
+            dataGridViewMyConferences.AutoGenerateColumns = false;
+
+            //create the colum programically
+            DataGridViewCell cell2 = new DataGridViewTextBoxCell();
+            DataGridViewCell cellEdition2 = new DataGridViewTextBoxCell();
+            DataGridViewCell cellCity2 = new DataGridViewTextBoxCell();
+            DataGridViewTextBoxColumn colFileName2 = new DataGridViewTextBoxColumn()
+            {
+                CellTemplate = cell2,
+                Name = "Name",
+                HeaderText = "Conference name",
+                DataPropertyName = "Name" // Tell the column which property of FileName it should use
+            };
+            DataGridViewTextBoxColumn colFileNameEdition2 = new DataGridViewTextBoxColumn()
+            {
+                CellTemplate = cellEdition2,
+                Name = "Edition",
+                HeaderText = "Edition",
+                DataPropertyName = "Edition" // Tell the column which property of FileName it should use
+            };
+            DataGridViewTextBoxColumn colFileNameCity2 = new DataGridViewTextBoxColumn()
+            {
+                CellTemplate = cellCity2,
+                Name = "City",
+                HeaderText = "City",
+                DataPropertyName = "City" // Tell the column which property of FileName it should use
+            };
+
+            dataGridViewMyConferences.Columns.Add(colFileName2);
+            dataGridViewMyConferences.Columns.Add(colFileNameEdition2);
+            dataGridViewMyConferences.Columns.Add(colFileNameCity2);
+
+
+
             populateAllConferencesView();
             populateMyConferencesView();
             populateNotifications();
@@ -81,38 +148,7 @@ namespace Client.View
         }
         private void populateAllConferencesView()
         {
-            dataGridViewAllConferences.AutoGenerateColumns = false;
-
-            //create the colum programically
-            DataGridViewCell cell = new DataGridViewTextBoxCell();
-            DataGridViewCell cellEdition = new DataGridViewTextBoxCell();
-            DataGridViewCell cellCity = new DataGridViewTextBoxCell();
-            DataGridViewTextBoxColumn colFileName = new DataGridViewTextBoxColumn()
-            {
-                CellTemplate = cell,
-                Name = "Name",
-                HeaderText = "Conference name",
-                DataPropertyName = "Name" // Tell the column which property of FileName it should use
-            };
-            DataGridViewTextBoxColumn colFileNameEdition = new DataGridViewTextBoxColumn()
-            {
-                CellTemplate = cellEdition,
-                Name = "Edition",
-                HeaderText = "Edition",
-                DataPropertyName = "Edition" // Tell the column which property of FileName it should use
-            };
-            DataGridViewTextBoxColumn colFileNameCity = new DataGridViewTextBoxColumn()
-            {
-                CellTemplate = cellCity,
-                Name = "City",
-                HeaderText = "City",
-                DataPropertyName = "City" // Tell the column which property of FileName it should use
-            };
-
-            dataGridViewAllConferences.Columns.Add(colFileName);
-            dataGridViewAllConferences.Columns.Add(colFileNameEdition);
-            dataGridViewAllConferences.Columns.Add(colFileNameCity);
-
+            
             var filelist = ctrl.getAllConferences().ToList();
             var filenamesList = new BindingList<Model.Conference>(filelist); // <-- BindingList
 
@@ -163,37 +199,7 @@ namespace Client.View
 
         private void populateMyConferencesView()
         {
-            dataGridViewMyConferences.AutoGenerateColumns = false;
-
-            //create the colum programically
-            DataGridViewCell cell = new DataGridViewTextBoxCell();
-            DataGridViewCell cellEdition = new DataGridViewTextBoxCell();
-            DataGridViewCell cellCity = new DataGridViewTextBoxCell();
-            DataGridViewTextBoxColumn colFileName = new DataGridViewTextBoxColumn()
-            {
-                CellTemplate = cell,
-                Name = "Name",
-                HeaderText = "Conference name",
-                DataPropertyName = "Name" // Tell the column which property of FileName it should use
-            };
-            DataGridViewTextBoxColumn colFileNameEdition = new DataGridViewTextBoxColumn()
-            {
-                CellTemplate = cellEdition,
-                Name = "Edition",
-                HeaderText = "Edition",
-                DataPropertyName = "Edition" // Tell the column which property of FileName it should use
-            };
-            DataGridViewTextBoxColumn colFileNameCity = new DataGridViewTextBoxColumn()
-            {
-                CellTemplate = cellCity,
-                Name = "City",
-                HeaderText = "City",
-                DataPropertyName = "City" // Tell the column which property of FileName it should use
-            };
-
-            dataGridViewMyConferences.Columns.Add(colFileName);
-            dataGridViewMyConferences.Columns.Add(colFileNameEdition);
-            dataGridViewMyConferences.Columns.Add(colFileNameCity);
+            
 
             var filelist = ctrl.getMyConferences().ToList();
             var filenamesList = new BindingList<Model.Conference>(filelist); // <-- BindingList
@@ -201,5 +207,28 @@ namespace Client.View
             dataGridViewMyConferences.DataSource = filenamesList;
         }
 
+        private void btnRefreshAllConferences_Click(object sender, EventArgs e)
+        {
+            dataGridViewAllConferences.DataSource = null;
+            populateAllConferencesView();
+        }
+
+        private void btnRefreshMyConferences_Click(object sender, EventArgs e)
+        {
+            dataGridViewMyConferences.DataSource = null;
+            populateMyConferencesView();
+        }
+
+        private void tabPageAllConferences_Enter(object sender, EventArgs e)
+        {
+            dataGridViewAllConferences.DataSource = null;
+            populateAllConferencesView();
+        }
+
+        private void tabPageMyConferences_Enter(object sender, EventArgs e)
+        {
+            dataGridViewMyConferences.DataSource = null;
+            populateMyConferencesView();
+        }
     }
 }

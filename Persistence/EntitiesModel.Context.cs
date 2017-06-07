@@ -14,7 +14,7 @@ namespace Persistence
     using System.Data.Entity.Infrastructure;
     using System.Data.Entity.Core.Objects;
     using System.Linq;
-    
+    using System.Data.Common;
     public partial class ISSEntities2 : DbContext
     {
         public ISSEntities2()
@@ -23,6 +23,9 @@ namespace Persistence
         }
 
         public ISSEntities2(string nameOrConnectionString) : base(nameOrConnectionString)
+        {
+        }
+        public ISSEntities2(DbConnection connection) : base(connection, true)
         {
         }
 

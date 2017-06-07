@@ -43,6 +43,8 @@
             this.buttonViewDetailsMy = new System.Windows.Forms.Button();
             this.buttonLogout3 = new System.Windows.Forms.Button();
             this.dataGridViewMyConferences = new System.Windows.Forms.DataGridView();
+            this.btnRefreshAllConferences = new System.Windows.Forms.Button();
+            this.btnRefreshMyConferences = new System.Windows.Forms.Button();
             this.tabControlGeneral.SuspendLayout();
             this.tabPageAllConferences.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAllConferences)).BeginInit();
@@ -64,6 +66,7 @@
             // 
             // tabPageAllConferences
             // 
+            this.tabPageAllConferences.Controls.Add(this.btnRefreshAllConferences);
             this.tabPageAllConferences.Controls.Add(this.buttonLogout1);
             this.tabPageAllConferences.Controls.Add(this.buttonViewDetails);
             this.tabPageAllConferences.Controls.Add(this.buttonCreateConference);
@@ -75,6 +78,7 @@
             this.tabPageAllConferences.TabIndex = 0;
             this.tabPageAllConferences.Text = "All conferences";
             this.tabPageAllConferences.UseVisualStyleBackColor = true;
+            this.tabPageAllConferences.Enter += new System.EventHandler(this.tabPageAllConferences_Enter);
             // 
             // buttonLogout1
             // 
@@ -179,6 +183,7 @@
             // 
             // tabPageMyConferences
             // 
+            this.tabPageMyConferences.Controls.Add(this.btnRefreshMyConferences);
             this.tabPageMyConferences.Controls.Add(this.buttonViewDetailsMy);
             this.tabPageMyConferences.Controls.Add(this.buttonLogout3);
             this.tabPageMyConferences.Controls.Add(this.dataGridViewMyConferences);
@@ -189,6 +194,7 @@
             this.tabPageMyConferences.TabIndex = 2;
             this.tabPageMyConferences.Text = "MyConferences";
             this.tabPageMyConferences.UseVisualStyleBackColor = true;
+            this.tabPageMyConferences.Enter += new System.EventHandler(this.tabPageMyConferences_Enter);
             // 
             // buttonViewDetailsMy
             // 
@@ -224,6 +230,28 @@
             this.dataGridViewMyConferences.Size = new System.Drawing.Size(400, 304);
             this.dataGridViewMyConferences.TabIndex = 0;
             this.dataGridViewMyConferences.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewMyConferences_CellContentClick);
+            // 
+            // btnRefreshAllConferences
+            // 
+            this.btnRefreshAllConferences.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRefreshAllConferences.Location = new System.Drawing.Point(420, 41);
+            this.btnRefreshAllConferences.Name = "btnRefreshAllConferences";
+            this.btnRefreshAllConferences.Size = new System.Drawing.Size(162, 25);
+            this.btnRefreshAllConferences.TabIndex = 1;
+            this.btnRefreshAllConferences.Text = "Refresh";
+            this.btnRefreshAllConferences.UseVisualStyleBackColor = true;
+            this.btnRefreshAllConferences.Click += new System.EventHandler(this.btnRefreshAllConferences_Click);
+            // 
+            // btnRefreshMyConferences
+            // 
+            this.btnRefreshMyConferences.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRefreshMyConferences.Location = new System.Drawing.Point(420, 41);
+            this.btnRefreshMyConferences.Name = "btnRefreshMyConferences";
+            this.btnRefreshMyConferences.Size = new System.Drawing.Size(162, 25);
+            this.btnRefreshMyConferences.TabIndex = 3;
+            this.btnRefreshMyConferences.Text = "Refresh";
+            this.btnRefreshMyConferences.UseVisualStyleBackColor = true;
+            this.btnRefreshMyConferences.Click += new System.EventHandler(this.btnRefreshMyConferences_Click);
             // 
             // GeneralForm
             // 
@@ -261,5 +289,7 @@
         private System.Windows.Forms.Button buttonViewDetailsMy;
         private System.Windows.Forms.Button buttonLogout3;
         private System.Windows.Forms.DataGridView dataGridViewMyConferences;
+        private System.Windows.Forms.Button btnRefreshAllConferences;
+        private System.Windows.Forms.Button btnRefreshMyConferences;
     }
 }

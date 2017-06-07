@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Model;
 using Persistence.Repository;
 using System.Reflection;
+using System.Threading;
 
 namespace Client.View
 {
@@ -125,6 +126,7 @@ namespace Client.View
 
             int size;
             labelConferenceDuration.Text = conf.BeginDate.ToShortDateString().ToString() + "-" + conf.BeginDate.ToShortDateString().ToString();
+            labelWebsite.Text = conf.Website;
             labelConferecePlace.Text = conf.City + " , " + conf.Country;
             labelAbstractDeadline.Text = conf.DeadlineAbstract.ToShortDateString().ToString();
             labelParticipationDeadline.Text = conf.DeadlineParticipation.ToShortDateString().ToString();
@@ -372,7 +374,9 @@ namespace Client.View
                 if (MessageBox.Show( "Price to pay: "+x.ToString(),"Price", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation) == DialogResult.OK)
                 {
                     ctrl.addPayment(p, nrTickets, conf);
-                   
+                    ConferenceDetails cf = new ConferenceDetails(ctrl, conf, "NormalUser");
+                    cf.Show();
+                    this.Close();
                 }
                 
             }catch(Exception ex)
@@ -590,6 +594,9 @@ namespace Client.View
             string topic = "AI";//comboBoxTopic.SelectedItem.ToString();
             if(ctrl.saveChanges(conf.Id, title, domain, subdomain, topic))
             {
+                dataGridViewMyPapers.DataSource = null;
+                BindingList<Paper> mypapers = new BindingList<Paper>(ctrl.getPapers(conf));
+                dataGridViewMyPapers.DataSource = mypapers;
                 MessageBox.Show("Upload successful");
                 buttonSaveChanges.Enabled = false;
                 buttonAddPaper.Enabled = true;
@@ -637,6 +644,9 @@ namespace Client.View
                 Paper paper = ((Paper)dataGridViewMyPapers.CurrentRow.DataBoundItem);
                 int paperId = paper.Id;
                 ctrl.removePaper(paperId);
+                dataGridViewMyPapers.DataSource = null;
+                BindingList<Paper> mypapers = new BindingList<Paper>(ctrl.getPapers(conf));
+                dataGridViewMyPapers.DataSource = mypapers;
             }
         }
 

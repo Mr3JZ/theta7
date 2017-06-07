@@ -4,11 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.Serialization;
+using System.Runtime.Remoting;
+
 namespace Server
 {
     [Serializable]
 
-    public class ServerException: Exception
+    public class ServerException: RemotingException, ISerializable
     {
             public ServerException() { }
 

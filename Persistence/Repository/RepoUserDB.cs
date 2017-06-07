@@ -8,33 +8,33 @@ namespace Persistence.Repository
 {
     public class RepoUserDB
     {
+        private readonly ISSEntities2 _context;
+        public RepoUserDB(ISSEntities2 context)
+        {
+            _context = context;
+        }
         public List<Model.User> GetAll()
         {
             List<Model.User> all = new List<Model.User>();
-            using (var context = new ISSEntities2(Util.ConnectionStringWithPassword.doIt()))
-            {
-                foreach(User u in context.Users)
+                foreach(User u in _context.Users)
                 {
                     all.Add(new Model.User(u.UserId, u.Username, u.Password, u.Name, u.Affilliation, u.Email, u.canBePCMember, u.WebPage));
                 }
-            }
 
             return all;
         }
 
         public Model.User Find(int id)
         {
-            using (var context = new ISSEntities2(Util.ConnectionStringWithPassword.doIt()))
-            {
-                var u = context.Users.Find(id);
+            
+                var u = _context.Users.Find(id);
                 return new Model.User(u.UserId, u.Username, u.Password, u.Name, u.Affilliation, u.Email, u.canBePCMember, u.WebPage);
-            }
+            
         }
 
         public void Add(Model.User u)
         {
-            using (var context = new ISSEntities2(Util.ConnectionStringWithPassword.doIt()))
-            {
+            
                 User newser = new User();
 
                 newser.Username = u.Username;
@@ -45,19 +45,18 @@ namespace Persistence.Repository
                 newser.WebPage = u.Website;
                 newser.canBePCMember = u.isSpecial;
 
-                context.Users.Add(newser);
-                context.SaveChanges();
+            _context.Users.Add(newser);
+            _context.SaveChanges();
             }
-        }
+        
 
         public void Remove(int id)
         {
-            using (var context = new ISSEntities2(Util.ConnectionStringWithPassword.doIt()))
-            {
-                var u = context.Users.Find(id);
-                context.Users.Remove(u);
-                context.SaveChanges();
-            }
+            
+                var u = _context.Users.Find(id);
+        _context.Users.Remove(u);
+        _context.SaveChanges();
+            
         }
     }
 }

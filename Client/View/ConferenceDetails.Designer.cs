@@ -36,7 +36,7 @@
             this.labelParticipationDeadline = new System.Windows.Forms.Label();
             this.labelAbstractDeadline = new System.Windows.Forms.Label();
             this.labelConferecePlace = new System.Windows.Forms.Label();
-            this.labelConferenceDuration = new System.Windows.Forms.Label();
+            this.labelWebsite = new System.Windows.Forms.Label();
             this.buttonRegisterConference = new System.Windows.Forms.Button();
             this.buttonSchedule = new System.Windows.Forms.Button();
             this.label18 = new System.Windows.Forms.Label();
@@ -53,6 +53,7 @@
             this.label11 = new System.Windows.Forms.Label();
             this.dataGridViewConferenceChairs = new System.Windows.Forms.DataGridView();
             this.tabPageParticipant = new System.Windows.Forms.TabPage();
+            this.buttonDiscard = new System.Windows.Forms.Button();
             this.buttonAddPaper = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -86,7 +87,8 @@
             this.buttonReadPaperAbstract = new System.Windows.Forms.Button();
             this.labelUploadedToReview = new System.Windows.Forms.Label();
             this.dataGridViewUploadedPapers = new System.Windows.Forms.DataGridView();
-            this.buttonDiscard = new System.Windows.Forms.Button();
+            this.labelConferenceDuration = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPageConferenceDetailed.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPaidSum)).BeginInit();
@@ -112,13 +114,15 @@
             // 
             // tabPageConferenceDetailed
             // 
+            this.tabPageConferenceDetailed.Controls.Add(this.labelConferenceDuration);
+            this.tabPageConferenceDetailed.Controls.Add(this.label8);
             this.tabPageConferenceDetailed.Controls.Add(this.numericUpDownPaidSum);
             this.tabPageConferenceDetailed.Controls.Add(this.labelPaidSum);
             this.tabPageConferenceDetailed.Controls.Add(this.labelConferenceFee);
             this.tabPageConferenceDetailed.Controls.Add(this.labelParticipationDeadline);
             this.tabPageConferenceDetailed.Controls.Add(this.labelAbstractDeadline);
             this.tabPageConferenceDetailed.Controls.Add(this.labelConferecePlace);
-            this.tabPageConferenceDetailed.Controls.Add(this.labelConferenceDuration);
+            this.tabPageConferenceDetailed.Controls.Add(this.labelWebsite);
             this.tabPageConferenceDetailed.Controls.Add(this.buttonRegisterConference);
             this.tabPageConferenceDetailed.Controls.Add(this.buttonSchedule);
             this.tabPageConferenceDetailed.Controls.Add(this.label18);
@@ -195,14 +199,14 @@
             this.labelConferecePlace.TabIndex = 16;
             this.labelConferecePlace.Text = "-conference place-";
             // 
-            // labelConferenceDuration
+            // labelWebsite
             // 
-            this.labelConferenceDuration.AutoSize = true;
-            this.labelConferenceDuration.Location = new System.Drawing.Point(445, 235);
-            this.labelConferenceDuration.Name = "labelConferenceDuration";
-            this.labelConferenceDuration.Size = new System.Drawing.Size(108, 13);
-            this.labelConferenceDuration.TabIndex = 15;
-            this.labelConferenceDuration.Text = "-conference duration-";
+            this.labelWebsite.AutoSize = true;
+            this.labelWebsite.Location = new System.Drawing.Point(445, 235);
+            this.labelWebsite.Name = "labelWebsite";
+            this.labelWebsite.Size = new System.Drawing.Size(108, 13);
+            this.labelWebsite.TabIndex = 15;
+            this.labelWebsite.Text = "-conference duration-";
             // 
             // buttonRegisterConference
             // 
@@ -268,9 +272,9 @@
             this.label14.AutoSize = true;
             this.label14.Location = new System.Drawing.Point(320, 235);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(50, 13);
+            this.label14.Size = new System.Drawing.Size(49, 13);
             this.label14.TabIndex = 8;
-            this.label14.Text = "Duration:";
+            this.label14.Text = "Website:";
             // 
             // listBoxConferenceTopics
             // 
@@ -382,6 +386,17 @@
             this.tabPageParticipant.TabIndex = 0;
             this.tabPageParticipant.Text = "Participant";
             this.tabPageParticipant.UseVisualStyleBackColor = true;
+            // 
+            // buttonDiscard
+            // 
+            this.buttonDiscard.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonDiscard.Location = new System.Drawing.Point(456, 241);
+            this.buttonDiscard.Name = "buttonDiscard";
+            this.buttonDiscard.Size = new System.Drawing.Size(126, 25);
+            this.buttonDiscard.TabIndex = 19;
+            this.buttonDiscard.Text = "Discard uploads";
+            this.buttonDiscard.UseVisualStyleBackColor = true;
+            this.buttonDiscard.Click += new System.EventHandler(this.buttonDiscard_Click);
             // 
             // buttonAddPaper
             // 
@@ -739,16 +754,23 @@
             this.dataGridViewUploadedPapers.TabIndex = 0;
             this.dataGridViewUploadedPapers.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridViewConferenceChairs_CellFormatting);
             // 
-            // buttonDiscard
+            // labelConferenceDuration
             // 
-            this.buttonDiscard.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonDiscard.Location = new System.Drawing.Point(456, 241);
-            this.buttonDiscard.Name = "buttonDiscard";
-            this.buttonDiscard.Size = new System.Drawing.Size(126, 25);
-            this.buttonDiscard.TabIndex = 19;
-            this.buttonDiscard.Text = "Discard uploads";
-            this.buttonDiscard.UseVisualStyleBackColor = true;
-            this.buttonDiscard.Click += new System.EventHandler(this.buttonDiscard_Click);
+            this.labelConferenceDuration.AutoSize = true;
+            this.labelConferenceDuration.Location = new System.Drawing.Point(445, 215);
+            this.labelConferenceDuration.Name = "labelConferenceDuration";
+            this.labelConferenceDuration.Size = new System.Drawing.Size(108, 13);
+            this.labelConferenceDuration.TabIndex = 23;
+            this.labelConferenceDuration.Text = "-conference duration-";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(320, 215);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(50, 13);
+            this.label8.TabIndex = 22;
+            this.label8.Text = "Duration:";
             // 
             // ConferenceDetails
             // 
@@ -809,7 +831,7 @@
         private System.Windows.Forms.Label labelParticipationDeadline;
         private System.Windows.Forms.Label labelAbstractDeadline;
         private System.Windows.Forms.Label labelConferecePlace;
-        private System.Windows.Forms.Label labelConferenceDuration;
+        private System.Windows.Forms.Label labelWebsite;
         private System.Windows.Forms.Button buttonRegisterConference;
         private System.Windows.Forms.Button buttonSchedule;
         private System.Windows.Forms.Label label18;
@@ -836,5 +858,7 @@
         private System.Windows.Forms.Label labelPaidSum;
         private System.Windows.Forms.NumericUpDown numericUpDownPaidSum;
         private System.Windows.Forms.Button buttonDiscard;
+        private System.Windows.Forms.Label labelConferenceDuration;
+        private System.Windows.Forms.Label label8;
     }
 }
