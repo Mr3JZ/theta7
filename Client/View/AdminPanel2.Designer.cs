@@ -131,7 +131,7 @@
             // buttonRemoveChair
             // 
             this.buttonRemoveChair.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonRemoveChair.Location = new System.Drawing.Point(462, 117);
+            this.buttonRemoveChair.Location = new System.Drawing.Point(458, 111);
             this.buttonRemoveChair.Name = "buttonRemoveChair";
             this.buttonRemoveChair.Size = new System.Drawing.Size(135, 25);
             this.buttonRemoveChair.TabIndex = 7;

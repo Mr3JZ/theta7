@@ -25,7 +25,9 @@ namespace Persistence.Repository
          */
         public void addPayment(Participant participant, int nrTickets,Model.Conference conference)
         {
-            if (participant.IsNormalUser)
+            if (nrTickets == 0)
+                throw new Exception("No tickets selected");
+            else if (participant.IsNormalUser)
             {
                 int conferenceId = participant.ConferenceId;
                 RepoConference repo = new RepoConference();
