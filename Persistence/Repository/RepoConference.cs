@@ -12,13 +12,14 @@ namespace Persistence.Repository
         List<Model.Conference> conferences = new List<Model.Conference>();
         /*Function which adds a new conference.
         * In:Conference details
-        * Out:new conference in the list
+        * Out: returneaza id-u conferintei
+            new conference in the list
         * Conditions which are checked in repository:
         * DeadlineAbstract < DeadlineComplet < DeadlineParticipation < DeadlineBidding < DeadlineEvaluation < BeginDate < EndDate
         * AdmissionPrice>0
         * Id-unique
         */
-        public void addConference(Model.Conference c)
+        public int addConference(Model.Conference c)
         {
             if (c.AdmissionPrice < 1)
             {
@@ -58,6 +59,7 @@ namespace Persistence.Repository
                         {
                             context.Conferences.Add(conference);
                             context.SaveChanges();
+                            return conference.ConferenceId;
                         }
                         else throw new Exception("Conference already exists!");
                     }
@@ -148,6 +150,19 @@ namespace Persistence.Repository
 
             }
         }
+
+        public void addTopic(string topicName, int confId)
+        {
+            using (var context = new ISSEntities2(Util.ConnectionStringWithPassword.doIt()))
+            {
+                Topic topic = new Topic();
+                topic.ConferenceId = confId;
+                topic.TopicName = topicName;
+                context.Topics.Add(topic);
+                context.SaveChanges();
+            }
+        }
     }
+
 }
 
