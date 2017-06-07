@@ -54,6 +54,13 @@ namespace Server
             return all;
 
         }
+        
+        /*
+         * Override for 6 min timer so we don't get .net remoting exception*/
+        public override object InitializeLifetimeService()
+        {
+            return null;
+        }
 
         public Model.Conference GetConference(int id)
         {

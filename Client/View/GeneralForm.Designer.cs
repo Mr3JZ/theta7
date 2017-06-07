@@ -82,7 +82,7 @@
             // 
             // btnRefreshAllConferences
             // 
-            this.btnRefreshAllConferences.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnRefreshAllConferences.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRefreshAllConferences.Location = new System.Drawing.Point(420, 41);
             this.btnRefreshAllConferences.Name = "btnRefreshAllConferences";
             this.btnRefreshAllConferences.Size = new System.Drawing.Size(162, 25);
