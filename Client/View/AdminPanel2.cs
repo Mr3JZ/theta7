@@ -143,7 +143,7 @@ namespace Client.View
                 DateTime evaluation = dateTimePicker5.Value;
                 DateTime begin = dateTimePicker6.Value;
                 DateTime end = dateTimePicker7.Value;
-                List<String> topics = new List<string>();
+                List<String> topics = tempTopics.ToList();
                 ctrl.AddConference(name, edition, topics, abs, complete, bidding, evaluation, participation, city, country, website, price, begin, end);
                 Conference addedConf = ctrl.getConference(name, edition, city);
 

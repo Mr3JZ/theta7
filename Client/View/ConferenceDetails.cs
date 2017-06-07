@@ -28,6 +28,11 @@ namespace Client.View
             InitializeComponent();
             AdjustView();
             buttonSaveChanges.Enabled = false;
+            comboBoxTopic.Items.Clear();
+            foreach(string topic in conf.Topics)
+                comboBoxTopic.Items.Add(topic);
+            if(comboBoxTopic.Items.Count >= 1)
+                comboBoxTopic.SelectedIndex = 0;
         }
 
         private void AdjustView()
@@ -537,41 +542,12 @@ namespace Client.View
 
         private void buttonReadFullPaper_Click(object sender, EventArgs e)
         {
+            if (dataGridViewUploadedPapers.SelectedRows.Count > 0)
+            {
+                MessageBox.Show("No paper selected");
+                return;
+            }
             Paper selectedPaper = (Paper)dataGridViewUploadedPapers.CurrentRow.DataBoundItem;
-            //selectedPaper.Filepath
-            //string s = "";
-            //conf
-            //try
-            //{
-            //    FtpWebRequest req = (FtpWebRequest)WebRequest.Create("ftp://issftp.ddns.net/1/");
-            //    req.Method = WebRequestMethods.Ftp.ListDirectory;
-            //    req.Credentials = new NetworkCredential("IssUser", "password");
-            //    FtpWebResponse response = (FtpWebResponse)req.GetResponse();
-            //    Stream responseStream = response.GetResponseStream();
-            //    StreamReader reader = new StreamReader(responseStream);
-            //    char[] names = reader.ReadToEnd().ToArray();
-            //    s = new string(names);
-            //    int numberOfRows = s.Count(f => f == '\n');
-            //    if (numberOfRows > 1)
-            //        Console.WriteLine("There is something wrong with the FTP, it has " + numberOfRows + " rows");
-            //    s = s.Replace('\r', '\0');
-            //    s = s.Replace('\n', '\0');
-            //    reader.Close();
-            //    response.Close();
-            //}
-            //catch (WebException ex)
-            //{
-            //    if (ex.Response != null)
-            //    {
-            //        FtpWebResponse response = (FtpWebResponse)ex.Response;
-            //        if (response.StatusCode == FtpStatusCode.ActionNotTakenFileUnavailable)
-            //        {
-            //            // Folder not found, create it
-            //            Console.WriteLine("Could not open folder");
-            //        }
-            //    }
-            //}
-            //new RegisterForm(ctrl).ShowDialog();
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             string filename = selectedPaper.Filepath.Split('\\').Last();
             saveFileDialog.FileName = filename;
@@ -591,7 +567,7 @@ namespace Client.View
             string title = textBoxPaperName.Text;
             string domain = textBoxPaperDomain.Text;
             string subdomain = textBoxPaperSubdomain.Text;
-            string topic = "AI";//comboBoxTopic.SelectedItem.ToString();
+            string topic = comboBoxTopic.SelectedItem.ToString();
             if(ctrl.saveChanges(conf.Id, title, domain, subdomain, topic))
             {
                 dataGridViewMyPapers.DataSource = null;
@@ -637,7 +613,11 @@ namespace Client.View
 
         private void buttonRemovePaper_Click(object sender, EventArgs e)
         {
-
+            if(dataGridViewMyPapers.SelectedRows.Count > 0)
+            {
+                MessageBox.Show("No paper selected");
+                return;
+            }
             DialogResult dialogResult = MessageBox.Show("Are you sure?", "Warning", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
@@ -652,8 +632,18 @@ namespace Client.View
 
         private void buttonReadPaperAbstract_Click(object sender, EventArgs e)
         {
+            if (dataGridViewUploadedPapers.SelectedRows.Count > 0)
+            {
+                MessageBox.Show("No paper selected");
+                return;
+            }
             Paper selectedPaper = (Paper)dataGridViewUploadedPapers.CurrentRow.DataBoundItem;
             MessageBox.Show(selectedPaper.Resume);
+        }
+
+        private void buttonSchedule_Click(object sender, EventArgs e)
+        {
+
         }
     }
   }

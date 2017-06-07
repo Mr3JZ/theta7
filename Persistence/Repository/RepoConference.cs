@@ -59,10 +59,14 @@ namespace Persistence.Repository
                         conference.Website = c.Website;
                         conference.Price = c.AdmissionPrice;
 
-                        if (Find(conference.ConferenceId) == false)
+                    if (Find(conference.ConferenceId) == false)
                         {
                         _context.Conferences.Add(conference);
                         _context.SaveChanges();
+                        foreach(string topic in c.Topics)
+                        {
+                            addTopic(topic, conference.ConferenceId);
+                        }
                             return conference.ConferenceId;
                         }
                         else throw new Exception("Conference already exists!");
