@@ -114,6 +114,7 @@
             // 
             // tabPageConferenceDetailed
             // 
+            this.tabPageConferenceDetailed.BackColor = System.Drawing.Color.Transparent;
             this.tabPageConferenceDetailed.Controls.Add(this.labelConferenceDuration);
             this.tabPageConferenceDetailed.Controls.Add(this.label8);
             this.tabPageConferenceDetailed.Controls.Add(this.numericUpDownPaidSum);
@@ -144,7 +145,6 @@
             this.tabPageConferenceDetailed.Size = new System.Drawing.Size(592, 405);
             this.tabPageConferenceDetailed.TabIndex = 3;
             this.tabPageConferenceDetailed.Text = "Overview";
-            this.tabPageConferenceDetailed.UseVisualStyleBackColor = true;
             this.tabPageConferenceDetailed.Click += new System.EventHandler(this.tabPageConferenceDetailed_Click);
             // 
             // labelConferenceDuration
@@ -337,25 +337,25 @@
             // 
             // labelConferenceEdition
             // 
-            this.labelConferenceEdition.AutoSize = true;
             this.labelConferenceEdition.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.labelConferenceEdition.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelConferenceEdition.Location = new System.Drawing.Point(214, 40);
+            this.labelConferenceEdition.Location = new System.Drawing.Point(290, 68);
             this.labelConferenceEdition.Name = "labelConferenceEdition";
-            this.labelConferenceEdition.Size = new System.Drawing.Size(182, 24);
+            this.labelConferenceEdition.Size = new System.Drawing.Size(123, 24);
             this.labelConferenceEdition.TabIndex = 3;
             this.labelConferenceEdition.Text = "-Conference edition-";
             // 
             // labelConferenceName
             // 
-            this.labelConferenceName.AutoSize = true;
+            this.labelConferenceName.BackColor = System.Drawing.Color.Transparent;
             this.labelConferenceName.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.labelConferenceName.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelConferenceName.Location = new System.Drawing.Point(197, 0);
+            this.labelConferenceName.Location = new System.Drawing.Point(110, 17);
             this.labelConferenceName.Name = "labelConferenceName";
-            this.labelConferenceName.Size = new System.Drawing.Size(220, 29);
+            this.labelConferenceName.Size = new System.Drawing.Size(420, 29);
             this.labelConferenceName.TabIndex = 2;
             this.labelConferenceName.Text = "-Conference name-";
+            this.labelConferenceName.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label11
             // 

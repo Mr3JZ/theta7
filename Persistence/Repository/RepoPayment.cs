@@ -26,7 +26,6 @@ namespace Persistence.Repository
          * IN:Participant,paidSum from form
          * Out:New Payment with current date,nrTickets,success of transaction
          * Condition:Participant is normal user
-         * Id doesn't matter?
          */
         public void addPayment(Participant participant, int nrTickets,Model.Conference conference)
         {
@@ -63,7 +62,6 @@ namespace Persistence.Repository
                     ConferenceParticipant confP = new ConferenceParticipant();//daca a facut plata devine un participant la conferinta.
                     if (_context.ConferenceParticipants.Find(payment.Buyer.User.IdUser, conference.Id, payment1.PaymentId) == null)
                     {
-                        MessageBox.Show(payment.Buyer.User.IdUser.ToString());
                         confP.UserId = participant.User.IdUser;
                         confP.ConferenceId = conference.Id;
                         confP.PaymentId = payment1.PaymentId;
