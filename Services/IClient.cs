@@ -10,6 +10,5 @@ namespace Services
     public interface IClient
     {
         void updatedConference(Conference c);
-        void updatedPaper(Paper p);
     }
 }

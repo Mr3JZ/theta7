@@ -23,22 +23,32 @@ namespace Client
             this.server = server;
             this.currentUser = null;
         }
-
+        /*
+         * Returns the user that logged in.
+         * Returns an User object
+         */
         public User getCurrentUser()
         {
             return currentUser;
         }
 
-        ///CONFERENCE
+        //---------------CONFERENCE
 
         public void updatedConference(Conference c)
         {
             server.UpdateConference(c);
         }
+
+        /*
+         * Returns all conferences
+         */
         public List<Model.Conference> getAllConferences()
         {
             return server.GetConferences();
         }
+
+        /*Filters the conferences by name:String,edition:String,city:String
+         * Return 1 conference*/
         public Model.Conference getConference(string name, string edition, string city)
         {
             List<Model.Conference> allConferences = getAllConferences();
@@ -49,6 +59,10 @@ namespace Client
             }
             return null;
         }
+
+        /**
+         * Filters conferences by id.Id:int is unique
+         * returns 1 conferences or null if there is no conference with the given id*/
         public Model.Conference getConferenceById(int id)
         {
             List<Model.Conference> allConferences = getAllConferences();
@@ -60,8 +74,9 @@ namespace Client
             return null;
         }
 
-
-        public List<Model.Conference> getMyConferences() //daca am timp o voi face mai frumoasa; daca aveti timp, feel free and change it
+        /*
+         * Return all conferences for the current user*/
+        public List<Model.Conference> getMyConferences() 
         {
             List<Model.Conference> allConferences = getAllConferences();
             List<Model.Conference> myConferences = new List<Model.Conference>();
@@ -79,6 +94,8 @@ namespace Client
             return myConferences;
         }
 
+        /*Adds a new conference in the data base.
+         * Returns Exception if dates are not in chronological order*/
         public void AddConference(string name, string edition, List<string> topics, DateTime deadlineAbstract,
                 DateTime deadlineComplet, DateTime deadlineBidding, DateTime deadlineEvaluation, DateTime deadlineParticipation,
                 string city, string country, string website, double admissionPrice, DateTime beginDate, DateTime endDate)
@@ -88,18 +105,15 @@ namespace Client
             server.AddConference(conference);
         }
 
-        ///PAPER
+        //---------------PAPER
 
-        public void updatedPaper(Paper p)
-        {
-            throw new NotImplementedException();
-        }
-
+        /*Returns all papers*/
         public List<Model.Paper> getPapers(Conference conference)
         {
             return conference.Papers.Where(p => { return p.Uploader.Username == currentUser.Username; }).ToList();
         }
 
+        /*Returns all papers for a conference*/
         public List<Paper> getAllPapersConference(Conference conference)
         {
             return conference.Papers;
@@ -107,6 +121,9 @@ namespace Client
 
         ///USER
 
+           /*
+            * Login function.User is verified by username&password
+            */
         public bool login(string username, string password)
         {
             try
@@ -121,6 +138,9 @@ namespace Client
                 return false;
             }
         }
+
+        /*User is being disconnected from the app
+         * He is also being removed from active users list*/
         public void logout()
         {
             try
@@ -133,6 +153,9 @@ namespace Client
                 Console.WriteLine(ex.ToString());
             }
         }
+
+        /*A new user is added in data base.
+         */
         public bool register(string username, string password, string name, string affiliation, string email, string website, bool isSpecial)
         {
             try
@@ -153,10 +176,13 @@ namespace Client
                 return false;
             }
         }
+
+        /*Returns a list with all the users*/
         public List<Model.User> GetAllUsers()
         {
             return server.GetAllUsers();
         }
+        /*Returns the rank of the current user for a particular conference*/
         public string getMyRank(string name, string edition, string city)
         {
             List<Model.Conference> allConferences = getAllConferences();
