@@ -33,7 +33,7 @@ namespace Client.View
                 buttonCreateConference.Enabled = false;
             }
             populateAllConferencesView();
-            populateNotifications();
+            //populateNotifications();
         }
 
         private void populateNotifications()
