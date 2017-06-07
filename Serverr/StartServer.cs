@@ -35,7 +35,7 @@ namespace Server
             Persistence.Repository.RepoPaperDB repoPap = new Persistence.Repository.RepoPaperDB();
             Persistence.Repository.RepoParticipantDB repoPar = new Persistence.Repository.RepoParticipantDB();
             Persistence.Repository.RepoPayment repoPay = new Persistence.Repository.RepoPayment();
-            Persistence.Repository.RepoUserDB repoU = new Persistence.Repository.RepoUserDB();
+            Persistence.Repository.RepoUserDB repoU = new Persistence.Repository.RepoUserDB(new ISSEntities2(Persistence.Util.ConnectionStringWithPassword.doIt()));
             Persistence.Repository.RepoSessionDB repoS = new Persistence.Repository.RepoSessionDB();
 
             BinaryServerFormatterSinkProvider servProv = new BinaryServerFormatterSinkProvider();
