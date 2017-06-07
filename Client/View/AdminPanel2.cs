@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Persistence.Repository;
 using Model;
 
+
 namespace Client.View
 {
     public partial class AdminPanel2 : Form
@@ -17,6 +18,7 @@ namespace Client.View
         private BindingList<Model.User> addedChairs;
         private BindingList<Model.User> addedPCMembers;
         private BindingList<string> tempTopics;
+        private BindingList<Persistence.AvailableRoom> tempAvailableRooms;
         ClientController ctrl;
         public AdminPanel2(ClientController c)
         {
@@ -28,6 +30,7 @@ namespace Client.View
 
             buttonSubmit.Enabled = false;
             tempTopics = new BindingList<string>();
+            tempAvailableRooms = new BindingList<Persistence.AvailableRoom>();
 
             dataGridViewComitee.AutoGenerateColumns = false;
             dataGridViewAddedChairs.AutoGenerateColumns = false;
@@ -144,6 +147,7 @@ namespace Client.View
                 DateTime begin = dateTimePicker6.Value;
                 DateTime end = dateTimePicker7.Value;
                 List<String> topics = tempTopics.ToList();
+                List<Persistence.AvailableRoom> availableRooms = tempAvailableRooms.ToList(); 
                 ctrl.AddConference(name, edition, topics, abs, complete, bidding, evaluation, participation, city, country, website, price, begin, end);
                 Conference addedConf = ctrl.getConference(name, edition, city);
 
@@ -241,6 +245,17 @@ namespace Client.View
             else
                 buttonSubmit.Enabled = false;
             tempTopics = addTopicsForm.topics;
+        }
+
+        private void buttonAddAvailableRoom_Click(object sender, EventArgs e)
+        {
+            AvailableRooms availableRoomsForm = new AvailableRooms(tempAvailableRooms);
+            availableRoomsForm.Show();
+            if (availableRoomsForm.availableRoom.Count > 0)
+                buttonSubmit.Enabled = true;
+            else
+                buttonSubmit.Enabled = false;
+            tempAvailableRooms = availableRoomsForm.availableRoom;
         }
     }
 }

@@ -66,6 +66,7 @@
             this.buttonSubmit = new System.Windows.Forms.Button();
             this.textBoxConferenceName = new System.Windows.Forms.TextBox();
             this.addTopicsButton = new System.Windows.Forms.Button();
+            this.buttonAddAvailableRoom = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewComitee)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAddedChairs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAddedPCMembers)).BeginInit();
@@ -407,17 +408,28 @@
             this.addTopicsButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.addTopicsButton.Location = new System.Drawing.Point(615, 161);
             this.addTopicsButton.Name = "addTopicsButton";
-            this.addTopicsButton.Size = new System.Drawing.Size(280, 34);
+            this.addTopicsButton.Size = new System.Drawing.Size(135, 34);
             this.addTopicsButton.TabIndex = 82;
             this.addTopicsButton.Text = "Add topics";
             this.addTopicsButton.UseVisualStyleBackColor = true;
             this.addTopicsButton.Click += new System.EventHandler(this.addTopicsButton_Click);
+            // 
+            // buttonAddAvailableRoom
+            // 
+            this.buttonAddAvailableRoom.Location = new System.Drawing.Point(772, 161);
+            this.buttonAddAvailableRoom.Name = "buttonAddAvailableRoom";
+            this.buttonAddAvailableRoom.Size = new System.Drawing.Size(120, 34);
+            this.buttonAddAvailableRoom.TabIndex = 83;
+            this.buttonAddAvailableRoom.Text = "Available Rooms";
+            this.buttonAddAvailableRoom.UseVisualStyleBackColor = true;
+            this.buttonAddAvailableRoom.Click += new System.EventHandler(this.buttonAddAvailableRoom_Click);
             // 
             // AdminPanel2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(907, 440);
+            this.Controls.Add(this.buttonAddAvailableRoom);
             this.Controls.Add(this.addTopicsButton);
             this.Controls.Add(this.textBoxConferenceName);
             this.Controls.Add(this.buttonSubmit);
@@ -507,5 +519,6 @@
         private System.Windows.Forms.Button buttonSubmit;
         private System.Windows.Forms.TextBox textBoxConferenceName;
         private System.Windows.Forms.Button addTopicsButton;
+        private System.Windows.Forms.Button buttonAddAvailableRoom;
     }
 }

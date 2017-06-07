@@ -76,6 +76,12 @@
     <Compile Include="View\AdminPanel2.Designer.cs">
       <DependentUpon>AdminPanel2.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\AvailableRooms.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\AvailableRooms.Designer.cs">
+      <DependentUpon>AvailableRooms.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\ConferenceDetails.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -127,6 +133,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\AdminPanel2.resx">
       <DependentUpon>AdminPanel2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\AvailableRooms.resx">
+      <DependentUpon>AvailableRooms.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\ConferenceDetails.resx">
       <DependentUpon>ConferenceDetails.cs</DependentUpon>
