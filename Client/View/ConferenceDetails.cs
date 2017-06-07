@@ -393,11 +393,22 @@ namespace Client.View
         }
 
         private void comboBoxDeadlines_SelectedIndexChanged(object sender, EventArgs e)
-        {
+        {         
+            if (comboBoxDeadlines.Text.ToString().Equals("Abstract"))
+                dateTimePickerOldDeadline.Value = conf.DeadlineAbstract;
+            if (comboBoxDeadlines.Text.ToString().Equals("Complete paper"))
+                dateTimePickerOldDeadline.Value = conf.DeadlineComplet;
+            if (comboBoxDeadlines.Text.ToString().Equals("Bidding"))
+                dateTimePickerOldDeadline.Value = conf.DeadlineBidding;
+            if (comboBoxDeadlines.Text.ToString().Equals("Participation"))
+                dateTimePickerOldDeadline.Value = conf.DeadlineParticipation;
+            if (comboBoxDeadlines.Text.ToString().Equals("Evaluation"))
+                dateTimePickerOldDeadline.Value = conf.DeadlineEvaluation;
 
         }
 
-        private void buttonAddWithAbs_Click(object sender, EventArgs e)
+
+    private void buttonAddWithAbs_Click(object sender, EventArgs e)
         {
             AbstractForm abstractForm = new AbstractForm();
             abstractForm.ShowDialog();
