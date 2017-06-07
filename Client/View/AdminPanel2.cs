@@ -16,7 +16,7 @@ namespace Client.View
     {
         private BindingList<Model.User> addedChairs;
         private BindingList<Model.User> addedPCMembers;
-
+        private BindingList<string> tempTopics;
         ClientController ctrl;
         public AdminPanel2(ClientController c)
         {
@@ -26,6 +26,8 @@ namespace Client.View
             addedChairs = new BindingList<Model.User>();
             addedPCMembers = new BindingList<Model.User>();
 
+            buttonSubmit.Enabled = false;
+            tempTopics = new BindingList<string>();
 
             dataGridViewComitee.AutoGenerateColumns = false;
             dataGridViewAddedChairs.AutoGenerateColumns = false;
@@ -223,6 +225,22 @@ namespace Client.View
                     addedPCMembers.Remove((Model.User)dataGridViewAddedPCMembers.CurrentRow.DataBoundItem);
                 }
             }
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void addTopicsButton_Click(object sender, EventArgs e)
+        {
+            AddTopicsForm addTopicsForm = new AddTopicsForm(tempTopics);
+            addTopicsForm.ShowDialog();
+            if (addTopicsForm.topics.Count > 0)
+                buttonSubmit.Enabled = true;
+            else
+                buttonSubmit.Enabled = false;
+            tempTopics = addTopicsForm.topics;
         }
     }
 }

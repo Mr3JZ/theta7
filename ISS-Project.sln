@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISS-Project", "ISS-Project\ISS-Project.csproj", "{126361DC-28AD-4756-86F4-46C26D261BAE}"
 EndProject
@@ -16,6 +16,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersistenceTests", "PersistenceTests\PersistenceTests.csproj", "{C1A0AD4A-8769-4FF6-A099-C77DC6E7A0CD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server", "Serverr\Server.csproj", "{9C147296-04B3-44AA-BE1F-B536B3AEB659}"
+EndProject
+Project("{F088123C-0E9E-452A-89E6-6BA2F21D5CAC}") = "ModelingProject1", "ModelingProject1\ModelingProject1.modelproj", "{FCBD8F15-BB43-4CF9-A796-61AA78D72BB0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{9C147296-04B3-44AA-BE1F-B536B3AEB659}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9C147296-04B3-44AA-BE1F-B536B3AEB659}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9C147296-04B3-44AA-BE1F-B536B3AEB659}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCBD8F15-BB43-4CF9-A796-61AA78D72BB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCBD8F15-BB43-4CF9-A796-61AA78D72BB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCBD8F15-BB43-4CF9-A796-61AA78D72BB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCBD8F15-BB43-4CF9-A796-61AA78D72BB0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

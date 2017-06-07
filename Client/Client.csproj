@@ -58,6 +58,12 @@
     <Compile Include="View\AbstractForm.Designer.cs">
       <DependentUpon>AbstractForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\AddTopicsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\AddTopicsForm.Designer.cs">
+      <DependentUpon>AddTopicsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\AdminPanel.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,6 +118,9 @@
     </Compile>
     <EmbeddedResource Include="View\AbstractForm.resx">
       <DependentUpon>AbstractForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\AddTopicsForm.resx">
+      <DependentUpon>AddTopicsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\AdminPanel.resx">
       <DependentUpon>AdminPanel.cs</DependentUpon>
