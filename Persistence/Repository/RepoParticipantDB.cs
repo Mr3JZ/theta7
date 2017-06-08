@@ -9,51 +9,52 @@ namespace Persistence.Repository
 {
     public class RepoParticipantDB
     {
+        private readonly ISSEntities2 _context;
+        public RepoParticipantDB(ISSEntities2 context)
+        {
+            _context = context;
+        }
         public List<Model.Participant> GetByConference(int confId)
         {
             List<Model.Participant> all = new List<Participant>();
-
-            using (var context = new ISSEntities2(Util.ConnectionStringWithPassword.doIt()))
-            {
-                foreach (ConferenceParticipant p in context.ConferenceParticipants)
+            
+                foreach (ConferenceParticipant p in _context.ConferenceParticipants)
                     if (p.ConferenceId == confId)
                     {
-                        User us = context.Users.Find(p.UserId);
+                        User us = _context.Users.Find(p.UserId);
                         Model.User user = new Model.User(us.UserId, us.Username, us.Password, us.Name, us.Affilliation, us.Email, us.canBePCMember, us.WebPage);
 
                         Participant part = new Participant(user, confId, false, false, false, true);
                         all.Add(part);
                     }
 
-                foreach (PCMember p in context.PCMembers)
+                foreach (PCMember p in _context.PCMembers)
                 {
                     if (p.ConferenceId == confId)
                     {
-                        User us = context.Users.Find(p.UserId);
+                        User us = _context.Users.Find(p.UserId);
                         Model.User user = new Model.User(us.UserId, us.Username, us.Password, us.Name, us.Affilliation, us.Email, us.canBePCMember, us.WebPage);
 
                         Participant part = new Participant(user, confId, p.isChair, p.isCoChair, true, false);
                         all.Add(part);
                     }
                 }
-            }
+            
 
             return all;
         }
 
         public void Add(Participant p)
         {
-            using (var context = new ISSEntities2(Util.ConnectionStringWithPassword.doIt()))
-            {
                 if (p.IsNormalUser == true)
                 {
                     ConferenceParticipant participant = new ConferenceParticipant();
                     participant.UserId = p.User.IdUser;
                     participant.ConferenceId = p.ConferenceId;
-                    participant.PaymentId = -1;
+                    participant.PaymentId = 1;
 
-                    context.ConferenceParticipants.Add(participant);
-                    context.SaveChanges();
+                _context.ConferenceParticipants.Add(participant);
+                _context.SaveChanges();
                 }
                 else
                 {
@@ -63,10 +64,10 @@ namespace Persistence.Repository
                     pcm.isChair = p.IsChair;
                     pcm.isCoChair = p.IsCochair;
 
-                    context.PCMembers.Add(pcm);
-                    context.SaveChanges();
+                _context.PCMembers.Add(pcm);
+                _context.SaveChanges();
                 }
-            }
+            
         }
     }
 }

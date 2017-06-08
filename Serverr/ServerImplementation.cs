@@ -66,7 +66,7 @@ namespace Server
             return conf;
         }
 
-        public void Login(Model.User u, IClient client)
+        public Model.User Login(Model.User u, IClient client)
         {
 
             if (loggedClients.ContainsKey(u.Username) == true)
@@ -77,7 +77,7 @@ namespace Server
                 if (user.Username.Equals(u.Username) && user.Password.Equals(u.Password))
                 {
                     loggedClients.Add(u.Username, client);
-                    return;
+                    return user;
                 }
 
             throw new ServerException("Invalid user");
@@ -85,37 +85,41 @@ namespace Server
 
         public void Logout(Model.User u, IClient client)
         {
-            if(loggedClients[u.Username] == null)
-                throw new NotImplementedException();//User is not logged in
-            loggedClients.Remove(u.Username);
+            if (loggedClients.ContainsKey(u.Username))
+            {
+                loggedClients.Remove(u.Username);
+                return;
+            }
+            throw new ServerException("User not logged in");//User is not logged in
+            
         }
-        public void Register(Model.User user)
+        public bool Register(Model.User user)
         {
+            List<Model.User> all = repoUser.GetAll();
+            if (repoUser.GetAll().Any(x => x.Username.Equals(user.Username)))
+                return false;
             //Verifica daca user-ul exista in BD
             ///daca exista arunca exceptie
             repoUser.Add(user);
+            return true;
         }
 
-        public void NewPaper(Model.Conference c, Model.Paper p)
-        {
-            throw new NotImplementedException();
-        }
 
         public void AddParticipant(Participant p)
         {
             repoParticipant.Add(p);
         }
         /*Adauga un payment*/
-        public void NewPayment(Model.Participant p, int paidSum,Model.Conference conf)
+        public void NewPayment(Model.Participant p, int nrTickets,Model.Conference conf)
         {
-            repoPayment.addPayment(p, paidSum,conf);
+            repoPayment.addPayment(p, nrTickets,conf);
             
         }
         
         public void UpdateConference(Model.Conference c)
         {
-            //updateaza o conferinta existenta, apelat la sesiuni noi
-            throw new NotImplementedException();
+
+            repoConference.updateConference(c);
         }
 
         public void UpdatePaper(Model.Paper p)
@@ -153,9 +157,36 @@ namespace Server
         {
             repoMessage.Add(message);
         }
+        public void DeleteMessage(Model.Message message)
+        {
+            repoMessage.Delete(message);
+        }
         public List<Model.Message> GetUserMessages(int userID)
         {
             return repoMessage.GetByUser(userID);
+        }
+        public bool addPaper(Model.Paper paper)
+        {
+            repoPaper.Add(paper);
+            return true;
+        }
+        public void removePaper(int id)
+        {
+            repoPaper.Remove(id);
+        }
+
+        public void AddBid(Model.Participant bidder, int confId, int paper, int value)
+        {
+            List<Model.Paper> papers = repoPaper.GetByConference(confId);
+            foreach(Model.Paper p in papers)
+            {
+                if (p.Id == paper)
+                {
+                    Model.Paper newP = p;
+                    newP.AddBid(bidder, value);
+                    repoPaper.Modify(paper, newP);
+                }
+            }
         }
     }
 }

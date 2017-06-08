@@ -1,4 +1,5 @@
-﻿using Server;
+﻿using Persistence;
+using Server;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ using System.Runtime.Remoting;
 using System.Runtime.Remoting.Channels;
 using System.Runtime.Remoting.Channels.Tcp;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Server
@@ -15,14 +17,26 @@ namespace Server
     {
         static void Main(string[] args)
         {
-            Persistence.Repository.RepoAvailableRoomDB repoAR = new Persistence.Repository.RepoAvailableRoomDB();
-            Persistence.Repository.RepoConference repoC = new Persistence.Repository.RepoConference();
-            Persistence.Repository.RepoMessageDB repoM = new Persistence.Repository.RepoMessageDB();
-            Persistence.Repository.RepoPaperDB repoPap = new Persistence.Repository.RepoPaperDB();
-            Persistence.Repository.RepoParticipantDB repoPar = new Persistence.Repository.RepoParticipantDB();
-            Persistence.Repository.RepoPayment repoPay = new Persistence.Repository.RepoPayment();
-            Persistence.Repository.RepoUserDB repoU = new Persistence.Repository.RepoUserDB();
-            Persistence.Repository.RepoSessionDB repoS = new Persistence.Repository.RepoSessionDB();
+            new Thread(() =>
+            {
+                while (true)
+                {
+                    using (var context = new ISSEntities2(Persistence.Util.ConnectionStringWithPassword.doIt()))
+                    {
+                        //context.automaticJob();
+                    }
+                    Thread.Sleep(1000*60*60*24);
+                }
+            }).Start();
+
+            Persistence.Repository.RepoAvailableRoomDB repoAR = new Persistence.Repository.RepoAvailableRoomDB(new ISSEntities2(Persistence.Util.ConnectionStringWithPassword.doIt()));
+            Persistence.Repository.RepoConference repoC = new Persistence.Repository.RepoConference(new ISSEntities2(Persistence.Util.ConnectionStringWithPassword.doIt()));
+            Persistence.Repository.RepoMessageDB repoM = new Persistence.Repository.RepoMessageDB(new ISSEntities2(Persistence.Util.ConnectionStringWithPassword.doIt()));
+            Persistence.Repository.RepoPaperDB repoPap = new Persistence.Repository.RepoPaperDB(new ISSEntities2(Persistence.Util.ConnectionStringWithPassword.doIt()));
+            Persistence.Repository.RepoParticipantDB repoPar = new Persistence.Repository.RepoParticipantDB(new ISSEntities2(Persistence.Util.ConnectionStringWithPassword.doIt()));
+            Persistence.Repository.RepoPayment repoPay = new Persistence.Repository.RepoPayment(new ISSEntities2(Persistence.Util.ConnectionStringWithPassword.doIt()));
+            Persistence.Repository.RepoUserDB repoU = new Persistence.Repository.RepoUserDB(new ISSEntities2(Persistence.Util.ConnectionStringWithPassword.doIt()));
+            Persistence.Repository.RepoSessionDB repoS = new Persistence.Repository.RepoSessionDB(new ISSEntities2(Persistence.Util.ConnectionStringWithPassword.doIt()));
 
             BinaryServerFormatterSinkProvider servProv = new BinaryServerFormatterSinkProvider();
             servProv.TypeFilterLevel = System.Runtime.Serialization.Formatters.TypeFilterLevel.Full;

@@ -9,16 +9,22 @@ namespace Persistence.Repository
 {
     public class RepoConference
     {
-        List<Model.Conference> conferences=new List<Model.Conference>();
+        private readonly ISSEntities2 _context;
+        public RepoConference(ISSEntities2 context)
+        {
+            _context = context;
+        }
+        List<Model.Conference> conferences = new List<Model.Conference>();
         /*Function which adds a new conference.
         * In:Conference details
-        * Out:new conference in the list
+        * Out: returneaza id-u conferintei
+            new conference in the list
         * Conditions which are checked in repository:
         * DeadlineAbstract < DeadlineComplet < DeadlineParticipation < DeadlineBidding < DeadlineEvaluation < BeginDate < EndDate
         * AdmissionPrice>0
         * Id-unique
         */
-        public void addConference(Model.Conference c)
+        public int addConference(Model.Conference c)
         {
             if (c.AdmissionPrice < 1)
             {
@@ -36,8 +42,7 @@ namespace Persistence.Repository
                         }
                     }
 
-                    using (var context = new ISSEntities2(Util.ConnectionStringWithPassword.doIt()))
-                    {
+                    
                         Conference conference = new Conference();
                         conference.ConferenceId = c.Id;
                         conference.Name = c.Name;
@@ -54,14 +59,19 @@ namespace Persistence.Repository
                         conference.Website = c.Website;
                         conference.Price = c.AdmissionPrice;
 
-                        if (Find(conference.ConferenceId) == false)
+                    if (Find(conference.ConferenceId) == false)
                         {
-                            context.Conferences.Add(conference);
-                            context.SaveChanges();
+                        _context.Conferences.Add(conference);
+                        _context.SaveChanges();
+                        foreach(string topic in c.Topics)
+                        {
+                            addTopic(topic, conference.ConferenceId);
+                        }
+                            return conference.ConferenceId;
                         }
                         else throw new Exception("Conference already exists!");
-                    }
-                        
+                    
+
                     //TO DO->ADD PC MEMBERS.Astept functia
                 }
                 else
@@ -78,59 +88,84 @@ namespace Persistence.Repository
 
         public bool Find(int id)
         {
-            using (var context = new ISSEntities2(Util.ConnectionStringWithPassword.doIt()))
-            {
-                var u = context.Conferences.Find(id);   
+            
+                var u = _context.Conferences.Find(id);
                 if (u != null)
                 {
                     return true;
                 }
                 return false;
-               // return new Model.Conference(u.ConferenceId,u.Name,u.Edition,u.Topics,u.DeadlineAbstractPaper,u.DeadlineCompletePaper,u.DeadlineBiddingPaper,u.DeadlineEvaluation,u.DeadlineParticipation,u.City,u.Country,u.Website,u.Price,u.BeginDate,u.EndDate);
-            }
+                // return new Model.Conference(u.ConferenceId,u.Name,u.Edition,u.Topics,u.DeadlineAbstractPaper,u.DeadlineCompletePaper,u.DeadlineBiddingPaper,u.DeadlineEvaluation,u.DeadlineParticipation,u.City,u.Country,u.Website,u.Price,u.BeginDate,u.EndDate);
+            
         }
 
         public Model.Conference getConference(int id)
         {
-            using (var context = new ISSEntities2(Util.ConnectionStringWithPassword.doIt()))
-            {
-                Conference u = context.Conferences.Find(id);
+            
+                Conference u = _context.Conferences.Find(id);
                 if (u != null)
                 {
                     throw new Exception("No conference with given id!");
                 }
                 List<string> topics = new List<string>();
-                foreach (var t in context.getTopicsFor1Conference(id))
+                foreach (var t in _context.getTopicsFor1Conference(id))
                 {
                     topics.Add(t.TopicName);
                 }
-                return new Model.Conference(id,u.Name,u.Edition, topics, u.DeadlineAbstractPaper,u.DeadlineCompletePaper,u.DeadlineBiddingPaper,u.DeadlineEvaluation,u.DeadlineParticipation,u.City,u.Country,u.Website,u.Price,u.BeginDate,u.EndDate);
-            }
+                return new Model.Conference(id, u.Name, u.Edition, topics, u.DeadlineAbstractPaper, u.DeadlineCompletePaper, u.DeadlineBiddingPaper, u.DeadlineEvaluation, u.DeadlineParticipation, u.City, u.Country, u.Website, u.Price, u.BeginDate, u.EndDate);
+            
         }
-        
+
 
         public List<Model.Conference> getConferences()
         {
             List<Model.Conference> all = new List<Model.Conference>();
-            using (var context = new ISSEntities2(Util.ConnectionStringWithPassword.doIt()))
-            {
-                foreach(var c in context.getConferences)
+            
+                foreach (var c in _context.getConferences)
                 {
                     List<string> topics = new List<string>();
-                    foreach (var t in context.getTopicsFor1Conference(c.ConferenceId))
+                    foreach (var t in _context.getTopicsFor1Conference(c.ConferenceId))
                     {
                         topics.Add(t.TopicName);
                     }
 
-                    Model.Conference conf = new Model.Conference(c.ConferenceId,c.Name,c.Edition,topics,c.DeadlineAbstractPaper,c.DeadlineCompletePaper,c.DeadlineBiddingPaper,c.DeadlineEvaluation,c.DeadlineParticipation,c.City,c.Country,c.Website,c.Price,c.BeginDate,c.EndDate);
+                    Model.Conference conf = new Model.Conference(c.ConferenceId, c.Name, c.Edition, topics, c.DeadlineAbstractPaper, c.DeadlineCompletePaper, c.DeadlineBiddingPaper, c.DeadlineEvaluation, c.DeadlineParticipation, c.City, c.Country, c.Website, c.Price, c.BeginDate, c.EndDate);
                     all.Add(conf);
                 }
-            }
-
-                    
-
+            
             return all;
         }
+
+        public void updateConference(Model.Conference c)
+        {
+            
+            Conference conference = _context.Conferences.Find(c.Id);
+            if (conference == null)
+                return;
+            conference.DeadlineAbstractPaper = c.DeadlineAbstract;
+            conference.DeadlineBiddingPaper = c.DeadlineBidding;
+            conference.DeadlineCompletePaper = c.DeadlineComplet;
+            conference.DeadlineEvaluation = c.DeadlineEvaluation;
+            conference.DeadlineParticipation = c.DeadlineParticipation;
+            conference.BeginDate = c.BeginDate;
+            conference.EndDate = c.EndDate;
+
+            _context.SaveChanges();
+
+            
+        }
+
+        public void addTopic(string topicName, int confId)
+        {
+            
+                Topic topic = new Topic();
+                topic.ConferenceId = confId;
+                topic.TopicName = topicName;
+            _context.Topics.Add(topic);
+            _context.SaveChanges();
+            
+        }
     }
+
 }
 

@@ -49,6 +49,7 @@
     <Compile Include="Author.cs" />
     <Compile Include="Conference.cs" />
     <Compile Include="Message.cs" />
+    <Compile Include="NamedVerdict.cs" />
     <Compile Include="Paper.cs" />
     <Compile Include="Reservation.cs" />
     <Compile Include="Session.cs" />
@@ -63,6 +64,7 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />

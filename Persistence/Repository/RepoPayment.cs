@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Persistence.Repository
 {
@@ -16,23 +17,29 @@ namespace Persistence.Repository
         {
 
         }
+        private readonly ISSEntities2 _context;
+        public RepoPayment(ISSEntities2 context)
+        {
+            _context = context;
+        }
         /*Function which add a new payment for a conference.
          * IN:Participant,paidSum from form
          * Out:New Payment with current date,nrTickets,success of transaction
          * Condition:Participant is normal user
-         * Id doesn't matter?
          */
-        public void addPayment(Participant participant, int paidSum,Model.Conference conference)
+        public void addPayment(Participant participant, int nrTickets,Model.Conference conference)
         {
-            if (participant.IsNormalUser)
+            if (nrTickets == 0)
+                throw new Exception("No tickets selected");
+            else if (participant.IsNormalUser)
             {
                 int conferenceId = participant.ConferenceId;
-                RepoConference repo = new RepoConference();
+                RepoConference repo = new RepoConference(_context);
                 double priceTicketForConference = conference.AdmissionPrice;
-                int nrTickets = 0;
+                double paidSum = 0;
                 if (priceTicketForConference != 0)
                 {
-                    nrTickets = (int)(paidSum / priceTicketForConference);
+                    paidSum =nrTickets * priceTicketForConference;
                 }
                 else
                 {
@@ -42,35 +49,25 @@ namespace Persistence.Repository
                 bool SuccessfulTransaction = true;
                 Model.Payment payment = new Model.Payment(10, paidSum, nrTickets, PaymentDate, SuccessfulTransaction, participant);
                 
-                using (var context = new ISSEntities2(Util.ConnectionStringWithPassword.doIt()))
-                {
+                
                     Payment payment1 = new Payment();
                     payment1.PaymentId = payment.Id;                 
                     payment1.PaymentDate =payment.PaymentDate;
                     payment1.NrOfTickets = payment.NrOfTickets;
                     payment1.PaidSum = payment.PaidSum;
                     payment1.SuccessfulTransaction = payment.SuccessfulTransaction;
-                    context.Payments.Add(payment1);
-                    context.SaveChanges();
-                    /*
+                _context.Payments.Add(payment1);
+                _context.SaveChanges();
+                    
                     ConferenceParticipant confP = new ConferenceParticipant();//daca a facut plata devine un participant la conferinta.
-                    if (context.ConferenceParticipants.Find(payment.Buyer.User.IdUser, conference.Id, payment1.PaymentId) == null)
+                    if (_context.ConferenceParticipants.Find(payment.Buyer.User.IdUser, conference.Id, payment1.PaymentId) == null)
                     {
                         confP.UserId = participant.User.IdUser;
                         confP.ConferenceId = conference.Id;
                         confP.PaymentId = payment1.PaymentId;
+                    _context.ConferenceParticipants.Add(confP);
+                    _context.SaveChanges();
                     }
-                   
-                    context.ConferenceParticipants.Add(confP);
-
-                 
-                    context.SaveChanges();*/
-                   
-
-
-
-
-                }
 
 
                 }

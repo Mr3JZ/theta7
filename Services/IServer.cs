@@ -9,9 +9,9 @@ namespace Services
 {
     public interface IServer
     {
-        void Login(User u, IClient client);
+        Model.User Login(User u, IClient client);
         void Logout(User u, IClient client);
-        void Register(User user);
+        bool Register(User user);
         List<Conference> GetConferences();
         Conference GetConference(int id);
         List<Review> GetReviewsByPaper(int paperId);
@@ -19,13 +19,16 @@ namespace Services
         List<User> GetAllUsers();
         void AddReview(int paperId, Review r);
         void AddParticipant(Participant p);
-        void NewPaper(Conference c, Paper p);
         void UpdatePaper(Paper p);
         void UpdateConference(Conference c);
-        //detaliile despre Payment se calculeaza in repoPayment(succes,nrTickets);
-        void NewPayment(Participant p,int paidSum,Conference conf);
+        //detaliile despre Payment se calculeaza in repoPayment(succes,paidSum);
+        void NewPayment(Participant p,int nrTickets,Conference conf);
         void AddConference(Conference conference);
         void AddMessage(Message message);
+        void DeleteMessage(Message message);
         List<Model.Message> GetUserMessages(int userID);
+        bool addPaper(Model.Paper paper);
+        void removePaper(int id);
+        void AddBid(Model.Participant bidder, int confId, int paper, int value);
     }
 }

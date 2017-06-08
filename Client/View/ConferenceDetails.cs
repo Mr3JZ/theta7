@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Model;
 using Persistence.Repository;
+using System.Reflection;
+using System.Threading;
 
 namespace Client.View
 {
@@ -22,8 +24,15 @@ namespace Client.View
             ctrl = c;
             conf = co;
             rank = r;
+            Console.WriteLine("rank:" + r);
             InitializeComponent();
             AdjustView();
+            buttonSaveChanges.Enabled = false;
+            comboBoxTopic.Items.Clear();
+            foreach(string topic in conf.Topics)
+                comboBoxTopic.Items.Add(topic);
+            if(comboBoxTopic.Items.Count >= 1)
+                comboBoxTopic.SelectedIndex = 0;
         }
 
         private void AdjustView()
@@ -43,7 +52,7 @@ namespace Client.View
             }
             else
             {
-                if (rank.Equals("Chair"))
+                if (rank.Equals("Chair")||rank.Equals("CoChair"))
                 {
                     tabControl1.TabPages.RemoveAt(1);
                 }
@@ -57,22 +66,87 @@ namespace Client.View
 
         private void AdjustOverview()
         {
+            dataGridViewConferenceChairs.AutoGenerateColumns = false;
+
+            DataGridViewTextBoxColumn nameCol = new DataGridViewTextBoxColumn()
+            {
+                CellTemplate = new DataGridViewTextBoxCell(),
+                Name = "Name",
+                HeaderText = "Name",
+                DataPropertyName = "User.Name"
+            };
+
+            DataGridViewTextBoxColumn affiliationCol = new DataGridViewTextBoxColumn()
+            {
+                CellTemplate = new DataGridViewTextBoxCell(),
+                Name = "Affiliation",
+                HeaderText = "Affiliation",
+                DataPropertyName = "User.Affiliation"
+            };
+
+            DataGridViewTextBoxColumn emailCol = new DataGridViewTextBoxColumn()
+            {
+                CellTemplate = new DataGridViewTextBoxCell(),
+                Name = "Email",
+                HeaderText = "E-Mail",
+                DataPropertyName = "User.Email"
+            };
+
+            dataGridViewConferenceChairs.Columns.Add(nameCol);
+            dataGridViewConferenceChairs.Columns.Add(affiliationCol);
+            dataGridViewConferenceChairs.Columns.Add(emailCol);
+
+            dataGridViewConferencePCMembers.AutoGenerateColumns = false;
+
+            DataGridViewTextBoxColumn nameCol2 = new DataGridViewTextBoxColumn()
+            {
+                CellTemplate = new DataGridViewTextBoxCell(),
+                Name = "Name",
+                HeaderText = "Name",
+                DataPropertyName = "User.Name"
+            };
+
+            DataGridViewTextBoxColumn affiliationCol2 = new DataGridViewTextBoxColumn()
+            {
+                CellTemplate = new DataGridViewTextBoxCell(),
+                Name = "Affiliation",
+                HeaderText = "Affiliation",
+                DataPropertyName = "User.Affiliation"
+            };
+
+            DataGridViewTextBoxColumn emailCol2 = new DataGridViewTextBoxColumn()
+            {
+                CellTemplate = new DataGridViewTextBoxCell(),
+                Name = "Email",
+                HeaderText = "E-Mail",
+                DataPropertyName = "User.Email"
+            };
+
+            dataGridViewConferencePCMembers.Columns.Add(nameCol2);
+            dataGridViewConferencePCMembers.Columns.Add(affiliationCol2);
+            dataGridViewConferencePCMembers.Columns.Add(emailCol2);
+
+
+
+
             int size;
-            labelConferenceDuration.Text = conf.BeginDate.ToString() + "-" + conf.BeginDate.ToString();
+            labelConferenceDuration.Text = conf.BeginDate.ToShortDateString().ToString() + "-" + conf.BeginDate.ToShortDateString().ToString();
+            labelWebsite.Text = conf.Website;
             labelConferecePlace.Text = conf.City + " , " + conf.Country;
-            labelAbstractDeadline.Text = conf.DeadlineAbstract.ToString();
-            labelParticipationDeadline.Text = conf.DeadlineParticipation.ToString();
+            labelAbstractDeadline.Text = conf.DeadlineAbstract.ToShortDateString().ToString();
+            labelParticipationDeadline.Text = conf.DeadlineParticipation.ToShortDateString().ToString();
             labelConferenceFee.Text = "$" + conf.AdmissionPrice.ToString();
             labelConferenceName.Text = conf.Name;
             size = labelConferenceName.Width;
-            labelConferenceName.SetBounds((592 - size) / 2, 0, size, 29);
+            //labelConferenceName.SetBounds((592 - size) / 2, 0, size, 29);
             labelConferenceEdition.Text = conf.Edition;
             size = labelConferenceEdition.Width;
-            labelConferenceName.SetBounds((592 - size) / 2, 40, size, 24);
+            //labelConferenceName.SetBounds((592 - size) / 2, 40, size, 24);
             BindingList<Participant> chairs = new BindingList<Participant>(ctrl.getChairs(conf));
             dataGridViewConferenceChairs.DataSource = chairs;
             BindingList<Participant> pcmembers = new BindingList<Participant>(ctrl.getPCMembers(conf));
             dataGridViewConferencePCMembers.DataSource = pcmembers;
+            dataGridViewConferencePCMembers.AutoResizeColumns();
             BindingList<string> topics = new BindingList<string>(conf.Topics);
             listBoxConferenceTopics.DataSource = topics;
             if (DateTime.Now < conf.DeadlineEvaluation || DateTime.Now > conf.EndDate)
@@ -84,12 +158,149 @@ namespace Client.View
 
         private void AdjustParticipant()
         {
+            dataGridViewMyPapers.AutoGenerateColumns = false;
+            //title, status, topic, domain, subdomain
+
+            DataGridViewTextBoxColumn titleCol = new DataGridViewTextBoxColumn()
+            {
+                CellTemplate = new DataGridViewTextBoxCell(),
+                Name = "Title",
+                HeaderText = "Title",
+                DataPropertyName = "Title"
+            };
+
+            DataGridViewTextBoxColumn statusCol = new DataGridViewTextBoxColumn()
+            {
+                CellTemplate = new DataGridViewTextBoxCell(),
+                Name = "Status",
+                HeaderText = "Status",
+                DataPropertyName = "Status"
+            };
+
+
+            DataGridViewTextBoxColumn topicCol = new DataGridViewTextBoxColumn()
+            {
+                CellTemplate = new DataGridViewTextBoxCell(),
+                Name = "Topic",
+                HeaderText = "Topic",
+                DataPropertyName = "Topic"
+            };
+
+            DataGridViewTextBoxColumn domainCol = new DataGridViewTextBoxColumn()
+            {
+                CellTemplate = new DataGridViewTextBoxCell(),
+                Name = "Domain",
+                HeaderText = "Domain",
+                DataPropertyName = "Domain"
+            };
+
+            DataGridViewTextBoxColumn subdomainCol = new DataGridViewTextBoxColumn()
+            {
+                CellTemplate = new DataGridViewTextBoxCell(),
+                Name = "Subdomain",
+                HeaderText = "Subdomain",
+                DataPropertyName = "Subdomain"
+            };
+
+            dataGridViewMyPapers.Columns.Add(titleCol);
+            dataGridViewMyPapers.Columns.Add(statusCol);
+            dataGridViewMyPapers.Columns.Add(topicCol);
+            dataGridViewMyPapers.Columns.Add(domainCol);
+            dataGridViewMyPapers.Columns.Add(subdomainCol);
+
+            dataGridViewMyReviews.AutoGenerateColumns = false;
+            //reviewer name, verdict, comments
+            DataGridViewTextBoxColumn verdictCol = new DataGridViewTextBoxColumn()
+            {
+                CellTemplate = new DataGridViewTextBoxCell(),
+                Name = "Verdict",
+                HeaderText = "Verdict",
+                DataPropertyName = "Verdict"
+            };
+
+            DataGridViewTextBoxColumn commentsCol = new DataGridViewTextBoxColumn()
+            {
+                CellTemplate = new DataGridViewTextBoxCell(),
+                Name = "Comments",
+                HeaderText = "Comments",
+                DataPropertyName = "Comments",
+            };
+
+            if(rank!= "PCMember")
+            {
+                DataGridViewTextBoxColumn nameCol = new DataGridViewTextBoxColumn()
+                {
+                    CellTemplate = new DataGridViewTextBoxCell(),
+                    Name = "RevName",
+                    HeaderText = "Reviewer",
+                    DataPropertyName = "Reviewer.Name",
+                };
+                dataGridViewMyReviews.Columns.Add(nameCol);
+            }
+
+            dataGridViewMyReviews.Columns.Add(verdictCol);
+            dataGridViewMyReviews.Columns.Add(commentsCol);
+
+
             BindingList<Paper> mypapers = new BindingList<Paper>(ctrl.getPapers(conf));
             dataGridViewMyPapers.DataSource = mypapers;
         }
 
         private void AdjustPCMember()
         {
+            dataGridViewUploadedPapers.AutoGenerateColumns = false;
+            //title, status, topic, domain, subdomain
+
+            DataGridViewTextBoxColumn titleCol = new DataGridViewTextBoxColumn()
+            {
+                CellTemplate = new DataGridViewTextBoxCell(),
+                Name = "Title",
+                HeaderText = "Title",
+                DataPropertyName = "Title"
+            };
+
+            DataGridViewTextBoxColumn statusCol = new DataGridViewTextBoxColumn()
+            {
+                CellTemplate = new DataGridViewTextBoxCell(),
+                Name = "Status",
+                HeaderText = "Status",
+                DataPropertyName = "Status"
+            };
+
+
+            DataGridViewTextBoxColumn topicCol = new DataGridViewTextBoxColumn()
+            {
+                CellTemplate = new DataGridViewTextBoxCell(),
+                Name = "Topic",
+                HeaderText = "Topic",
+                DataPropertyName = "Topic"
+            };
+
+            DataGridViewTextBoxColumn domainCol = new DataGridViewTextBoxColumn()
+            {
+                CellTemplate = new DataGridViewTextBoxCell(),
+                Name = "Domain",
+                HeaderText = "Domain",
+                DataPropertyName = "Domain"
+            };
+
+            DataGridViewTextBoxColumn subdomainCol = new DataGridViewTextBoxColumn()
+            {
+                CellTemplate = new DataGridViewTextBoxCell(),
+                Name = "Subdomain",
+                HeaderText = "Subdomain",
+                DataPropertyName = "Subdomain"
+            };
+
+            dataGridViewUploadedPapers.Columns.Add(titleCol);
+            dataGridViewUploadedPapers.Columns.Add(statusCol);
+            dataGridViewUploadedPapers.Columns.Add(topicCol);
+            dataGridViewUploadedPapers.Columns.Add(domainCol);
+            dataGridViewUploadedPapers.Columns.Add(subdomainCol);
+
+            BindingList<Paper> allPapers = new BindingList<Paper>(ctrl.getAllPapersConference(conf));
+            dataGridViewUploadedPapers.DataSource = allPapers;
+
             if (rank.Equals("Chair") && DateTime.Now<conf.BeginDate)
             {
                 labelPushDeadlines.Visible = true;
@@ -152,8 +363,9 @@ namespace Client.View
 
         private void dataGridViewMyPapers_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            string title = dataGridViewMyPapers.CurrentRow.Cells[0].ToString();
-            BindingList<Review> myreviews = new BindingList<Review>(ctrl.getReviewsByPaper(title));
+            //string title = dataGridViewMyPapers.CurrentRow.Cells[0].ToString();
+            int paperId = ((Paper)dataGridViewMyPapers.CurrentRow.DataBoundItem).Id;
+            BindingList<Review> myreviews = new BindingList<Review>(ctrl.getReviewsByPaper(paperId));
             dataGridViewMyReviews.DataSource = myreviews;
         }
 
@@ -161,11 +373,18 @@ namespace Client.View
         {
             try
             {
-                int paidSum = (int)numericUpDownPaidSum.Value;
+                int nrTickets = (int)numericUpDownPaidSum.Value;
                 //Only listeners have to pay->so he has to be normalUser
                 Participant p = new Participant(ctrl.getCurrentUser(), conf.Id, false, false, false, true);
+                double x = conf.AdmissionPrice * nrTickets;
+                if (MessageBox.Show( "Price to pay: "+x.ToString()+"$","Price", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation) == DialogResult.OK)
+                {
+                    ctrl.addPayment(p, nrTickets, conf);
+                    ConferenceDetails cf = new ConferenceDetails(ctrl, conf, "NormalUser");
+                    cf.Show();
+                    this.Close();
+                }
                 
-                ctrl.addPayment(p, paidSum,conf);
             }catch(Exception ex)
             {
                 MessageBox.Show(ex.ToString());
@@ -179,13 +398,278 @@ namespace Client.View
         }
 
         private void comboBoxDeadlines_SelectedIndexChanged(object sender, EventArgs e)
+        {         
+            if (comboBoxDeadlines.Text.ToString().Equals("Abstract"))
+                dateTimePickerOldDeadline.Value = conf.DeadlineAbstract;
+            if (comboBoxDeadlines.Text.ToString().Equals("Complete paper"))
+                dateTimePickerOldDeadline.Value = conf.DeadlineComplet;
+            if (comboBoxDeadlines.Text.ToString().Equals("Bidding"))
+                dateTimePickerOldDeadline.Value = conf.DeadlineBidding;
+            if (comboBoxDeadlines.Text.ToString().Equals("Participation"))
+                dateTimePickerOldDeadline.Value = conf.DeadlineParticipation;
+            if (comboBoxDeadlines.Text.ToString().Equals("Evaluation"))
+                dateTimePickerOldDeadline.Value = conf.DeadlineEvaluation;
+
+        }
+
+
+    private void buttonAddWithAbs_Click(object sender, EventArgs e)
+        {
+            AbstractForm abstractForm = new AbstractForm();
+            abstractForm.ShowDialog();
+            if (abstractForm.absMessage.Length >= 1)
+            {
+                ctrl.rememberAbstract(abstractForm.absMessage);
+                buttonAddAbstract.Enabled = false;
+                if (buttonAddPaper.Enabled == false)
+                    buttonSaveChanges.Enabled = true;
+            }
+        }
+
+        private void buttonAddPaper_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog theDialog = new OpenFileDialog();
+            theDialog.Title = "Open Text File";
+            theDialog.Filter = "PDF files|*.pdf|Microsoft Word files|*.doc;*.docx|Power Point files|*.ppt;*.pptx";
+            theDialog.InitialDirectory = @"C:\";
+            if (theDialog.ShowDialog() == DialogResult.OK)
+            {
+                string filepath = theDialog.FileName.ToString();
+                ctrl.rememberPaper(filepath, conf.Id);
+                buttonAddPaper.Enabled = false;
+                if(buttonAddAbstract.Enabled == false)
+                {
+                    buttonSaveChanges.Enabled = true;
+                }
+            }
+        }
+
+        private void dataGridViewConferencePCMembers_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+        private void buttonEvaluate_Click(object sender, EventArgs e)
+        {
+            Paper selectedPaper = (Paper)dataGridViewUploadedPapers.CurrentRow.DataBoundItem;
+
+            bool found = false;
+            foreach(var r in selectedPaper.Reviewers)
+            {
+                if (r.User.Username == ctrl.getCurrentUser().Username)
+                {
+                    new ReviewForm(ctrl, r, selectedPaper.Id).ShowDialog();
+                    found = true;
+                }
+            }
+            if(found==false)
+            {
+                MessageBox.Show("You're not a reviewer for the selected paper");
+            }
+
+        }
+
+        private void buttonPushDeadline_Click(object sender, EventArgs e)
+        {
+            //trebuie sa aleg din combo box ce deadline.
+            /*Alege abstract.Vf daca abstract vechi<abstract nou.
+            
+            */
+           
+            if (comboBoxDeadlines.Text.ToString().Equals("Abstract"))
+                /*we have to modify abstract.To do so we have to be sure that:
+                    --old abstract < new abstract
+                    --new abstract < complete deadline     
+             */   
+            {
+                if ((dateTimePickerNewDeadline.Value > conf.DeadlineAbstract)&&(dateTimePickerNewDeadline.Value<conf.DeadlineComplet))
+                {
+                    conf.DeadlineAbstract = dateTimePickerNewDeadline.Value;
+                    ctrl.updatedConference(conf);
+                    MessageBox.Show("Deadline has been changed!");
+                }
+            }
+           
+            if (comboBoxDeadlines.Text.ToString().Equals("Complete paper"))
+            /*we have to modify complete paper deadline.To do so we have to be sure that:
+                --old complete < new complete paper
+                --new complete paper < participation deadline     
+         */
+            
+              {
+                  if ((dateTimePickerNewDeadline.Value > conf.DeadlineComplet) && (dateTimePickerNewDeadline.Value < conf.DeadlineBidding))
+                  {
+                      conf.DeadlineComplet = dateTimePickerNewDeadline.Value;
+                      ctrl.updatedConference(conf);
+                      MessageBox.Show("Deadline has been changed!");
+                }
+              }
+
+
+            if (comboBoxDeadlines.Text.ToString().Equals("Bidding"))
+            /*we have to modify  bidding.To do so we have to be sure that:
+                --old bidding < new bidding paper
+                --new bidding paper < evaluation deadline     
+         */
+
+            {
+                if ((dateTimePickerNewDeadline.Value > conf.DeadlineBidding) && (dateTimePickerNewDeadline.Value < conf.DeadlineEvaluation))
+                {
+                    conf.DeadlineBidding = dateTimePickerNewDeadline.Value;
+                    ctrl.updatedConference(conf);
+                    MessageBox.Show("Deadline has been changed!");
+                }
+            }
+
+            if (comboBoxDeadlines.Text.ToString().Equals("Participation"))
+            /*we have to modify  participation.To do so we have to be sure that:
+                --old participation < new participation paper
+                --new particiation paper < bidding deadline     
+         */
+
+            {
+                if ((dateTimePickerNewDeadline.Value > conf.DeadlineParticipation) && (dateTimePickerNewDeadline.Value < conf.DeadlineBidding))
+                {
+                    conf.DeadlineParticipation = dateTimePickerNewDeadline.Value;
+                    ctrl.updatedConference(conf);
+                    MessageBox.Show("Deadline has been changed!");
+                }
+            }
+
+
+            if (comboBoxDeadlines.Text.ToString().Equals("Evaluation"))
+            /*we have to modify  evaluation.To do so we have to be sure that:
+                --old evaluation < new evaluation paper
+                --new evaluation paper < begin deadline     
+         */
+
+            {
+                if ((dateTimePickerNewDeadline.Value > conf.DeadlineEvaluation) && (dateTimePickerNewDeadline.Value < conf.BeginDate))
+                {
+                    conf.DeadlineEvaluation = dateTimePickerNewDeadline.Value;
+                    ctrl.updatedConference(conf);
+                    MessageBox.Show("Deadline has been changed!");
+                }
+            }
+        }
+
+        private void buttonReadFullPaper_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewUploadedPapers.SelectedRows.Count > 0)
+            {
+                MessageBox.Show("No paper selected");
+                return;
+            }
+            Paper selectedPaper = (Paper)dataGridViewUploadedPapers.CurrentRow.DataBoundItem;
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            string filename = selectedPaper.Filepath.Split('\\').Last();
+            saveFileDialog.FileName = filename;
+            saveFileDialog.Filter = "All files(*.*) | *.* ";
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string filepath = saveFileDialog.FileName;
+                if (ctrl.savePaperToDisk(filepath, selectedPaper.ConferenceId, filename))
+                {
+                    MessageBox.Show("Download Complete");
+                }
+            }
+        }
+
+        private void buttonSaveChanges_Click(object sender, EventArgs e)
+        {
+            string title = textBoxPaperName.Text;
+            string domain = textBoxPaperDomain.Text;
+            string subdomain = textBoxPaperSubdomain.Text;
+            string topic = comboBoxTopic.SelectedItem.ToString();
+            if(ctrl.saveChanges(conf.Id, title, domain, subdomain, topic))
+            {
+                dataGridViewMyPapers.DataSource = null;
+                BindingList<Paper> mypapers = new BindingList<Paper>(ctrl.getPapers(conf));
+                dataGridViewMyPapers.DataSource = mypapers;
+                MessageBox.Show("Upload successful");
+                buttonSaveChanges.Enabled = false;
+                buttonAddPaper.Enabled = true;
+                buttonAddAbstract.Enabled = true;
+                ctrl.revertRemembers();
+            }
+            else
+            {
+                Console.WriteLine("something is wrong with add");
+            }
+        }
+        private void dataGridViewConferenceChairs_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            DataGridView grid = (DataGridView)sender;
+            DataGridViewRow row = grid.Rows[e.RowIndex];
+            DataGridViewColumn col = grid.Columns[e.ColumnIndex];
+            if (row.DataBoundItem != null && col.DataPropertyName.Contains("."))
+            {
+                string[] props = col.DataPropertyName.Split('.');
+                PropertyInfo propInfo = row.DataBoundItem.GetType().GetProperty(props[0]);
+                object val = propInfo.GetValue(row.DataBoundItem, null);
+                for (int i = 1; i < props.Length; i++)
+                {
+                    propInfo = val.GetType().GetProperty(props[i]);
+                    val = propInfo.GetValue(val, null);
+                }
+                e.Value = val;
+            }
+        }
+
+        private void buttonDiscard_Click(object sender, EventArgs e)
+        {
+            buttonSaveChanges.Enabled = false;
+            buttonAddPaper.Enabled = true;
+            buttonAddAbstract.Enabled = true;
+            ctrl.revertRemembers();
+        }
+
+        private void buttonRemovePaper_Click(object sender, EventArgs e)
+        {
+            if(dataGridViewMyPapers.SelectedRows.Count > 0)
+            {
+                MessageBox.Show("No paper selected");
+                return;
+            }
+            DialogResult dialogResult = MessageBox.Show("Are you sure?", "Warning", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                Paper paper = ((Paper)dataGridViewMyPapers.CurrentRow.DataBoundItem);
+                int paperId = paper.Id;
+                ctrl.removePaper(paperId);
+                dataGridViewMyPapers.DataSource = null;
+                BindingList<Paper> mypapers = new BindingList<Paper>(ctrl.getPapers(conf));
+                dataGridViewMyPapers.DataSource = mypapers;
+            }
+        }
+
+        private void buttonReadPaperAbstract_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewUploadedPapers.SelectedRows.Count > 0)
+            {
+                MessageBox.Show("No paper selected");
+                return;
+            }
+            Paper selectedPaper = (Paper)dataGridViewUploadedPapers.CurrentRow.DataBoundItem;
+            MessageBox.Show(selectedPaper.Resume);
+        }
+
+        private void buttonSchedule_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void buttonAddWithAbs_Click(object sender, EventArgs e)
+        private void buttonBidding_Click(object sender, EventArgs e)
         {
-
+            Paper selectedPaper = (Paper)dataGridViewUploadedPapers.CurrentRow.DataBoundItem;
+            Model.Participant bidder;
+            foreach(Model.Participant b in conf.Participants)
+            {
+                if (b.User.IdUser == ctrl.getCurrentUser().IdUser)
+                {
+                    bidder = b;
+                    new BidForm(ctrl, bidder, selectedPaper.Id, conf).ShowDialog();
+                }
+            }
         }
     }
-}
+  }

@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Model.Author">
+    <Position X="17.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAAAAAAAAQAAACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Author.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Model.Conference">
+    <Position X="3.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AiACAAARAEABiAIIACAAAEQoAAIAAUAAACIAQCAAAAA=</HashCode>
+      <FileName>Conference.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Papers" />
+      <Property Name="Participants" />
+      <Property Name="Sessions" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Model.Message">
+    <Position X="17.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>Message.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Model.NamedVerdict">
+    <Position X="1" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>NamedVerdict.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Verdict" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Model.Paper">
+    <Position X="14.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAACEEAEBQAgAUgAAAAAAAIAAgAAAAAAAAQAASgAAAA=</HashCode>
+      <FileName>Paper.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Uploader" />
+      <Property Name="Status" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Reviewers" />
+      <Property Name="Reviews" />
+      <Property Name="AdditionalAuthors" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Model.Participant">
+    <Position X="10" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAEAQAAAEIAAAAAAAAAAAAAAEAAAAAAAAA=</HashCode>
+      <FileName>Participant.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="User" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Model.Payment">
+    <Position X="13.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAEAAAAAAAASAAAAAAAAAAAQAAAAAAAAAIA=</HashCode>
+      <FileName>Payment.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Buyer" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Model.Reservation">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAIEACAAAAABAAAAAAAAAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>Reservation.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Paper" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Model.Review">
+    <Position X="6.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIQA=</HashCode>
+      <FileName>Review.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Reviewer" />
+      <Property Name="Verdict" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Model.Session">
+    <Position X="0.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAEAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Session.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="SessionChair" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Papers" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Model.User">
+    <Position X="11.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQCCAAgAAAAQACAAQAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="Model.Status">
+    <Position X="17" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAQAAAAAQAAAAAAAAAAAAAQAA=</HashCode>
+      <FileName>Status.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Model.Verdict">
+    <Position X="4" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAgAABAAEAAAAAAAAEAAAAAAAAAAAAAAACEAAAAAA=</HashCode>
+      <FileName>Verdict.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

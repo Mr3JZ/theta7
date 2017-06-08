@@ -8,10 +8,14 @@ namespace Persistence.Repository
 {
     public class RepoAvailableRoomDB
     {
+        private readonly ISSEntities2 _context;
+        public RepoAvailableRoomDB(ISSEntities2 context)
+        {
+            _context = context;
+        }
         public void Add(int confId, string roomName, int capacity, string street, string city, string postalCode, DateTime beginDate, DateTime endDate)
         {
-            using (var context = new ISSEntities2(Util.ConnectionStringWithPassword.doIt()))
-            {
+            
                 AvailableRoom ar = new AvailableRoom();
                 ar.ConferenceId = confId;
                 ar.RoomName = roomName;
@@ -20,7 +24,7 @@ namespace Persistence.Repository
                 ar.EndDate = endDate;
 
                 int aId = -1;
-                foreach (Address a in context.Addresses)
+                foreach (Address a in _context.Addresses)
                     if (a.City == city && a.Street == street && a.PostalCode == postalCode)
                     {
                         aId = a.AddressId;
@@ -33,15 +37,15 @@ namespace Persistence.Repository
                     a.City = city;
                     a.Street = street;
                     a.PostalCode = postalCode;
-                    context.Addresses.Add(a);
-                    context.SaveChanges();
+                _context.Addresses.Add(a);
+                _context.SaveChanges();
                     aId = a.AddressId;
                 }
 
                 ar.AddressId = aId;
-                context.AvailableRooms.Add(ar);
-                context.SaveChanges();
-            }
+                _context.AvailableRooms.Add(ar);
+                _context.SaveChanges();
+            
 
         }
     }
