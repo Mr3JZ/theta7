@@ -152,10 +152,13 @@
             // 
             // dataGridViewAvailableRooms
             // 
+            this.dataGridViewAvailableRooms.AllowUserToAddRows = false;
+            this.dataGridViewAvailableRooms.AllowUserToDeleteRows = false;
             this.dataGridViewAvailableRooms.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dataGridViewAvailableRooms.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewAvailableRooms.Location = new System.Drawing.Point(295, 24);
             this.dataGridViewAvailableRooms.Name = "dataGridViewAvailableRooms";
+            this.dataGridViewAvailableRooms.RowHeadersVisible = false;
             this.dataGridViewAvailableRooms.Size = new System.Drawing.Size(267, 242);
             this.dataGridViewAvailableRooms.TabIndex = 15;
             // 

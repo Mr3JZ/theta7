@@ -57,13 +57,7 @@ namespace Client.View
                     throw new Exception("Invalid end hour");
                 }
                 Model.AvailableRoom ar = new Model.AvailableRoom(0, name, capacity, street, city, postalCode, beginAvRoom, endAvRoom);
-                availableRoom.Add(ar);
-
-
-                /*Urmeaza adaugarea in data grid view.Pot fi adaugate mai multe.
-                 * Apoi toate trebuie adaugate o data prin celalt buton toate pt o conferinta.
-                 * Asemanator cu addPcMembers.E o combinatie de addPcMembers cu topic a lu Tudor.Faceti dimineata voi.I'm out!*/
-
+                availableRoom.Add(ar);            
 
             }
             catch (Exception ex)

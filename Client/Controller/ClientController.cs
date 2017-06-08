@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Services;
 using Model;
-using Server;
+
 using System.IO;
 using System.Net;
 
@@ -132,7 +132,7 @@ namespace Client
                 currentUser = server.Login(user, this);
                 return true;
             }
-            catch (ServerException err)
+            catch (Exception err)
             {
                 Console.WriteLine(err.Message);
                 return false;
@@ -170,7 +170,7 @@ namespace Client
                 user.Website = website;
                 return server.Register(user);
             }
-            catch (ServerException err)
+            catch (Exception err)
             {
                 Console.WriteLine(err.Message);
                 return false;
