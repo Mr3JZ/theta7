@@ -17,6 +17,7 @@ namespace Services
         List<Review> GetReviewsByPaper(int paperId);
         List<User> GetSpecialUsers();
         List<User> GetAllUsers();
+        void AddAvailableRoom(int confId, string roomName, int capacity, string street, string city, string postalCode, DateTime beginDate, DateTime endDate);
         void AddReview(int paperId, Review r);
         void AddParticipant(Participant p);
         void UpdatePaper(Paper p);

@@ -181,5 +181,10 @@ namespace Server
         {
             repoPaper.Remove(id);
         }
+
+        public void AddAvailableRoom(int confId, string roomName, int capacity, string street, string city, string postalCode, DateTime beginDate, DateTime endDate)
+        {
+            repoAvailableRoom.Add(confId, roomName, capacity, street, city, postalCode, beginDate, endDate);
+        }
     }
 }

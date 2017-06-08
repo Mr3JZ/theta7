@@ -12,22 +12,29 @@ namespace Client.View
 {
     public partial class AvailableRooms : Form
     {
-        public BindingList<Persistence.AvailableRoom> availableRoom;
-        public AvailableRooms(BindingList<Persistence.AvailableRoom> availableRoom)
+        public BindingList<Model.AvailableRoom> availableRoom;
+        public AvailableRooms(BindingList<Model.AvailableRoom> rooms)
         {
             InitializeComponent();
             // topicsListBox.DataSource = topics;
-            this.availableRoom = availableRoom;
+            availableRoom = rooms;
+            dataGridViewAvailableRooms.DataSource = availableRoom;
+            dataGridViewAvailableRooms.Columns.Remove("ConfId");
         }
 
-        public AvailableRooms()
-        {
-            InitializeComponent();
-        }
+
 
         private void buttonAllRooms_Click(object sender, EventArgs e)
         {
-
+            if (dataGridViewAvailableRooms.CurrentRow.Index != null)
+                if (dataGridViewAvailableRooms.CurrentRow.Index != -1)
+                {
+                    availableRoom.Remove((Model.AvailableRoom)dataGridViewAvailableRooms.CurrentRow.DataBoundItem);
+                }
+                else
+                {
+                    MessageBox.Show("No item was selected");
+                }
         }
 
         private void buttonAddRoom_Click(object sender, EventArgs e)
@@ -37,16 +44,22 @@ namespace Client.View
                 string name = textBoxName.Text;
                 int capacity = (int)numericUpDownCapacity.Value;
                 string street = textBoxStreet.Text;
+                string city = tbCity.Text;
                 string postalCode = textBoxPostalCode.Text;
                 DateTime beginAvRoom = dateTimePickerBegin.Value;
-                if ((beginAvRoom.Hour < 9)||(beginAvRoom.Hour>16)) {
+                if ((beginAvRoom.Hour < 9) || (beginAvRoom.Hour > 16))
+                {
                     throw new Exception("Invalid begin hour");
                 }
                 DateTime endAvRoom = dateTimePickerEnd.Value;
-                if ((endAvRoom.Hour < 9) || (beginAvRoom.Hour > 17) || (beginAvRoom>endAvRoom))
+                if ((endAvRoom.Hour < 9) || (beginAvRoom.Hour > 17) || (beginAvRoom > endAvRoom))
                 {
                     throw new Exception("Invalid end hour");
                 }
+                Model.AvailableRoom ar = new Model.AvailableRoom(0, name, capacity, street, city, postalCode, beginAvRoom, endAvRoom);
+                availableRoom.Add(ar);
+
+
                 /*Urmeaza adaugarea in data grid view.Pot fi adaugate mai multe.
                  * Apoi toate trebuie adaugate o data prin celalt buton toate pt o conferinta.
                  * Asemanator cu addPcMembers.E o combinatie de addPcMembers cu topic a lu Tudor.Faceti dimineata voi.I'm out!*/
@@ -66,6 +79,11 @@ namespace Client.View
             dateTimePickerBegin.CustomFormat = "d-M-yyyy - HH";
             dateTimePickerEnd.Format = DateTimePickerFormat.Custom;
             dateTimePickerEnd.CustomFormat = "d-M-yyyy - HH";
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -416,6 +416,7 @@
             // 
             // buttonAddAvailableRoom
             // 
+            this.buttonAddAvailableRoom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAddAvailableRoom.Location = new System.Drawing.Point(772, 161);
             this.buttonAddAvailableRoom.Name = "buttonAddAvailableRoom";
             this.buttonAddAvailableRoom.Size = new System.Drawing.Size(120, 34);

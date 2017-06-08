@@ -412,5 +412,10 @@ namespace Client
                 return true;
             }
         }
+
+        public void addRoom(int confId, string roomName, int capacity, string street, string city, string postalCode, DateTime beginDate, DateTime endDate)
+        {
+            server.AddAvailableRoom(confId, roomName, capacity, street, city, postalCode, beginDate, endDate);
+        }
     }
 }

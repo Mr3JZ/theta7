@@ -43,6 +43,9 @@
             this.dataGridViewAvailableRooms = new System.Windows.Forms.DataGridView();
             this.buttonAllRooms = new System.Windows.Forms.Button();
             this.numericUpDownCapacity = new System.Windows.Forms.NumericUpDown();
+            this.tbCity = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnClose = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAvailableRooms)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCapacity)).BeginInit();
             this.SuspendLayout();
@@ -86,7 +89,7 @@
             // labelBeginDate
             // 
             this.labelBeginDate.AutoSize = true;
-            this.labelBeginDate.Location = new System.Drawing.Point(32, 197);
+            this.labelBeginDate.Location = new System.Drawing.Point(32, 226);
             this.labelBeginDate.Name = "labelBeginDate";
             this.labelBeginDate.Size = new System.Drawing.Size(86, 13);
             this.labelBeginDate.TabIndex = 4;
@@ -95,7 +98,7 @@
             // labelEndDate
             // 
             this.labelEndDate.AutoSize = true;
-            this.labelEndDate.Location = new System.Drawing.Point(32, 246);
+            this.labelEndDate.Location = new System.Drawing.Point(32, 275);
             this.labelEndDate.Name = "labelEndDate";
             this.labelEndDate.Size = new System.Drawing.Size(78, 13);
             this.labelEndDate.TabIndex = 5;
@@ -124,14 +127,14 @@
             // 
             // dateTimePickerBegin
             // 
-            this.dateTimePickerBegin.Location = new System.Drawing.Point(142, 197);
+            this.dateTimePickerBegin.Location = new System.Drawing.Point(142, 226);
             this.dateTimePickerBegin.Name = "dateTimePickerBegin";
             this.dateTimePickerBegin.Size = new System.Drawing.Size(130, 20);
             this.dateTimePickerBegin.TabIndex = 12;
             // 
             // dateTimePickerEnd
             // 
-            this.dateTimePickerEnd.Location = new System.Drawing.Point(142, 246);
+            this.dateTimePickerEnd.Location = new System.Drawing.Point(142, 275);
             this.dateTimePickerEnd.Name = "dateTimePickerEnd";
             this.dateTimePickerEnd.Size = new System.Drawing.Size(130, 20);
             this.dateTimePickerEnd.TabIndex = 13;
@@ -161,7 +164,7 @@
             this.buttonAllRooms.Name = "buttonAllRooms";
             this.buttonAllRooms.Size = new System.Drawing.Size(137, 23);
             this.buttonAllRooms.TabIndex = 16;
-            this.buttonAllRooms.Text = "Submit";
+            this.buttonAllRooms.Text = "RemoveRoom";
             this.buttonAllRooms.UseVisualStyleBackColor = true;
             this.buttonAllRooms.Click += new System.EventHandler(this.buttonAllRooms_Click);
             // 
@@ -177,11 +180,40 @@
             this.numericUpDownCapacity.Size = new System.Drawing.Size(130, 20);
             this.numericUpDownCapacity.TabIndex = 17;
             // 
+            // tbCity
+            // 
+            this.tbCity.Location = new System.Drawing.Point(142, 188);
+            this.tbCity.Name = "tbCity";
+            this.tbCity.Size = new System.Drawing.Size(130, 20);
+            this.tbCity.TabIndex = 19;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(29, 188);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(24, 13);
+            this.label1.TabIndex = 18;
+            this.label1.Text = "City";
+            // 
+            // btnClose
+            // 
+            this.btnClose.Location = new System.Drawing.Point(385, 322);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(75, 23);
+            this.btnClose.TabIndex = 20;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
             // AvailableRooms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(576, 357);
+            this.Controls.Add(this.btnClose);
+            this.Controls.Add(this.tbCity);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.numericUpDownCapacity);
             this.Controls.Add(this.buttonAllRooms);
             this.Controls.Add(this.dataGridViewAvailableRooms);
@@ -224,5 +256,8 @@
         private System.Windows.Forms.DataGridView dataGridViewAvailableRooms;
         private System.Windows.Forms.Button buttonAllRooms;
         private System.Windows.Forms.NumericUpDown numericUpDownCapacity;
+        private System.Windows.Forms.TextBox tbCity;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnClose;
     }
 }
