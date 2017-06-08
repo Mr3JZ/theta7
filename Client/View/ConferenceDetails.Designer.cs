@@ -81,10 +81,8 @@
             this.comboBoxDeadlines = new System.Windows.Forms.ComboBox();
             this.labelPushDeadlines = new System.Windows.Forms.Label();
             this.buttonEvaluate = new System.Windows.Forms.Button();
-            this.comboBoxEvaluation = new System.Windows.Forms.ComboBox();
             this.labelBidEvaluate = new System.Windows.Forms.Label();
             this.buttonBidding = new System.Windows.Forms.Button();
-            this.comboBoxBidding = new System.Windows.Forms.ComboBox();
             this.buttonReadFullPaper = new System.Windows.Forms.Button();
             this.buttonReadPaperAbstract = new System.Windows.Forms.Button();
             this.labelUploadedToReview = new System.Windows.Forms.Label();
@@ -588,10 +586,8 @@
             this.tabPagePCMember.Controls.Add(this.comboBoxDeadlines);
             this.tabPagePCMember.Controls.Add(this.labelPushDeadlines);
             this.tabPagePCMember.Controls.Add(this.buttonEvaluate);
-            this.tabPagePCMember.Controls.Add(this.comboBoxEvaluation);
             this.tabPagePCMember.Controls.Add(this.labelBidEvaluate);
             this.tabPagePCMember.Controls.Add(this.buttonBidding);
-            this.tabPagePCMember.Controls.Add(this.comboBoxBidding);
             this.tabPagePCMember.Controls.Add(this.buttonReadFullPaper);
             this.tabPagePCMember.Controls.Add(this.buttonReadPaperAbstract);
             this.tabPagePCMember.Controls.Add(this.labelUploadedToReview);
@@ -683,29 +679,13 @@
             // 
             this.buttonEvaluate.BackColor = System.Drawing.Color.Gainsboro;
             this.buttonEvaluate.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonEvaluate.Location = new System.Drawing.Point(456, 107);
+            this.buttonEvaluate.Location = new System.Drawing.Point(320, 90);
             this.buttonEvaluate.Name = "buttonEvaluate";
-            this.buttonEvaluate.Size = new System.Drawing.Size(126, 21);
+            this.buttonEvaluate.Size = new System.Drawing.Size(262, 21);
             this.buttonEvaluate.TabIndex = 8;
             this.buttonEvaluate.Text = "Evaluate paper";
             this.buttonEvaluate.UseVisualStyleBackColor = false;
             this.buttonEvaluate.Click += new System.EventHandler(this.buttonEvaluate_Click);
-            // 
-            // comboBoxEvaluation
-            // 
-            this.comboBoxEvaluation.FormattingEnabled = true;
-            this.comboBoxEvaluation.Items.AddRange(new object[] {
-            "Strong reject",
-            "Reject",
-            "Weak reject",
-            "Borderline",
-            "Weak accept",
-            "Accept",
-            "Strong accept"});
-            this.comboBoxEvaluation.Location = new System.Drawing.Point(320, 90);
-            this.comboBoxEvaluation.Name = "comboBoxEvaluation";
-            this.comboBoxEvaluation.Size = new System.Drawing.Size(126, 21);
-            this.comboBoxEvaluation.TabIndex = 7;
             // 
             // labelBidEvaluate
             // 
@@ -718,26 +698,15 @@
             // 
             // buttonBidding
             // 
+            this.buttonBidding.BackColor = System.Drawing.Color.Gainsboro;
             this.buttonBidding.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonBidding.Location = new System.Drawing.Point(456, 90);
+            this.buttonBidding.Location = new System.Drawing.Point(320, 90);
             this.buttonBidding.Name = "buttonBidding";
-            this.buttonBidding.Size = new System.Drawing.Size(126, 21);
+            this.buttonBidding.Size = new System.Drawing.Size(262, 21);
             this.buttonBidding.TabIndex = 5;
             this.buttonBidding.Text = "Bid for paper";
-            this.buttonBidding.UseVisualStyleBackColor = true;
+            this.buttonBidding.UseVisualStyleBackColor = false;
             this.buttonBidding.Click += new System.EventHandler(this.buttonBidding_Click);
-            // 
-            // comboBoxBidding
-            // 
-            this.comboBoxBidding.FormattingEnabled = true;
-            this.comboBoxBidding.Items.AddRange(new object[] {
-            "Neutral",
-            "Want to evaluate",
-            "Don\'t want to evaluate"});
-            this.comboBoxBidding.Location = new System.Drawing.Point(320, 90);
-            this.comboBoxBidding.Name = "comboBoxBidding";
-            this.comboBoxBidding.Size = new System.Drawing.Size(126, 21);
-            this.comboBoxBidding.TabIndex = 4;
             // 
             // buttonReadFullPaper
             // 
@@ -835,10 +804,8 @@
         private System.Windows.Forms.DataGridView dataGridViewUploadedPapers;
         private System.Windows.Forms.Button buttonReadFullPaper;
         private System.Windows.Forms.Button buttonEvaluate;
-        private System.Windows.Forms.ComboBox comboBoxEvaluation;
         private System.Windows.Forms.Label labelBidEvaluate;
         private System.Windows.Forms.Button buttonBidding;
-        private System.Windows.Forms.ComboBox comboBoxBidding;
         private System.Windows.Forms.TabPage tabPageConferenceDetailed;
         private System.Windows.Forms.Label labelConferenceFee;
         private System.Windows.Forms.Label labelParticipationDeadline;

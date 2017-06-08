@@ -22,19 +22,32 @@ namespace Testing
             _context = new ISSEntities2(connection);
             _repository = new RepoUserDB(_context);
         }
-        private void PrepareData()
+        private void PrepareDataAdd()
         {
             Model.User userTest = new Model.User(2, "test", "test1", "Test", "Affiliation", "email@yahoo.com", false, "www.website.com");
 
             _repository.Add(userTest);
         }
-        [TestMethod]
-        public void TestMethod1()
+        private void PrepareDataDelete()
         {
-            PrepareData();
+            _repository.Remove(1);
+        }
+        [TestMethod]
+        public void TestMethodAdd()
+        {
+            PrepareDataAdd();
             List<Model.User> allUsers = _repository.GetAll();
             foreach (Model.User user in allUsers)
                 Assert.AreEqual(user.Name, "Test");
+        }
+        [TestMethod]
+        public void TestMethodDelete()
+        {
+            PrepareDataAdd();
+            List<Model.User> allUsers = _repository.GetAll();
+            PrepareDataDelete();
+            allUsers = _repository.GetAll();
+            Assert.AreEqual(allUsers.Count, 0);
         }
     }
 }

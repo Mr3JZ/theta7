@@ -318,36 +318,24 @@ namespace Client.View
             if (DateTime.Now < conf.DeadlineBidding && DateTime.Now > conf.DeadlineComplet)
             {
                 labelBidEvaluate.Text = "Bidding";
-                comboBoxBidding.Visible = true;
-                comboBoxBidding.Enabled = true;
                 buttonBidding.Visible = true;
                 buttonBidding.Enabled = true;
-                comboBoxEvaluation.Visible = false;
-                comboBoxEvaluation.Enabled = false;
                 buttonEvaluate.Visible = false;
                 buttonEvaluate.Enabled = false;
             }
             else if (DateTime.Now < conf.DeadlineEvaluation && DateTime.Now > conf.DeadlineBidding)
             {
                 labelBidEvaluate.Text = "Evaluation";
-                comboBoxBidding.Visible = false;
-                comboBoxBidding.Enabled = false;
                 buttonBidding.Visible = false;
                 buttonBidding.Enabled = false;
-                comboBoxEvaluation.Visible = true;
-                comboBoxEvaluation.Enabled = true;
                 buttonEvaluate.Visible = true;
                 buttonEvaluate.Enabled = true;
             }
             else
             {
                 labelBidEvaluate.Visible = false;
-                comboBoxBidding.Visible = false;
-                comboBoxBidding.Enabled = false;
                 buttonBidding.Visible = false;
                 buttonBidding.Enabled = false;
-                comboBoxEvaluation.Visible = false;
-                comboBoxEvaluation.Enabled = false;
                 buttonEvaluate.Visible = false;
                 buttonEvaluate.Enabled = false;
             }
