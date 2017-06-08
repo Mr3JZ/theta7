@@ -30,5 +30,6 @@ namespace Services
         List<Model.Message> GetUserMessages(int userID);
         bool addPaper(Model.Paper paper);
         void removePaper(int id);
+        void AddBid(Model.Participant bidder, int confId, int paper, int value);
     }
 }

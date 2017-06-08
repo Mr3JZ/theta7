@@ -182,6 +182,19 @@ namespace Server
             repoPaper.Remove(id);
         }
 
+        public void AddBid(Model.Participant bidder, int confId, int paper, int value)
+        {
+            List<Model.Paper> papers = repoPaper.GetByConference(confId);
+            foreach (Model.Paper p in papers)
+            {
+                if (p.Id == paper)
+                {
+                    Model.Paper newP = p;
+                    newP.AddBid(bidder, value);
+                    repoPaper.Modify(paper, newP);
+                }
+            }
+        }
         public void AddAvailableRoom(int confId, string roomName, int capacity, string street, string city, string postalCode, DateTime beginDate, DateTime endDate)
         {
             repoAvailableRoom.Add(confId, roomName, capacity, street, city, postalCode, beginDate, endDate);

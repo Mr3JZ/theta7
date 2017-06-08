@@ -683,7 +683,7 @@
             // 
             this.buttonEvaluate.BackColor = System.Drawing.Color.Gainsboro;
             this.buttonEvaluate.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonEvaluate.Location = new System.Drawing.Point(456, 90);
+            this.buttonEvaluate.Location = new System.Drawing.Point(456, 107);
             this.buttonEvaluate.Name = "buttonEvaluate";
             this.buttonEvaluate.Size = new System.Drawing.Size(126, 21);
             this.buttonEvaluate.TabIndex = 8;
@@ -725,6 +725,7 @@
             this.buttonBidding.TabIndex = 5;
             this.buttonBidding.Text = "Bid for paper";
             this.buttonBidding.UseVisualStyleBackColor = true;
+            this.buttonBidding.Click += new System.EventHandler(this.buttonBidding_Click);
             // 
             // comboBoxBidding
             // 

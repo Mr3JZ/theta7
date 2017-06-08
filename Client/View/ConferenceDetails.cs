@@ -52,7 +52,7 @@ namespace Client.View
             }
             else
             {
-                if (rank.Equals("Chair"))
+                if (rank.Equals("Chair")||rank.Equals("CoChair"))
                 {
                     tabControl1.TabPages.RemoveAt(1);
                 }
@@ -656,6 +656,20 @@ namespace Client.View
         private void buttonSchedule_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void buttonBidding_Click(object sender, EventArgs e)
+        {
+            Paper selectedPaper = (Paper)dataGridViewUploadedPapers.CurrentRow.DataBoundItem;
+            Model.Participant bidder;
+            foreach(Model.Participant b in conf.Participants)
+            {
+                if (b.User.IdUser == ctrl.getCurrentUser().IdUser)
+                {
+                    bidder = b;
+                    new BidForm(ctrl, bidder, selectedPaper.Id, conf).ShowDialog();
+                }
+            }
         }
     }
   }
