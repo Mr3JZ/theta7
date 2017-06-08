@@ -81,6 +81,7 @@
     </Compile>
     <Compile Include="View\BidForm.Designer.cs">
       <DependentUpon>BidForm.cs</DependentUpon>
+	</Compile>
     <Compile Include="View\AvailableRooms.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -141,6 +142,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\BidForm.resx">
       <DependentUpon>BidForm.cs</DependentUpon>
+	</EmbeddedResource>
     <EmbeddedResource Include="View\AvailableRooms.resx">
       <DependentUpon>AvailableRooms.cs</DependentUpon>
     </EmbeddedResource>
