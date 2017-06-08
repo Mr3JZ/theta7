@@ -141,12 +141,13 @@
             // 
             // buttonAddRoom
             // 
+            this.buttonAddRoom.BackColor = System.Drawing.Color.Gainsboro;
             this.buttonAddRoom.Location = new System.Drawing.Point(295, 290);
             this.buttonAddRoom.Name = "buttonAddRoom";
             this.buttonAddRoom.Size = new System.Drawing.Size(124, 23);
             this.buttonAddRoom.TabIndex = 14;
             this.buttonAddRoom.Text = "Add Room";
-            this.buttonAddRoom.UseVisualStyleBackColor = true;
+            this.buttonAddRoom.UseVisualStyleBackColor = false;
             this.buttonAddRoom.Click += new System.EventHandler(this.buttonAddRoom_Click);
             // 
             // dataGridViewAvailableRooms
@@ -160,12 +161,13 @@
             // 
             // buttonAllRooms
             // 
+            this.buttonAllRooms.BackColor = System.Drawing.Color.Gainsboro;
             this.buttonAllRooms.Location = new System.Drawing.Point(425, 290);
             this.buttonAllRooms.Name = "buttonAllRooms";
             this.buttonAllRooms.Size = new System.Drawing.Size(137, 23);
             this.buttonAllRooms.TabIndex = 16;
             this.buttonAllRooms.Text = "RemoveRoom";
-            this.buttonAllRooms.UseVisualStyleBackColor = true;
+            this.buttonAllRooms.UseVisualStyleBackColor = false;
             this.buttonAllRooms.Click += new System.EventHandler(this.buttonAllRooms_Click);
             // 
             // numericUpDownCapacity
@@ -198,12 +200,13 @@
             // 
             // btnClose
             // 
+            this.btnClose.BackColor = System.Drawing.Color.Gainsboro;
             this.btnClose.Location = new System.Drawing.Point(385, 322);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 20;
             this.btnClose.Text = "Close";
-            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // AvailableRooms

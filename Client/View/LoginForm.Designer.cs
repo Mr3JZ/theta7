@@ -53,7 +53,7 @@
             // 
             // loginButton
             // 
-            this.loginButton.BackColor = System.Drawing.SystemColors.Control;
+            this.loginButton.BackColor = System.Drawing.Color.Gainsboro;
             this.loginButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.loginButton.Location = new System.Drawing.Point(121, 142);
             this.loginButton.Name = "loginButton";

@@ -120,24 +120,26 @@
             // 
             // buttonAddChair
             // 
+            this.buttonAddChair.BackColor = System.Drawing.Color.Gainsboro;
             this.buttonAddChair.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonAddChair.Location = new System.Drawing.Point(317, 111);
             this.buttonAddChair.Name = "buttonAddChair";
             this.buttonAddChair.Size = new System.Drawing.Size(135, 25);
             this.buttonAddChair.TabIndex = 6;
             this.buttonAddChair.Text = "Add chair";
-            this.buttonAddChair.UseVisualStyleBackColor = true;
+            this.buttonAddChair.UseVisualStyleBackColor = false;
             this.buttonAddChair.Click += new System.EventHandler(this.buttonAddChair_Click);
             // 
             // buttonRemoveChair
             // 
+            this.buttonRemoveChair.BackColor = System.Drawing.Color.Gainsboro;
             this.buttonRemoveChair.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonRemoveChair.Location = new System.Drawing.Point(458, 111);
             this.buttonRemoveChair.Name = "buttonRemoveChair";
             this.buttonRemoveChair.Size = new System.Drawing.Size(135, 25);
             this.buttonRemoveChair.TabIndex = 7;
             this.buttonRemoveChair.Text = "Remove chair";
-            this.buttonRemoveChair.UseVisualStyleBackColor = true;
+            this.buttonRemoveChair.UseVisualStyleBackColor = false;
             this.buttonRemoveChair.Click += new System.EventHandler(this.buttonRemoveChair_Click);
             // 
             // label3
@@ -163,24 +165,26 @@
             // 
             // buttonAddPCMember
             // 
+            this.buttonAddPCMember.BackColor = System.Drawing.Color.Gainsboro;
             this.buttonAddPCMember.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonAddPCMember.Location = new System.Drawing.Point(317, 396);
             this.buttonAddPCMember.Name = "buttonAddPCMember";
             this.buttonAddPCMember.Size = new System.Drawing.Size(135, 25);
             this.buttonAddPCMember.TabIndex = 12;
             this.buttonAddPCMember.Text = "Add PC member";
-            this.buttonAddPCMember.UseVisualStyleBackColor = true;
+            this.buttonAddPCMember.UseVisualStyleBackColor = false;
             this.buttonAddPCMember.Click += new System.EventHandler(this.buttonAddPCMember_Click);
             // 
             // buttonRemovePCMember
             // 
+            this.buttonRemovePCMember.BackColor = System.Drawing.Color.Gainsboro;
             this.buttonRemovePCMember.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonRemovePCMember.Location = new System.Drawing.Point(462, 396);
             this.buttonRemovePCMember.Name = "buttonRemovePCMember";
             this.buttonRemovePCMember.Size = new System.Drawing.Size(135, 25);
             this.buttonRemovePCMember.TabIndex = 13;
             this.buttonRemovePCMember.Text = "Remove PC member";
-            this.buttonRemovePCMember.UseVisualStyleBackColor = true;
+            this.buttonRemovePCMember.UseVisualStyleBackColor = false;
             this.buttonRemovePCMember.Click += new System.EventHandler(this.buttonRemovePCMember_Click);
             // 
             // label4
@@ -387,13 +391,14 @@
             // 
             // buttonSubmit
             // 
+            this.buttonSubmit.BackColor = System.Drawing.Color.Gainsboro;
             this.buttonSubmit.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonSubmit.Location = new System.Drawing.Point(615, 396);
             this.buttonSubmit.Name = "buttonSubmit";
             this.buttonSubmit.Size = new System.Drawing.Size(280, 25);
             this.buttonSubmit.TabIndex = 80;
             this.buttonSubmit.Text = "Submit";
-            this.buttonSubmit.UseVisualStyleBackColor = true;
+            this.buttonSubmit.UseVisualStyleBackColor = false;
             this.buttonSubmit.Click += new System.EventHandler(this.buttonSubmit_Click);
             // 
             // textBoxConferenceName
@@ -405,24 +410,26 @@
             // 
             // addTopicsButton
             // 
+            this.addTopicsButton.BackColor = System.Drawing.Color.Gainsboro;
             this.addTopicsButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.addTopicsButton.Location = new System.Drawing.Point(615, 161);
             this.addTopicsButton.Name = "addTopicsButton";
             this.addTopicsButton.Size = new System.Drawing.Size(135, 34);
             this.addTopicsButton.TabIndex = 82;
             this.addTopicsButton.Text = "Add topics";
-            this.addTopicsButton.UseVisualStyleBackColor = true;
+            this.addTopicsButton.UseVisualStyleBackColor = false;
             this.addTopicsButton.Click += new System.EventHandler(this.addTopicsButton_Click);
             // 
             // buttonAddAvailableRoom
             // 
+            this.buttonAddAvailableRoom.BackColor = System.Drawing.Color.Gainsboro;
             this.buttonAddAvailableRoom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAddAvailableRoom.Location = new System.Drawing.Point(772, 161);
             this.buttonAddAvailableRoom.Name = "buttonAddAvailableRoom";
             this.buttonAddAvailableRoom.Size = new System.Drawing.Size(120, 34);
             this.buttonAddAvailableRoom.TabIndex = 83;
             this.buttonAddAvailableRoom.Text = "Available Rooms";
-            this.buttonAddAvailableRoom.UseVisualStyleBackColor = true;
+            this.buttonAddAvailableRoom.UseVisualStyleBackColor = false;
             this.buttonAddAvailableRoom.Click += new System.EventHandler(this.buttonAddAvailableRoom_Click);
             // 
             // AdminPanel2
