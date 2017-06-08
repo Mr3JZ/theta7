@@ -204,6 +204,8 @@ namespace Client
             }
             return "Unregistered";
         }
+
+        /*Returns the rank of the current user for a particular conference*/
         public string getMyRank(int confId)
         {
             List<Model.Conference> allConferences = getAllConferences();
@@ -225,13 +227,16 @@ namespace Client
             }
             return "Unregistered";
         }
+
         public List<Model.User> GetSpecialUsers()
         {
             return server.GetSpecialUsers();
         }
 
-        ///PARTICIPANT
-
+        //--------------PARTICIPANT
+        
+        /*Returns a list of all the chairs for a conference
+         * */
         public List<Model.Participant> getChairs(Conference conference)
         {
             List<Model.Participant> chairList = new List<Model.Participant>();
@@ -243,6 +248,7 @@ namespace Client
             return chairList;
         }
 
+        /*Returns a list of pc members*/
         public List<Model.Participant> getPCMembers(Conference conference)
         {
             List<Model.Participant> memberList = new List<Model.Participant>();
@@ -254,11 +260,13 @@ namespace Client
             return memberList;
         }
 
+        /*Adds a new participant in data base*/
         public void addParticipant(Participant p)
         {
             server.AddParticipant(p);
         }
 
+        /*Adds a new payment in data base*/
         public void addPayment(Participant p, int paidSum, Conference conf)
         {
             server.NewPayment(p, paidSum, conf);
@@ -266,11 +274,10 @@ namespace Client
 
         ///REVIEW
 
+         /*Returns a list of the reviews for a paper*/
         public List<Review> getReviewsByPaper(string title)
         {
             return new List<Review>();
-            //ar trebui sa returneze reviewurile dupa titlu si current user
-            //titlu nu-i unique, deci nu se poate garanta returnarea reviewurilor bune
         }
         public List<Review> getReviewsByPaper(int paperId)
         {
@@ -409,6 +416,9 @@ namespace Client
         public void AddBid(Model.Participant bidder,int confId, int selectedPaper, int bidValue)
         {
             server.AddBid(bidder, confId, selectedPaper, bidValue);
+        public void addRoom(int confId, string roomName, int capacity, string street, string city, string postalCode, DateTime beginDate, DateTime endDate)
+        {
+            server.AddAvailableRoom(confId, roomName, capacity, street, city, postalCode, beginDate, endDate);
         }
     }
 }

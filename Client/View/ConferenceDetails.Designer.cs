@@ -228,6 +228,7 @@
             // 
             // buttonRegisterConference
             // 
+            this.buttonRegisterConference.BackColor = System.Drawing.Color.Gainsboro;
             this.buttonRegisterConference.Enabled = false;
             this.buttonRegisterConference.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonRegisterConference.Location = new System.Drawing.Point(448, 364);
@@ -235,19 +236,20 @@
             this.buttonRegisterConference.Size = new System.Drawing.Size(126, 25);
             this.buttonRegisterConference.TabIndex = 14;
             this.buttonRegisterConference.Text = "Register";
-            this.buttonRegisterConference.UseVisualStyleBackColor = true;
+            this.buttonRegisterConference.UseVisualStyleBackColor = false;
             this.buttonRegisterConference.Visible = false;
             this.buttonRegisterConference.Click += new System.EventHandler(this.buttonRegisterConference_Click);
             // 
             // buttonSchedule
             // 
+            this.buttonSchedule.BackColor = System.Drawing.Color.Gainsboro;
             this.buttonSchedule.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonSchedule.Location = new System.Drawing.Point(316, 364);
             this.buttonSchedule.Name = "buttonSchedule";
             this.buttonSchedule.Size = new System.Drawing.Size(126, 25);
             this.buttonSchedule.TabIndex = 13;
             this.buttonSchedule.Text = "View schedule";
-            this.buttonSchedule.UseVisualStyleBackColor = true;
+            this.buttonSchedule.UseVisualStyleBackColor = false;
             this.buttonSchedule.Click += new System.EventHandler(this.buttonSchedule_Click);
             // 
             // label18
@@ -408,24 +410,26 @@
             // 
             // buttonDiscard
             // 
+            this.buttonDiscard.BackColor = System.Drawing.Color.Gainsboro;
             this.buttonDiscard.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonDiscard.Location = new System.Drawing.Point(456, 241);
             this.buttonDiscard.Name = "buttonDiscard";
             this.buttonDiscard.Size = new System.Drawing.Size(126, 25);
             this.buttonDiscard.TabIndex = 19;
             this.buttonDiscard.Text = "Discard uploads";
-            this.buttonDiscard.UseVisualStyleBackColor = true;
+            this.buttonDiscard.UseVisualStyleBackColor = false;
             this.buttonDiscard.Click += new System.EventHandler(this.buttonDiscard_Click);
             // 
             // buttonAddPaper
             // 
+            this.buttonAddPaper.BackColor = System.Drawing.Color.Gainsboro;
             this.buttonAddPaper.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonAddPaper.Location = new System.Drawing.Point(320, 241);
             this.buttonAddPaper.Name = "buttonAddPaper";
             this.buttonAddPaper.Size = new System.Drawing.Size(126, 25);
             this.buttonAddPaper.TabIndex = 18;
             this.buttonAddPaper.Text = "Add paper";
-            this.buttonAddPaper.UseVisualStyleBackColor = true;
+            this.buttonAddPaper.UseVisualStyleBackColor = false;
             this.buttonAddPaper.Click += new System.EventHandler(this.buttonAddPaper_Click);
             // 
             // label6
@@ -457,35 +461,38 @@
             // 
             // buttonRemovePaper
             // 
+            this.buttonRemovePaper.BackColor = System.Drawing.Color.Gainsboro;
             this.buttonRemovePaper.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonRemovePaper.Location = new System.Drawing.Point(456, 210);
             this.buttonRemovePaper.Name = "buttonRemovePaper";
             this.buttonRemovePaper.Size = new System.Drawing.Size(126, 25);
             this.buttonRemovePaper.TabIndex = 14;
             this.buttonRemovePaper.Text = "Remove paper";
-            this.buttonRemovePaper.UseVisualStyleBackColor = true;
+            this.buttonRemovePaper.UseVisualStyleBackColor = false;
             this.buttonRemovePaper.Click += new System.EventHandler(this.buttonRemovePaper_Click);
             // 
             // buttonSaveChanges
             // 
+            this.buttonSaveChanges.BackColor = System.Drawing.Color.Gainsboro;
             this.buttonSaveChanges.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonSaveChanges.Location = new System.Drawing.Point(320, 274);
             this.buttonSaveChanges.Name = "buttonSaveChanges";
             this.buttonSaveChanges.Size = new System.Drawing.Size(126, 25);
             this.buttonSaveChanges.TabIndex = 13;
             this.buttonSaveChanges.Text = "Save changes";
-            this.buttonSaveChanges.UseVisualStyleBackColor = true;
+            this.buttonSaveChanges.UseVisualStyleBackColor = false;
             this.buttonSaveChanges.Click += new System.EventHandler(this.buttonSaveChanges_Click);
             // 
             // buttonAddAbstract
             // 
+            this.buttonAddAbstract.BackColor = System.Drawing.Color.Gainsboro;
             this.buttonAddAbstract.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonAddAbstract.Location = new System.Drawing.Point(320, 210);
             this.buttonAddAbstract.Name = "buttonAddAbstract";
             this.buttonAddAbstract.Size = new System.Drawing.Size(126, 25);
             this.buttonAddAbstract.TabIndex = 11;
             this.buttonAddAbstract.Text = "Add abstract";
-            this.buttonAddAbstract.UseVisualStyleBackColor = true;
+            this.buttonAddAbstract.UseVisualStyleBackColor = false;
             this.buttonAddAbstract.Click += new System.EventHandler(this.buttonAddWithAbs_Click);
             // 
             // textBoxPaperSubdomain
@@ -599,13 +606,14 @@
             // 
             // buttonPushDeadline
             // 
+            this.buttonPushDeadline.BackColor = System.Drawing.Color.Gainsboro;
             this.buttonPushDeadline.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonPushDeadline.Location = new System.Drawing.Point(320, 250);
             this.buttonPushDeadline.Name = "buttonPushDeadline";
             this.buttonPushDeadline.Size = new System.Drawing.Size(262, 21);
             this.buttonPushDeadline.TabIndex = 15;
             this.buttonPushDeadline.Text = "Push deadline";
-            this.buttonPushDeadline.UseVisualStyleBackColor = true;
+            this.buttonPushDeadline.UseVisualStyleBackColor = false;
             this.buttonPushDeadline.Visible = false;
             this.buttonPushDeadline.Click += new System.EventHandler(this.buttonPushDeadline_Click);
             // 
@@ -673,13 +681,14 @@
             // 
             // buttonEvaluate
             // 
+            this.buttonEvaluate.BackColor = System.Drawing.Color.Gainsboro;
             this.buttonEvaluate.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonEvaluate.Location = new System.Drawing.Point(456, 107);
             this.buttonEvaluate.Name = "buttonEvaluate";
             this.buttonEvaluate.Size = new System.Drawing.Size(126, 21);
             this.buttonEvaluate.TabIndex = 8;
             this.buttonEvaluate.Text = "Evaluate paper";
-            this.buttonEvaluate.UseVisualStyleBackColor = true;
+            this.buttonEvaluate.UseVisualStyleBackColor = false;
             this.buttonEvaluate.Click += new System.EventHandler(this.buttonEvaluate_Click);
             // 
             // comboBoxEvaluation
@@ -732,24 +741,26 @@
             // 
             // buttonReadFullPaper
             // 
+            this.buttonReadFullPaper.BackColor = System.Drawing.Color.Gainsboro;
             this.buttonReadFullPaper.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonReadFullPaper.Location = new System.Drawing.Point(456, 30);
             this.buttonReadFullPaper.Name = "buttonReadFullPaper";
             this.buttonReadFullPaper.Size = new System.Drawing.Size(126, 30);
             this.buttonReadFullPaper.TabIndex = 3;
             this.buttonReadFullPaper.Text = "Read full paper";
-            this.buttonReadFullPaper.UseVisualStyleBackColor = true;
+            this.buttonReadFullPaper.UseVisualStyleBackColor = false;
             this.buttonReadFullPaper.Click += new System.EventHandler(this.buttonReadFullPaper_Click);
             // 
             // buttonReadPaperAbstract
             // 
+            this.buttonReadPaperAbstract.BackColor = System.Drawing.Color.Gainsboro;
             this.buttonReadPaperAbstract.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonReadPaperAbstract.Location = new System.Drawing.Point(320, 30);
             this.buttonReadPaperAbstract.Name = "buttonReadPaperAbstract";
             this.buttonReadPaperAbstract.Size = new System.Drawing.Size(126, 30);
             this.buttonReadPaperAbstract.TabIndex = 2;
             this.buttonReadPaperAbstract.Text = "Read paper abstract";
-            this.buttonReadPaperAbstract.UseVisualStyleBackColor = true;
+            this.buttonReadPaperAbstract.UseVisualStyleBackColor = false;
             this.buttonReadPaperAbstract.Click += new System.EventHandler(this.buttonReadPaperAbstract_Click);
             // 
             // labelUploadedToReview

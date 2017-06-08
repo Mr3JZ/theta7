@@ -43,22 +43,24 @@
             // 
             // okButton
             // 
+            this.okButton.BackColor = System.Drawing.Color.Gainsboro;
             this.okButton.Location = new System.Drawing.Point(51, 272);
             this.okButton.Name = "okButton";
             this.okButton.Size = new System.Drawing.Size(165, 35);
             this.okButton.TabIndex = 1;
             this.okButton.Text = "OK";
-            this.okButton.UseVisualStyleBackColor = true;
+            this.okButton.UseVisualStyleBackColor = false;
             this.okButton.Click += new System.EventHandler(this.okButton_Click);
             // 
             // cancelButton
             // 
+            this.cancelButton.BackColor = System.Drawing.Color.Gainsboro;
             this.cancelButton.Location = new System.Drawing.Point(303, 272);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(179, 35);
             this.cancelButton.TabIndex = 2;
             this.cancelButton.Text = "Cancel";
-            this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.UseVisualStyleBackColor = false;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
             // AbstractForm

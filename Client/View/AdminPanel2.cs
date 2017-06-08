@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Persistence.Repository;
 using Model;
 
+
 namespace Client.View
 {
     public partial class AdminPanel2 : Form
@@ -17,6 +18,7 @@ namespace Client.View
         private BindingList<Model.User> addedChairs;
         private BindingList<Model.User> addedPCMembers;
         private BindingList<string> tempTopics;
+        private BindingList<Model.AvailableRoom> tempAvailableRooms;
         ClientController ctrl;
         public AdminPanel2(ClientController c)
         {
@@ -28,6 +30,7 @@ namespace Client.View
 
             buttonSubmit.Enabled = false;
             tempTopics = new BindingList<string>();
+            tempAvailableRooms = new BindingList<Model.AvailableRoom>();
 
             dataGridViewComitee.AutoGenerateColumns = false;
             dataGridViewAddedChairs.AutoGenerateColumns = false;
@@ -128,6 +131,11 @@ namespace Client.View
 
         private void buttonSubmit_Click(object sender, EventArgs e)
         {
+            if ((int)numericUpDownPrice.Value < 1)
+            {
+                MessageBox.Show("Price must be at least 1");
+                return;
+            }
             try
             {
                 string name = textBoxConferenceName.Text;
@@ -144,9 +152,14 @@ namespace Client.View
                 DateTime begin = dateTimePicker6.Value;
                 DateTime end = dateTimePicker7.Value;
                 List<String> topics = tempTopics.ToList();
+                List<Model.AvailableRoom> availableRooms = tempAvailableRooms.ToList(); 
                 ctrl.AddConference(name, edition, topics, abs, complete, bidding, evaluation, participation, city, country, website, price, begin, end);
                 Conference addedConf = ctrl.getConference(name, edition, city);
 
+                foreach(var ar in availableRooms)
+                {
+                    ctrl.addRoom(addedConf.Id,ar.RoomName,ar.Capacity,ar.Street,ar.City,ar.PostalCode,ar.BeginDate,ar.EndDate);
+                }
 
                 if (addedChairs.Count == 1)
                 {
@@ -236,11 +249,22 @@ namespace Client.View
         {
             AddTopicsForm addTopicsForm = new AddTopicsForm(tempTopics);
             addTopicsForm.ShowDialog();
-            if (addTopicsForm.topics.Count > 0)
+            if (addTopicsForm.topics.Count > 0 && tempAvailableRooms.Count>0)
                 buttonSubmit.Enabled = true;
             else
                 buttonSubmit.Enabled = false;
             tempTopics = addTopicsForm.topics;
+        }
+
+        private void buttonAddAvailableRoom_Click(object sender, EventArgs e)
+        {
+            AvailableRooms availableRoomsForm = new AvailableRooms(tempAvailableRooms);
+            availableRoomsForm.ShowDialog();
+            if (availableRoomsForm.availableRoom.Count > 0 && tempTopics.Count>0)
+                buttonSubmit.Enabled = true;
+            else
+                buttonSubmit.Enabled = false;
+            tempAvailableRooms = availableRoomsForm.availableRoom;
         }
     }
 }

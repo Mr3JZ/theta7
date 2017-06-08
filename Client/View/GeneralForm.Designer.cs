@@ -82,46 +82,50 @@
             // 
             // btnRefreshAllConferences
             // 
-            this.btnRefreshAllConferences.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnRefreshAllConferences.BackColor = System.Drawing.Color.Gainsboro;
+            this.btnRefreshAllConferences.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRefreshAllConferences.Location = new System.Drawing.Point(420, 41);
             this.btnRefreshAllConferences.Name = "btnRefreshAllConferences";
             this.btnRefreshAllConferences.Size = new System.Drawing.Size(162, 25);
             this.btnRefreshAllConferences.TabIndex = 1;
             this.btnRefreshAllConferences.Text = "Refresh";
-            this.btnRefreshAllConferences.UseVisualStyleBackColor = true;
+            this.btnRefreshAllConferences.UseVisualStyleBackColor = false;
             this.btnRefreshAllConferences.Click += new System.EventHandler(this.btnRefreshAllConferences_Click);
             // 
             // buttonLogout1
             // 
+            this.buttonLogout1.BackColor = System.Drawing.Color.Gainsboro;
             this.buttonLogout1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonLogout1.Location = new System.Drawing.Point(420, 289);
             this.buttonLogout1.Name = "buttonLogout1";
             this.buttonLogout1.Size = new System.Drawing.Size(162, 25);
             this.buttonLogout1.TabIndex = 3;
             this.buttonLogout1.Text = "Logout";
-            this.buttonLogout1.UseVisualStyleBackColor = true;
+            this.buttonLogout1.UseVisualStyleBackColor = false;
             this.buttonLogout1.Click += new System.EventHandler(this.buttonLogout1_Click);
             // 
             // buttonViewDetails
             // 
+            this.buttonViewDetails.BackColor = System.Drawing.Color.Gainsboro;
             this.buttonViewDetails.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonViewDetails.Location = new System.Drawing.Point(420, 10);
             this.buttonViewDetails.Name = "buttonViewDetails";
             this.buttonViewDetails.Size = new System.Drawing.Size(162, 25);
             this.buttonViewDetails.TabIndex = 2;
             this.buttonViewDetails.Text = "View conference details";
-            this.buttonViewDetails.UseVisualStyleBackColor = true;
+            this.buttonViewDetails.UseVisualStyleBackColor = false;
             this.buttonViewDetails.Click += new System.EventHandler(this.buttonViewDetails_Click);
             // 
             // buttonCreateConference
             // 
+            this.buttonCreateConference.BackColor = System.Drawing.Color.Gainsboro;
             this.buttonCreateConference.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonCreateConference.Location = new System.Drawing.Point(420, 10);
             this.buttonCreateConference.Name = "buttonCreateConference";
             this.buttonCreateConference.Size = new System.Drawing.Size(162, 25);
             this.buttonCreateConference.TabIndex = 1;
             this.buttonCreateConference.Text = "Create new conference";
-            this.buttonCreateConference.UseVisualStyleBackColor = true;
+            this.buttonCreateConference.UseVisualStyleBackColor = false;
             this.buttonCreateConference.Click += new System.EventHandler(this.buttonCreateConference_Click);
             // 
             // dataGridViewAllConferences
@@ -153,35 +157,38 @@
             // 
             // buttonDeleteMessage
             // 
+            this.buttonDeleteMessage.BackColor = System.Drawing.Color.Gainsboro;
             this.buttonDeleteMessage.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonDeleteMessage.Location = new System.Drawing.Point(420, 45);
             this.buttonDeleteMessage.Name = "buttonDeleteMessage";
             this.buttonDeleteMessage.Size = new System.Drawing.Size(162, 25);
             this.buttonDeleteMessage.TabIndex = 3;
             this.buttonDeleteMessage.Text = "Delete message";
-            this.buttonDeleteMessage.UseVisualStyleBackColor = true;
+            this.buttonDeleteMessage.UseVisualStyleBackColor = false;
             this.buttonDeleteMessage.Click += new System.EventHandler(this.buttonDeleteMessage_Click);
             // 
             // buttonReadMessage
             // 
+            this.buttonReadMessage.BackColor = System.Drawing.Color.Gainsboro;
             this.buttonReadMessage.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonReadMessage.Location = new System.Drawing.Point(420, 10);
             this.buttonReadMessage.Name = "buttonReadMessage";
             this.buttonReadMessage.Size = new System.Drawing.Size(162, 25);
             this.buttonReadMessage.TabIndex = 2;
             this.buttonReadMessage.Text = "Read message";
-            this.buttonReadMessage.UseVisualStyleBackColor = true;
+            this.buttonReadMessage.UseVisualStyleBackColor = false;
             this.buttonReadMessage.Click += new System.EventHandler(this.buttonReadMessage_Click);
             // 
             // buttonLogout2
             // 
+            this.buttonLogout2.BackColor = System.Drawing.Color.Gainsboro;
             this.buttonLogout2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonLogout2.Location = new System.Drawing.Point(420, 288);
             this.buttonLogout2.Name = "buttonLogout2";
             this.buttonLogout2.Size = new System.Drawing.Size(162, 25);
             this.buttonLogout2.TabIndex = 1;
             this.buttonLogout2.Text = "Logout";
-            this.buttonLogout2.UseVisualStyleBackColor = true;
+            this.buttonLogout2.UseVisualStyleBackColor = false;
             this.buttonLogout2.Click += new System.EventHandler(this.buttonLogout2_Click);
             // 
             // listBoxNotifications
@@ -209,35 +216,38 @@
             // 
             // btnRefreshMyConferences
             // 
+            this.btnRefreshMyConferences.BackColor = System.Drawing.Color.Gainsboro;
             this.btnRefreshMyConferences.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRefreshMyConferences.Location = new System.Drawing.Point(420, 41);
             this.btnRefreshMyConferences.Name = "btnRefreshMyConferences";
             this.btnRefreshMyConferences.Size = new System.Drawing.Size(162, 25);
             this.btnRefreshMyConferences.TabIndex = 3;
             this.btnRefreshMyConferences.Text = "Refresh";
-            this.btnRefreshMyConferences.UseVisualStyleBackColor = true;
+            this.btnRefreshMyConferences.UseVisualStyleBackColor = false;
             this.btnRefreshMyConferences.Click += new System.EventHandler(this.btnRefreshMyConferences_Click);
             // 
             // buttonViewDetailsMy
             // 
+            this.buttonViewDetailsMy.BackColor = System.Drawing.Color.Gainsboro;
             this.buttonViewDetailsMy.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonViewDetailsMy.Location = new System.Drawing.Point(420, 10);
             this.buttonViewDetailsMy.Name = "buttonViewDetailsMy";
             this.buttonViewDetailsMy.Size = new System.Drawing.Size(162, 25);
             this.buttonViewDetailsMy.TabIndex = 2;
             this.buttonViewDetailsMy.Text = "View conference details";
-            this.buttonViewDetailsMy.UseVisualStyleBackColor = true;
+            this.buttonViewDetailsMy.UseVisualStyleBackColor = false;
             this.buttonViewDetailsMy.Click += new System.EventHandler(this.buttonViewDetailsMy_Click);
             // 
             // buttonLogout3
             // 
+            this.buttonLogout3.BackColor = System.Drawing.Color.Gainsboro;
             this.buttonLogout3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonLogout3.Location = new System.Drawing.Point(420, 289);
             this.buttonLogout3.Name = "buttonLogout3";
             this.buttonLogout3.Size = new System.Drawing.Size(162, 25);
             this.buttonLogout3.TabIndex = 1;
             this.buttonLogout3.Text = "Logout";
-            this.buttonLogout3.UseVisualStyleBackColor = true;
+            this.buttonLogout3.UseVisualStyleBackColor = false;
             this.buttonLogout3.Click += new System.EventHandler(this.buttonLogout3_Click);
             // 
             // dataGridViewMyConferences

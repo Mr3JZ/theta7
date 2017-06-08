@@ -37,32 +37,35 @@
             // 
             // addButton
             // 
+            this.addButton.BackColor = System.Drawing.Color.Gainsboro;
             this.addButton.Location = new System.Drawing.Point(12, 295);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(75, 23);
             this.addButton.TabIndex = 1;
             this.addButton.Text = "Add";
-            this.addButton.UseVisualStyleBackColor = true;
+            this.addButton.UseVisualStyleBackColor = false;
             this.addButton.Click += new System.EventHandler(this.addButton_Click);
             // 
             // removeButton
             // 
+            this.removeButton.BackColor = System.Drawing.Color.Gainsboro;
             this.removeButton.Location = new System.Drawing.Point(93, 295);
             this.removeButton.Name = "removeButton";
             this.removeButton.Size = new System.Drawing.Size(75, 23);
             this.removeButton.TabIndex = 2;
             this.removeButton.Text = "Remove";
-            this.removeButton.UseVisualStyleBackColor = true;
+            this.removeButton.UseVisualStyleBackColor = false;
             this.removeButton.Click += new System.EventHandler(this.removeButton_Click);
             // 
             // closeButton
             // 
+            this.closeButton.BackColor = System.Drawing.Color.Gainsboro;
             this.closeButton.Location = new System.Drawing.Point(174, 295);
             this.closeButton.Name = "closeButton";
             this.closeButton.Size = new System.Drawing.Size(75, 23);
             this.closeButton.TabIndex = 3;
             this.closeButton.Text = "Close";
-            this.closeButton.UseVisualStyleBackColor = true;
+            this.closeButton.UseVisualStyleBackColor = false;
             this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
             // 
             // topicTextBox

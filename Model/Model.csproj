@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Author.cs" />
+    <Compile Include="AvailableRoom.cs" />
     <Compile Include="Conference.cs" />
     <Compile Include="Message.cs" />
     <Compile Include="NamedVerdict.cs" />

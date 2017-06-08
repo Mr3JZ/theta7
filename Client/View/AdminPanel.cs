@@ -63,7 +63,7 @@ namespace Client.View
             }     
             catch(Exception ex)
             {
-                MessageBox.Show("Invalid input!");
+                MessageBox.Show(ex.ToString());
             }
 
             this.Close();

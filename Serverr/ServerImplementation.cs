@@ -54,6 +54,13 @@ namespace Server
             return all;
 
         }
+        
+        /*
+         * Override for 6 min timer so we don't get .net remoting exception*/
+        public override object InitializeLifetimeService()
+        {
+            return null;
+        }
 
         public Model.Conference GetConference(int id)
         {
@@ -178,7 +185,7 @@ namespace Server
         public void AddBid(Model.Participant bidder, int confId, int paper, int value)
         {
             List<Model.Paper> papers = repoPaper.GetByConference(confId);
-            foreach(Model.Paper p in papers)
+            foreach (Model.Paper p in papers)
             {
                 if (p.Id == paper)
                 {
@@ -187,6 +194,10 @@ namespace Server
                     repoPaper.Modify(paper, newP);
                 }
             }
+        }
+        public void AddAvailableRoom(int confId, string roomName, int capacity, string street, string city, string postalCode, DateTime beginDate, DateTime endDate)
+        {
+            repoAvailableRoom.Add(confId, roomName, capacity, street, city, postalCode, beginDate, endDate);
         }
     }
 }

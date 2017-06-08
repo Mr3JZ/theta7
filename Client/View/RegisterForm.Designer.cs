@@ -98,12 +98,13 @@
             // 
             // registerButton
             // 
+            this.registerButton.BackColor = System.Drawing.Color.Gainsboro;
             this.registerButton.Location = new System.Drawing.Point(164, 277);
             this.registerButton.Name = "registerButton";
             this.registerButton.Size = new System.Drawing.Size(100, 23);
             this.registerButton.TabIndex = 8;
             this.registerButton.Text = "Register";
-            this.registerButton.UseVisualStyleBackColor = true;
+            this.registerButton.UseVisualStyleBackColor = false;
             this.registerButton.Click += new System.EventHandler(this.registerButton_Click);
             // 
             // usernameLabel
