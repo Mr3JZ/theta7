@@ -413,9 +413,10 @@ namespace Client
             }
         }
 
-        public void AddBid(Model.Participant bidder,int confId, int selectedPaper, int bidValue)
+        public void AddBid(Model.Participant bidder, int confId, int selectedPaper, int bidValue)
         {
             server.AddBid(bidder, confId, selectedPaper, bidValue);
+        }
         public void addRoom(int confId, string roomName, int capacity, string street, string city, string postalCode, DateTime beginDate, DateTime endDate)
         {
             server.AddAvailableRoom(confId, roomName, capacity, street, city, postalCode, beginDate, endDate);
